@@ -7,17 +7,18 @@
         :img-src="article.img"
         img-top
         class="common-container m-4 mx-md-0 mt-md-0 shadow cursor-pointer"
-        @click="$router.push(`/${article.slug}`)"
       >
-        <b-card-title title-tag="h4" class="mb-3">{{
-          article.title
-        }}</b-card-title>
-        <b-card-text class="text-secondary">{{
-          article.description
-        }}</b-card-text>
-        <b-card-text class="small text-muted">{{
-          updateTime(article.updatedAt)
-        }}</b-card-text>
+        <nuxt-link :to="`/${article.slug}`" class="text-decoration-none">
+          <b-card-title title-tag="h4" class="mb-3 text-body">{{
+            article.title
+          }}</b-card-title>
+          <b-card-text class="text-secondary">{{
+            article.description
+          }}</b-card-text>
+          <b-card-text class="small text-muted">{{
+            updateTime(article.updatedAt)
+          }}</b-card-text>
+        </nuxt-link>
       </b-card>
     </b-card-group>
   </div>
