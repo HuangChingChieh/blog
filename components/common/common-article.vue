@@ -1,0 +1,94 @@
+<template>
+  <article class="common-article">
+    <!-- <nav>
+      <ul>
+        <li
+          v-for="link of article.toc"
+          :key="link.id"
+          @click="scrollTo(link.id)"
+        >
+          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+        </li>
+      </ul>
+    </nav> -->
+    <h1 class="text-center">{{ document.title }}</h1>
+    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
+    <time v-if="updateTime" class="d-block text-center">{{ updateTime }}</time>
+    <img
+      v-if="document.img"
+      v-once
+      :src="$router.options.base + document.img"
+      class="w-100 img-fluid rounded-lg"
+    />
+
+    <nuxt-content :document="document" />
+  </article>
+</template>
+
+<script>
+export default {
+  props: {
+    document: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  computed: {
+    updateTime() {
+      const { updatedAt } = this.document
+      return updatedAt
+        ? Intl.DateTimeFormat('zh-TW', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).format(new Date(updatedAt))
+        : ''
+    },
+  },
+}
+</script>
+
+<style lang="scss">
+$article-font-size-base: 1rem;
+
+.common-article {
+  font-size: 1rem;
+
+  h1 {
+    font-weight: 900;
+    font-size: $article-font-size-base * 2;
+  }
+
+  h2,
+  h3 {
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: $article-font-size-base * 1.5;
+  }
+
+  h3 {
+    margin: $paragraph-margin-bottom 0;
+    font-size: $article-font-size-base * 1.1;
+    color: $secondary;
+  }
+
+  p {
+    margin: $paragraph-margin-bottom 0;
+  }
+
+  time {
+    margin: $paragraph-margin-bottom 0;
+  }
+
+  hr {
+    border: 1px solid $secondary;
+    border-bottom: 0;
+    border-right: 0;
+    border-left: 0;
+    margin: 3rem auto;
+    width: 3rem;
+  }
+}
+</style>

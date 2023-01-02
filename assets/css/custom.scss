@@ -1,0 +1,13 @@
+/* Custom Settings Here */
+
+$font-family-sans-serif: 'Noto Sans TC', sans-serif;
+
+$blue: #0a58ca;
+
+$card-columns-count: 2;
+$card-spacer-y: 1.5rem;
+$card-columns-gap: 1.5rem;
+$card-border-width: 0;
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap-vue/src/variables';
