@@ -52,7 +52,12 @@ export default {
   bootstrapVue: {
     bootstrapCSS: false, // Or `css: false`
     bootstrapVueCSS: false, // Or `bvCSS: false`
-    componentPlugins: ['LayoutPlugin', 'CardPlugin'],
+    componentPlugins: [
+      'LayoutPlugin',
+      'CardPlugin',
+      'ModalPlugin',
+      'ButtonPlugin',
+    ],
     directivePlugins: [],
   },
 

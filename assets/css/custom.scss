@@ -8,6 +8,14 @@ $card-columns-count: 2;
 $card-spacer-y: 1.5rem;
 $card-columns-gap: 1.5rem;
 $card-border-width: 0;
+
+$modal-header-border-width: 0;
+$modal-fade-transform: none;
+
+$link-decoration: underline;
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap-vue/src/variables';
+
+$link-color: $body-color;
