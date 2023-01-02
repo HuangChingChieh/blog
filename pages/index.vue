@@ -29,7 +29,8 @@ export default {
   name: 'IndexPage',
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
-      .only(['title', 'description', 'img', 'updatedAt', 'slug'])
+      .only(['title', 'description', 'img', 'createdAt', 'updatedAt', 'slug'])
+      .sortBy('createdAt', 'desc')
       .fetch()
     return { articles }
   },
