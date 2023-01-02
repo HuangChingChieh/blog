@@ -12,7 +12,7 @@ export default {
   // components: { prevNext },
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
-      .where({ title: params.slug })
+      .where({ slug: params.slug })
       .fetch()
 
     const article = articles[0]
