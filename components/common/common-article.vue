@@ -90,6 +90,12 @@ $article-font-size-base: 1rem;
 
   p {
     margin: $paragraph-margin-bottom 0;
+
+    code {
+      padding: 0.15rem 0.25rem;
+      border-radius: $btn-border-radius-lg;
+      line-height: 1;
+    }
   }
 
   time {
@@ -103,6 +109,11 @@ $article-font-size-base: 1rem;
     border-left: 0;
     margin: 3rem auto;
     width: 3rem;
+  }
+
+  a[href] {
+    color: $body-color;
+    text-decoration: underline;
   }
 }
 </style>
