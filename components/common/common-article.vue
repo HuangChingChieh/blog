@@ -11,7 +11,15 @@
         </li>
       </ul>
     </nav> -->
-    <h1 class="text-center">{{ document.title }}</h1>
+    <h1 class="text-center">
+      {{ document.title }}
+    </h1>
+    <h2 class="text-center">
+      <small v-if="document.subtitle" class="text-muted">{{
+        document.subtitle
+      }}</small>
+    </h2>
+
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
     <time v-if="updateTime" class="d-block text-center">{{ updateTime }}</time>
     <img
@@ -54,6 +62,12 @@ $article-font-size-base: 1rem;
 .common-article {
   font-size: 1rem;
 
+  h1,
+  h2,
+  h3 {
+    color: black;
+  }
+
   h1 {
     font-weight: 900;
     font-size: $article-font-size-base * 2;
@@ -71,7 +85,7 @@ $article-font-size-base: 1rem;
   h3 {
     margin: $paragraph-margin-bottom 0;
     font-size: $article-font-size-base * 1.1;
-    color: $secondary;
+    // color: $secondary;
   }
 
   p {
