@@ -1,5 +1,5 @@
 <template>
-  <b-modal v-model="valueInner" centered hide-footer hide-header>
+  <b-modal v-model="valueInner" centered hide-footer hide-header scrollable>
     <div class="text-center my-3">
       <img
         v-once

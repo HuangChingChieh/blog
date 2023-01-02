@@ -66,6 +66,7 @@ export default {
 
 @media (max-width: map-get($grid-breakpoints, 'md')) {
   .common-header {
+    background-color: white;
     border-bottom: 1px solid $secondary;
 
     .icon {
