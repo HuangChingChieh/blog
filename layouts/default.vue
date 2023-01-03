@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-light pt-md-4 pb-4">
+  <main class="bg-light py-md-4">
     <common-header class="mb-4" />
     <Nuxt />
   </main>

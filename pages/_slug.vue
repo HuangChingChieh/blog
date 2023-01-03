@@ -1,15 +1,22 @@
 <template>
-  <common-container class="article-container mx-auto">
-    <b-container fluid="md">
-      <common-article :document="article" class="p-0 p-md-5" />
-    </b-container>
-  </common-container>
+  <div>
+    <common-container class="article-container mx-auto">
+      <b-container fluid>
+        <common-article :document="article" class="p-0 p-md-5" />
+      </b-container>
+    </common-container>
+
+    <common-container class="article-container mx-auto mt-md-4">
+      <hr class="d-block d-md-none mb-0" />
+      <liker-button />
+    </common-container>
+  </div>
 </template>
 
 <script>
-// import prevNext from '~/components/prev-next.vue'
+import LikerButton from '~/components/liker-button.vue'
 export default {
-  // components: { prevNext },
+  components: { LikerButton },
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
       .where({ slug: params.slug })
@@ -25,11 +32,6 @@ export default {
       article,
       //  prev, next
     }
-  },
-  computed: {
-    encodeURIComponent() {
-      return window.encodeURIComponent
-    },
   },
   methods: {
     scrollTo(id) {

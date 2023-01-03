@@ -1,6 +1,6 @@
 <template>
-  <b-modal v-model="valueInner" centered hide-footer hide-header scrollable>
-    <div class="text-center my-3">
+  <b-modal v-model="valueInner" centered hide-footer scrollable title="關於我">
+    <div class="text-center mb-3">
       <img
         v-once
         :src="`${$router.options.base}icon.png`"
@@ -32,6 +32,7 @@
               class="w-100"
             />
           </a>
+          <small class="text-muted">Paypal目前只接受非台灣使用者贊助</small>
         </b-col>
         <b-col cols="6">
           <small class="text-muted">加密貨幣</small>
