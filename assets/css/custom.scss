@@ -14,6 +14,15 @@ $modal-fade-transform: none;
 
 $link-decoration: underline;
 
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 768px,
+  xl: 800px,
+  //   lg: 960px,
+  //   xl: 1140px,,,
+);
+
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap-vue/src/variables';

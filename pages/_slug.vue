@@ -1,16 +1,16 @@
 <template>
-  <div>
-    <common-container class="article-container mx-auto">
+  <b-container fluid="md">
+    <common-container>
       <b-container fluid>
         <common-article :document="article" class="p-0 p-md-5" />
       </b-container>
     </common-container>
 
-    <common-container class="article-container mx-auto mt-md-4">
+    <common-container class="mt-md-4">
       <hr class="d-block d-md-none mb-0" />
       <liker-button />
     </common-container>
-  </div>
+  </b-container>
 </template>
 
 <script>

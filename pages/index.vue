@@ -1,12 +1,12 @@
 <template>
-  <div class="article-container mx-auto">
+  <b-container fluid="md">
     <b-card-group columns>
       <b-card
         v-for="(article, index) in articles"
         :key="index"
         :img-src="article.img"
         img-top
-        class="common-container m-4 mx-md-0 mt-md-0 shadow cursor-pointer"
+        class="common-container shadow cursor-pointer"
       >
         <nuxt-link :to="`/${article.slug}`" class="text-decoration-none">
           <b-card-title title-tag="h4" class="mb-3 text-body">{{
@@ -21,7 +21,7 @@
         </nuxt-link>
       </b-card>
     </b-card-group>
-  </div>
+  </b-container>
 </template>
 
 <script>
