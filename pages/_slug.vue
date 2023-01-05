@@ -1,9 +1,7 @@
 <template>
   <b-container fluid="md">
     <common-container>
-      <b-container fluid>
-        <common-article :document="article" class="p-0 p-md-5" />
-      </b-container>
+      <common-article :document="article" class="p-0 p-md-5" />
     </common-container>
 
     <common-container class="mt-md-4">
