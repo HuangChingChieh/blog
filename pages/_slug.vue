@@ -17,21 +17,8 @@
 import LikerButton from '~/components/liker-button.vue'
 export default {
   components: { LikerButton },
-  head() {
-    const { article } = this
-    return {
-      title: article.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: article.description,
-        },
-      ],
-    }
-  },
   async asyncData({ $content, params }) {
-    const articles = await $content('articles', { deep: true })
+    const articles = await $content('', { deep: true })
       .where({ slug: params.slug })
       .fetch()
 
@@ -44,6 +31,19 @@ export default {
     return {
       article,
       //  prev, next
+    }
+  },
+  head() {
+    const { article } = this
+    return {
+      title: article.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: article.description,
+        },
+      ],
     }
   },
   methods: {
