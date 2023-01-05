@@ -90,8 +90,11 @@
 // @import "~bootstrap-vue/src/components/toast/index";
 // @import "~bootstrap-vue/src/components/tooltip/index";
 
-.nuxt-content-highlight {
+.nuxt-content {
   word-break: break-all;
+}
+
+.nuxt-content-highlight {
   position: relative;
 
   .filename {
