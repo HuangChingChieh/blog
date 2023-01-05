@@ -91,6 +91,7 @@
 // @import "~bootstrap-vue/src/components/tooltip/index";
 
 .nuxt-content-highlight {
+  word-break: break-all;
   position: relative;
 
   .filename {
