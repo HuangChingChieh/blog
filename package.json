@@ -23,6 +23,7 @@
     "bootstrap-vue": "^2.22.0",
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
+    "nuxt-content-git": "^2.0.14",
     "prism-themes": "^1.9.0",
     "vue": "^2.7.10",
     "vue-server-renderer": "^2.7.10",

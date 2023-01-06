@@ -21,7 +21,14 @@
     </h2>
 
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
-    <time v-if="updateTime" class="d-block text-center">{{ updateTime }}</time>
+    <time v-if="createTime" class="d-block text-center"
+      >{{ createTime }}
+      <small
+        v-if="createTime !== updateTime"
+        class="d-block text-center text-muted"
+        >更新於{{ updateTime }}</small
+      >
+    </time>
     <img
       v-if="document.img"
       v-once
@@ -42,6 +49,16 @@ export default {
     },
   },
   computed: {
+    createTime() {
+      const { createdAt } = this.document
+      return createdAt
+        ? Intl.DateTimeFormat('zh-TW', {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+          }).format(new Date(createdAt))
+        : ''
+    },
     updateTime() {
       const { updatedAt } = this.document
       return updatedAt

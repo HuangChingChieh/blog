@@ -12,9 +12,10 @@
 </template>
 
 <script>
+import CommonArticle from '~/components/common/common-article.vue'
 import LikerButton from '~/components/liker-button.vue'
 export default {
-  components: { LikerButton },
+  components: { LikerButton, CommonArticle },
   async asyncData({ $content, params }) {
     const articles = await $content('', { deep: true })
       .where({ slug: params.slug })
