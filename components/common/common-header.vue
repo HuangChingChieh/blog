@@ -1,15 +1,18 @@
 <template>
   <header class="common-header position-sticky">
-    <b-container fluid="md" class="d-flex flex-row">
+    <b-container fluid="md" class="d-flex flex-row px-0 px-md-3">
       <common-container class="flex-grow-1">
-        <b-container fluid class="py-2 py-md-3 d-flex align-items-center">
+        <b-container
+          fluid
+          class="py-2 py-md-3 d-flex flex-row align-items-center"
+        >
           <img
             v-once
             :src="`${$router.options.base}icon.png`"
             height="45"
             class="rounded-circle icon"
           />
-          <div class="ml-3">
+          <div class="ml-3 flex-grow-1">
             <nuxt-link
               class="font-weight-bold text-dark d-block text-decoration-none"
               to="/"
@@ -20,21 +23,19 @@
               >前端程式 + Linux的心得筆記</small
             >
           </div>
+
+          <a
+            href="#"
+            class="h-100 px-md-3 d-flex align-items-center profile-btn"
+            @click.prevent="profileModal.open = true"
+          >
+            <b-icon-list class="text-muted"></b-icon-list>
+          </a>
         </b-container>
-
-        <modal-profile v-model="profileModal.open"></modal-profile>
-      </common-container>
-
-      <common-container class="ml-4 d-flex align-items-center">
-        <a
-          href="#"
-          class="h-100 px-3 d-flex align-items-center profile-btn"
-          @click.prevent="profileModal.open = true"
-        >
-          <b-icon-list class="text-muted"></b-icon-list>
-        </a>
       </common-container>
     </b-container>
+
+    <modal-profile v-model="profileModal.open"></modal-profile>
   </header>
 </template>
 
@@ -68,7 +69,7 @@ export default {
   .common-header {
     background-color: white;
     border-bottom: 1px solid $secondary;
-
+    box-shadow: $box-shadow-sm;
     .icon {
       height: 1.5rem;
     }

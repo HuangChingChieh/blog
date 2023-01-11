@@ -90,6 +90,11 @@
 // @import "~bootstrap-vue/src/components/toast/index";
 // @import "~bootstrap-vue/src/components/tooltip/index";
 
+html,
+body {
+  background-color: $light;
+}
+
 .nuxt-content {
   word-break: break-all;
 }
