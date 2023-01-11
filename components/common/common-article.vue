@@ -32,7 +32,7 @@
     <img
       v-if="document.img"
       v-once
-      :src="$router.options.base + document.img"
+      :src="document.img"
       class="w-100 img-fluid rounded-lg"
     />
 
