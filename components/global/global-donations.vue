@@ -53,7 +53,7 @@
       size="sm"
     >
       <img
-        :src="`${$router.options.base}images/donation/${modal.image}.png`"
+        :src="`${$config.imageServer}/images/donation/${modal.image}.png`"
         alt="image"
         class="w-100"
       />

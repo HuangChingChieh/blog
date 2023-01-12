@@ -4,7 +4,7 @@
       <b-card
         v-for="(article, index) in articles"
         :key="index"
-        :img-src="article.img"
+        :img-src="article.img ? $config.imageServer + article.img : ''"
         img-top
         class="common-container shadow cursor-pointer"
       >

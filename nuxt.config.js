@@ -1,5 +1,8 @@
 const routerBase = '/blog/'
 export default {
+  publicRuntimeConfig: {
+    imageServer: 'https://huangchingchieh.blob.core.windows.net/newcontainer',
+  },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
@@ -104,6 +107,14 @@ export default {
   pwa: {
     manifest: {
       lang: 'en',
+    },
+    icon: {
+      source: 'static/icon.png',
+      fileName: 'icon.png',
+      sizes: [64, 120, 144, 152, 192, 384, 512],
+      targetDir: 'icons',
+      plugin: false,
+      purpose: ['any', 'maskable'],
     },
   },
 

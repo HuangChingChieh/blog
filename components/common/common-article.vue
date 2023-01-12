@@ -32,7 +32,7 @@
     <img
       v-if="document.img"
       v-once
-      :src="document.img"
+      :src="$config.imageServer + document.img"
       class="w-100 img-fluid rounded-lg"
     />
 

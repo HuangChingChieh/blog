@@ -1,7 +1,7 @@
 ---
 title: Nuxt2中的BootstrapVue TreeShaking
 description: 本篇紀錄了自己在Nuxt2中使用Bootstrap Vue時，Tree Shaking的一些步驟。
-img: https://lh3.googleusercontent.com/pw/AL9nZEXKDvnXMVmeVfQhxc32l16jE3K1sDNLZ2Q9F2NVr4aZMG2aAvQzVBp7deJpyX_3d31jUigXUw6peFTlEMR3uZrDCO5Ip5uIMwfYppX5QCvMrpl29hv4PXfcLX8dpQWHRgT-MgItKrLeVKI51tm6LAtNqA=w1172-h704-no
+img: /images/prune.jpg
 tags: [vue, nuxt, bootstrap]
 ---
 

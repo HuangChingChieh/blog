@@ -2,7 +2,7 @@
 title: Fedora初始設定紀錄
 description: 本篇是將自己重灌 Fedora 時會做的一些事情以指令碼的形式紀錄下來，以求下次重灌完可以直接複製貼上執行之後就會最接近自己平常的使用狀態。
 tags: [fedora, linux]
-img: https://lh3.googleusercontent.com/pw/AL9nZEXhRJRJ24NRyMHwqBKDJ0vIBPA8tfQXXp3eOErdVM3DwIHTeD8TF3Nva68CL9w6XyzCiTeoCFYYJY66CYbc5SPOEn0KCs3dlKIg6JbYdiR3bGlr4OtuQ2wAdJnRnLTIBliI16PgXSogs6OdU6QjQxu6QA=w720-h405-no
+img: /images/fedora_apps.webp
 ---
 
 本篇是將自己重灌 Fedora 時會做的一些事情，例如：移除沒在用的 Gnome 預設程式、安裝自己要用的程式、更新……等等的過程，以指令碼的形式紀錄下來，以求下次重灌完可以直接複製貼上執行之後就會最接近自己平常的使用狀態。
