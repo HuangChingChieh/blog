@@ -1,3 +1,5 @@
+import getRoutes from './utils/getRoutes'
+
 const routerBase = '/blog/'
 export default {
   publicRuntimeConfig: {
@@ -95,6 +97,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -130,5 +133,25 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true,
+  },
+
+  // Sitemap Module: https://sitemap.nuxtjs.org/usage/sitemap/
+  sitemap: {
+    hostname: 'https://huangchingchieh.github.io/',
+    gzip: true,
+    routes() {
+      return getRoutes()
+    },
+    // exclude: ['/secret', '/admin/**'],
+    // routes: [
+    //   '/page/1',
+    //   '/page/2',
+    //   {
+    //     url: '/page/3',
+    //     changefreq: 'daily',
+    //     priority: 1,
+    //     lastmod: '2017-06-30T13:30:00.000Z',
+    //   },
+    // ],
   },
 }
