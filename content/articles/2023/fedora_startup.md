@@ -18,7 +18,7 @@ img: /images/fedora_apps.webp
 ### 移除用不到的內建軟體
 
 ```bash
-sudo dnf remove firefox gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor -y
+sudo dnf remove gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor -y
 ```
 
 ### 移除內建的 Gnome 擴充套件與 GNOME Classic
@@ -54,11 +54,19 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install icecat icecat-wayland thunderbird-wayland thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp inkscape uget transmission gnome-tweaks blender pcsxr soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync gedit -y
+sudo dnf install thunderbird-wayland thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp inkscape uget transmission gnome-tweaks blender pcsxr soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync gedit video-downloader -y
 ```
 
+### 從 flahub 安裝 Steam
+
 ```bash
-flatpak install org.mozilla.firefox org.chromium.Chromium -y
+flatpak install com.valvesoftware.Steam
+```
+
+### 安裝 Chrome
+
+```bash
+sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 ```
 
 ### [GStreamer](https://gstreamer.freedesktop.org/) 多媒體編碼套件
@@ -116,7 +124,7 @@ sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni
 ### 從內建的軟體庫安裝 Gnome 擴充套件
 
 ```bash
-sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-openweather gnome-shell-extension-places-menu gnome-shell-extension-sound-output-device-chooser gnome-shell-extension-user-theme -y
+sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu gnome-shell-extension-sound-output-device-chooser -y
 ```
 
 ---
