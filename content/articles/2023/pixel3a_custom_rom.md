@@ -30,9 +30,17 @@ img: /images/lineageos19.webp
 
 上網做了一些查詢之後，有的人說會不能安裝原本的 Google 相機、有的人說可以直接從 Play Store 下載，似乎沒有一個確切的答案。雖然如此我還是滿想刷的，刷完之後的相機心得我會放在下面。
 
-### 銀行 APP 及 Google Pay 還能用嗎？
+### 無法通過 Safetynet 檢查的 APP
 
-因為本身是 Google Pay 使用者，雖然可以直接拿卡出來刷，但在這個什麼都裝在手機甚至已經有純網銀的年代，如果不能用手機感應付款還是會有點麻煩。一樣上網查了一下之後，網路資訊呈現的資訊似乎是看 APP 本身的檢查而定，這部份也是會將心得放在最後。
+Safetynet 是 Google 用來檢查安裝 Android 的裝置是否有經過竄改（例如刷機、Root）的開發者工具，若 APP 開發者在 APP 中使用這個檢查，刷機後是有可能無法使用原本的 APP 的，最常見的例子就是刷機後的 Rom 有可能會無法在 Google Play 商店中搜尋到 Netflix，以及無法使用 Google 錢包的 NFC 感應付款功能。
+
+社群為了刷機後能最大地還原裝置的使用情境，也衍伸出許多方式來繞過這個檢查，然而這就像是跟 Google 在玩貓抓老鼠一樣。Google 會不斷更新檢測方式（[例如將 Safetynet API 改成使用 Play Integrity API](https://developer.android.com/training/safetynet/deprecation-timeline)），社群也隨之再繼續開發新的繞道方式。
+
+也許目前的繞道方式可行，之後就不行了也不一定。
+
+所以，這部分也是刷機前需要考量的，因為原本你不會知道哪些 APP 有使用這個檢查（大部分是銀行 APP、支付工具 APP），必須要有刷機後某些 APP 無法使用的心理準備。
+
+這部份我會在最後針對自己平常使用的 APP 做個整理。
 
 ---
 
@@ -73,6 +81,12 @@ sudo dnf install android-tools
 ### 下載相關的 ROM 以及 Recovery
 
 因為我要刷的是 LineageOS，就到[官方頁面](https://download.lineageos.org/sargo)下載。
+
+### 下載 ih8sn(選擇性)
+
+[ih8sn](https://github.com/LOS-Munch/ih8sn)是個利用覆寫系統的一些設定，來讓刷機後的 ROM 盡量通過 Safetynet 的專案，大部分的開發維護人員也都是 LineageOS 的成員。在上網搜尋各種繞過 Safetynet 的方式後，我覺得 iih8sn 是最簡單的一個。
+
+安裝方式很簡單，因 Pixel 3a 為 arm64 架構，下載時要選擇`ih8sn-aarch64.zip`這個檔案，接著只要在首次安裝 Rom 時一起把這個 zip 檔刷進去就好了。
 
 ---
 
@@ -116,7 +130,7 @@ sudo adb reboot bootloader
 
 這邊個人不建議使用還原，因為如果是從原生的 Android 轉過來，會有很多預裝的 APP，直接還原會全部都被裝回來。第一次轉到客製 Rom 還是建議先一個一個把要用的裝回來。
 
-以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行。裡面讓我最驚訝的是全家跟 Instagram 竟然不能用。
+以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行。
 
 ### 正常可使用
 
@@ -125,30 +139,32 @@ sudo adb reboot bootloader
 - Disney+
 - Facebook
 - Google 相簿（而且 Pixel 3a 的無限容量判斷還有效）
-- Google 相機（從 Play 商店下載之後，看起來跟原本沒什麼不一樣。測試夜拍跟天文功能，看起來也都跟之前的相機沒什麼兩樣。）
-- LINE、LINE Bank、LINE Pay
+- Google 相機（從 Play 商店下載之後測試夜拍跟天文功能，看起來跟原本的沒什麼差異。）
+- LINE
+- LINE Bank
+- LINE Pay
 - MaiCoin
 - Messenger
 - 幣安
 
 ### 部份功能可用
 
-- Google Pay（不能設定感應式付款）
+- Google Pay：可以安裝但不能設定感應式付款，安裝 ih8sn 之後還是無法設定。
 
 ### 可安裝但無法使用
 
-- 全家便利商店：可以安裝，但打開時會偵測你已經刷機所以不給用（超問號，我銀行都登得進去不知道在擋什麼意思？），但 7–11 的 OPEN POINT 正常。後來改用舊版的[My FamiPort](https://play.google.com/store/apps/details?id=com.tfm.myfami&gl=US)，但就無法使用全盈+Pay。
-- 全支付
-- 健保快易通
+- 全家便利商店：可使用舊版的[My FamiPort](https://play.google.com/store/apps/details?id=com.tfm.myfami&gl=US)，但就無法使用全盈+Pay。安裝 ih8sn 後可使用。
+- 全支付：安裝 ih8sn 後可使用。
+- 健保快易通：安裝 ih8sn 後可使用。
 
 ### 無法安裝
 
-- Netflix：因為使用 SafetyNet，會偵測刷機，連在 Play 商店都搜尋不到。
+- Netflix：安裝了 ih8sn 之後還是無法在 Play 商店搜尋到
 
 ---
 
 大概這樣，整體而言有好有壞，最好的部分當然是 Google 相簿無限容量還在，不過 APP 無法使用的部份大多都找到替代方案，但如果有特別依賴被影響到的 APP，可能還是不建議刷機。但看到手機空間從原本使用 5X GB 變成只剩下 20 出頭，還是覺得滿爽的。
 
-因為平常的消費使用習慣是先看店家是否支援 Line Pay，沒有的話就使用 Google Pay 感應付款，刷機後 Google Pay 無法使用影響有點大，所以去搜尋一些資料，發現台灣 Pay 也可以綁定信用卡後直接感應 POS 機器付款，類似直接感應實體卡的感覺，所以就載下來用，目前刷一些商家都有成功。
-
 不過本來最擔心相機、付款跟銀行軟體（還有各種加密貨幣交易所），結果不能用的是全家，我真的猜不透啊，人家銀行都可以過了，請問全家在擋什麼意思！？
+
+雖然安裝 ih8sn 之後大部分不能用的 APP 就能用了，但還是無法使用 Google Pay 感應付款。因為平常的消費使用習慣是先看店家是否支援 Line Pay，沒有的話就使用 Google Pay 感應付款，刷機後 Google Pay 無法使用影響有點大，所以去搜尋一些資料，發現台灣 Pay 也可以綁定信用卡後直接感應 POS 機器付款，類似直接感應實體卡的感覺，所以就載下來用，目前刷一些商家都有成功。
