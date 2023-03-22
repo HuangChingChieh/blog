@@ -79,10 +79,10 @@ sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 
 ## 安裝開發相關套件
 
-### 安裝 Git / Gitg
+### 安裝 Git / Gitg / Github CLI
 
 ```bash
-sudo dnf install git gitg -y
+sudo dnf install git gitg gh -y
 ```
 
 ### 安裝 Visual Studio Code
@@ -103,6 +103,11 @@ sudo dnf check-update && sudo dnf install code
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+
+### Github CLI 設定
+```bash
+gh auth login
 ```
 
 ---
