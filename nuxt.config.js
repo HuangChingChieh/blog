@@ -141,6 +141,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     extractCSS: true,
+    babel: {
+      // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/5627
+      compact: true,
+    },
   },
 
   // Sitemap Module: https://sitemap.nuxtjs.org/usage/sitemap/
