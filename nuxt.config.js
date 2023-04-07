@@ -1,6 +1,9 @@
 import getRoutes from './utils/getRoutes'
 
 const routerBase = '/blog/'
+const googleFontUrl =
+  'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap'
+
 export default {
   publicRuntimeConfig: {
     imageServer: 'https://huangchingchieh.blob.core.windows.net/newcontainer',
@@ -37,16 +40,20 @@ export default {
         crossorigin: true,
       },
       {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap',
-        type: 'text/css',
+        rel: 'preload',
+        href: `${googleFontUrl}`,
+        as: 'style',
+        onload: `this.onload=null;this.rel='stylesheet'`,
       },
     ],
-    style: [
-      {
-        cssText: `@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap);`,
-      },
+    noscript: [
+      { innerHTML: `<link rel="stylesheet" href="${googleFontUrl}">` },
     ],
+    // style: [
+    //   {
+    //     cssText: `@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap);`,
+    //   },
+    // ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
