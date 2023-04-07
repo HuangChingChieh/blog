@@ -128,6 +128,7 @@ export default {
         theme: 'prism-themes/themes/prism-material-dark.css',
       },
     },
+    ignores: ['draft'],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
