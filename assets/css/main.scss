@@ -95,9 +95,9 @@ body {
   background-color: $light;
 }
 
-.nuxt-content {
-  word-break: break-all;
-}
+// .nuxt-content {
+//   word-break: break-all;
+// }
 
 .nuxt-content-highlight {
   position: relative;
@@ -118,7 +118,7 @@ body {
   pre {
     border-radius: $border-radius-lg;
     font-size: $small-font-size !important;
-    white-space: pre-wrap;
+    // white-space: pre-wrap;
   }
 }
 

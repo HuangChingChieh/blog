@@ -103,6 +103,13 @@ $article-font-size-base: 1rem;
     margin: $paragraph-margin-bottom 0;
     font-size: $article-font-size-base * 1.1;
     // color: $secondary;
+    &::before {
+      content: ' { ';
+    }
+
+    &::after {
+      content: ' } ';
+    }
   }
 
   p {
