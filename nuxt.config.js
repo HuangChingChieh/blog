@@ -32,28 +32,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: `${routerBase}icon.png` },
-      // Google Noto Sans
-      { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-      {
-        rel: 'preconnect',
-        href: 'https://fonts.gstatic.com',
-        crossorigin: true,
-      },
-      {
-        rel: 'preload',
-        href: `${googleFontUrl}`,
-        as: 'style',
-        onload: `this.onload=null;this.rel='stylesheet'`,
-      },
     ],
-    noscript: [
-      { innerHTML: `<link rel="stylesheet" href="${googleFontUrl}">` },
-    ],
-    // style: [
-    //   {
-    //     cssText: `@import url(https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap);`,
-    //   },
-    // ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
