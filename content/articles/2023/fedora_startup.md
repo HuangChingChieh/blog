@@ -15,21 +15,16 @@ img: /images/fedora_apps.webp
 
 ## 前置作業
 
-### 移除用不到的內建軟體
+##
 
 ```bash
+# 移除用不到的內建軟體
 sudo dnf remove gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor -y
-```
 
-### 移除內建的 Gnome 擴充套件與 GNOME Classic
-
-```bash
+# 移除內建的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
-```
 
-### 更新
-
-```bash
+# 更新
 sudo dnf update -y
 ```
 
@@ -37,13 +32,13 @@ sudo dnf update -y
 
 ## 啟用第三方軟體庫（Rpm Fusion / Flathub）
 
-### 啟用 [RPM Fusion](https://rpmfusion.org/) 軟體庫
+啟用 [RPM Fusion](https://rpmfusion.org/) 軟體庫
 
 ```bash
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
-### 啟用 [Flathub](https://flathub.org/home) 軟體庫
+啟用 [Flathub](https://flathub.org/home) 軟體庫
 
 ```bash
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak remote-modify --enable flathub
@@ -55,21 +50,15 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 ```bash
 sudo dnf install thunderbird-wayland thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp inkscape uget transmission gnome-tweaks blender pcsxr soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync gedit video-downloader -y
-```
 
-### 從 flahub 安裝 Steam
-
-```bash
+# 從 flahub 安裝 Steam
 flatpak install com.valvesoftware.Steam
-```
 
-### 安裝 Chrome
-
-```bash
+# 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 ```
 
-### [GStreamer](https://gstreamer.freedesktop.org/) 多媒體編碼套件
+安裝[GStreamer](https://gstreamer.freedesktop.org/) 多媒體編碼套件
 
 ```bash
 sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
@@ -79,33 +68,26 @@ sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 
 ## 安裝開發相關套件
 
-### 安裝 Git / Gitg / Github CLI
-
 ```bash
+# 安裝 Git / Gitg / Github CLI
 sudo dnf install git gitg gh -y
 ```
 
-### 安裝 Visual Studio Code
+安裝 Visual Studio Code
 
 ```bash
+# 匯入微軟套件庫金鑰
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
-```
 
-```bash
+# 新增VS Code套件庫
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
-```
 
-```bash
+# 安裝
 sudo dnf check-update && sudo dnf install code
 ```
 
-### 安裝 NVM
+Github CLI 設定
 
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-```
-
-### Github CLI 設定
 ```bash
 gh auth login
 ```
@@ -114,21 +96,14 @@ gh auth login
 
 ## 安裝個人化相關套件
 
-### 安裝額外的桌布
-
 ```bash
+# 安裝額外的桌布
 sudo dnf install *backgrounds*gnome* *gnome*backgrounds*
-```
 
-### 安裝 GTK 主題／圖示主題／字型
-
-```bash
+# 安裝 GTK 主題／圖示主題／字型
 sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni-uming-fonts wqy-microhei-fonts google-noto-sans-cjk-tc-fonts google-noto-sans-mono-cjk-tc-fonts google-noto-serif-cjk-tc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
-```
 
-### 從內建的軟體庫安裝 Gnome 擴充套件
-
-```bash
+# 從內建的軟體庫安裝 Gnome 擴充套件
 sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu gnome-shell-extension-sound-output-device-chooser -y
 ```
 
