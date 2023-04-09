@@ -1,12 +1,7 @@
 <template>
   <b-modal v-model="valueInner" centered hide-footer scrollable title="關於我">
     <div class="text-center mb-3">
-      <img
-        v-once
-        :src="`${$router.options.base}icon.png`"
-        height="60"
-        class="rounded-circle"
-      />
+      <img v-once :src="$icon(64)" height="60" class="rounded-circle" />
     </div>
 
     <p>

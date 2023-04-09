@@ -34,7 +34,7 @@ sudo dnf install WoeUSB
 
 首先要找出 USB 的掛載路徑，可以透過 Gnome 內建的「磁碟」軟體去看，如果顯示出來的是有數字的，把數字去掉後記起來。像我的 USB 顯示是`/dev/sda1`，就要記`/dev/sda`。使用 WoeUSB 指令時會用到。
 
-<global-img src="/images/woeusb.png"></global-img>
+<article-img img="rGcIm6C.png"></article-img>
 
 ### 卸載 USB
 

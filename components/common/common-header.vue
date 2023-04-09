@@ -8,7 +8,7 @@
         >
           <img
             v-once
-            :src="`${$router.options.base}icon.png`"
+            :src="$icon(64)"
             height="45"
             class="rounded-circle icon"
           />

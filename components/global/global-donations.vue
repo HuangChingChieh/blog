@@ -8,7 +8,7 @@
       <a
         href="#"
         @click.prevent="
-          openModal({ title: 'LINE Bank銀行帳號', image: 'line-bank' })
+          openModal({ title: 'LINE Bank銀行帳號', image: 'pwaF5Hm.png' })
         "
         >點這裡顯示銀行帳號QRCode</a
       >，或是直接複製：銀行代碼824／帳號111006688613。
@@ -38,7 +38,7 @@
         @click.prevent="
           openModal({
             title: '加密貨幣',
-            image: 'evm_compatible',
+            image: 'VLintJ1.png',
           })
         "
         >點這裡顯示加密貨幣地址QRCode</a
@@ -52,11 +52,7 @@
       centered
       size="sm"
     >
-      <img
-        :src="`${$config.imageServer}/images/donation/${modal.image}.png`"
-        alt="image"
-        class="w-100"
-      />
+      <common-img :img="modal.image" img-class="w-100" />
 
       <div v-if="modal.image === 'evm_compatible'">
         目前接受<a
@@ -71,7 +67,9 @@
 </template>
 
 <script>
+import CommonImg from '../common/common-img.vue'
 export default {
+  components: { CommonImg },
   data() {
     return {
       modal: {

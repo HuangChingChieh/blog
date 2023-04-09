@@ -29,11 +29,12 @@
         >更新於{{ updateTime }}</small
       >
     </time>
-    <img
+
+    <article-banner
       v-if="document.img"
       v-once
-      :src="$config.imageServer + document.img"
-      class="w-100 img-fluid rounded-lg"
+      :img="document.img"
+      :imgClass="['w-100', 'img-fluid', 'rounded-lg']"
     />
 
     <nuxt-content :document="document" />
@@ -41,7 +42,10 @@
 </template>
 
 <script>
+import ArticleBanner from '../article/article-banner.vue'
+
 export default {
+  components: { ArticleBanner },
   props: {
     document: {
       type: Object,
@@ -103,13 +107,13 @@ $article-font-size-base: 1rem;
     margin: $paragraph-margin-bottom 0;
     font-size: $article-font-size-base * 1.1;
     // color: $secondary;
-    &::before {
-      content: ' { ';
-    }
+    // &::before {
+    //   content: '- ';
+    // }
 
-    &::after {
-      content: ' } ';
-    }
+    // &::after {
+    //   content: ' -';
+    // }
   }
 
   p {

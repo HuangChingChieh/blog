@@ -2,7 +2,7 @@
 title: Fedora初始設定紀錄
 description: 本篇是將自己重灌 Fedora 時會做的一些事情以指令碼的形式紀錄下來，以求下次重灌完可以直接複製貼上執行之後就會最接近自己平常的使用狀態。
 tags: [fedora, linux]
-img: /images/fedora_apps.webp
+img: UIphdhk.jpg
 ---
 
 本篇是將自己重灌 Fedora 時會做的一些事情，例如：移除沒在用的 Gnome 預設程式、安裝自己要用的程式、更新……等等的過程，以指令碼的形式紀錄下來，以求下次重灌完可以直接複製貼上執行之後就會最接近自己平常的使用狀態。
@@ -18,10 +18,10 @@ img: /images/fedora_apps.webp
 ##
 
 ```bash
-# 移除用不到的內建軟體
-sudo dnf remove gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor -y
+# 移除用不到的套件
+sudo dnf remove gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor fedora-chromium-config -y
 
-# 移除內建的 Gnome 擴充套件與 GNOME Classic
+# 移除用不到的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
 
 # 更新
@@ -56,11 +56,8 @@ flatpak install com.valvesoftware.Steam
 
 # 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-```
 
-安裝[GStreamer](https://gstreamer.freedesktop.org/) 多媒體編碼套件
-
-```bash
+# 安裝多媒體編碼套件
 sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 ```
 

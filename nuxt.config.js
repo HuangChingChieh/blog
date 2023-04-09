@@ -6,7 +6,7 @@ const googleFontUrl =
 
 export default {
   publicRuntimeConfig: {
-    imageServer: 'https://huangchingchieh.blob.core.windows.net/newcontainer',
+    imageServer: 'https://imgur.com/',
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -102,7 +102,7 @@ export default {
       fileName: 'icon.png',
       sizes: [64, 120, 144, 152, 192, 384, 512],
       targetDir: 'icons',
-      plugin: false,
+      plugin: true,
       purpose: ['any', 'maskable'],
     },
   },
