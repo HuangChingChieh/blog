@@ -4,7 +4,7 @@ description: 本篇記錄了在Fedora中安裝及安裝後設定Docker的過程
 tags: [fedora, linux, docker]
 ---
 
-## 安裝 Docker
+### 安裝 Docker
 
 ```bash
 # Fedora 37已內建此套件
@@ -20,9 +20,9 @@ sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin dock
 sudo systemctl start docker
 ```
 
----
+### 安裝後設定
 
-## 設定讓 Docker 可以無需特權（sudo）執行
+設定讓 Docker 可以無需特權（sudo）執行
 
 ```bash
 # 將目前的使用者加入docker群組
@@ -38,9 +38,7 @@ docker run --rm hello-world
 docker image rm hello-world
 ```
 
----
-
-## 設定讓 Docker 於開機時自動啟動
+設定讓 Docker 於開機時自動啟動
 
 ```bash
 sudo systemctl enable docker.service containerd.service

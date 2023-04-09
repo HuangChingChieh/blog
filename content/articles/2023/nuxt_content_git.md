@@ -10,17 +10,15 @@ tags: [vue, nuxt]
 
 並且他也寫成[套件](https://github.com/dword-design/nuxt-content-git)方便讓大家安裝與設定，下面會紀錄步驟。
 
-## 安裝
+---
+
+## 安裝與設定
 
 首先就是安裝囉，非常簡單。
 
 ```bash
 npm install nuxt-content-git
 ```
-
----
-
-## 設定
 
 設定也很簡單，在`nuxt.config.js`中設定就可以囉。
 
