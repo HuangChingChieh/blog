@@ -13,7 +13,10 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm install",
+	"postCreateCommand": [
+		"npm install",
+		"npm install -g push-dir"
+	],
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
