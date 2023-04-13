@@ -30,9 +30,6 @@ export default {
       },
       { name: 'format-detection', content: 'telephone=no' },
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: `${routerBase}icon.png` },
-    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
