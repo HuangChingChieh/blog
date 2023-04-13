@@ -2,7 +2,6 @@
 title: 在Fedora中安裝Docker
 description: 本篇記錄了在Fedora中安裝及安裝後設定Docker的過程
 tags: [fedora, linux, docker]
-img: IfzI2S0.jpg
 ---
 
 ---
