@@ -18,6 +18,8 @@
 <script>
 import CommonArticle from '~/components/common/common-article.vue'
 import LikerButton from '~/components/liker-button.vue'
+import style from '~/assets/css/custom.scss'
+
 export default {
   components: { LikerButton, CommonArticle },
   async asyncData({ $content, params }) {
@@ -34,6 +36,11 @@ export default {
     return {
       article,
       //  prev, next
+    }
+  },
+  data() {
+    return {
+      mobileBreakpoint: style.mobileBreakpoint,
     }
   },
   head() {
@@ -56,9 +63,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-:export {
-  mobileBreakpoint: $mobile-breakpoint;
-}
-</style>
