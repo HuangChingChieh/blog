@@ -5,7 +5,7 @@
         v-for="(article, index) in articles"
         :key="index"
         no-body
-        class="common-container cursor-pointer"
+        class="common-container cursor-pointer shadow-sm"
       >
         <b-card-body body-class="p-0">
           <nuxt-link

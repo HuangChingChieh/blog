@@ -19,7 +19,7 @@ export default {
 @media (min-width: map-get($grid-breakpoints, 'md')) {
   .common-container {
     // border: 1px solid $secondary;
-    box-shadow: $box-shadow;
+    box-shadow: $box-shadow-sm;
     background-color: white;
     border-radius: $border-radius-lg;
   }
