@@ -29,3 +29,9 @@ $container-max-widths: (
 @import '~bootstrap-vue/src/variables';
 
 $link-color: $body-color;
+
+$mobile-breakpoint: 'md';
+
+:export {
+  mobileBreakpoint: unquote($mobile-breakpoint);
+}

@@ -1,5 +1,5 @@
 <template>
-  <b-container fluid="md">
+  <b-container :fluid="mobileBreakpoint">
     <b-card-group columns>
       <b-card
         v-for="(article, index) in articles"
@@ -42,6 +42,8 @@
 
 <script>
 import CommonImg from '~/components/common/common-img.vue'
+import style from '~/assets/css/custom.scss'
+
 export default {
   name: 'IndexPage',
   components: { CommonImg },
@@ -51,6 +53,12 @@ export default {
       .sortBy('createdAt', 'desc')
       .fetch()
     return { articles }
+  },
+  data() {
+    return {
+      ...style,
+      mobileBreakpoint: style.mobileBreakpoint,
+    }
   },
   methods: {
     updateTime(updatedAt) {

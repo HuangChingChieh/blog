@@ -34,7 +34,7 @@
       v-if="document.img"
       v-once
       :img="document.img"
-      :imgClass="['w-100', 'img-fluid', 'rounded-lg']"
+      :img-class="['w-100', 'img-fluid', 'rounded-lg']"
     />
 
     <nuxt-content :document="document" />

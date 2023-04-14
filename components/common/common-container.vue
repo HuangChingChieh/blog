@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style lang="scss">
-@media (min-width: map-get($grid-breakpoints, 'md')) {
+@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .common-container {
     // border: 1px solid $secondary;
     box-shadow: $box-shadow-sm;

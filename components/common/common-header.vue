@@ -1,6 +1,10 @@
 <template>
   <header class="common-header">
-    <b-container fluid="md" class="py-2 py-md-3 align-items-center">
+    <b-container
+      :fluid="mobileBreakpoint"
+      class="py-2 align-items-center"
+      :class="`py-${mobileBreakpoint}-3`"
+    >
       <div class="d-flex flex-row">
         <img v-once :src="$icon(64)" height="45" class="rounded-circle icon" />
         <div class="ml-3 flex-grow-1">
@@ -10,7 +14,9 @@
           >
             藍帽手札
           </nuxt-link>
-          <small class="text-secondary d-none d-md-block"
+          <small
+            class="text-secondary d-none"
+            :class="`d-${mobileBreakpoint}-block`"
             >前端程式 + Linux的心得筆記</small
           >
         </div>
@@ -32,6 +38,8 @@
 <script>
 import { BIconList } from 'bootstrap-vue'
 import ModalProfile from '../modal/modal-profile.vue'
+import style from '~/assets/css/custom.scss'
+
 export default {
   components: { BIconList, ModalProfile },
   data() {
@@ -39,6 +47,7 @@ export default {
       profileModal: {
         open: false,
       },
+      mobileBreakpoint: style.mobileBreakpoint,
     }
   },
 }
@@ -54,7 +63,7 @@ export default {
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, 'md')) {
+@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .common-header {
     background-color: white;
     border-bottom: 1px solid $secondary;
