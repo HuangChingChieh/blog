@@ -1,5 +1,9 @@
 <template>
-  <common-img max-width="1024" img-class="w-100 img-fluid" :img="img" />
+  <common-img
+    max-width="1024"
+    img-class="w-100 img-fluid rounded-lg"
+    :img="img"
+  />
 </template>
 
 <script>

@@ -83,6 +83,13 @@ $article-font-size-base: 1rem;
 .common-article {
   font-size: 1rem;
 
+  h2,
+  h3,
+  p,
+  time {
+    margin: $paragraph-margin-bottom 0;
+  }
+
   h1,
   h2,
   h3 {
@@ -104,7 +111,6 @@ $article-font-size-base: 1rem;
   }
 
   h3 {
-    margin: $paragraph-margin-bottom 0;
     font-size: $article-font-size-base * 1.1;
     // color: $secondary;
     // &::before {
@@ -116,18 +122,10 @@ $article-font-size-base: 1rem;
     // }
   }
 
-  p {
-    margin: $paragraph-margin-bottom 0;
-
-    code {
-      padding: 0.15rem 0.25rem;
-      border-radius: $btn-border-radius-lg;
-      line-height: 1;
-    }
-  }
-
-  time {
-    margin: $paragraph-margin-bottom 0;
+  p code {
+    padding: 0.15rem 0.25rem;
+    border-radius: $btn-border-radius-lg;
+    line-height: 1;
   }
 
   hr {
