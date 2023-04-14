@@ -1,38 +1,28 @@
 <template>
-  <header class="common-header position-sticky">
-    <b-container fluid="md" class="d-flex flex-row px-0 px-md-3">
-      <common-container class="flex-grow-1">
-        <b-container
-          fluid
-          class="py-2 py-md-3 d-flex flex-row align-items-center"
-        >
-          <img
-            v-once
-            :src="$icon(64)"
-            height="45"
-            class="rounded-circle icon"
-          />
-          <div class="ml-3 flex-grow-1">
-            <nuxt-link
-              class="font-weight-bold text-dark d-block text-decoration-none"
-              to="/"
-            >
-              藍帽手札
-            </nuxt-link>
-            <small class="text-secondary d-none d-md-block"
-              >前端程式 + Linux的心得筆記</small
-            >
-          </div>
-
-          <a
-            href="#"
-            class="h-100 px-md-3 d-flex align-items-center profile-btn"
-            @click.prevent="profileModal.open = true"
+  <header class="common-header">
+    <b-container fluid="md" class="py-2 py-md-3 align-items-center">
+      <div class="d-flex flex-row">
+        <img v-once :src="$icon(64)" height="45" class="rounded-circle icon" />
+        <div class="ml-3 flex-grow-1">
+          <nuxt-link
+            class="font-weight-bold text-dark d-block text-decoration-none"
+            to="/"
           >
-            <b-icon-list class="text-muted"></b-icon-list>
-          </a>
-        </b-container>
-      </common-container>
+            藍帽手札
+          </nuxt-link>
+          <small class="text-secondary d-none d-md-block"
+            >前端程式 + Linux的心得筆記</small
+          >
+        </div>
+
+        <a
+          href="#"
+          class="h-100 pl-3 d-flex align-items-center profile-btn"
+          @click.prevent="profileModal.open = true"
+        >
+          <b-icon-list class="text-muted"></b-icon-list>
+        </a>
+      </div>
     </b-container>
 
     <modal-profile v-model="profileModal.open"></modal-profile>
@@ -42,9 +32,8 @@
 <script>
 import { BIconList } from 'bootstrap-vue'
 import ModalProfile from '../modal/modal-profile.vue'
-import CommonContainer from './common-container.vue'
 export default {
-  components: { BIconList, ModalProfile, CommonContainer },
+  components: { BIconList, ModalProfile },
   data() {
     return {
       profileModal: {
@@ -76,6 +65,12 @@ export default {
 
     .profile-btn {
       font-size: $h4-font-size;
+    }
+
+    @supports (position: sticky) {
+      position: sticky;
+      top: 0;
+      z-index: $zindex-sticky;
     }
   }
 }

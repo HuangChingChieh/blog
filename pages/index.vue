@@ -5,7 +5,7 @@
         v-for="(article, index) in articles"
         :key="index"
         no-body
-        class="common-container shadow cursor-pointer"
+        class="common-container cursor-pointer"
       >
         <b-card-body body-class="p-0">
           <nuxt-link
@@ -24,7 +24,7 @@
             :to="`/${article.slug}`"
             class="text-decoration-none d-block p-3"
           >
-            <b-card-title title-tag="h4" class="mb-3 text-body">{{
+            <b-card-title title-tag="h4" class="mb-2 text-body h5">{{
               article.title
             }}</b-card-title>
             <b-card-text class="text-secondary">{{
@@ -43,8 +43,8 @@
 <script>
 import CommonImg from '~/components/common/common-img.vue'
 export default {
-  components: { CommonImg },
   name: 'IndexPage',
+  components: { CommonImg },
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
       .only(['title', 'description', 'img', 'createdAt', 'updatedAt', 'slug'])
