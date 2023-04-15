@@ -14,10 +14,8 @@
     <h1 class="text-center">
       {{ document.title }}
     </h1>
-    <h2 class="text-center">
-      <small v-if="document.subtitle" class="text-muted">{{
-        document.subtitle
-      }}</small>
+    <h2 v-if="document.subtitle" class="text-center">
+      <small class="text-muted">{{ document.subtitle }}</small>
     </h2>
 
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->

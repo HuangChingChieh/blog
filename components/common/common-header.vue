@@ -23,10 +23,10 @@
 
         <a
           href="#"
-          class="h-100 pl-3 d-flex align-items-center profile-btn"
+          class="h-100 pl-3 d-flex align-items-center profile-btn text-secondary"
           @click.prevent="profileModal.open = true"
         >
-          <b-icon-list class="text-muted"></b-icon-list>
+          <b-icon-list></b-icon-list>
         </a>
       </div>
     </b-container>

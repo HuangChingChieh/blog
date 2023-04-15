@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-light" :class="`py-${mobileBreakpoint}-4`">
+  <main :class="`py-${mobileBreakpoint}-4`">
     <common-header class="mb-4" />
     <Nuxt />
   </main>
