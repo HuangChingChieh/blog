@@ -113,10 +113,10 @@ cd ~/android/system_dump
 
 ```bash
 # 下載安裝檔
-wget https://mirrorbits.lineageos.org/full/sargo/20230404/lineage-19.1-20230404-nightly-sargo-signed.zip
+wget https://mirrorbits.lineageos.org/full/sargo/20230411/lineage-19.1-20230411-nightly-sargo-signed.zip
 
 # 解壓縮取得payload.bin檔案
-unzip lineage-19.1-20230404-nightly-sargo-signed.zip payload.bin
+unzip lineage-19.1-20230411-nightly-sargo-signed.zip payload.bin
 
 # 從檔案中提取映像檔
 python ~/android/lineage/lineage/scripts/update-payload-extractor/extract.py payload.bin --output_dir ./
@@ -188,7 +188,7 @@ brunch sargo
 
 在大功告成之後，編譯好的安裝檔會放在`~/android/lineage/out/target/product/sargo`裡面，名稱會長得像這樣：`lineage-20.0-20230415-UNOFFICIAL-sargo.zip `，日期會根據編譯日期而不同。而 recovery 檔案會是`boot.img`。
 
-之後就按照官方的安裝方式去安裝就好囉！
+之後安裝必須要重啟到 Recovery 安裝，比較麻煩些。
 
 若隔了一段時間要再重新編譯，直接從[編譯](ubuntu_lineageos_sargo#編譯)再執行一次就好了。
 
@@ -196,7 +196,9 @@ brunch sargo
 
 ## 後記
 
-這一路風風雨雨（？）真的是折騰滿久，尤其是最後編譯的時候，因為時間很長，中途突然給你出錯又要整個重來。如果不是特別想要追求最新版本，良心建議真的還是乖乖等官方發佈就好。我成功編譯一次安裝進去滿足了成就感之後，就決定刷回官方發佈版本了……。
+這一路風風雨雨（？）真的是折騰滿久，尤其是最後編譯的時候，因為時間很長，中途突然給你出錯又要整個重來，除錯了好一陣子。而且安裝也不如直接使用官方發布版本方便。
+
+如果不是特別想要追求最新版本，良心建議真的還是乖乖等官方發佈就好。我成功編譯一次安裝進去滿足了成就感之後，就決定刷回官方發佈版本了……。
 
 ---
 
