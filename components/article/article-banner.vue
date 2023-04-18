@@ -1,5 +1,5 @@
 <template>
-  <common-img :img="img" :img-class="imgClass" />
+  <common-img :img="img" :img-class="imgClass" class="article-banner d-block" />
 </template>
 
 <script>

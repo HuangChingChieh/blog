@@ -1,6 +1,5 @@
 ---
 title: 使用Fedora刷Pixel 3a的LineageOS 過程紀錄
-subtitle: 維持Pixel 3a無限相簿容量又能持續獲得安全性更新!?
 description: 本篇文章是一個過程紀錄與分享，非指導教學，若有興趣刷機的人，所有刷機步驟都絕對建議按照官方文件進行。若因文章內容疏漏而導致錯誤或手機損壞，本人不負任何責任。
 tags: [fedora, linux, android, custom rom, Gooel Pixel 3a, lineageos]
 img: 9EvrrvM.jpg

@@ -4,6 +4,10 @@ description: 本篇紀錄自己使用Fedora 37編譯Pixel 3a的LineageOS的過�
 tags: [fedora, linux, android, custom rom, Gooel Pixel 3a, lineageos]
 ---
 
+本篇文章是試圖移植之前的文章：[《在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS》](ubuntu_lineageos_sargo)的過程至 Fedora 上的心得紀錄，畢竟自己平常主要使用的系統為 Fedora，想說都是 Linux 應該是可以移植過來。
+
+---
+
 ## 硬體需求
 
 請參考之前的文章：[在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS](ubuntu_lineageos_sargo)。

@@ -1,9 +1,7 @@
 ---
-title: 在Fedora中安裝Docker
+title: 在Fedora 37中安裝Docker
 description: 本篇記錄了在Fedora中安裝及安裝後設定Docker的過程
 tags: [fedora, linux, docker]
----
-
 ---
 
 ### 安裝 Docker

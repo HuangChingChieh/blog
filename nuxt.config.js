@@ -44,7 +44,7 @@ export default {
       'LayoutPlugin',
       'CardPlugin',
       'ModalPlugin',
-      'ButtonPlugin',
+      'BadgePlugin',
     ],
     directivePlugins: [],
   },

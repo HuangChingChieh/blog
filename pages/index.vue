@@ -24,14 +24,16 @@
             :to="`/${article.slug}`"
             class="text-decoration-none d-block p-3"
           >
-            <b-card-title title-tag="h4" class="mb-2 text-body h5">{{
-              article.title
-            }}</b-card-title>
-            <b-card-text class="text-secondary">{{
+            <b-card-title
+              title-tag="h4"
+              class="mb-2 text-body h5 font-weight-bolder"
+              >{{ article.title }}</b-card-title
+            >
+            <b-card-text class="text-secondary mb-2 small">{{
               article.description
             }}</b-card-text>
-            <b-card-text class="small text-muted">{{
-              updateTime(article.updatedAt)
+            <b-card-text class="small text-muted text-right">{{
+              updateTime(article.updatedAt || article.createdAt)
             }}</b-card-text>
           </nuxt-link>
         </b-card-body>
@@ -41,12 +43,10 @@
 </template>
 
 <script>
-import CommonImg from '~/components/common/common-img.vue'
 import style from '~/assets/css/custom.scss'
 
 export default {
   name: 'IndexPage',
-  components: { CommonImg },
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
       .only(['title', 'description', 'img', 'createdAt', 'updatedAt', 'slug'])

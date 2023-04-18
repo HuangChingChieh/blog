@@ -11,22 +11,6 @@
         </li>
       </ul>
     </nav> -->
-    <h1 class="text-center">
-      {{ document.title }}
-    </h1>
-    <h2 v-if="document.subtitle" class="text-center">
-      <small class="text-muted">{{ document.subtitle }}</small>
-    </h2>
-
-    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
-    <time v-if="createTime" class="d-block text-center"
-      >{{ createTime }}
-      <small
-        v-if="createTime !== updateTime"
-        class="d-block text-center text-muted"
-        >更新於{{ updateTime }}</small
-      >
-    </time>
 
     <article-banner
       v-if="document.img"
@@ -35,15 +19,37 @@
       :img-class="['w-100', 'img-fluid', 'rounded-lg']"
     />
 
+    <h1 class="text-center">
+      {{ document.title }}
+    </h1>
+
+    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
+    <time
+      v-if="createTime || updateTime"
+      class="d-block text-center text-muted"
+    >
+      {{ updateTime || createTime }}
+    </time>
+
+    <div class="text-center article-tags h5 mb-0">
+      <article-tag
+        v-for="tag in document.tags"
+        :key="tag"
+        :tag-name="tag"
+        class="mr-1"
+      />
+    </div>
+
     <nuxt-content :document="document" />
   </article>
 </template>
 
 <script>
 import ArticleBanner from '../article/article-banner.vue'
+import ArticleTag from '../article/article-tag.vue'
 
 export default {
-  components: { ArticleBanner },
+  components: { ArticleBanner, ArticleTag },
   props: {
     document: {
       type: Object,
@@ -81,10 +87,19 @@ $article-font-size-base: 1rem;
 .common-article {
   font-size: 1rem;
 
+  h1,
   h2,
-  h3,
-  p,
   time {
+    margin-bottom: 0.25rem;
+  }
+
+  .article-banner,
+  .article-tags {
+    margin-bottom: $paragraph-margin-bottom;
+  }
+
+  h3,
+  p {
     margin: $paragraph-margin-bottom 0;
   }
 
@@ -131,13 +146,17 @@ $article-font-size-base: 1rem;
     border-bottom: 0;
     border-right: 0;
     border-left: 0;
-    margin: 3rem auto;
+    margin: $paragraph-margin-bottom * 3 auto;
     width: 3rem;
   }
 
   a[href] {
     color: $body-color;
     text-decoration: underline;
+  }
+
+  .nuxt-content > *:last-child {
+    margin-bottom: 0;
   }
 }
 </style>
