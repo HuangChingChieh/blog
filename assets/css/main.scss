@@ -96,6 +96,14 @@ main {
   background-color: $gray-200;
 }
 
+@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  html,
+  body,
+  main {
+    background-color: $light;
+  }
+}
+
 // .nuxt-content {
 //   word-break: break-all;
 // }

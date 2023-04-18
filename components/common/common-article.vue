@@ -12,33 +12,29 @@
       </ul>
     </nav> -->
 
+    <h1>
+      {{ document.title }}
+    </h1>
+    <time v-if="createTime" class="d-block text-muted small">
+      {{ createTime }}發布<span v-if="updateTime">．{{ updateTime }}更新</span>
+    </time>
+    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
+
+    <div v-if="document.tags" class="article-tags d-flex flex-wrap">
+      <article-tag
+        v-for="tag in document.tags"
+        :key="tag"
+        :tag-name="tag"
+        class="mr-1 mb-1"
+      />
+    </div>
+
     <article-banner
       v-if="document.img"
       v-once
       :img="document.img"
       :img-class="['w-100', 'img-fluid', 'rounded-lg']"
     />
-
-    <h1 class="text-center">
-      {{ document.title }}
-    </h1>
-
-    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
-    <time
-      v-if="createTime || updateTime"
-      class="d-block text-center text-muted"
-    >
-      {{ updateTime || createTime }}
-    </time>
-
-    <div class="text-center article-tags h5 mb-0">
-      <article-tag
-        v-for="tag in document.tags"
-        :key="tag"
-        :tag-name="tag"
-        class="mr-1"
-      />
-    </div>
 
     <nuxt-content :document="document" />
   </article>
@@ -93,13 +89,13 @@ $article-font-size-base: 1rem;
     margin-bottom: 0.25rem;
   }
 
-  .article-banner,
   .article-tags {
     margin-bottom: $paragraph-margin-bottom;
   }
 
   h3,
-  p {
+  p,
+  .article-banner {
     margin: $paragraph-margin-bottom 0;
   }
 
@@ -133,6 +129,10 @@ $article-font-size-base: 1rem;
     // &::after {
     //   content: ' -';
     // }
+  }
+
+  p {
+    font-weight: $font-weight-light;
   }
 
   p code {
