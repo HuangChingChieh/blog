@@ -32,7 +32,7 @@
             <b-card-text class="text-secondary mb-2 small">{{
               article.description
             }}</b-card-text>
-            <b-card-text class="small text-muted text-right">{{
+            <b-card-text class="small text-muted">{{
               updateTime(article.updatedAt || article.createdAt)
             }}</b-card-text>
           </nuxt-link>
