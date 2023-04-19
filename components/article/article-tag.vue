@@ -1,5 +1,8 @@
 <template>
-  <b-badge variant="secondary" class="d-inline-block font-weight-normal">
+  <b-badge
+    variant="secondary"
+    class="d-inline-block font-weight-normal text-monospace"
+  >
     #{{ tagName }}
     <!-- <nuxt-link
       :to="`/tags/${tagName}`"

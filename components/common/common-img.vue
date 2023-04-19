@@ -1,14 +1,10 @@
 <template>
-  <picture v-if="img" v-once>
-    <source
-      v-for="(source, index) in sourcesHandled"
-      :key="index"
-      :srcset="`${$config.imageServer}${id}${source.size}.${extension}`"
-      :media="`(min-width: ${source.media}px)`"
-    />
-
-    <img :src="$config.imageServer + img" :class="imgClass" />
-  </picture>
+  <b-img-lazy
+    v-if="img"
+    :srcset="srcset"
+    :src="$config.imageServer + img"
+    :class="imgClass"
+  />
 </template>
 
 <script>
@@ -33,37 +29,40 @@ export default {
       sources: [
         {
           size: '',
-          media: 1024,
+          width: '',
         },
         {
           size: 'h',
-          media: 640,
+          width: 1024,
         },
         {
           size: 'l',
-          media: 320,
+          width: 640,
         },
         {
           size: 'm',
-          media: 160,
+          width: 320,
         },
         {
           size: 't',
-          media: 1,
+          width: 160,
         },
       ],
     }
   },
   computed: {
-    sourcesHandled() {
-      const { sources, maxWidth } = this
-
-      const minSatisfiedIndex =
-        maxWidth > 0
-          ? sources.findIndex(({ media }) => media <= maxWidth) - 1
-          : 0
-
-      return sources.slice(minSatisfiedIndex < 0 ? 0 : minSatisfiedIndex)
+    srcset() {
+      const { sources, id, extension } = this
+      const { imageServer } = this.$config
+      return sources
+        .slice()
+        .reverse()
+        .map(
+          ({ size, width }) =>
+            `${imageServer}${id}${size}.${extension}` +
+            (width ? ` ${width}w` : '')
+        )
+        .join(', ')
     },
     imgInfo() {
       const { img } = this
