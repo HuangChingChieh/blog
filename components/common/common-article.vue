@@ -15,8 +15,17 @@
     <h1>
       {{ document.title }}
     </h1>
-    <time v-if="createTime" class="d-block text-muted small">
-      {{ createTime }}發布<span v-if="updateTime">．{{ updateTime }}更新</span>
+    <time
+      v-if="createTime"
+      class="d-flex align-items-center flex-row text-muted small my-2"
+    >
+      <b-icon-calendar-event class="mr-1" />
+      <span>{{ createTime }}</span>
+
+      <template v-if="updateTime">
+        <b-icon-pencil-square class="ml-4 mr-1" />
+        <span>{{ updateTime }}</span>
+      </template>
     </time>
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
 
@@ -41,11 +50,17 @@
 </template>
 
 <script>
+import { BIconCalendarEvent, BIconPencilSquare } from 'bootstrap-vue'
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
 
 export default {
-  components: { ArticleBanner, ArticleTag },
+  components: {
+    ArticleBanner,
+    ArticleTag,
+    BIconCalendarEvent,
+    BIconPencilSquare,
+  },
   props: {
     document: {
       type: Object,

@@ -10,13 +10,22 @@
         <b-card-body body-class="p-0">
           <nuxt-link
             :to="`/${article.slug}`"
-            class="text-decoration-none d-flex flex-column"
+            class="text-decoration-none d-flex flex-column position-relative"
           >
+            <!-- 撐開用，強制決定圖片大小。也作為讀取中看到的區塊。 -->
+            <img
+              v-if="article.img"
+              src="/images/fake-bg.png"
+              alt="讀取中"
+              aria-hidden="true"
+              class="w-100 img-fluid rounded-top"
+            />
+
             <common-img
               :img="article.img"
-              img-class="w-100 img-fluid rounded-top"
+              img-class="img-fluid rounded-top articles-img"
               max-width="320"
-              class="w-100"
+              class="w-100 h-100"
             />
           </nuxt-link>
 
