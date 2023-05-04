@@ -128,9 +128,7 @@ export default {
   sitemap: {
     hostname: 'https://huangchingchieh.github.io/',
     gzip: true,
-    routes() {
-      return getRoutes()
-    },
+    routes: () => getRoutes(routerBase),
     // exclude: ['/secret', '/admin/**'],
     // routes: [
     //   '/page/1',
