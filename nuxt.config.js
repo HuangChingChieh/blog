@@ -6,7 +6,7 @@ const googleFontUrl =
 
 export default {
   publicRuntimeConfig: {
-    imageServer: 'https://imgur.com/',
+    imageServer: 'https://i.imgur.com/',
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
