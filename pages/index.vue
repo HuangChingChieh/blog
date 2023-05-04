@@ -15,7 +15,7 @@
             <!-- 撐開用，強制決定圖片大小。也作為讀取中看到的區塊。 -->
             <img
               v-if="article.img"
-              src="/images/fake-bg.png"
+              src="images/fake-bg.png"
               alt="讀取中"
               aria-hidden="true"
               class="w-100 img-fluid rounded-top"
