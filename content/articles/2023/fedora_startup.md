@@ -9,17 +9,15 @@ img: UIphdhk.jpg
 
 以下內容可能會隨著 Fedora 版本更新，有用到的套件都會盡量附上官網，有興趣的朋友可選擇參考，**並請自行承擔指令安裝責任**。
 
-目前使用版本：Fedora 37。
+撰寫文章時使用版本：**Fedora 38**。
 
 ---
 
 ## 前置作業
 
-##
-
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-weather gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour gnome-text-editor fedora-chromium-config -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config -y
 
 # 移除用不到的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
@@ -49,7 +47,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install thunderbird-wayland thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp inkscape uget transmission gnome-tweaks blender pcsxr soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync gedit video-downloader -y
+sudo dnf install thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync video-downloader -y
 
 # 從 flahub 安裝 Steam
 flatpak install com.valvesoftware.Steam
@@ -67,7 +65,7 @@ sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 
 ```bash
 # 安裝 Git / Gitg / Github CLI
-sudo dnf install git gitg gh -y
+sudo dnf install git gh -y
 ```
 
 安裝 Visual Studio Code
@@ -101,7 +99,7 @@ sudo dnf install *backgrounds*gnome* *gnome*backgrounds*
 sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni-uming-fonts wqy-microhei-fonts google-noto-sans-cjk-tc-fonts google-noto-sans-mono-cjk-tc-fonts google-noto-serif-cjk-tc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
 
 # 從內建的軟體庫安裝 Gnome 擴充套件
-sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu gnome-shell-extension-sound-output-device-chooser -y
+sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu -y
 ```
 
 ---
