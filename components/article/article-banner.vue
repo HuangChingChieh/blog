@@ -1,5 +1,10 @@
 <template>
-  <common-img :img="img" :img-class="imgClass" class="article-banner d-block" />
+  <common-img
+    :img="img"
+    :img-class="imgClass"
+    class="article-banner d-block"
+    max-width="700"
+  />
 </template>
 
 <script>

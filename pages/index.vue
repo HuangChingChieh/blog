@@ -24,7 +24,7 @@
             <common-img
               :img="article.img"
               img-class="img-fluid rounded-top articles-img"
-              max-width="320"
+              max-width="400"
               class="w-100 h-100"
             />
           </nuxt-link>

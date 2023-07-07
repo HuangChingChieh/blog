@@ -1,6 +1,6 @@
 <template>
   <common-img
-    max-width="1024"
+    max-width="700"
     img-class="w-100 img-fluid rounded-lg"
     :img="img"
   />

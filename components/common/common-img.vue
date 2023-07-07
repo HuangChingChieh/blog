@@ -28,38 +28,60 @@ export default {
     return {
       sources: [
         {
-          size: '',
-          width: '',
+          height: 75,
+          width: 100,
         },
         {
-          size: 'h',
-          width: 1024,
+          height: 100,
+          width: 150,
         },
         {
-          size: 'l',
-          width: 640,
+          height: 200,
+          width: 280,
         },
         {
-          size: 'm',
+          height: 240,
           width: 320,
         },
         {
-          size: 't',
-          width: 160,
+          height: 480,
+          width: 640,
+        },
+        {
+          height: 600,
+          width: 800,
+        },
+        {
+          height: 768,
+          width: 1024,
+        },
+        {
+          height: 1024,
+          width: 1280,
+        },
+        {
+          height: 1200,
+          width: 1600,
         },
       ],
     }
   },
   computed: {
     srcset() {
-      const { sources, id, extension } = this
+      const { sources, id, extension, maxWidth } = this
       const { imageServer } = this.$config
+
+      // 找到最接近maxWidth的index
+      const maxWidthIndex =
+        maxWidth > 0
+          ? sources.findIndex(({ width }) => width >= maxWidth)
+          : sources.length - 1
+
       return sources
-        .slice()
-        .reverse()
+        .slice(0, maxWidthIndex + 1)
         .map(
-          ({ size, width }) =>
-            `${imageServer}${id}${size}.${extension}` +
+          ({ height, width }) =>
+            `${imageServer}${width}x${height}q100/${id}.${extension}` +
             (width ? ` ${width}w` : '')
         )
         .join(', ')

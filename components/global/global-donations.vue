@@ -8,7 +8,7 @@
       <a
         href="#"
         @click.prevent="
-          openModal({ title: 'LINE Bank銀行帳號', image: 'pwaF5Hm.png' })
+          openModal({ title: 'LINE Bank銀行帳號', image: '922/M4O5l2.png' })
         "
         >點這裡顯示銀行帳號QRCode</a
       >，或是直接複製：銀行代碼824／帳號111006688613。
@@ -38,7 +38,7 @@
         @click.prevent="
           openModal({
             title: '加密貨幣',
-            image: 'VLintJ1.png',
+            image: '923/5F8nt1.png',
           })
         "
         >點這裡顯示加密貨幣地址QRCode</a
