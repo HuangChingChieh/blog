@@ -17,7 +17,7 @@ img: 922/m6wo1h.jpg
 
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* -y
 
 # 移除用不到的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
@@ -33,7 +33,7 @@ sudo dnf update -y
 啟用 [RPM Fusion](https://rpmfusion.org/) 軟體庫
 
 ```bash
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 啟用 [Flathub](https://flathub.org/home) 軟體庫
@@ -47,16 +47,19 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter megasync video-downloader -y
-
-# 從 flahub 安裝 Steam
-flatpak install com.valvesoftware.Steam
+sudo dnf install thunderbird shotwell libreoffice libreoffice-langpack-zh-Hant p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox vlc android-tools remmina mediawriter video-downloader gnome-console -y
 
 # 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
 # 安裝多媒體編碼套件
 sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
+```
+
+### 從flathub安裝日常軟體
+
+```bash
+flatpak install flathub org.libreoffice.LibreOffice nz.mega.MEGAsync com.spotify.Client com.valvesoftware.Steam
 ```
 
 ---
