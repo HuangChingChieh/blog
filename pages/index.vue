@@ -73,6 +73,19 @@ export default {
     return {
       title: '',
       titleTemplate: '藍帽手札',
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: this.$config.appHost,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記，以及使用Linux（主要是Fedora）的心得。',
+        },
+      ],
     }
   },
   methods: {

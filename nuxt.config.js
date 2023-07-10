@@ -3,8 +3,6 @@ import getRoutes from './utils/getRoutes'
 const base = '/blog/'
 const imageServer = 'https://imagizer.imageshack.com/v2/'
 const appHost = 'https://huangchingchieh.github.io' + base
-const googleFontUrl =
-  'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap'
 
 export default {
   publicRuntimeConfig: {
