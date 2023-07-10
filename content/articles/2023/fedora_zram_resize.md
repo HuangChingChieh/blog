@@ -3,10 +3,6 @@ title: 調整Fedora中的ZRAM大小
 tags: [fedora, linux, zram]
 ---
 
-因為電腦只有 16GB，但想編譯 LineageOS 20.0 需要 32GB，又想起 Fedora 預設啟用 [ZRAM](https://fedoraproject.org/wiki/Changes/Scale_ZRAM_to_full_memory_size)，就異想天開看能不能透過增加 ZRAM 的大小來彌補實體 RAM 不足的部分。
-
----
-
 ```bash
 # 首先檢查一下目前的ZRAM大小
 swapon
