@@ -81,7 +81,7 @@ export default {
         .slice(0, maxWidthIndex + 1)
         .map(
           ({ height, width }) =>
-            `${imageServer}${width}x${height}q100/${id}.${extension}` +
+            `${imageServer}${width}x${height}q70/${id}.${extension}` +
             (width ? ` ${width}w` : '')
         )
         .join(', ')

@@ -1,23 +1,30 @@
 import getRoutes from './utils/getRoutes'
 
-const routerBase = '/blog/'
+const base = '/blog/'
+const imageServer = 'https://imagizer.imageshack.com/v2/'
+const appHost = 'https://huangchingchieh.github.io' + base
 const googleFontUrl =
   'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap'
 
 export default {
   publicRuntimeConfig: {
-    imageServer: 'https://imagizer.imageshack.com/v2/',
+    imageServer,
+    appHost,
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   router: {
-    base: routerBase,
+    base,
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
+    htmlAttrs: {
+      lang: 'zh-Hant-TW',
+    },
     title: '藍帽手札',
+    titleTemplate: '%s｜藍帽手札',
     meta: [
-      { charset: 'utf-8' },
+      { hid: 'charset', charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       {
         hid: 'description',
@@ -29,6 +36,36 @@ export default {
         content: 'ie=edge',
       },
       { name: 'format-detection', content: 'telephone=no' },
+      {
+        hid: 'og:type',
+        property: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:title',
+        property: 'og:title',
+        content: '藍帽手札',
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: `${appHost}default-og.png`,
+      },
+      {
+        hid: 'og:site_name',
+        property: 'og:site_name',
+        content: '藍帽手札',
+      },
+      {
+        hid: 'og:locale',
+        property: 'og:locale',
+        content: 'zh_TW',
+      },
+      {
+        hid: 'apple-mobile-web-app-title',
+        name: 'apple-mobile-web-app-title',
+        content: '藍帽手札',
+      },
     ],
   },
 
@@ -103,6 +140,7 @@ export default {
       plugin: true,
       purpose: ['any', 'maskable'],
     },
+    meta: {},
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content

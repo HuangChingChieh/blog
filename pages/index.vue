@@ -69,6 +69,12 @@ export default {
       mobileBreakpoint: style.mobileBreakpoint,
     }
   },
+  head() {
+    return {
+      title: '',
+      titleTemplate: '藍帽手札',
+    }
+  },
   methods: {
     updateTime(updatedAt) {
       return updatedAt

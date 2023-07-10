@@ -20,6 +20,8 @@ import CommonArticle from '~/components/common/common-article.vue'
 import LikerButton from '~/components/liker-button.vue'
 import style from '~/assets/css/custom.scss'
 
+import { getHeadForArticle } from '~/utils/seo'
+
 export default {
   components: { LikerButton, CommonArticle },
   async asyncData({ $content, params }) {
@@ -44,17 +46,21 @@ export default {
     }
   },
   head() {
-    const { article } = this
-    return {
-      title: article.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: article.description,
-        },
-      ],
-    }
+    const { article, $config, $route } = this
+    const { title, description, img, tags, updatedAt, createdAt } = article
+    const { appHost, imageServer } = $config
+    const url = appHost + $route.fullPath.substring(1)
+    const head = getHeadForArticle({
+      description,
+      url,
+      title,
+      img: `${imageServer}1600x1200q100/${img}` || `${appHost}default-og.png`,
+      tags,
+      updatedAt,
+      createdAt,
+    })
+
+    return head
   },
   methods: {
     scrollTo(id) {
