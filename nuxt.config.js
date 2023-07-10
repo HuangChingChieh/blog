@@ -49,7 +49,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: `${appHost}default-og.png`,
+        content: `${appHost}images/default-og.png`,
       },
       {
         hid: 'og:site_name',

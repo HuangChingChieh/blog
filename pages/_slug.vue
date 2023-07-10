@@ -54,7 +54,9 @@ export default {
       description,
       url,
       title,
-      img: `${imageServer}1600x1200q100/${img}` || `${appHost}default-og.png`,
+      img:
+        `${imageServer}1600x1200q100/${img}` ||
+        `${appHost}images/default-og.png`,
       tags,
       updatedAt,
       createdAt,
