@@ -60,5 +60,25 @@ export const getHeadForArticle = ({
   return {
     title,
     meta,
+    script: [
+      {
+        type: 'application/ld+json',
+        json: {
+          '@context': 'https://schema.org',
+          '@type': 'BlogPosting',
+          headline: title,
+          image: [img],
+          datePublished: createdAt,
+          dateModified: updatedAt,
+          author: [
+            {
+              '@type': 'Person',
+              name: 'HuangChingChieh',
+              url: 'https://huangchingchieh.github.io/',
+            },
+          ],
+        },
+      },
+    ],
   }
 }
