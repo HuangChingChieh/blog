@@ -1,7 +1,10 @@
 <template>
-  <header class="common-header d-none" :class="`d-${mobileBreakpoint}-block`">
-    <b-container class="py-3">
-      <div class="d-flex flex-row align-items-center">
+  <footer
+    class="common-footer bg-white d-block border-top border-secondary"
+    :class="`d-${mobileBreakpoint}-none`"
+  >
+    <b-container class="py-2" fluid>
+      <div class="d-flex flex-row">
         <img v-once :src="$icon(64)" height="45" class="rounded-circle icon" />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
@@ -10,7 +13,6 @@
           >
             藍帽手札
           </nuxt-link>
-          <small class="text-secondary">前端程式 + Linux的心得筆記</small>
         </div>
 
         <a
@@ -22,12 +24,11 @@
         </a>
       </div>
     </b-container>
-  </header>
+  </footer>
 </template>
 
 <script>
 import { BIconList } from 'bootstrap-vue'
-
 import style from '~/assets/css/custom.scss'
 
 export default {
@@ -41,12 +42,21 @@ export default {
 </script>
 
 <style lang="scss">
-.common-header {
-  top: 0;
-  z-index: $zindex-sticky;
+.common-footer {
+  .icon {
+    height: 1.5rem;
+  }
 
   .profile-btn {
-    font-size: $h2-font-size;
+    font-size: $h4-font-size;
   }
+
+  @supports (position: sticky) {
+    position: sticky;
+    bottom: 0;
+    z-index: $zindex-sticky;
+  }
+
+  box-shadow: 0 -0.5rem 1rem rgba($black, 0.15);
 }
 </style>
