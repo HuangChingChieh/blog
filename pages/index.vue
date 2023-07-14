@@ -38,12 +38,9 @@
               class="mb-2 text-body h5 font-weight-bolder"
               >{{ article.title }}</b-card-title
             >
-            <b-card-text class="text-secondary mb-2 small">{{
-              article.description
-            }}</b-card-text>
-            <b-card-text class="small text-muted">{{
-              updateTime(article.updatedAt || article.createdAt)
-            }}</b-card-text>
+            <b-card-text class="small text-muted">
+              <article-date :document="article" hide-icon />
+            </b-card-text>
           </nuxt-link>
         </b-card-body>
       </b-card>
@@ -52,21 +49,22 @@
 </template>
 
 <script>
-import style from '~/assets/css/custom.scss'
+import { mobileBreakpoint } from '~/assets/css/custom.scss'
+import articleDate from '~/components/article/article-date.vue'
 
 export default {
   name: 'IndexPage',
+  components: { articleDate },
   async asyncData({ $content, params }) {
     const articles = await $content('articles', { deep: true })
-      .only(['title', 'description', 'img', 'createdAt', 'updatedAt', 'slug'])
-      .sortBy('createdAt', 'desc')
+      .only(['title', 'img', 'updatedAt', 'slug'])
+      .sortBy('updatedAt', 'desc')
       .fetch()
     return { articles }
   },
   data() {
     return {
-      ...style,
-      mobileBreakpoint: style.mobileBreakpoint,
+      mobileBreakpoint,
     }
   },
   head() {
@@ -87,17 +85,6 @@ export default {
         },
       ],
     }
-  },
-  methods: {
-    updateTime(updatedAt) {
-      return updatedAt
-        ? Intl.DateTimeFormat('zh-TW', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(updatedAt))
-        : ''
-    },
   },
 }
 </script>

@@ -18,7 +18,7 @@
 <script>
 import CommonArticle from '~/components/common/common-article.vue'
 import LikerButton from '~/components/liker-button.vue'
-import style from '~/assets/css/custom.scss'
+import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 import { getHeadForArticle } from '~/utils/seo'
 
@@ -42,7 +42,7 @@ export default {
   },
   data() {
     return {
-      mobileBreakpoint: style.mobileBreakpoint,
+      mobileBreakpoint,
     }
   },
   head() {

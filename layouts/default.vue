@@ -10,7 +10,7 @@
 
 <script>
 import commonHeader from '~/components/common/common-header.vue'
-import style from '~/assets/css/custom.scss'
+import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import CommonFooter from '~/components/common/common-footer.vue'
 import ModalProfile from '~/components/modal/modal-profile.vue'
 
@@ -18,7 +18,7 @@ export default {
   components: { commonHeader, CommonFooter, ModalProfile },
   data() {
     return {
-      mobileBreakpoint: style.mobileBreakpoint,
+      mobileBreakpoint,
       profileModal: {
         open: false,
       },

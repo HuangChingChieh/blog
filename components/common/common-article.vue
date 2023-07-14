@@ -15,18 +15,8 @@
     <h1>
       {{ document.title }}
     </h1>
-    <time
-      v-if="createTime"
-      class="d-flex align-items-center flex-row text-muted small my-2"
-    >
-      <b-icon-calendar-event class="mr-1" />
-      <span>{{ createTime }}</span>
 
-      <template v-if="updateTime">
-        <b-icon-pencil-square class="ml-4 mr-1" />
-        <span>{{ updateTime }}</span>
-      </template>
-    </time>
+    <article-date class="small my-2" :document="document" />
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
 
     <div v-if="document.tags" class="article-tags d-flex flex-wrap">
@@ -50,43 +40,20 @@
 </template>
 
 <script>
-import { BIconCalendarEvent, BIconPencilSquare } from 'bootstrap-vue'
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
+import ArticleDate from '../article/article-date.vue'
 
 export default {
   components: {
     ArticleBanner,
     ArticleTag,
-    BIconCalendarEvent,
-    BIconPencilSquare,
+    ArticleDate,
   },
   props: {
     document: {
       type: Object,
       default: () => ({}),
-    },
-  },
-  computed: {
-    createTime() {
-      const { createdAt } = this.document
-      return createdAt
-        ? Intl.DateTimeFormat('zh-TW', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(createdAt))
-        : ''
-    },
-    updateTime() {
-      const { updatedAt } = this.document
-      return updatedAt
-        ? Intl.DateTimeFormat('zh-TW', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit',
-          }).format(new Date(updatedAt))
-        : ''
     },
   },
 }
@@ -100,7 +67,7 @@ $article-font-size-base: 1rem;
 
   h1,
   h2,
-  time {
+  .article-date {
     margin-bottom: 0.25rem;
   }
 

@@ -29,13 +29,13 @@
 
 <script>
 import { BIconList } from 'bootstrap-vue'
-import style from '~/assets/css/custom.scss'
+import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 export default {
   components: { BIconList },
   data() {
     return {
-      mobileBreakpoint: style.mobileBreakpoint,
+      mobileBreakpoint,
     }
   },
 }
