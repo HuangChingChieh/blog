@@ -53,7 +53,7 @@ export default {
 
   @supports (position: sticky) {
     position: sticky;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom);
     z-index: $zindex-sticky;
   }
 
