@@ -1,5 +1,5 @@
 ---
-title: 在Fedora 37中安裝Docker
+title: 在Fedora 38中安裝Docker
 description: 本篇記錄了在Fedora中安裝及安裝後設定Docker的過程
 tags: [fedora, linux, docker]
 ---
@@ -7,7 +7,7 @@ tags: [fedora, linux, docker]
 ### 安裝 Docker
 
 ```bash
-# Fedora 37已內建此套件
+# Fedora 38已內建此套件
 sudo dnf -y install dnf-plugins-core
 
 # 新增 Docker 的套件庫
