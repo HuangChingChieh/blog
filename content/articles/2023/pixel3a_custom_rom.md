@@ -81,11 +81,13 @@ sudo dnf install android-tools
 
 因為我要刷的是 LineageOS，就到[官方頁面](https://download.lineageos.org/sargo)下載。
 
-### 下載 ih8sn(選擇性)
+### 下載ih8sn（選擇性但建議安裝）
 
-[ih8sn](https://github.com/LOS-Munch/ih8sn)是個利用覆寫系統的一些設定，來讓刷機後的 ROM 盡量通過 Safetynet 的專案，大部分的開發維護人員也都是 LineageOS 的成員。在上網搜尋各種繞過 Safetynet 的方式後，我覺得 iih8sn 是最簡單的一個。
+[ih8sn](https://github.com/LOS-Munch/ih8sn)是個利用覆寫系統的一些設定，來讓刷機後的 ROM 盡量通過 Safetynet 的專案，大部分的開發維護人員也都是 LineageOS 的成員。在上網搜尋各種繞過 Safetynet 的方式後，我覺得 ih8sn 是最簡單的一個。
 
 安裝方式很簡單，因 Pixel 3a 為 arm64 架構，下載時要選擇`ih8sn-aarch64.zip`這個檔案，接著只要在首次安裝 Rom 時一起把這個 zip 檔刷進去就好了。
+
+建議安裝，因為大部分的金融相關APP、政府APP可能都會檢驗，可以省麻煩。
 
 ---
 
@@ -129,7 +131,7 @@ sudo adb reboot bootloader
 
 這邊個人不建議使用還原，因為如果是從原生的 Android 轉過來，會有很多預裝的 APP，直接還原會全部都被裝回來。第一次轉到客製 Rom 還是建議先一個一個把要用的裝回來。
 
-以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行。
+以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行，這邊正常執行是指有安裝前面所說的[ih8sn套件](pixel3a_custom_rom#下載ih8sn選擇性但建議安裝)。
 
 ### 正常可使用
 
@@ -145,20 +147,13 @@ sudo adb reboot bootloader
 - MaiCoin
 - Messenger
 - 幣安
+- 全家便利商店
+- 全支付
+- 健保快易通
 
 ### 部份功能可用
 
-- Google Pay：可以安裝但不能設定感應式付款，安裝 ih8sn 之後還是無法設定。
-
-### 可安裝但無法使用
-
-- 全家便利商店：可使用舊版的[My FamiPort](https://play.google.com/store/apps/details?id=com.tfm.myfami&gl=US)，但就無法使用全盈+Pay。安裝 ih8sn 後可使用。
-- 全支付：安裝 ih8sn 後可使用。
-- 健保快易通：安裝 ih8sn 後可使用。
-
-### 無法安裝
-
-- Netflix：安裝了 ih8sn 之後還是無法在 Play 商店搜尋到
+- Google Pay：可以安裝但不能設定感應式付款
 
 ---
 
