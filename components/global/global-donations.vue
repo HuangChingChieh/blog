@@ -26,10 +26,10 @@
     <h3>無國界轉帳：加密貨幣</h3>
     <p>
       加密貨幣是無國界的資產轉移方式，若你是有在使用加密貨幣的朋友，也歡迎拿幣砸我（？）喔。目前接受<a
-        href="https://www.maicoin.com/docs/fees-limits"
+        href="https://www.maicoin.com/docs/fees-limits/transfers"
         target="_blank"
         class="text-muted"
-        >MaiCoin網站「轉帳」頁籤</a
+        >MaiCoin網站</a
       >中主網類型為ERC20/BSC/Polygon的幣種。
     </p>
     <p>
@@ -56,10 +56,10 @@
 
       <div v-if="modal.image === 'evm_compatible'">
         目前接受<a
-          href="https://www.maicoin.com/docs/fees-limits"
+          href="https://www.maicoin.com/docs/fees-limits/transfers"
           target="_blank"
           class="text-muted"
-          >MaiCoin網站「轉帳」頁籤</a
+          >MaiCoin網站</a
         >中主網類型為ERC20/BSC/Polygon的幣種。
       </div>
     </b-modal>
