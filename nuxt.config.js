@@ -128,7 +128,10 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en',
+      name: '藍帽手札',
+      description:
+        '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記，以及使用Linux（主要是Fedora）的心得。',
+      lang: 'zh-Hant-TW',
     },
     icon: {
       source: 'static/icon.png',
@@ -138,7 +141,6 @@ export default {
       plugin: true,
       purpose: ['any', 'maskable'],
     },
-    meta: {},
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
