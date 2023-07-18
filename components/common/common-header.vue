@@ -2,7 +2,7 @@
   <header class="common-header d-none" :class="`d-${mobileBreakpoint}-block`">
     <b-container class="py-3">
       <div class="d-flex flex-row align-items-center">
-        <img v-once :src="$icon(64)" height="45" class="rounded-circle icon" />
+        <common-icon height="45" bordered />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
             class="font-weight-bold text-dark d-block text-decoration-none"
@@ -27,11 +27,11 @@
 
 <script>
 import { BIconList } from 'bootstrap-vue'
-
+import CommonIcon from '~/components/common/common-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 export default {
-  components: { BIconList },
+  components: { BIconList, CommonIcon },
   data() {
     return {
       mobileBreakpoint,

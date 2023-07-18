@@ -5,7 +5,7 @@
   >
     <b-container class="py-2" fluid>
       <div class="d-flex flex-row">
-        <img v-once :src="$icon(64)" height="45" class="rounded-circle icon" />
+        <common-icon height="45" />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
             class="font-weight-bold text-dark d-block text-decoration-none"
@@ -30,9 +30,10 @@
 <script>
 import { BIconList } from 'bootstrap-vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
+import CommonIcon from '~/components/common/common-icon.vue'
 
 export default {
-  components: { BIconList },
+  components: { BIconList, CommonIcon },
   data() {
     return {
       mobileBreakpoint,
@@ -43,7 +44,7 @@ export default {
 
 <style lang="scss">
 .common-footer {
-  .icon {
+  .common-icon {
     height: 1.5rem;
   }
 
