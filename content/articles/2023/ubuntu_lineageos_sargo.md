@@ -23,7 +23,17 @@ img: 922/DxakSn.jpg
 - RAM：32GB 以上
 - 硬碟：300GB 以上的可用空間，建議至少 SSD。
 
-若手邊沒有符合上面所列要求的話，建議不用試了。不然編譯了幾個小時才報錯的話，會發飆的……。
+### RAM
+
+若RAM不足32GB，可以嘗試透過[增加SWAP大小](ubuntu_swap_resize)彌補主記憶體的不足編譯看看。我在以下兩種情境中嘗試過將SWAP直接增加到32GB，皆可編譯成功，提供參考。
+
+1. 在[Linode](https://www.linode.com/)開RAM只有16GB的Ubuntu 22.04雲端機（規格要往上要通知客服）
+2. 在RAM有32GB的Windows上使用Ubuntu 22.04 WSL2（預設RAM只有Windows的一半）
+
+### 硬碟
+
+我使用同一臺桌機（CPU爲AMD R3-3100），SSD以及HDD的編譯時間差異是一倍。
+
 
 ---
 
@@ -195,20 +205,32 @@ brunch sargo
 
 ---
 
+## 全新安裝、升級或更新
+
+根據不同狀況，Lineageos官方WIKI的操作說明也不同，可以分成[全新安裝]((https://wiki.lineageos.org/devices/sargo/install))、[升級](https://wiki.lineageos.org/devices/sargo/upgrade)或[更新](https://wiki.lineageos.org/devices/sargo/update)三種。
+
+
+### 從19.1升級
+
+升級的部分成功的話是可以保留應用程式跟資料的（就跟我們升級沒有刷ROM的手機一樣），這裏自己覺得要特別注意的部分，就是Gapps以及任何你有額外裝的東西（例如前面說的ih8sn），要在升級後再刷入一次，Gapps要下載對應20.0的版本。而且要跟在全新安裝時一樣，升級完Lineageos之後先直接重新啟動到Recovery一次。
+
+沒有試過直接從18.1更新，建議先安裝目前[Lineageos官方最新的19.1版本](https://download.lineageos.org/devices/sargo/builds)，再進行更新。
+
+### 從20.0更新
+
+如果本來就是20.0，要更新到較新的版本，要注意的是因為現在Pixel尚未有官方20.0的版本，在操作說明中的指令`wget https://raw.githubusercontent.com/LineageOS/android_packages_apps_Updater/lineage-19.1/push-update.sh`的`lineage-19.1`要改成`lineage-20.0`。
+
+---
+
 ## 後記
 
-這一路風風雨雨（？）真的是折騰滿久，尤其是最後編譯的時候，因為時間很長，中途突然給你出錯又要整個重來，除錯了好一陣子。而且安裝也不如直接使用官方發布版本方便。
+這一路風風雨雨（？）真的是折騰滿久，尤其是最後編譯的時候，因為時間很長，中途突然給你出錯又要整個重來，除錯了好一陣子。雖然更新不像直接使用官方發布版本方便，要先打開開發人員模式，但使用最新版本的感覺就是爽（？）。
 
-如果不是特別想要追求最新版本，良心建議真的還是乖乖等官方發佈就好。我成功編譯一次安裝進去滿足了成就感之後，就決定刷回官方發佈版本了……。
+不過……誠心建議如果不是特別想要追求最新版本，真的還是乖乖等官方發佈就好。
 
 ---
 
 ## 參考文件
 
-[Build for sargo](https://wiki.lineageos.org/devices/sargo/build)
-
+[Build for sargo](https://wiki.lineageos.org/devices/sargo/build)<br />
 [Extracting proprietary blobs from LineageOS zip files](https://wiki.lineageos.org/extracting_blobs_from_zips#extracting-proprietary-blobs-from-payload-based-otas)
-
-[Container Support](https://docs.fedoraproject.org/en-US/iot/container-support/)
-
-[Docker Docs](https://docs.docker.com/)
