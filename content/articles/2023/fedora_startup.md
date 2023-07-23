@@ -33,7 +33,7 @@ sudo dnf update -y
 啟用 [RPM Fusion](https://rpmfusion.org/) 軟體庫
 
 ```bash
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 啟用 [Flathub](https://flathub.org/home) 軟體庫
