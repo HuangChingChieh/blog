@@ -28,10 +28,12 @@ $container-max-widths: (
 @import '~bootstrap/scss/variables';
 @import '~bootstrap-vue/src/variables';
 
+$zindex-overlay: calc($zindex-tooltip + 10);
 $link-color: $body-color;
 
 $mobile-breakpoint: 'md';
 
 :export {
   mobileBreakpoint: unquote($mobile-breakpoint);
+  zIndexOverlay: $zindex-overlay;
 }

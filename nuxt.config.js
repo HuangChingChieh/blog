@@ -5,6 +5,7 @@ const imageServer = 'https://imagizer.imageshack.com/v2/'
 const appHost = 'https://huangchingchieh.github.io' + base
 
 export default {
+  loading: '~/components/common-loading.vue',
   publicRuntimeConfig: {
     imageServer,
     appHost,
@@ -81,6 +82,8 @@ export default {
       'ModalPlugin',
       'BadgePlugin',
       'ImagePlugin',
+      'SkeletonPlugin',
+      'OverlayPlugin',
     ],
     directivePlugins: [],
   },
