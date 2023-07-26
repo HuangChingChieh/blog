@@ -4,6 +4,7 @@
     :srcset="srcset"
     :src="$config.imageServer + img"
     :class="imgClass"
+    @load.native="$emit('load')"
   />
 </template>
 

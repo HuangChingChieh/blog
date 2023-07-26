@@ -32,7 +32,8 @@
       v-if="document.img"
       v-once
       :img="document.img"
-      :img-class="['w-100', 'img-fluid', 'rounded-lg']"
+      img-class="rounded-lg"
+      max-width="700"
     />
 
     <nuxt-content :document="document" />

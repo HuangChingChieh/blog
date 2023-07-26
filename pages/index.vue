@@ -12,20 +12,11 @@
             :to="`/${article.slug}`"
             class="text-decoration-none d-flex flex-column position-relative"
           >
-            <!-- 撐開用，強制決定圖片大小。也作為讀取中看到的區塊。 -->
-            <img
+            <article-banner
               v-if="article.img"
-              src="~/assets/img/fake-bg.png"
-              alt="讀取中"
-              aria-hidden="true"
-              class="w-100 img-fluid rounded-top"
-            />
-
-            <common-img
               :img="article.img"
-              img-class="img-fluid rounded-top articles-img"
+              img-class="rounded-top"
               max-width="400"
-              class="w-100 h-100"
             />
           </nuxt-link>
 
@@ -50,12 +41,13 @@
 
 <script>
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
+import ArticleBanner from '~/components/article/article-banner.vue'
 import articleDate from '~/components/article/article-date.vue'
 
 export default {
   name: 'IndexPage',
-  components: { articleDate },
-  async asyncData({ $content, params }) {
+  components: { articleDate, ArticleBanner },
+  async asyncData({ $content }) {
     const articles = await $content('articles', { deep: true })
       .only(['title', 'img', 'updatedAt', 'slug'])
       .sortBy('updatedAt', 'desc')
