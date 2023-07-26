@@ -30,7 +30,6 @@
 
     <article-banner
       v-if="document.img"
-      v-once
       :img="document.img"
       img-class="rounded-lg"
       max-width="700"

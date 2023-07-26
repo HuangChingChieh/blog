@@ -1,5 +1,5 @@
 <template>
-  <div class="article-banner" :class="{ loading }">
+  <div class="article-banner">
     <!-- 撐開用，強制決定圖片大小。也作為讀取中看到的區塊。 -->
     <img
       v-if="img"
@@ -17,6 +17,13 @@
       class="article-banner-img"
       @load="loading = false"
     />
+
+    <b-skeleton-img
+      v-if="loading"
+      class="article-banner-img"
+      :class="imgClass"
+      no-aspect
+    ></b-skeleton-img>
   </div>
 </template>
 
@@ -49,9 +56,6 @@ export default {
 <style lang="scss">
 .article-banner {
   position: relative;
-  &.loading {
-    animation: article-banner-loading 1s infinite;
-  }
 }
 
 .article-banner-img {
@@ -62,17 +66,5 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-@keyframes article-banner-loading {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.25;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 </style>
