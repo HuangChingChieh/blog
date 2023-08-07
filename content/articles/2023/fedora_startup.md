@@ -47,7 +47,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install thunderbird shotwell p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter video-downloader gnome-console -y
+sudo dnf install thunderbird shotwell p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter gnome-console -y
 
 # 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
@@ -59,7 +59,7 @@ sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 ### 從flathub安裝日常軟體
 
 ```bash
-flatpak install flathub org.libreoffice.LibreOffice nz.mega.MEGAsync com.spotify.Client com.valvesoftware.Steam org.videolan.VLC
+flatpak install flathub org.libreoffice.LibreOffice nz.mega.MEGAsync com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
 ```
 
 ---
