@@ -33,6 +33,6 @@ tags: [portfolio, collections, frontend]
 
 此網站前端部份起初是獨力完成，後來與同事一起歷經兩次改版。Vue 的部份才剛自學，程式碼較亂也未切元件處理。主要提供如居家清潔、冷氣清洗、洗衣機清洗……等居家清潔服務，或是網路架構、電腦檢測、電腦安裝……等資訊硬體服務，也有部份的一般商品。
 
-**使用框架：Vue 2 + Bootstrap 4 + SCSS**
+**使用框架：Vue 2 + Bootstrap 4 + SCSS + jQuery**
 
 <article-img img="923/Nl4223.png"></article-img>
