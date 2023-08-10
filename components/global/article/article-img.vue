@@ -1,7 +1,7 @@
 <template>
   <common-img
     max-width="700"
-    img-class="w-100 img-fluid rounded-lg"
+    img-class="w-100 img-fluid rounded-lg shadow-sm"
     :img="img"
   />
 </template>
