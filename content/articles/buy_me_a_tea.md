@@ -22,8 +22,10 @@ img: 923/Id0UIh.jpg
 
 ## 關於贊助
 
-若這裡的經驗分享有幫助到你，可以每篇文章下方的 Liker 點讚（需有 Liker 帳號），[Liker Land](https://docs.like.co/v/zh/user-guide/liker-id/register)是基於區塊鏈技術的內容創作者激勵與分享系統，許多平台如 Medium、方格子、Wordpress 都有與其合作。
-
-若覺得使用 Liker Land 麻煩，也歡迎直接斗內請我喝杯手搖飲哦！目前開放贊助的方式如下：
+若這裡的經驗分享有幫助到你，歡迎直接斗內請我喝杯手搖飲！畢竟工程師就是需要配一杯手搖飲，才能工作啊！目前開放贊助的方式如下：
 
 <global-donations></global-donations>
+
+### Like Coin
+
+也可以在每篇文章下方的 Liker 點讚（需有 Liker 帳號），[Liker Land](https://docs.like.co/v/zh/user-guide/liker-id/register)是基於區塊鏈技術的內容創作者激勵與分享系統，不花一毛錢就能讓我獲得獎勵哦！

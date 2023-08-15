@@ -1,17 +1,8 @@
 <template>
   <div>
-    <h3>非台灣朋友：Paypal</h3>
+    <h3>加密貨幣</h3>
     <p>
-      非台灣朋友可以使用Paypal請我喝咖啡喔！<a
-        href="https://paypal.me/tarotchaos"
-        target="_blank"
-        >點這裡去Paypal贊助頁面</a
-      >。
-    </p>
-
-    <h3>無國界轉帳：加密貨幣</h3>
-    <p>
-      加密貨幣是無國界的資產轉移方式，若你是有在使用加密貨幣的朋友，也歡迎拿幣砸我（？）喔。目前接受<a
+      加密貨幣是無國界的資產轉移方式，若你是有在使用加密貨幣的朋友，歡迎拿幣砸我（？）喔。目前接受<a
         href="https://www.maicoin.com/docs/fees-limits/transfers"
         target="_blank"
         class="text-muted"
@@ -29,6 +20,17 @@
         "
         >點這裡顯示加密貨幣地址QRCode</a
       >，或是直接複製： 0x9440eb4BDe15e64985f3fC5875914A6Fd20863b5 。
+    </p>
+
+    <h3>Ko-fi</h3>
+    <p>
+      若想透過信用卡或簽帳卡贊助我喝飲料，可以透過Ko-fi平台哦！
+      <a
+        href="https://ko-fi.com/chaoschaoshuang"
+        target="_blank"
+        rel="noopener noreferrer"
+        >點這裡去Ko-fi贊助頁面</a
+      >。
     </p>
 
     <b-modal
