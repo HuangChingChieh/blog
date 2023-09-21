@@ -1,6 +1,5 @@
 ---
-title: 在Ubuntu 22.04編譯Pixel 3a的LineageOS
-description: 本篇紀錄自己使用Ubuntu 22.04編譯Pixel 3a的LineageOS的過程
+title: 在Ubuntu 22.04編譯Pixel 3a的LineageOS 20.0
 tags: [ubuntu, linux, android, custom rom, Gooel Pixel 3a, lineageos]
 img: 922/DxakSn.jpg
 ---
@@ -9,9 +8,7 @@ img: 922/DxakSn.jpg
 
 ### 免責聲明
 
-<a v-html="article.title"></a>
-
-本篇的內容是參考[官方文件](https://wiki.lineageos.org/devices/sargo/build)寫的，內容可能有所出入，請斟酌參考，因本篇文章內容錯誤導致手機損壞，本人不負任何責任。
+本篇的內容是參考[官方文件](https://wiki.lineageos.org/devices/sargo/build)的編譯過程紀錄，內容可能有所出入，請斟酌服用，因本篇文章內容錯誤導致手機損壞，本人不負任何責任。
 
 ---
 
@@ -25,15 +22,14 @@ img: 922/DxakSn.jpg
 
 ### RAM
 
-若RAM不足32GB，可以嘗試透過[增加SWAP大小](ubuntu_swap_resize)彌補主記憶體的不足編譯看看。我在以下兩種情境中嘗試過將SWAP直接增加到32GB，皆可編譯成功，提供參考。
+若 RAM 不足 32GB，可以嘗試透過[增加 SWAP 大小](ubuntu_swap_resize)彌補主記憶體的不足編譯看看。我在以下兩種情境中嘗試過將 SWAP 直接增加到 32GB，皆可編譯成功，提供參考。
 
-1. 在[Linode](https://www.linode.com/)開RAM只有16GB的Ubuntu 22.04雲端機（規格要往上要通知客服）
-2. 在RAM有32GB的Windows上使用Ubuntu 22.04 WSL2（預設RAM只有Windows的一半）
+1. 在[Linode](https://www.linode.com/)開 RAM 只有 16GB 的 Ubuntu 22.04 雲端機
+2. 在 RAM 有 32GB 的 Windows 上使用 Ubuntu 22.04 WSL2（預設 RAM 只有 Windows 的一半）
 
 ### 硬碟
 
-我使用同一臺桌機（CPU爲AMD R3-3100），SSD以及HDD的編譯時間差異是一倍。
-
+我使用同一臺桌機（CPU 爲 AMD R3-3100），SSD 以及 HDD 的編譯時間差異是一倍。所以建議還是乖乖使用 SSD 比較好。
 
 ---
 
@@ -42,10 +38,14 @@ img: 922/DxakSn.jpg
 ```bash
 # 更新一下套件庫
 sudo apt update
+```
 
+```bash
 # 安裝編譯需要的套件
 sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-multilib git git-lfs gnupg gperf imagemagick lib32ncurses5-dev lib32readline-dev lib32z1-dev libelf-dev liblz4-tool libncurses5 libncurses5-dev libsdl1.2-dev libssl-dev libxml2 libxml2-utils lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib1g-dev openjdk-11-jdk python3 repo python-is-python3 wget python3-protobuf -y
+```
 
+```bash
 # 設定git身份(email)
 git config --global user.email "you@example.com"
 
@@ -73,14 +73,14 @@ repo init
 repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
 ```
 
-接下來要開始取得原始碼了，這個步驟需要一段時間，會下載滿多的檔案（大概 100 多 GB），如果是連手機網路大概要一整天……所以最好是在可以放著掛網的時候再做。
+接下來要開始取得原始碼了，這個步驟需要一段時間，會下載滿多的檔案（大概 100 多 GB）。
 
 ```bash
 # 開始同步
 repo sync
 ```
 
-若中間因為網路問題而中斷同步，只要進到資料夾`~/android/lineage`重新啟動執行`repo sync`即可。
+若中間因為有問題而中斷同步，只要進到資料夾`~/android/lineage`再次執行`repo sync`即可。
 
 ### 同步 Pixel 3a 的原始碼
 
@@ -124,13 +124,16 @@ cd ~/android/system_dump
 
 ```bash
 # 下載安裝檔
-wget https://mirrorbits.lineageos.org/full/sargo/20230411/lineage-19.1-20230411-nightly-sargo-signed.zip
+wget https://mirrorbits.lineageos.org/full/sargo/20230919/lineage-19.1-20230919-nightly-sargo-signed.zip
 
-# 解壓縮取得payload.bin檔案
-unzip lineage-19.1-20230411-nightly-sargo-signed.zip payload.bin
+# 取得提取映像檔的程式
+git clone https://github.com/LineageOS/android_tools_extract-utils android/tools/extract-utils
+git clone https://github.com/LineageOS/android_system_update_engine android/system/update_engine
 
 # 從檔案中提取映像檔
-python ~/android/lineage/lineage/scripts/update-payload-extractor/extract.py payload.bin --output_dir ./
+python android/tools/extract-utils/extract_ota.py lineage-19.1-20230919-nightly-sargo-signed.zip
+
+這裡執行可能需要一段時間，期間沒有文字提示要耐心等候，等到完成之後，再執行下面指令。
 
 # 掛載映像檔
 mkdir system/
@@ -160,14 +163,20 @@ rm -rf ~/android/system_dump/
 
 ## 編譯
 
-### 同步原始碼為最新
+首先，確定自己身在 LineageOS 的原始碼資料夾中：
 
 ```bash
 # 移到原始碼資料夾
 cd ~/android/lineage
+```
 
-# 再次同步原始碼為最新
-repo sync
+### 同步原始碼為最新
+
+若是第一次編譯已經沿著上面做過指令，可跳過這個部份直接從「[編譯前的一些設定](ubuntu_lineageos_sargo#編譯前的一些設定)」開始。
+
+```bash
+# 強制同步原始碼為最新
+repo sync --force-sync
 
 # 設定編譯的環境變數
 source build/envsetup.sh
@@ -191,7 +200,7 @@ ccache -o compression=true
 
 ### 開始編譯
 
-接下來就是重頭戲——編譯了，這個指令用下去之後就會開始編譯，期間會大量消耗系統資源，至少也要跑個幾小時（除非你的電腦是頂級硬體），建議就放著讓他去吧。
+接下來就是重頭戲——編譯了，這個指令執行下去之後就會開始編譯，期間會大量消耗系統資源，除非你的電腦是頂級硬體否則至少也要跑個幾小時，建議就把他放著，人去做其他事情吧，不要同時使用電腦。
 
 ```bash
 brunch sargo
@@ -199,26 +208,23 @@ brunch sargo
 
 在大功告成之後，編譯好的安裝檔會放在`~/android/lineage/out/target/product/sargo`裡面，名稱會長得像這樣：`lineage-20.0-20230415-UNOFFICIAL-sargo.zip `，日期會根據編譯日期而不同。而 recovery 檔案會是`boot.img`。
 
-之後安裝必須要重啟到 Recovery 安裝，比較麻煩些。
-
 若隔了一段時間要再重新編譯，直接從[編譯](ubuntu_lineageos_sargo#編譯)再執行一次就好了。
 
 ---
 
 ## 全新安裝、升級或更新
 
-根據不同狀況，Lineageos官方WIKI的操作說明也不同，可以分成[全新安裝]((https://wiki.lineageos.org/devices/sargo/install))、[升級](https://wiki.lineageos.org/devices/sargo/upgrade)或[更新](https://wiki.lineageos.org/devices/sargo/update)三種。
+根據不同狀況，Lineageos 官方 WIKI 的操作說明也不同，可以分成[全新安裝](<(https://wiki.lineageos.org/devices/sargo/install)>)、[升級](https://wiki.lineageos.org/devices/sargo/upgrade)或[更新](https://wiki.lineageos.org/devices/sargo/update)三種。
 
+### 從 19.1 升級
 
-### 從19.1升級
+升級的部分成功的話是可以保留應用程式跟資料的（就跟我們升級沒有刷 ROM 的手機一樣），這裏自己覺得要特別注意的部分，就是 Gapps 以及任何你有額外裝的東西（例如前面說的 ih8sn），要在升級後再刷入一次，Gapps 要下載對應 20.0 的版本。而且要跟在全新安裝時一樣，升級完 Lineageos 之後先直接重新啟動到 Recovery 一次。
 
-升級的部分成功的話是可以保留應用程式跟資料的（就跟我們升級沒有刷ROM的手機一樣），這裏自己覺得要特別注意的部分，就是Gapps以及任何你有額外裝的東西（例如前面說的ih8sn），要在升級後再刷入一次，Gapps要下載對應20.0的版本。而且要跟在全新安裝時一樣，升級完Lineageos之後先直接重新啟動到Recovery一次。
+沒有試過直接從 18.1 更新，建議先安裝目前[Lineageos 官方最新的 19.1 版本](https://download.lineageos.org/devices/sargo/builds)，再進行更新。
 
-沒有試過直接從18.1更新，建議先安裝目前[Lineageos官方最新的19.1版本](https://download.lineageos.org/devices/sargo/builds)，再進行更新。
+### 從 20.0 更新
 
-### 從20.0更新
-
-如果本來就是20.0，要更新到較新的版本，要注意的是因為現在Pixel尚未有官方20.0的版本，在操作說明中的指令`wget https://raw.githubusercontent.com/LineageOS/android_packages_apps_Updater/lineage-19.1/push-update.sh`的`lineage-19.1`要改成`lineage-20.0`。
+如果本來就是 20.0，要更新到較新的版本，要注意的是因為現在 Pixel 3a 尚未有官方 20.0 的版本，在官方操作說明中的指令`wget https://raw.githubusercontent.com/LineageOS/android_packages_apps_Updater/lineage-19.1/push-update.sh`的`lineage-19.1`要改成`lineage-20.0`。
 
 ---
 
