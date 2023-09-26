@@ -17,7 +17,7 @@ img: 922/m6wo1h.jpg
 
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts eog simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* rhythmbox -y
 
 # 移除用不到的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
@@ -47,7 +47,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install thunderbird shotwell p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter gnome-console -y
+sudo dnf install p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter gnome-console megasync nautilus-megasync -y
 
 # 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
@@ -56,10 +56,10 @@ sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current
 sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 ```
 
-### 從flathub安裝日常軟體
+### 從 flathub 安裝日常軟體
 
 ```bash
-flatpak install flathub org.libreoffice.LibreOffice nz.mega.MEGAsync com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
+flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
 ```
 
 ---
