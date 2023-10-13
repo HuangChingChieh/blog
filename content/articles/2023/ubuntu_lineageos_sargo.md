@@ -53,6 +53,11 @@ git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 ```
 
+```bash
+# 啟用git的大檔支援
+git lfs install
+```
+
 ---
 
 ## 取得 LineageOS 原始碼
