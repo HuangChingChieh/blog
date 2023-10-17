@@ -1,25 +1,25 @@
 <template>
-  <main class="pt-4" :class="`pb-${mobileBreakpoint}-4`">
-    <common-header class="mb-4" @openProfileModal="profileModal.open = true" />
-    <Nuxt />
-    <common-footer @openProfileModal="profileModal.open = true" />
+  <main>
+    <common-header @openProfileModal="sidebar.open = true" />
+    <b-container :fluid="mobileBreakpoint" class="py-4">
+      <Nuxt />
+    </b-container>
 
-    <modal-profile v-model="profileModal.open"></modal-profile>
+    <common-sidebar v-model="sidebar.open" />
   </main>
 </template>
 
 <script>
 import commonHeader from '~/components/common/common-header.vue'
+import commonSidebar from '~/components/common/common-sidebar.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
-import CommonFooter from '~/components/common/common-footer.vue'
-import ModalProfile from '~/components/modal/modal-profile.vue'
 
 export default {
-  components: { commonHeader, CommonFooter, ModalProfile },
+  components: { commonHeader, commonSidebar },
   data() {
     return {
       mobileBreakpoint,
-      profileModal: {
+      sidebar: {
         open: false,
       },
     }

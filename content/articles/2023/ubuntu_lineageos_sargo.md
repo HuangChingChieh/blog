@@ -1,10 +1,13 @@
 ---
 title: 在Ubuntu 22.04編譯Pixel 3a的LineageOS 20.0
-tags: [ubuntu, linux, android, custom rom, Gooel Pixel 3a, lineageos]
+tags: [ubuntu, android, custom rom, Gooel Pixel 3a, lineageos]
 img: 922/DxakSn.jpg
+category: linux
 ---
 
 最近因為 LineageOS 各裝置紛紛升上 LineageOS 20.0（Android 13），但手上的 Pixel 3a 卻遲遲沒有消息，後來上了 [XDA](https://forum.xda-developers.com/t/official-lineageos-19-1-for-the-google-pixel-3a.4436933/post-88303289) 看了一下討論串，發現開發者說是因為 eSIM 無法使用的關係，所以才無法公告升級上去。心裡想著反正我也用不到 eSIM，不如就來順便學學怎麼自己編譯 LineageOS 好了。
+
+<!--more-->
 
 ### 免責聲明
 
@@ -241,7 +244,7 @@ brunch sargo
 
 ---
 
-## 參考文件
+## 參考文獻
 
-[Build for sargo](https://wiki.lineageos.org/devices/sargo/build)<br />
-[Extracting proprietary blobs from LineageOS zip files](https://wiki.lineageos.org/extracting_blobs_from_zips#extracting-proprietary-blobs-from-payload-based-otas)
+1. [Build for sargo](https://wiki.lineageos.org/devices/sargo/build)
+2. [Extracting proprietary blobs from LineageOS zip files](https://wiki.lineageos.org/extracting_blobs_from_zips#extracting-proprietary-blobs-from-payload-based-otas)

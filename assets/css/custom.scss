@@ -2,12 +2,19 @@
 
 $font-family-sans-serif: 'Noto Sans TC', sans-serif;
 
-$blue: #0a58ca;
+$red: #e35d6a;
+$orange: #fd9843;
+$yellow: #ffcd39;
+$green: #4dd4ac;
+$blue: #3d8bfd;
+$purple: #a98eda;
 
-$card-columns-count: 2;
-$card-spacer-y: 1.5rem;
-$card-columns-gap: 1.5rem;
-$card-border-width: 0;
+$primary: $green;
+
+// $card-columns-count: 2;
+// $card-spacer-y: 1.5rem;
+// $card-columns-gap: 1.5rem;
+// $card-border-width: 0;
 
 $modal-header-border-width: 0;
 $modal-fade-transform: none;
@@ -17,12 +24,12 @@ $link-decoration: underline;
 
 $container-max-widths: (
   sm: 540px,
-  md: 720px,
-  //   lg: 960px,
-  lg: 768px,
-  //   xl: 1140px
-  xl: 800px,
+  md: 670px,
+  lg: 800px,
 );
+
+$input-btn-focus-box-shadow: initial;
+$b-sidebar-width: 100%;
 
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';

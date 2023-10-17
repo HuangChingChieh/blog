@@ -1,16 +1,26 @@
 <template>
-  <component :is="tag" class="common-container">
-    <slot />
+  <component
+    :is="tag"
+    class="common-container px-2"
+    :class="`p-${mobileBreakpoint}-5`"
+  >
+    <slot></slot>
   </component>
 </template>
 
 <script>
+import { mobileBreakpoint } from '~/assets/css/custom.scss'
 export default {
   props: {
     tag: {
       type: String,
       default: 'div',
     },
+  },
+  data() {
+    return {
+      mobileBreakpoint,
+    }
   },
 }
 </script>

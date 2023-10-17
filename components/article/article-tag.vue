@@ -3,7 +3,7 @@
     variant="secondary"
     class="d-inline-block font-weight-normal text-monospace"
   >
-    #{{ tagName }}
+    #<slot>{{ tagName }}</slot>
     <!-- <nuxt-link
       :to="`/tags/${tagName}`"
       class="text-decoration-none text-white"

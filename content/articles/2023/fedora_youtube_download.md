@@ -1,10 +1,13 @@
 ---
 title: 在Fedora 38中使用video-downloader下載Youtube影片
-tags: [fedora, linux, youtube]
+tags: [fedora, youtube]
 img: 924/GXLkgw.jpg
+category: linux
 ---
 
 之前在 Fedora 中我都是使用[clipgrab](https://clipgrab.org/)下載 Youtube 影片，最近發現套件庫中多了一個叫做 video-downloader 的軟體就載來試用了一下，覺得比起 clipgrab 簡潔許多，而且界面也跟 GNOME 風格一致，就轉去使用它了。
+
+<!--more-->
 
 ---
 
@@ -46,4 +49,4 @@ video-downloader 是建立在[yt-dlp](https://github.com/yt-dlp/yt-dlp)專案之
 
 ---
 
-大概就是這樣，本來我是使用來下載Youtube而已，後來發現video-downloader也能下載其他網站的影片覺得很驚訝。不然之前都會用那種一堆廣告、看起來很危險、好像有埋病毒的那種線上下載網站。
+大概就是這樣，本來我是使用來下載 Youtube 而已，後來發現 video-downloader 也能下載其他網站的影片覺得很驚訝。不然之前都會用那種一堆廣告、看起來很危險、好像有埋病毒的那種線上下載網站。

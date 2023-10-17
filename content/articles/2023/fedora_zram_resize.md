@@ -1,6 +1,14 @@
 ---
 title: 調整Fedora中的ZRAM大小
-tags: [fedora, linux, zram]
+img: 924/Rj6CAF.jpg
+tags: [fedora, zram]
+category: linux
+---
+
+這篇是[在 Fedora 環境中編譯 LineageOS](fedora_lineageos_sargo)時，嘗試複製在 Ubuntu 中可透過增加 SWAP 來補足記憶體不足的作法。後來發現即便把 ZRAM 增大也會編譯失敗，就很乾脆擴充實體 RAM，本篇就當個紀錄這樣。
+
+<!--more-->
+
 ---
 
 ```bash
@@ -43,10 +51,8 @@ NAME       TYPE      SIZE USED PRIO
 
 ---
 
-## 參考文件
+## 參考文獻
 
-[zram-generator](https://github.com/systemd/zram-generator)
-
-[zram-generator.conf.example](https://github.com/systemd/zram-generator/blob/main/zram-generator.conf.example)
-
-[Changes/Scale ZRAM to full memory size](https://fedoraproject.org/wiki/Changes/Scale_ZRAM_to_full_memory_size)
+1. [zram-generator](https://github.com/systemd/zram-generator)
+2. [zram-generator.conf.example](https://github.com/systemd/zram-generator/blob/main/zram-generator.conf.example)
+3. [Changes/Scale ZRAM to full memory size](https://fedoraproject.org/wiki/Changes/Scale_ZRAM_to_full_memory_size)

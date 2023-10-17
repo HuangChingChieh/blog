@@ -1,10 +1,13 @@
 ---
 title: 在Fedora 38編譯Pixel 3a的LineageOS
-description: 本篇紀錄自己使用Fedora 38編譯Pixel 3a的LineageOS的過程
-tags: [fedora, linux, android, custom rom, Gooel Pixel 3a, lineageos]
+img: 924/LsYE8j.jpg
+tags: [fedora, android, custom rom, Gooel Pixel 3a, lineageos]
+category: linux
 ---
 
 本篇文章是試圖移植之前的文章：[《在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS》](ubuntu_lineageos_sargo)的過程至 Fedora 上的心得紀錄，畢竟自己平常主要使用的系統為 Fedora，想說都是 Linux 應該是可以移植過來。
+
+<!--more-->
 
 ---
 
@@ -12,7 +15,7 @@ tags: [fedora, linux, android, custom rom, Gooel Pixel 3a, lineageos]
 
 請參考之前的文章：[在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS](ubuntu_lineageos_sargo)。
 
-不過記憶體的部分，我在RAM只有16GB的Fedora，嘗試把ZRAM調高到32GB，仍然會編譯失敗，不知道是不是有什麼其他的眉角需要調整。如果跟我一樣不是很瞭解這些運作機制的話，建議還是直接把電腦記憶體加到32GB吧！
+不過記憶體的部分，我在 RAM 只有 16GB 的 Fedora，嘗試把 ZRAM 調高到 32GB，仍然會編譯失敗，不知道是不是有什麼其他的眉角需要調整。如果跟我一樣不是很瞭解這些運作機制的話，建議還是直接把電腦記憶體加到 32GB 吧！
 
 ---
 
@@ -115,9 +118,9 @@ java -version
 
 ---
 
-## 參考文件
+## 參考文獻
 
-[ROS Index](https://index.ros.org/deps/)<br />
-[How to install build-essential on Fedora](https://www.pragmaticlinux.com/2022/05/how-to-install-build-essential-on-fedora/)<br />
-[Switching between Java Versions](https://docs.fedoraproject.org/en-US/quick-docs/installing-java/#_switching_between_java_versions)<br />
-[libncurses.so.5 - cannot open shared library, Fedora](https://stackoverflow.com/questions/51698044/libncurses-so-5-cannot-open-shared-library-fedora)
+1. [ROS Index](https://index.ros.org/deps/)
+2. [How to install build-essential on Fedora](https://www.pragmaticlinux.com/2022/05/how-to-install-build-essential-on-fedora/)
+3. [Switching between Java Versions](https://docs.fedoraproject.org/en-US/quick-docs/installing-java/#_switching_between_java_versions)
+4. [libncurses.so.5 - cannot open shared library, Fedora](https://stackoverflow.com/questions/51698044/libncurses-so-5-cannot-open-shared-library-fedora)

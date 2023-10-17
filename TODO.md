@@ -21,7 +21,6 @@
 - 轉 Nuxt 3？
 - 摘要
 - 右邊 BAR?
-- blockquote
 - image with caption
 - 留言板？
 - 暗黑模式

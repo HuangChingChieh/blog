@@ -1,5 +1,12 @@
 @import 'custom';
 
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'dark': $dark,
+  'gray': $gray-100,
+);
+
 /* Bootstrap Tree Shaking */
 @import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/root';
@@ -12,15 +19,15 @@
 @import '~bootstrap/scss/forms';
 @import '~bootstrap/scss/buttons';
 @import '~bootstrap/scss/transitions';
-// @import "~bootstrap/scss/dropdown";
-// @import "~bootstrap/scss/button-group";
+// @import '~bootstrap/scss/dropdown';
+// @import '~bootstrap/scss/button-group';
 // @import "~bootstrap/scss/input-group";
 // @import "~bootstrap/scss/custom-forms";
-// @import "~bootstrap/scss/nav";
+@import '~bootstrap/scss/nav';
 // @import "~bootstrap/scss/navbar";
-@import '~bootstrap/scss/card';
-// @import "~bootstrap/scss/breadcrumb";
-// @import "~bootstrap/scss/pagination";
+// @import '~bootstrap/scss/card';
+// @import '~bootstrap/scss/breadcrumb';
+@import '~bootstrap/scss/pagination';
 @import '~bootstrap/scss/badge';
 // @import "~bootstrap/scss/jumbotron";
 // @import "~bootstrap/scss/alert";
@@ -37,53 +44,53 @@
 // @import "~bootstrap/scss/print";
 
 // 將~bootstrap/scss/_utilities.scss展開
-@import '~bootstrap/scss/utilities/align';
+// @import '~bootstrap/scss/utilities/align';
 @import '~bootstrap/scss/utilities/background';
 @import '~bootstrap/scss/utilities/borders';
-@import '~bootstrap/scss/utilities/clearfix';
+// @import '~bootstrap/scss/utilities/clearfix';
 @import '~bootstrap/scss/utilities/display';
-@import '~bootstrap/scss/utilities/embed';
+// @import '~bootstrap/scss/utilities/embed';
 @import '~bootstrap/scss/utilities/flex';
-@import '~bootstrap/scss/utilities/float';
-@import '~bootstrap/scss/utilities/interactions';
+// @import '~bootstrap/scss/utilities/float';
+// @import '~bootstrap/scss/utilities/interactions';
 @import '~bootstrap/scss/utilities/overflow';
 @import '~bootstrap/scss/utilities/position';
 @import '~bootstrap/scss/utilities/screenreaders';
 @import '~bootstrap/scss/utilities/shadows';
 @import '~bootstrap/scss/utilities/sizing';
 @import '~bootstrap/scss/utilities/spacing';
-@import '~bootstrap/scss/utilities/stretched-link';
+// @import '~bootstrap/scss/utilities/stretched-link';
 @import '~bootstrap/scss/utilities/text';
-@import '~bootstrap/scss/utilities/visibility';
+// @import '~bootstrap/scss/utilities/visibility';
 
 /* Bootstrap Vue Tree Shaking */
 @import '~bootstrap-vue/src/utilities';
-@import '~bootstrap-vue/src/custom-controls';
-@import '~bootstrap-vue/src/icons/index';
+// @import '~bootstrap-vue/src/custom-controls';
+// @import '~bootstrap-vue/src/icons/index';
 
 // 將~bootstrap-vue/src/components/index.scss展開
 // @import "~bootstrap-vue/src/components/avatar/index";
 // @import "~bootstrap-vue/src/components/calendar/index";
-@import '~bootstrap-vue/src/components/card/index';
-// @import "~bootstrap-vue/src/components/dropdown/index";
+// @import '~bootstrap-vue/src/components/card/index';
+// @import '~bootstrap-vue/src/components/dropdown/index';
 // @import "~bootstrap-vue/src/components/form-checkbox/index";
 // @import "~bootstrap-vue/src/components/form-datepicker/index";
 // @import "~bootstrap-vue/src/components/form-file/index";
-@import '~bootstrap-vue/src/components/form-input/index';
+// @import '~bootstrap-vue/src/components/form-input/index';
 // @import "~bootstrap-vue/src/components/form-radio/index";
 // @import "~bootstrap-vue/src/components/form-rating/index";
 // @import "~bootstrap-vue/src/components/form-spinbutton/index";
 // @import "~bootstrap-vue/src/components/form-tags/index";
 // @import "~bootstrap-vue/src/components/form-timepicker/index";
-@import '~bootstrap-vue/src/components/input-group/index';
+// @import '~bootstrap-vue/src/components/input-group/index';
 // @import "~bootstrap-vue/src/components/media/index";
 @import '~bootstrap-vue/src/components/modal/index';
-// @import "~bootstrap-vue/src/components/nav/index";
+@import '~bootstrap-vue/src/components/nav/index';
 // @import "~bootstrap-vue/src/components/navbar/index";
 @import '~bootstrap-vue/src/components/pagination-nav/index';
 @import '~bootstrap-vue/src/components/pagination/index';
 // @import "~bootstrap-vue/src/components/popover/index";
-// @import "~bootstrap-vue/src/components/sidebar/index";
+@import '~bootstrap-vue/src/components/sidebar/index';
 @import '~bootstrap-vue/src/components/skeleton/index';
 // @import "~bootstrap-vue/src/components/table/index";
 // @import "~bootstrap-vue/src/components/time/index";
@@ -104,6 +111,16 @@ main {
   }
 }
 
+ol,
+ul,
+dl {
+  padding-left: 1.5rem;
+}
+
+img {
+  object-fit: cover;
+}
+
 // .nuxt-content {
 //   word-break: break-all;
 // }
@@ -115,7 +132,7 @@ main {
     display: block;
     font-family: $font-family-monospace;
     font-weight: $font-weight-bold;
-    background-color: $info;
+    background-color: $primary;
     border-top-left-radius: $border-radius-lg;
     border-top-right-radius: $border-radius-lg;
     padding: 0.5rem 1rem;
@@ -156,9 +173,24 @@ main {
 
 .page-enter-active,
 .page-leave-active {
-  transition: opacity 0.4s;
+  transition: $transition-fade;
 }
 .page-enter,
 .page-leave-to {
   opacity: 0;
+}
+
+// .pagination {
+//   margin-bottom: 0;
+// }
+
+.b-pagination-pills .page-item .page-link {
+  padding: 0;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $box-shadow-sm;
 }

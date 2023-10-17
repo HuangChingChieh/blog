@@ -1,11 +1,13 @@
 ---
 title: Nuxt2中的BootstrapVue TreeShaking
-description: 本篇紀錄了自己在Nuxt2中使用Bootstrap Vue時，Tree Shaking的一些步驟。
 img: 924/Oqxy2g.jpg
 tags: [vue, nuxt, bootstrap]
+category: frontend
 ---
 
 Bootstrap 是個很好用的 UI 框架，在 Vue 生態系中主要由 Bootstrap Vue 去作銜接，然而在專案中幾乎不會完全使用到 Bootstrap 的所有功能，這時如果把不必要的 css / js 編譯移除，可以降低編譯後專案的大小，[這種行為也被稱為 Tree shaking](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)。本篇紀錄了自己在 Nuxt2 中使用 Bootstrap Vue 時，Tree Shaking 的一些步驟。
+
+<!--more-->
 
 ---
 

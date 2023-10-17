@@ -11,7 +11,7 @@
             class="font-weight-bold text-dark d-block text-decoration-none"
             to="/"
           >
-            藍帽手札
+            隨機手札
           </nuxt-link>
         </div>
 

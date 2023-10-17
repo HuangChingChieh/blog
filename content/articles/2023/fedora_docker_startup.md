@@ -1,7 +1,14 @@
 ---
 title: 在Fedora 38中安裝Docker
-description: 本篇記錄了在Fedora中安裝及安裝後設定Docker的過程
-tags: [fedora, linux, docker]
+img: 924/lduYJH.jpg
+tags: [fedora, docker]
+category: linux
+---
+
+本篇記錄了在 Fedora 中安裝及安裝後設定 Docker 的過程。
+
+<!--more-->
+
 ---
 
 ### 安裝 Docker
@@ -46,8 +53,7 @@ sudo systemctl enable docker.service containerd.service
 
 ---
 
-## 參考文件
+## 參考文獻
 
-[Install Docker Engine on Fedora](https://docs.docker.com/engine/install/fedora/)
-
-[Linux post-installation steps for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/)
+1. [Install Docker Engine on Fedora](https://docs.docker.com/engine/install/fedora/)
+2. [Linux post-installation steps for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/)

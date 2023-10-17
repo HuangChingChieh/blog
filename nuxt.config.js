@@ -9,6 +9,12 @@ export default {
   publicRuntimeConfig: {
     imageServer,
     appHost,
+    perPage: 10,
+    categoriesMap: {
+      linux: 'Linux使用心得',
+      frontend: '前端筆記',
+      life: '生活雜記',
+    },
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -20,8 +26,8 @@ export default {
     htmlAttrs: {
       lang: 'zh-Hant-TW',
     },
-    title: '藍帽手札',
-    titleTemplate: '%s｜藍帽手札',
+    title: '隨機手札',
+    titleTemplate: '%s｜隨機手札',
     meta: [
       { hid: 'charset', charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -43,7 +49,7 @@ export default {
       {
         hid: 'og:title',
         property: 'og:title',
-        content: '藍帽手札',
+        content: '隨機手札',
       },
       {
         hid: 'og:image',
@@ -53,7 +59,7 @@ export default {
       {
         hid: 'og:site_name',
         property: 'og:site_name',
-        content: '藍帽手札',
+        content: '隨機手札',
       },
       {
         hid: 'og:locale',
@@ -63,7 +69,7 @@ export default {
       {
         hid: 'apple-mobile-web-app-title',
         name: 'apple-mobile-web-app-title',
-        content: '藍帽手札',
+        content: '隨機手札',
       },
     ],
   },
@@ -78,12 +84,16 @@ export default {
     bootstrapVueCSS: false, // Or `bvCSS: false`
     componentPlugins: [
       'LayoutPlugin',
-      'CardPlugin',
       'ModalPlugin',
       'BadgePlugin',
       'ImagePlugin',
       'SkeletonPlugin',
       'OverlayPlugin',
+      'ButtonPlugin',
+      'PaginationNavPlugin',
+      // 'BreadcrumbPlugin',
+      'NavPlugin',
+      'SidebarPlugin',
     ],
     directivePlugins: [],
   },
@@ -131,7 +141,7 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: '藍帽手札',
+      name: '隨機手札',
       description:
         '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記，以及使用Linux（主要是Fedora）的心得。',
       lang: 'zh-Hant-TW',

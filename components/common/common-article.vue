@@ -16,10 +16,14 @@
       {{ document.title }}
     </h1>
 
-    <article-date class="small my-2" :document="document" />
+    <div class="d-flex flex-row align-items-center my-2">
+      <article-date class="small mb-0" :document="document" />
+      <article-category :article="document" />
+    </div>
+
     <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
 
-    <div v-if="document.tags" class="article-tags d-flex flex-wrap">
+    <div v-if="document.tags" class="article-tags d-flex flex-wrap my-2">
       <article-tag
         v-for="tag in document.tags"
         :key="tag"
@@ -43,12 +47,14 @@
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
 import ArticleDate from '../article/article-date.vue'
+import ArticleCategory from '../article/article-category.vue'
 
 export default {
   components: {
     ArticleBanner,
     ArticleTag,
     ArticleDate,
+    ArticleCategory,
   },
   props: {
     document: {
@@ -77,8 +83,9 @@ $article-font-size-base: 1rem;
 
   h3,
   p,
-  .article-banner {
-    margin: $paragraph-margin-bottom 0;
+  .article-banner,
+  .article-img {
+    margin: $paragraph-margin-bottom * 1.75 0;
   }
 
   h1,
@@ -98,11 +105,11 @@ $article-font-size-base: 1rem;
   }
 
   h2 {
-    font-size: $article-font-size-base * 1.5;
+    font-size: $article-font-size-base * 1.75;
   }
 
   h3 {
-    font-size: $article-font-size-base * 1.1;
+    font-size: $article-font-size-base * 1.25;
     // color: $secondary;
     // &::before {
     //   content: '- ';
@@ -114,7 +121,8 @@ $article-font-size-base: 1rem;
   }
 
   p {
-    font-weight: $font-weight-light;
+    // font-weight: $font-weight-light;
+    word-break: break-all;
   }
 
   p code {
@@ -133,12 +141,27 @@ $article-font-size-base: 1rem;
   }
 
   a[href] {
-    color: $body-color;
+    // color: $body-color;
     text-decoration: underline;
   }
 
   .nuxt-content > *:last-child {
     margin-bottom: 0;
+  }
+
+  blockquote {
+    padding-left: $paragraph-margin-bottom;
+    border-left: 3px solid $primary;
+
+    p {
+      margin: $paragraph-margin-bottom 0;
+    }
+  }
+
+  .article-banner,
+  .article-banner img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
   }
 }
 </style>

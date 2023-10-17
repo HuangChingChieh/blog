@@ -1,13 +1,17 @@
 ---
 title: 個人作品集
-tags: [portfolio, collections, frontend]
+img: 924/j9gCap.jpg
+tags: [portfolio, collections]
+category: frontend
 ---
 
-這篇是整理自己工作中產出或參與的公開網站，以及自己開發的一些個人專案紀錄。
+這篇是整理自己工作中產出或參與的可公開網站，以及自己開發的一些個人專案紀錄。
+
+<!--more-->
 
 ---
 
-## [藍帽手札](https://huangchingchieh.github.io/blog/)
+## [隨機手札](https://huangchingchieh.github.io/blog/)
 
 個人紀錄前端筆記以及 Linux 使用心得的部落格，為獨立完成。使用 Nuxt 2 預先生成靜態頁面以達到最佳效能，文章使用 Markdown 撰寫並搭配 Nuxt Content 管理，UI 部份使用 BootstrapVue 並經過 Tree Shaking 只使用有用到的元件與樣式，以求最小化編譯後的靜態資源。
 

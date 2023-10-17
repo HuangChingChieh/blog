@@ -1,10 +1,13 @@
 ---
 title: 在MacBook Air 2013上安裝Fedora 38
-tags: [fedora, linux, macbook air, apple]
+tags: [fedora, macbook air, apple]
 img: 922/4x6lR7.jpg
+category: linux
 ---
 
 日前從朋友那邊收到一台他塵封已久的 MacBook Air 2013，作為去沖繩幫他帶藥妝的回禮，沒想到平常極度排斥極度封閉環境的 Apple 產品的我，就這樣擁有了第一台萬惡的 Apple 裝置了。心想若灌成 Fedora 沒啥大問題，那似乎就這樣拿來當成個人筆電用也無不可，又環保（？）。
+
+<!--more-->
 
 上網做了一下功課之後，發現滿多前輩都做了類似的事情，只是大家灌的發行版本都不同。過程中會面對兩個問題，第一個是 Fedora 原生沒有支援 MacBook Air 2013 中 Wifi 的驅動程式，再來就是攝影機也需要額外動作去處理之後才能使用，但步驟都不難。
 
@@ -109,7 +112,7 @@ modprobe facetimehd
 
 ---
 
-## 參考文章
+## 參考文獻
 
-[LIBERATING THE MACBOOK AIR 2013](https://boilingsteam.com/liberating-the-macbook-air-2013-with-linux-complete-guide/#facetimehd)<br/>
-[Macbook pro 2013 camera drivers - Reddit](https://www.reddit.com/r/Fedora/comments/tgyrxv/comment/i157pyq/)
+1. [LIBERATING THE MACBOOK AIR 2013](https://boilingsteam.com/liberating-the-macbook-air-2013-with-linux-complete-guide/#facetimehd)
+2. [Macbook pro 2013 camera drivers - Reddit](https://www.reddit.com/r/Fedora/comments/tgyrxv/comment/i157pyq/)

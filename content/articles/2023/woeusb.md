@@ -1,10 +1,13 @@
 ---
 title: 使用WoeUSB在Fedora中製作Windows安裝USB
-description: 本篇紀錄了如何在Fedora中，使用WoeUSB這個套件製作Windows的安裝USB。
+img: 923/OleVsx.jpg
 tags: [fedora, windows, usb, 安裝, 重灌]
+category: linux
 ---
 
 雖然脫離 Windows 很久，但有時候還是會需要幫朋友重灌電腦什麼的，所以就研究了一下如何在 Fedora 裡面製作 Windows 的安裝媒體。後來在網路上找到[WoeUSB](https://github.com/WoeUSB/WoeUSB)這個套件。
+
+<!--more-->
 
 本篇會紀錄使用 WoeUSB 在 Fedora 中製作 Windows 安裝 USB 的過程。
 

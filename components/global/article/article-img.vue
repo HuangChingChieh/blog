@@ -1,7 +1,7 @@
 <template>
   <common-img
     max-width="700"
-    img-class="w-100 img-fluid rounded-lg shadow-sm"
+    img-class="w-100 img-fluid rounded-lg shadow-sm article-img d-block"
     :img="img"
   />
 </template>
@@ -18,3 +18,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.article-img {
+  aspect-ratio: 16 / 9;
+}
+</style>

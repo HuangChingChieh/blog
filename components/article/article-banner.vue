@@ -1,15 +1,5 @@
 <template>
   <div class="article-banner">
-    <!-- 撐開用，強制決定圖片大小。也作為讀取中看到的區塊。 -->
-    <img
-      v-if="img"
-      src="~/assets/img/fake-bg.png"
-      alt="讀取中"
-      aria-hidden="true"
-      class="w-100 img-fluid"
-      :class="imgClass"
-    />
-
     <common-img
       :img="img"
       :img-class="imgClass"
@@ -18,12 +8,7 @@
       @load="loading = false"
     />
 
-    <b-skeleton-img
-      v-if="loading"
-      class="article-banner-img"
-      :class="imgClass"
-      no-aspect
-    ></b-skeleton-img>
+    <b-skeleton-img v-if="loading" :class="imgClass" no-aspect></b-skeleton-img>
   </div>
 </template>
 
@@ -58,13 +43,20 @@ export default {
   position: relative;
 }
 
-.article-banner-img {
+.article-card .article-banner-img,
+.b-skeleton-img {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+}
+
+@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  .article-card .article-banner-img {
+    position: static;
+    aspect-ratio: 2 / 1;
+  }
 }
 </style>

@@ -1,6 +1,14 @@
 ---
 title: 調整Ubuntu中的SWAP大小
-tags: [ubuntu, linux, swap]
+img: 924/Ld14Ra.jpg
+tags: [ubuntu, swap]
+category: linux
+---
+
+在[Ubuntu 中嘗試編譯 LineageOS](ubuntu_lineageos_sargo)時，因為實體記憶體不足的關係，上網查了一下資料發現或許能透過增加虛擬記憶體 SWAP 來解決，所以就紀錄了下來。
+
+<!--more-->
+
 ---
 
 ```bash
@@ -40,6 +48,6 @@ NAME       TYPE      SIZE USED PRIO
 
 ---
 
-## 參考文件
+## 參考文獻
 
-[How To Add Swap Space on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04)
+1. [How To Add Swap Space on Ubuntu 22.04](https://www.digitalocean.com/community/tutorials/how-to-add-swap-space-on-ubuntu-22-04)

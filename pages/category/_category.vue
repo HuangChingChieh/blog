@@ -11,16 +11,20 @@
 import ArticlesList from '~/components/articles/articles-list.vue'
 
 export default {
-  name: 'IndexPage',
   components: { ArticlesList },
-  async asyncData({ $content, query, redirect, $config }) {
+  async asyncData({ $content, params, query, redirect, $config }) {
     const { perPage } = $config
+    const { category } = params
+    const basePath = `/category/${category}`
+
+    // 檢驗頁數
     const page = Number(query.page || 1)
+    if (isNaN(page) || page <= 0) redirect(basePath)
 
-    if (isNaN(page) || page <= 0) redirect('/')
-
+    // 取得文章
     let articles = await $content('articles', { deep: true })
       .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .where({ category })
       .sortBy('updatedAt', 'desc')
       // .skip((page - 1) * perPage)
       // .limit(perPage)
@@ -28,32 +32,27 @@ export default {
 
     const numberOfPages = Math.ceil(articles.length / perPage)
     articles = articles.slice((page - 1) * perPage, page * perPage)
-    if (articles.length === 0) redirect('/')
+    if (articles.length === 0) redirect(basePath)
 
-    return { articles, numberOfPages }
+    return { articles, numberOfPages, basePath }
   },
-  head() {
+  data() {
+    const { category } = this.$route.params
     return {
-      title: '',
-      titleTemplate: '隨機手札',
-      meta: [
+      items: [
+        { text: '文章分類', to: '/category/' },
         {
-          hid: 'og:url',
-          property: 'og:url',
-          content: this.$config.appHost,
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content:
-            '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記，以及使用Linux（主要是Fedora）的心得。',
+          text: this.$config.categoriesMap[category],
+          to: `/category/${category}`,
+          active: true,
         },
       ],
     }
   },
   methods: {
     linkGen(page) {
-      return page === 1 ? '/' : { path: `/`, query: { page } }
+      const { basePath } = this
+      return page === 1 ? basePath : { path: basePath, query: { page } }
     },
   },
 }

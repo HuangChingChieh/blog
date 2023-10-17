@@ -1,11 +1,13 @@
 ---
 title: 使用Fedora刷Pixel 3a的LineageOS 過程紀錄
-description: 本篇文章是一個過程紀錄與分享，非指導教學，若有興趣刷機的人，所有刷機步驟都絕對建議按照官方文件進行。若因文章內容疏漏而導致錯誤或手機損壞，本人不負任何責任。
-tags: [fedora, linux, android, custom rom, Gooel Pixel 3a, lineageos]
+tags: [fedora, android, custom rom, Gooel Pixel 3a, lineageos]
 img: 924/ioKHUr.jpg
+category: linux
 ---
 
 總之呢，[官方公佈不保證在 5 月之後還會收到更新](https://support.google.com/pixelphone/answer/4457705?hl=zh-Hant#zippy=%2Cpixel-apixel-a-xlpixel-pixel-xlpixel-apixel-a-gpixel-%E5%92%8C-pixel-a-g)，而[網路](https://3c.ltn.com.tw/news/48895)則說 7 月會迎來最後一次更新，因為手機狀況都還滿健康的，最愛保留舊手機舊電腦的我，就想說要來刷機了。
+
+<!--more-->
 
 **本篇文章是一個過程紀錄與分享，非指導教學，若有興趣刷機的人，所有刷機步驟都絕對建議按照官方文件進行。若因文章內容疏漏而導致錯誤或手機損壞，本人不負任何責任。**
 
@@ -81,13 +83,13 @@ sudo dnf install android-tools
 
 因為我要刷的是 LineageOS，就到[官方頁面](https://download.lineageos.org/sargo)下載。
 
-### 下載ih8sn（選擇性但建議安裝）
+### 下載 ih8sn（選擇性但建議安裝）
 
 [ih8sn](https://github.com/LOS-Munch/ih8sn)是個利用覆寫系統的一些設定，來讓刷機後的 ROM 盡量通過 Safetynet 的專案，大部分的開發維護人員也都是 LineageOS 的成員。在上網搜尋各種繞過 Safetynet 的方式後，我覺得 ih8sn 是最簡單的一個。
 
 安裝方式很簡單，因 Pixel 3a 為 arm64 架構，下載時要選擇`ih8sn-aarch64.zip`這個檔案，接著只要在首次安裝 Rom 時一起把這個 zip 檔刷進去就好了。
 
-建議安裝，因為大部分的金融相關APP、政府APP可能都會檢驗，可以省麻煩。
+建議安裝，因為大部分的金融相關 APP、政府 APP 可能都會檢驗，可以省麻煩。
 
 ---
 
@@ -131,7 +133,7 @@ sudo adb reboot bootloader
 
 這邊個人不建議使用還原，因為如果是從原生的 Android 轉過來，會有很多預裝的 APP，直接還原會全部都被裝回來。第一次轉到客製 Rom 還是建議先一個一個把要用的裝回來。
 
-以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行，這邊正常執行是指有安裝前面所說的[ih8sn套件](pixel3a_custom_rom#下載ih8sn選擇性但建議安裝)。
+以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行，這邊正常執行是指有安裝前面所說的[ih8sn 套件](pixel3a_custom_rom#下載ih8sn選擇性但建議安裝)。
 
 ### 正常可使用
 

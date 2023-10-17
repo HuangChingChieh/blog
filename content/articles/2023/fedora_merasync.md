@@ -1,10 +1,13 @@
 ---
 title: MEGA - 完整支援Fedora Workstation 38的雲端硬碟
-tags: [fedora, linux, mega, megasync, 雲端硬碟]
+tags: [fedora, mega, megasync, 雲端硬碟]
 img: 922/b56SXt.jpg
+category: linux
 ---
 
 在雲端硬碟供應商中，有官方原生支援 Fedora 的桌面應用程式可安裝，又有完整繁體中文界面的，就我所知只有[Dropbox](https://www.dropbox.com/zh_TW/)與[MEGA](https://mega.io/zh-hant/?aff=MxSxDVl4hAI)兩家，個人是使用 MEGA。MEGA 能使用的免費容量非常佛心，有 [20GB](https://mega.io/zh-hant/pricing?aff=MxSxDVl4hAI) 這麼多（[點我註冊](https://mega.nz/register/?aff=MxSxDVl4hAI)），相對於 Dropbox 免費容量只有 2GB 差了十倍啊！
+
+<!--more-->
 
 在 Fedora 安裝 Megasync 的方式有數種，這篇紀錄了在 Fedora 中安裝 MEGA Sync 的過程、一些需要注意的地方，以及自己感受到的不同安裝方式的優缺點。
 
