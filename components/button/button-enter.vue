@@ -1,6 +1,6 @@
 <template>
   <b-button
-    size="sm"
+    :size="size"
     variant="primary"
     :to="to"
     class="d-inline-flex align-items-center button-enter"
@@ -18,6 +18,10 @@ export default {
     to: {
       type: [String, Object],
       default: '',
+    },
+    size: {
+      type: String,
+      default: 'sm',
     },
   },
 }

@@ -3,7 +3,6 @@
     :link-gen="linkGen"
     :articles="articles"
     :number-of-pages="numberOfPages"
-    @change="$nuxt.refresh"
   ></articles-list>
 </template>
 
@@ -12,13 +11,12 @@ import ArticlesList from '~/components/articles/articles-list.vue'
 
 export default {
   components: { ArticlesList },
-  async asyncData({ $content, params, query, redirect, $config }) {
+  async asyncData({ $content, params, redirect, $config }) {
     const { perPage } = $config
-    const { category } = params
-    const basePath = `/category/${category}`
+    const { category, page } = params
+    const basePath = `/category/${category}/1`
 
     // 檢驗頁數
-    const page = Number(query.page || 1)
     if (isNaN(page) || page <= 0) redirect(basePath)
 
     // 取得文章
@@ -43,7 +41,7 @@ export default {
         { text: '文章分類', to: '/category/' },
         {
           text: this.$config.categoriesMap[category],
-          to: `/category/${category}`,
+          to: `/category/${category}/1`,
           active: true,
         },
       ],
@@ -51,8 +49,8 @@ export default {
   },
   methods: {
     linkGen(page) {
-      const { basePath } = this
-      return page === 1 ? basePath : { path: basePath, query: { page } }
+      const { category } = this.$route.params
+      return { path: `/category/${category}/${page}` }
     },
   },
 }

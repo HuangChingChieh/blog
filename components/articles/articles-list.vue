@@ -38,17 +38,5 @@ export default {
   data() {
     return { mobileBreakpoint }
   },
-  watch: {
-    '$route.query.page'() {
-      this.$nextTick(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
-        })
-
-        this.$emit('change')
-      })
-    },
-  },
 }
 </script>

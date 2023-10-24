@@ -5,7 +5,7 @@
     use-router
     pills
     align="center"
-    :value="$route.query.page"
+    :value="$route.params.page || 1"
   >
     <template #first-text>
       <b-icon-chevron-double-left />

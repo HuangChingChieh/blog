@@ -28,7 +28,9 @@
             <small class="mr-2 text-secondary"
               >共{{ categoryObj.count }}篇文章</small
             >
-            <button-enter :to="`/category/${category}`">文章列表</button-enter>
+            <button-enter :to="`/category/${category}/1`"
+              >文章列表</button-enter
+            >
           </div>
         </nav>
       </div>
@@ -40,26 +42,12 @@
 import CommonContainer from '~/components/common/common-container.vue'
 import ButtonEnter from '~/components/button/button-enter.vue'
 
+import getCategories from '~/utils/getCategories'
+
 export default {
   components: { CommonContainer, ButtonEnter },
   async asyncData({ $content }) {
-    const articles = await $content('articles', { deep: true })
-      .only(['category', 'title', 'tags', 'updatedAt', 'slug'])
-      .sortBy('updatedAt', 'desc')
-      .fetch()
-
-    const categories = {}
-    articles.forEach((article) => {
-      const { category } = article
-      if (category) {
-        if (!categories[category])
-          categories[category] = { count: 1, articles: [] }
-        else categories[category].count++
-
-        if (categories[category].articles.length < 3)
-          categories[category].articles.push(article)
-      }
-    })
+    const categories = await getCategories($content)
 
     return { categories }
   },

@@ -7,7 +7,7 @@
     header-class="py-3"
   >
     <template #header-close>
-      <b-icon-x class="mt-2" />
+      <b-icon-x-lg class="h6 mt-2 mb-0 mr-1" />
     </template>
 
     <common-container>
@@ -16,7 +16,7 @@
           <b-nav-item
             v-for="(name, id) in $config.categoriesMap"
             :key="id"
-            :to="`/category/${id}`"
+            :to="`/category/${id}/1`"
             :disabled="$route.params.category === id"
             :class="
               $route.params.category === id ? 'shadow-sm bg-white rounded' : ''
@@ -28,7 +28,7 @@
         <article class="py-3">
           <h6 class="mb-3 text-center">關於我</h6>
           <p>
-            一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記、使用Linux（主要是Fedora）的心得，以及生活上雜七雜八的事情。
+            {{ $config.description }}
             <nuxt-link to="/buy_me_a_tea" class="text-body">
               <span @click="valueInner = false"
                 >若這些文章對你有幫助的話，也歡迎不吝贊助我喝一杯飲料🧋。</span
@@ -43,10 +43,10 @@
 </template>
 
 <script>
-import { BIconX } from 'bootstrap-vue'
+import { BIconXLg } from 'bootstrap-vue'
 
 export default {
-  components: { BIconX },
+  components: { BIconXLg },
   props: {
     value: {
       type: Boolean,
@@ -68,9 +68,11 @@ export default {
 </script>
 
 <style lang="scss">
-.b-sidebar > .b-sidebar-header .close {
-  display: flex;
-  align-items: center;
-  font-size: 2rem;
+.b-sidebar > .b-sidebar-header {
+  .close {
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+  }
 }
 </style>

@@ -2,7 +2,7 @@
   <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
     <b-container class="py-3" :fluid="mobileBreakpoint">
       <div class="d-flex flex-row align-items-center">
-        <common-icon height="45" bordered />
+        <common-icon bordered />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
             class="font-weight-bold text-dark d-block text-decoration-none"
@@ -10,7 +10,11 @@
           >
             隨機手札
           </nuxt-link>
-          <small class="text-secondary">雜七雜八之地</small>
+          <small
+            class="text-secondary d-none"
+            :class="`d-${mobileBreakpoint}-block`"
+            >雜七雜八之地</small
+          >
         </div>
 
         <div
@@ -21,7 +25,7 @@
             <b-nav-item
               v-for="(name, id) in $config.categoriesMap"
               :key="id"
-              :to="`/category/${id}`"
+              :to="`/category/${id}/1`"
               :disabled="$route.params.category === id"
               :class="
                 $route.params.category === id
@@ -69,6 +73,10 @@ export default {
   .profile-btn {
     font-size: $h2-font-size;
   }
+
+  .common-icon {
+    height: 3rem;
+  }
 }
 
 @media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
@@ -76,6 +84,14 @@ export default {
     position: sticky;
     background-color: white;
     box-shadow: $box-shadow-sm;
+
+    .profile-btn {
+      font-size: $h4-font-size;
+    }
+
+    .common-icon {
+      height: 2rem;
+    }
   }
 }
 </style>

@@ -1,20 +1,25 @@
 import getRoutes from './utils/getRoutes'
 
+const perPage = 10
 const base = '/blog/'
 const imageServer = 'https://imagizer.imageshack.com/v2/'
 const appHost = 'https://huangchingchieh.github.io' + base
+const description =
+  '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記、使用Linux（主要是Fedora）的心得，以及生活上雜七雜八的事情。'
+const categoriesMap = {
+  linux: 'Linux使用心得',
+  frontend: '前端筆記',
+  life: '生活雜記',
+}
 
 export default {
   loading: '~/components/common-loading.vue',
   publicRuntimeConfig: {
     imageServer,
     appHost,
-    perPage: 10,
-    categoriesMap: {
-      linux: 'Linux使用心得',
-      frontend: '前端筆記',
-      life: '生活雜記',
-    },
+    perPage,
+    categoriesMap,
+    description,
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
@@ -34,7 +39,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: '前端程式 + Linux的心得筆記',
+        content: description,
       },
       {
         'http-equiv': 'X-UA-Compatible',
@@ -123,8 +128,6 @@ export default {
     'nuxt-content-git',
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
@@ -132,18 +135,11 @@ export default {
     '@nuxtjs/sitemap',
   ],
 
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
       name: '隨機手札',
-      description:
-        '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記，以及使用Linux（主要是Fedora）的心得。',
+      description,
       lang: 'zh-Hant-TW',
     },
     icon: {
