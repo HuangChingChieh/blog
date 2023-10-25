@@ -84,7 +84,8 @@ $article-font-size-base: 1rem;
   h3,
   p,
   .article-banner,
-  .article-img {
+  .article-img,
+  blockquote {
     margin: $paragraph-margin-bottom * 1.75 0;
   }
 
@@ -155,6 +156,14 @@ $article-font-size-base: 1rem;
 
     p {
       margin: $paragraph-margin-bottom 0;
+    }
+
+    em {
+      font-size: $small-font-size;
+      color: $secondary;
+      &::before {
+        content: '——';
+      }
     }
   }
 
