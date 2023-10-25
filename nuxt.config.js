@@ -26,6 +26,9 @@ export default {
   router: {
     base,
   },
+  generate: {
+    fallback: true,
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     htmlAttrs: {

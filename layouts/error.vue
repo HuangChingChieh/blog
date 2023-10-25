@@ -27,21 +27,16 @@ export default {
   data() {
     return { article: null }
   },
-  beforeMount() {
-    this.getRandomArticle()
-  },
-  methods: {
-    async getRandomArticle() {
-      const articles = await this.$content('articles', { deep: true })
-        .only(['title', 'img', 'updatedAt', 'slug', 'description'])
-        .sortBy('updatedAt', 'desc')
-        .fetch()
+  async fetch() {
+    const articles = await this.$content('articles', { deep: true })
+      .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .sortBy('updatedAt', 'desc')
+      .fetch()
 
-      debugger
-      const randomIndex = Math.ceil(Math.random() * articles.length) - 1
-      const article = articles[randomIndex]
-      if (article) this.article = article
-    },
+    debugger
+    const randomIndex = Math.ceil(Math.random() * articles.length) - 1
+    const article = articles[randomIndex]
+    if (article) this.article = article
   },
 }
 </script>
