@@ -5,7 +5,7 @@ tags: [ubuntu, swap]
 category: linux
 ---
 
-在[Ubuntu 中嘗試編譯 LineageOS](ubuntu_lineageos_sargo)時，因為實體記憶體不足的關係，上網查了一下資料發現或許能透過增加虛擬記憶體 SWAP 來解決，所以就紀錄了下來。
+在<article-inner-link slug="ubuntu_lineageos_sargo" >Ubuntu 中嘗試編譯 LineageOS</article-inner-link>時，因為實體記憶體不足的關係，上網查了一下資料發現或許能透過增加虛擬記憶體 SWAP 來解決，所以就紀錄了下來。
 
 <!--more-->
 

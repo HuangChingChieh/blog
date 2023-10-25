@@ -25,7 +25,7 @@ category: linux
 
 ### RAM
 
-若 RAM 不足 32GB，可以嘗試透過[增加 SWAP 大小](ubuntu_swap_resize)彌補主記憶體的不足編譯看看。我在以下兩種情境中嘗試過將 SWAP 直接增加到 32GB，皆可編譯成功，提供參考。
+若 RAM 不足 32GB，可以嘗試透過<article-inner-link slug="ubuntu_swap_resize">增加 SWAP 大小</article-inner-link>彌補主記憶體的不足編譯看看。我在以下兩種情境中嘗試過將 SWAP 直接增加到 32GB，皆可編譯成功，提供參考。
 
 1. 在[Linode](https://www.linode.com/)開 RAM 只有 16GB 的 Ubuntu 22.04 雲端機
 2. 在 RAM 有 32GB 的 Windows 上使用 Ubuntu 22.04 WSL2（預設 RAM 只有 Windows 的一半）
@@ -180,7 +180,7 @@ cd ~/android/lineage
 
 ### 同步原始碼為最新
 
-若是第一次編譯已經沿著上面做過指令，可跳過這個部份直接從「[編譯前的一些設定](ubuntu_lineageos_sargo#編譯前的一些設定)」開始。
+若是第一次編譯已經沿著上面做過指令，可跳過這個部份直接從「<article-inner-link slug="ubuntu_lineageos_sargo" hash="編譯前的一些設定">編譯前的一些設定</article-inner-link>」開始。
 
 ```bash
 # 強制同步原始碼為最新
@@ -216,7 +216,7 @@ brunch sargo
 
 在大功告成之後，編譯好的安裝檔會放在`~/android/lineage/out/target/product/sargo`裡面，名稱會長得像這樣：`lineage-20.0-20230415-UNOFFICIAL-sargo.zip `，日期會根據編譯日期而不同。而 recovery 檔案會是`boot.img`。
 
-若隔了一段時間要再重新編譯，直接從[編譯](ubuntu_lineageos_sargo#編譯)再執行一次就好了。
+若隔了一段時間要再重新編譯，直接從<article-inner-link slug="ubuntu_lineageos_sargo" hash="編譯">編譯</article-inner-link>再執行一次就好了。
 
 ---
 

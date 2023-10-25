@@ -11,11 +11,9 @@
         </div>
       </div>
 
-      <article-card
-        v-if="article"
-        :article="article"
-        class="border"
-      ></article-card>
+      <div v-if="article">
+        <article-card :article="article" class="border"></article-card>
+      </div>
     </div>
   </common-container>
 </template>
@@ -29,7 +27,7 @@ export default {
   data() {
     return { article: null }
   },
-  created() {
+  beforeMount() {
     this.getRandomArticle()
   },
   methods: {
@@ -39,9 +37,10 @@ export default {
         .sortBy('updatedAt', 'desc')
         .fetch()
 
+      debugger
       const randomIndex = Math.ceil(Math.random() * articles.length) - 1
       const article = articles[randomIndex]
-      this.article = article
+      if (article) this.article = article
     },
   },
 }

@@ -5,7 +5,7 @@ tags: [fedora, android, custom rom, Gooel Pixel 3a, lineageos]
 category: linux
 ---
 
-本篇文章是試圖移植之前的文章：[《在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS》](ubuntu_lineageos_sargo)的過程至 Fedora 上的心得紀錄，畢竟自己平常主要使用的系統為 Fedora，想說都是 Linux 應該是可以移植過來。
+本篇文章是試圖移植之前的文章：<article-inner-link slug="ubuntu_lineageos_sargo"></article-inner-link>的過程至 Fedora 上的心得紀錄，畢竟自己平常主要使用的系統為 Fedora，想說都是 Linux 應該是可以移植過來。
 
 <!--more-->
 
@@ -13,7 +13,7 @@ category: linux
 
 ## 硬體需求
 
-請參考之前的文章：[在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS](ubuntu_lineageos_sargo)。
+請參考之前的文章：<article-inner-link slug="ubuntu_lineageos_sargo"></article-inner-link>。
 
 不過記憶體的部分，我在 RAM 只有 16GB 的 Fedora，嘗試把 ZRAM 調高到 32GB，仍然會編譯失敗，不知道是不是有什麼其他的眉角需要調整。如果跟我一樣不是很瞭解這些運作機制的話，建議還是直接把電腦記憶體加到 32GB 吧！
 
@@ -114,7 +114,7 @@ java -version
 
 ## 取得原始碼及編譯
 
-之後步驟由於跟在 Ubuntu 中相同，請參考之前的文章：[在 Ubuntu 22.04 編譯 Pixel 3a 的 LineageOS](ubuntu_lineageos_sargo#取得-lineageos-原始碼)。
+之後步驟由於跟在 Ubuntu 中相同，請參考之前的文章：<article-inner-link slug="ubuntu_lineageos_sargo" hash="取得-lineageos-原始碼"></article-inner-link>。
 
 ---
 
