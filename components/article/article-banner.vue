@@ -5,10 +5,7 @@
       :img-class="imgClass"
       :max-width="maxWidth"
       class="article-banner-img"
-      @load="loading = false"
     />
-
-    <b-skeleton-img v-if="loading" :class="imgClass" no-aspect></b-skeleton-img>
   </div>
 </template>
 
@@ -30,11 +27,6 @@ export default {
       default: 0,
     },
   },
-  data() {
-    return {
-      loading: true,
-    }
-  },
 }
 </script>
 
@@ -43,8 +35,7 @@ export default {
   position: relative;
 }
 
-.article-card .article-banner-img,
-.b-skeleton-img {
+.article-card .article-banner-img {
   position: absolute;
   top: 0;
   left: 0;

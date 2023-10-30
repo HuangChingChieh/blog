@@ -4,7 +4,7 @@
     :srcset="srcset"
     :src="$config.imageServer + img"
     :class="imgClass"
-    @load.native="$emit('load')"
+    class="common-img"
   />
 </template>
 
@@ -106,3 +106,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.common-img {
+  height: 100%;
+  width: 100%;
+  background-color: $gray-200;
+}
+</style>
