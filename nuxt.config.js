@@ -1,4 +1,4 @@
-import getRoutes from './utils/getRoutes'
+import readingTime from 'reading-time'
 
 const perPage = 10
 const base = '/blog/'
@@ -11,6 +11,9 @@ const categoriesMap = {
   frontend: '前端筆記',
   life: '生活雜記',
 }
+
+// 從generate hooks偷routes出來給sitemap使用
+const routes = []
 
 export default {
   loading: '~/components/common-loading.vue',
@@ -28,6 +31,21 @@ export default {
   },
   generate: {
     fallback: true,
+  },
+  hooks: {
+    generate: {
+      route({ route }) {
+        routes.push(route)
+      },
+    },
+    'content:file:beforeInsert': (document) => {
+      debugger
+      if (document.extension === '.md') {
+        const { minutes } = readingTime(document.text)
+
+        document.readingTime = Math.ceil(minutes)
+      }
+    },
   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -178,17 +196,6 @@ export default {
   sitemap: {
     hostname: 'https://huangchingchieh.github.io/',
     gzip: true,
-    routes: () => getRoutes(base),
-    // exclude: ['/secret', '/admin/**'],
-    // routes: [
-    //   '/page/1',
-    //   '/page/2',
-    //   {
-    //     url: '/page/3',
-    //     changefreq: 'daily',
-    //     priority: 1,
-    //     lastmod: '2017-06-30T13:30:00.000Z',
-    //   },
-    // ],
+    routes,
   },
 }

@@ -19,6 +19,7 @@
 
       <div class="d-flex flex-row align-items-center mt-3">
         <article-date :document="article" class="small" />
+        <article-readingtime :minutes="article.readingTime" />
         <article-category :article="article" />
         <div class="text-right flex-grow-1">
           <button-enter :to="`/${article.slug}`"> 閱讀更多</button-enter>
@@ -40,11 +41,19 @@
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
+import ArticleReadingtime from '~/components/article/article-readingtime.vue'
 import ArticleCategory from '~/components/article/article-category.vue'
+
 import ButtonEnter from '~/components/button/button-enter.vue'
 
 export default {
-  components: { ArticleDate, ArticleBanner, ArticleCategory, ButtonEnter },
+  components: {
+    ArticleDate,
+    ArticleBanner,
+    ArticleReadingtime,
+    ArticleCategory,
+    ButtonEnter,
+  },
   props: {
     article: {
       type: Object,

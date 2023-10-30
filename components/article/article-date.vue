@@ -1,16 +1,16 @@
 <template>
   <time
     v-if="createTime || updateTime"
-    class="article-date d-flex align-items-center flex-row text-muted"
+    class="article-date d-flex align-items-center flex-row text-muted small mb-0"
   >
-    <template v-if="createTime">
-      <b-icon-calendar-event v-if="!hideIcon" class="mr-1" />
-      <span class="mr-3">{{ createTime }}</span>
-    </template>
-
     <template v-if="createTime !== updateTime">
       <b-icon-pencil-square v-if="!hideIcon" class="mr-1" />
       <span class="mr-3">{{ updateTime }}</span>
+    </template>
+
+    <template v-else>
+      <b-icon-calendar-event v-if="!hideIcon" class="mr-1" />
+      <span class="mr-3">{{ createTime }}</span>
     </template>
   </time>
 </template>

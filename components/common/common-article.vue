@@ -17,7 +17,8 @@
     </h1>
 
     <div class="d-flex flex-row align-items-center my-2">
-      <article-date class="small mb-0" :document="document" />
+      <article-date :document="document" />
+      <article-readingtime :minutes="document.readingTime" />
       <article-category :article="document" />
     </div>
 
@@ -36,6 +37,7 @@
       v-if="document.img"
       :img="document.img"
       img-class="rounded-lg"
+      class="rounded-lg"
       max-width="700"
     />
 
@@ -47,6 +49,7 @@
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
 import ArticleDate from '../article/article-date.vue'
+import ArticleReadingtime from '../article/article-readingtime.vue'
 import ArticleCategory from '../article/article-category.vue'
 
 export default {
@@ -54,6 +57,7 @@ export default {
     ArticleBanner,
     ArticleTag,
     ArticleDate,
+    ArticleReadingtime,
     ArticleCategory,
   },
   props: {
