@@ -51,6 +51,11 @@ export default {
 
     return { categories }
   },
+  head() {
+    return {
+      title: `文章分類`,
+    }
+  },
 }
 </script>
 

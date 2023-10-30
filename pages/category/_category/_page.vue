@@ -32,7 +32,7 @@ export default {
     articles = articles.slice((page - 1) * perPage, page * perPage)
     if (articles.length === 0) redirect(basePath)
 
-    return { articles, numberOfPages, basePath }
+    return { articles, numberOfPages, basePath, page, category }
   },
   data() {
     const { category } = this.$route.params
@@ -45,6 +45,12 @@ export default {
           active: true,
         },
       ],
+    }
+  },
+  head() {
+    const { page, category, $config } = this
+    return {
+      title: `${$config.categoriesMap[category]}：第${page}頁`,
     }
   },
   methods: {

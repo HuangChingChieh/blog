@@ -28,7 +28,13 @@ export default {
     articles = articles.slice((page - 1) * perPage, page * perPage)
     if (articles.length === 0) redirect('/')
 
-    return { articles, numberOfPages }
+    return { articles, numberOfPages, page }
+  },
+  head() {
+    const { page } = this
+    return {
+      title: `最新文章：第${page}頁`,
+    }
   },
   methods: {
     linkGen(page) {
