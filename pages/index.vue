@@ -9,6 +9,8 @@
 <script>
 import ArticlesList from '~/components/articles/articles-list.vue'
 
+import articleQueryAttrs from '~/utils/articleQueryAttrs'
+
 export default {
   name: 'IndexPage',
   components: { ArticlesList },
@@ -19,10 +21,8 @@ export default {
     if (isNaN(page) || page <= 0) redirect('/')
 
     let articles = await $content('articles', { deep: true })
-      .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .only(articleQueryAttrs.card)
       .sortBy('updatedAt', 'desc')
-      // .skip((page - 1) * perPage)
-      // .limit(perPage)
       .fetch()
 
     const numberOfPages = Math.ceil(articles.length / perPage)

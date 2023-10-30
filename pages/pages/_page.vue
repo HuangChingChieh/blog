@@ -9,6 +9,8 @@
 <script>
 import ArticlesList from '~/components/articles/articles-list.vue'
 
+import articleQueryAttrs from '~/utils/articleQueryAttrs'
+
 export default {
   components: { ArticlesList },
   async asyncData({ $content, params, redirect, $config }) {
@@ -18,7 +20,7 @@ export default {
     if (isNaN(page) || page <= 0) redirect('/')
 
     let articles = await $content('articles', { deep: true })
-      .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .only(articleQueryAttrs.card)
       .sortBy('updatedAt', 'desc')
       .fetch()
 

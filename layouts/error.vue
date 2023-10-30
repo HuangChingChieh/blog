@@ -22,6 +22,8 @@
 import ArticleCard from '~/components/article/article-card.vue'
 import CommonContainer from '~/components/common/common-container.vue'
 
+import articleQueryAttrs from '~/utils/articleQueryAttrs'
+
 export default {
   components: { ArticleCard, CommonContainer },
   data() {
@@ -29,7 +31,7 @@ export default {
   },
   async fetch() {
     const articles = await this.$content('articles', { deep: true })
-      .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .only(articleQueryAttrs.card)
       .sortBy('updatedAt', 'desc')
       .fetch()
 

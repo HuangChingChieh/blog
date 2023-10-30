@@ -9,6 +9,8 @@
 <script>
 import ArticlesList from '~/components/articles/articles-list.vue'
 
+import articleQueryAttrs from '~/utils/articleQueryAttrs'
+
 export default {
   components: { ArticlesList },
   async asyncData({ $content, params, redirect, $config }) {
@@ -21,11 +23,9 @@ export default {
 
     // 取得文章
     let articles = await $content('articles', { deep: true })
-      .only(['title', 'img', 'updatedAt', 'slug', 'description'])
+      .only(articleQueryAttrs.card)
       .where({ category })
       .sortBy('updatedAt', 'desc')
-      // .skip((page - 1) * perPage)
-      // .limit(perPage)
       .fetch()
 
     const numberOfPages = Math.ceil(articles.length / perPage)
