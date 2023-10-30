@@ -113,7 +113,7 @@ export default {
       'ModalPlugin',
       'BadgePlugin',
       'ImagePlugin',
-      'SkeletonPlugin',
+      // 'SkeletonPlugin',
       'OverlayPlugin',
       'ButtonPlugin',
       'PaginationNavPlugin',
