@@ -140,11 +140,9 @@ sudo systemctl start mbpfan.service
 
 ### 關閉 Intel Turbo Boost（選擇性）
 
-不過，8X°C 對於我來說還是覺得有點高，上網又查了一下資料，可以透過關閉 Intel Turbo Boost 來讓 CPU 的運作時脈降低，進而省電跟降低熱度。
+不過，8X°C 對於我來說還是覺得有點高，上網又查了一下資料，可以透過關閉 Intel Turbo Boost 來讓 CPU 的運作時脈降低，進而省電跟降低熱度。這個部份因為步驟較多較複雜，篇幅較長，就不在這邊記述，有興趣的人可參考<article-inner-link slug="fedora_disable_turbo_boost">另一篇文章</article-inner-link>。
 
-這個部份因為步驟較多較複雜，篇幅較長，就不在這邊記述，有興趣的人可參考另一篇文章：<article-inner-link slug="fedora_disable_turbo_boost"></article-inner-link>。
-
-<article-note>關於 Intel Turbo Boost 可參考[官方說明](https://www.intel.com.tw/content/www/tw/zh/gaming/resources/turbo-boost.html)</article-note>
+關閉 Intel Turbo Boost，就不太會超過 80°C 了，平常在冷氣房大概會是 6X°C 左右。
 
 ---
 
@@ -152,9 +150,7 @@ sudo systemctl start mbpfan.service
 
 大概就是這樣，其實有預料到 MacBook 封閉的環境可能要多一點步驟才能正常使用，不過過程比想像中的簡單些，主要原因是滿多前人也這樣子做，所以找資料、解決方法什麼的都很快，幾乎都是 Google 第一篇文章就有解答。
 
-使用上的部份，雖然是 2013 年上市的筆電，但配備了 i5-4250U，即便在只有 4GB 的環境下，Fedora 仍跑得頗順暢。只是要在瀏覽器狂開分頁或是做剪片那種繁重工作，想必是不可能的。
-
-但作為個人的外出易攜筆電，已經能應付日常工作，甚至簡單寫寫前端的程式碼了。
+使用上的部份，在關閉 Intel Turbo Boost 後，日常工作、瀏覽器簡單幾個分頁查查資料，甚至簡單寫寫前端的程式碼似乎都沒啥問題。雖然是 2013 年上市的筆電，即便在只有 4GB 的環境下，Fedora 仍跑得頗順暢，完勝我另外一台 ASUS E203NA，只能說 CPU 還是滿重要的呀。
 
 ---
 
