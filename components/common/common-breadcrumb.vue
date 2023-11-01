@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import { BIconHouse } from 'bootstrap-vue'
+import { BIconHouse, BBreadcrumb, BBreadcrumbItem } from 'bootstrap-vue'
 export default {
-  components: { BIconHouse },
+  components: { BIconHouse, BBreadcrumb, BBreadcrumbItem },
   props: {
     items: {
       type: Array,

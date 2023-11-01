@@ -9,8 +9,10 @@
 </template>
 
 <script>
+import { BOverlay } from 'bootstrap-vue'
 import { zIndexOverlay } from '~/assets/css/custom.scss'
 export default {
+  components: { BOverlay },
   data: () => ({
     loading: false,
     timeoutFn: null,

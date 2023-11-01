@@ -9,7 +9,9 @@
 </template>
 
 <script>
+import { BImgLazy } from 'bootstrap-vue'
 export default {
+  components: { BImgLazy },
   props: {
     img: {
       type: String,

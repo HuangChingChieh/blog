@@ -53,9 +53,10 @@
 </template>
 
 <script>
+import { BModal } from 'bootstrap-vue'
 import CommonImg from '../common/common-img.vue'
 export default {
-  components: { CommonImg },
+  components: { BModal, CommonImg },
   data() {
     return {
       modal: {

@@ -10,12 +10,13 @@
 </template>
 
 <script>
+import { BContainer } from 'bootstrap-vue'
 import commonHeader from '~/components/common/common-header.vue'
 import commonSidebar from '~/components/common/common-sidebar.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 export default {
-  components: { commonHeader, commonSidebar },
+  components: { BContainer, commonHeader, commonSidebar },
   data() {
     return {
       mobileBreakpoint,

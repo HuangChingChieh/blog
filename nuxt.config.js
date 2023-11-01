@@ -105,24 +105,6 @@ export default {
     // SCSS file in the project
     '~/assets/css/main.scss',
   ],
-  bootstrapVue: {
-    bootstrapCSS: false, // Or `css: false`
-    bootstrapVueCSS: false, // Or `bvCSS: false`
-    componentPlugins: [
-      'LayoutPlugin',
-      'ModalPlugin',
-      'BadgePlugin',
-      'ImagePlugin',
-      // 'SkeletonPlugin',
-      'OverlayPlugin',
-      'ButtonPlugin',
-      'PaginationNavPlugin',
-      // 'BreadcrumbPlugin',
-      'NavPlugin',
-      'SidebarPlugin',
-    ],
-    directivePlugins: [],
-  },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -147,8 +129,6 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     'nuxt-content-git',
-    // https://go.nuxtjs.dev/bootstrap
-    'bootstrap-vue/nuxt',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content

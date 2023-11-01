@@ -12,7 +12,9 @@
 </template>
 
 <script>
+import { BBadge } from 'bootstrap-vue'
 export default {
+  components: { BBadge },
   props: {
     tagName: {
       type: String,

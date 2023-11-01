@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import { BIconList } from 'bootstrap-vue'
+import { BIconList, BContainer } from 'bootstrap-vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import CommonIcon from '~/components/common/common-icon.vue'
 
 export default {
-  components: { BIconList, CommonIcon },
+  components: { BIconList, BContainer, CommonIcon },
   data() {
     return {
       mobileBreakpoint,

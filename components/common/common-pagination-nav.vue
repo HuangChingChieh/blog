@@ -31,6 +31,7 @@
 
 <script>
 import {
+  BPaginationNav,
   BIconChevronDoubleLeft,
   BIconChevronLeft,
   BIconThreeDots,
@@ -39,6 +40,7 @@ import {
 } from 'bootstrap-vue'
 export default {
   components: {
+    BPaginationNav,
     BIconChevronDoubleLeft,
     BIconChevronLeft,
     BIconThreeDots,

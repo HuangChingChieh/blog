@@ -43,10 +43,10 @@
 </template>
 
 <script>
-import { BIconXLg } from 'bootstrap-vue'
+import { BSidebar, BContainer, BNav, BNavItem, BIconXLg } from 'bootstrap-vue'
 
 export default {
-  components: { BIconXLg },
+  components: { BSidebar, BContainer, BNav, BNavItem, BIconXLg },
   props: {
     value: {
       type: Boolean,

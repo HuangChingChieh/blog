@@ -11,9 +11,9 @@
 </template>
 
 <script>
-import { BIconArrowRight } from 'bootstrap-vue'
+import { BIconArrowRight, BButton } from 'bootstrap-vue'
 export default {
-  components: { BIconArrowRight },
+  components: { BIconArrowRight, BButton },
   props: {
     to: {
       type: [String, Object],

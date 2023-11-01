@@ -12,7 +12,9 @@
 </template>
 
 <script>
+import { BModal } from 'bootstrap-vue'
 export default {
+  components: { BModal },
   props: {
     value: {
       type: Boolean,

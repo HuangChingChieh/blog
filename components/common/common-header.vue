@@ -37,29 +37,55 @@
           </b-nav>
         </div>
 
+        <!-- <a
+          href="#"
+          class="h-100 pl-4 d-flex align-items-center profile-btn text-secondary"
+          @click.prevent="searchModalOpen = true"
+        >
+          <b-icon-search />
+        </a> -->
+
         <a
           href="#"
-          class="h-100 pl-3 d-flex align-items-center profile-btn text-secondary"
+          class="h-100 pl-4 d-flex align-items-center profile-btn text-secondary"
           :class="`d-${mobileBreakpoint}-none`"
           @click.prevent="$emit('openProfileModal')"
         >
-          <b-icon-list></b-icon-list>
+          <b-icon-list />
         </a>
       </div>
     </b-container>
+
+    <!-- <modal-search v-model="searchModalOpen" /> -->
   </header>
 </template>
 
 <script>
-import { BIconList } from 'bootstrap-vue'
+import {
+  BIconList,
+  // BIconSearch,
+  BContainer,
+  BNav,
+  BNavItem,
+} from 'bootstrap-vue'
 import CommonIcon from '~/components/common/common-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
+// import ModalSearch from '~/components/modal/modal-search.vue'
 
 export default {
-  components: { BIconList, CommonIcon },
+  components: {
+    BIconList,
+    // BIconSearch,
+    BContainer,
+    BNav,
+    BNavItem,
+    CommonIcon,
+    // ModalSearch,
+  },
   data() {
     return {
       mobileBreakpoint,
+      // searchModalOpen: false,
     }
   },
 }
@@ -69,10 +95,6 @@ export default {
 .common-header {
   top: 0;
   z-index: $zindex-sticky;
-
-  .profile-btn {
-    font-size: $h2-font-size;
-  }
 
   .common-icon {
     height: 3rem;
@@ -86,7 +108,7 @@ export default {
     box-shadow: $box-shadow-sm;
 
     .profile-btn {
-      font-size: $h4-font-size;
+      font-size: $h5-font-size;
     }
 
     .common-icon {
