@@ -37,13 +37,13 @@
           </b-nav>
         </div>
 
-        <!-- <a
+        <a
           href="#"
           class="h-100 pl-4 d-flex align-items-center profile-btn text-secondary"
           @click.prevent="searchModalOpen = true"
         >
           <b-icon-search />
-        </a> -->
+        </a>
 
         <a
           href="#"
@@ -56,36 +56,36 @@
       </div>
     </b-container>
 
-    <!-- <modal-search v-model="searchModalOpen" /> -->
+    <modal-search v-model="searchModalOpen" />
   </header>
 </template>
 
 <script>
 import {
   BIconList,
-  // BIconSearch,
+  BIconSearch,
   BContainer,
   BNav,
   BNavItem,
 } from 'bootstrap-vue'
 import CommonIcon from '~/components/common/common-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
-// import ModalSearch from '~/components/modal/modal-search.vue'
+import ModalSearch from '~/components/modal/modal-search.vue'
 
 export default {
   components: {
     BIconList,
-    // BIconSearch,
+    BIconSearch,
     BContainer,
     BNav,
     BNavItem,
     CommonIcon,
-    // ModalSearch,
+    ModalSearch,
   },
   data() {
     return {
       mobileBreakpoint,
-      // searchModalOpen: false,
+      searchModalOpen: false,
     }
   },
 }

@@ -7,12 +7,15 @@
       class="d-flex flex-column flex-grow-1 px-4 py-3 order-2"
       :class="[`order-${mobileBreakpoint}-1`]"
     >
-      <div class="article-title-text">
+      <div class="article-title-text text-two-line">
         <h4 class="text-body font-weight-bolder article-title">
           {{ article.title }}
         </h4>
 
-        <p class="text-muted article-text" :title="article.description">
+        <p
+          class="text-muted article-text text-two-line"
+          :title="article.description"
+        >
           {{ article.description }}
         </p>
       </div>
@@ -98,14 +101,14 @@ $article-card-text-height: $line-height-base * $article-card-content-line *
       $headings-margin-bottom;
   }
 
-  .article-title,
-  .article-text {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: $article-card-content-line;
-    -webkit-box-orient: vertical;
-  }
+  // .article-title,
+  // .article-text {
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  //   display: -webkit-box;
+  //   -webkit-line-clamp: $article-card-content-line;
+  //   -webkit-box-orient: vertical;
+  // }
 
   .article-text {
     // font-size: $small-font-size;

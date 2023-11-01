@@ -13,26 +13,37 @@ import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
 export default {
   components: { ArticlesList },
-  async asyncData({ $content, params, redirect, $config }) {
+  async asyncData({ $content, store, params, redirect, $config }) {
     const { perPage } = $config
+    const { categories } = store.state
     const { category, page } = params
     const basePath = `/category/${category}/1`
 
-    // 檢驗頁數
-    if (isNaN(page) || page <= 0) redirect(basePath)
+    // 檢驗
+    if (
+      isNaN(page) ||
+      page <= 0 ||
+      !categories[category] ||
+      page > categories[category].pageCount
+    )
+      redirect(basePath)
 
     // 取得文章
-    let articles = await $content('articles', { deep: true })
+    const articles = await $content('articles', { deep: true })
       .only(articleQueryAttrs.card)
       .where({ category })
       .sortBy('updatedAt', 'desc')
+      .skip((page - 1) * perPage)
+      .limit(perPage)
       .fetch()
 
-    const numberOfPages = Math.ceil(articles.length / perPage)
-    articles = articles.slice((page - 1) * perPage, page * perPage)
-    if (articles.length === 0) redirect(basePath)
-
-    return { articles, numberOfPages, basePath, page, category }
+    return {
+      articles,
+      numberOfPages: categories[category].pageCount,
+      basePath,
+      page,
+      category,
+    }
   },
   data() {
     const { category } = this.$route.params

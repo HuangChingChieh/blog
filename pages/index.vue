@@ -14,22 +14,17 @@ import articleQueryAttrs from '~/utils/articleQueryAttrs'
 export default {
   name: 'IndexPage',
   components: { ArticlesList },
-  async asyncData({ $content, query, redirect, $config }) {
+  async asyncData({ $content, store, $config }) {
     const { perPage } = $config
-    const page = Number(query.page || 1)
+    const { pageCount } = store.state.articlesMetadata
 
-    if (isNaN(page) || page <= 0) redirect('/')
-
-    let articles = await $content('articles', { deep: true })
+    const articles = await $content('articles', { deep: true })
       .only(articleQueryAttrs.card)
       .sortBy('updatedAt', 'desc')
+      .limit(perPage)
       .fetch()
 
-    const numberOfPages = Math.ceil(articles.length / perPage)
-    articles = articles.slice((page - 1) * perPage, page * perPage)
-    if (articles.length === 0) redirect('/')
-
-    return { articles, numberOfPages }
+    return { articles, numberOfPages: pageCount }
   },
   head() {
     return {

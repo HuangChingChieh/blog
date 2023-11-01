@@ -42,12 +42,25 @@
 import CommonContainer from '~/components/common/common-container.vue'
 import ButtonEnter from '~/components/button/button-enter.vue'
 
-import getCategories from '~/utils/getCategories'
+import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
 export default {
   components: { CommonContainer, ButtonEnter },
-  async asyncData({ $content }) {
-    const categories = await getCategories($content)
+  async asyncData({ $content, store }) {
+    const { categories } = store.state
+    await Promise.all(
+      Object.keys(categories).map((category) =>
+        $content('articles', { deep: true })
+          .only(articleQueryAttrs.card)
+          .sortBy('updatedAt', 'desc')
+          .where({ category })
+          .limit(3)
+          .fetch()
+          .then((articles) => {
+            categories[category].articles = articles
+          })
+      )
+    )
 
     return { categories }
   },

@@ -38,11 +38,12 @@ export default {
         routes.push(route)
       },
     },
-    'content:file:beforeInsert': (document) => {
-      debugger
+    'content:file:beforeInsert': (document, database) => {
       if (document.extension === '.md') {
-        const { minutes } = readingTime(document.text)
-
+        const text = database.markdown.flattenNodeText(document.body)
+        document.text = text
+        document.plainText = text
+        const { minutes } = readingTime(text)
         document.readingTime = Math.ceil(minutes)
       }
     },
@@ -161,6 +162,7 @@ export default {
       },
     },
     ignores: ['draft'],
+    fullTextSearchFields: ['title', 'description'],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

@@ -21,7 +21,7 @@ $theme-colors: (
 @import '~bootstrap/scss/transitions';
 // @import '~bootstrap/scss/dropdown';
 // @import '~bootstrap/scss/button-group';
-@import '~bootstrap/scss/input-group';
+// @import '~bootstrap/scss/input-group';
 // @import "~bootstrap/scss/custom-forms";
 @import '~bootstrap/scss/nav';
 // @import "~bootstrap/scss/navbar";
@@ -76,13 +76,13 @@ $theme-colors: (
 // @import "~bootstrap-vue/src/components/form-checkbox/index";
 // @import "~bootstrap-vue/src/components/form-datepicker/index";
 // @import "~bootstrap-vue/src/components/form-file/index";
-// @import '~bootstrap-vue/src/components/form-input/index';
+@import '~bootstrap-vue/src/components/form-input/index';
 // @import "~bootstrap-vue/src/components/form-radio/index";
 // @import "~bootstrap-vue/src/components/form-rating/index";
 // @import "~bootstrap-vue/src/components/form-spinbutton/index";
 // @import "~bootstrap-vue/src/components/form-tags/index";
 // @import "~bootstrap-vue/src/components/form-timepicker/index";
-@import '~bootstrap-vue/src/components/input-group/index';
+// @import '~bootstrap-vue/src/components/input-group/index';
 // @import "~bootstrap-vue/src/components/media/index";
 @import '~bootstrap-vue/src/components/modal/index';
 @import '~bootstrap-vue/src/components/nav/index';
@@ -193,4 +193,12 @@ img {
   align-items: center;
   justify-content: center;
   box-shadow: $box-shadow-sm;
+}
+
+.text-two-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
