@@ -39,7 +39,11 @@
             >
               <hr v-if="index > 0" />
 
-              <article-seach-result :article="article" :keyword="keyword" />
+              <article-seach-result
+                :article="article"
+                :keyword="keyword"
+                @navigate="valueInner = false"
+              />
             </div>
 
             <div class="text-center">

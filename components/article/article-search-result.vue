@@ -2,7 +2,7 @@
   <a
     :href="`/${article.slug}`"
     class="text-decoration-none d-flex flex-column"
-    @click="goToArticle(article.slug)"
+    @click.prevent="goToArticle(article.slug)"
   >
     <text-highlight
       :keyword="keywordByTitle"
@@ -46,8 +46,8 @@ export default {
   },
   methods: {
     goToArticle(slug) {
-      this.valueInner = false
       this.$router.push(`/${slug}`)
+      this.$emit('navigate')
     },
     getBreakDownText(targetStr = '', keyword = []) {
       const maxLength = 200
