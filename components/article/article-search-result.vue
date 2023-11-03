@@ -1,8 +1,8 @@
 <template>
-  <a
-    :href="`/${article.slug}`"
+  <nuxt-link
+    :to="`/${article.slug}`"
     class="text-decoration-none d-flex flex-column"
-    @click.prevent="goToArticle(article.slug)"
+    @click.native="$emit('navigate')"
   >
     <text-highlight
       :keyword="keywordByTitle"
@@ -14,7 +14,7 @@
       :text="getBreakDownText(article.plainText, keywordByPlainText)"
       class="text-muted text-two-line"
     />
-  </a>
+  </nuxt-link>
 </template>
 <script>
 import escapeRegExp from 'lodash/escapeRegExp'
@@ -45,10 +45,6 @@ export default {
     },
   },
   methods: {
-    goToArticle(slug) {
-      this.$router.push(`/${slug}`)
-      this.$emit('navigate')
-    },
     getBreakDownText(targetStr = '', keyword = []) {
       const maxLength = 200
       if (targetStr.length > maxLength) {
