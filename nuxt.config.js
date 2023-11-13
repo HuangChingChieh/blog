@@ -35,7 +35,11 @@ export default {
   hooks: {
     generate: {
       route({ route }) {
-        routes.push(route)
+        const routeHandled =
+          typeof route === 'string' && route[route.length - 1] !== '/'
+            ? route + '/'
+            : route
+        routes.push(routeHandled)
       },
     },
     'content:file:beforeInsert': (document, database) => {

@@ -14,12 +14,14 @@
       <b-container fluid>
         <b-nav vertical>
           <b-nav-item
-            v-for="(name, id) in $config.categoriesMap"
-            :key="id"
-            :to="`/category/${id}/1`"
-            :disabled="$route.params.category === id"
+            v-for="(name, category) in $config.categoriesMap"
+            :key="category"
+            :to="getCategoryLink({ category })"
+            :disabled="$route.params.category === category"
             :class="
-              $route.params.category === id ? 'shadow-sm bg-white rounded' : ''
+              $route.params.category === category
+                ? 'shadow-sm bg-white rounded'
+                : ''
             "
             >{{ name }}</b-nav-item
           >
@@ -45,6 +47,8 @@
 <script>
 import { BSidebar, BContainer, BNav, BNavItem, BIconXLg } from 'bootstrap-vue'
 
+import { getCategoryLink } from '~/utils/getLink'
+
 export default {
   components: { BSidebar, BContainer, BNav, BNavItem, BIconXLg },
   props: {
@@ -63,6 +67,9 @@ export default {
         this.$emit('input', value)
       },
     },
+  },
+  methods: {
+    getCategoryLink,
   },
 }
 </script>

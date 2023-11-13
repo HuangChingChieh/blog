@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     v-if="article && article.category"
-    :to="`/category/${article.category}/1`"
+    :to="getCategoryLink({ category: article.category })"
     class="text-muted small d-inline-flex align-items-center"
   >
     <b-icon-folder class="mr-1" />
@@ -11,6 +11,7 @@
 
 <script>
 import { BIconFolder } from 'bootstrap-vue'
+import { getCategoryLink } from '~/utils/getLink'
 export default {
   components: { BIconFolder },
   props: {
@@ -19,5 +20,6 @@ export default {
       default: () => ({}),
     },
   },
+  methods: { getCategoryLink },
 }
 </script>

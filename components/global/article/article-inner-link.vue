@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { getArticleLink } from '~/utils/getLink'
 export default {
   props: {
     slug: {
@@ -38,7 +39,7 @@ export default {
     to() {
       const { slug, hash } = this
 
-      let url = `/${slug}`
+      let url = getArticleLink({ slug })
       if (hash) url += `#${hash}`
 
       return url

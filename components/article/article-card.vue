@@ -25,7 +25,7 @@
         <article-readingtime :minutes="article.readingTime" />
         <article-category :article="article" />
         <div class="text-right flex-grow-1">
-          <button-enter :to="`/${article.slug}`"> 閱讀更多</button-enter>
+          <button-enter :to="getArticleLink(article)"> 閱讀更多</button-enter>
         </div>
       </div>
     </div>
@@ -49,6 +49,8 @@ import ArticleCategory from '~/components/article/article-category.vue'
 
 import ButtonEnter from '~/components/button/button-enter.vue'
 
+import { getArticleLink } from '~/utils/getLink'
+
 export default {
   components: {
     ArticleDate,
@@ -67,6 +69,9 @@ export default {
     return {
       mobileBreakpoint,
     }
+  },
+  methods: {
+    getArticleLink,
   },
 }
 </script>

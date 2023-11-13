@@ -11,13 +11,15 @@ import ArticlesList from '~/components/articles/articles-list.vue'
 
 import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
+import { getCategoryLink } from '~/utils/getLink'
+
 export default {
   components: { ArticlesList },
   async asyncData({ $content, store, params, redirect, $config }) {
     const { perPage } = $config
     const { categories } = store.state
     const { category, page } = params
-    const basePath = `/category/${category}/1`
+    const basePath = getCategoryLink({ category })
 
     // 檢驗
     if (
@@ -52,7 +54,7 @@ export default {
         { text: '文章分類', to: '/category/' },
         {
           text: this.$config.categoriesMap[category],
-          to: `/category/${category}/1`,
+          to: getCategoryLink({ category }),
           active: true,
         },
       ],
@@ -67,7 +69,7 @@ export default {
   methods: {
     linkGen(page) {
       const { category } = this.$route.params
-      return { path: `/category/${category}/${page}` }
+      return { path: getCategoryLink({ category, page }) }
     },
   },
 }

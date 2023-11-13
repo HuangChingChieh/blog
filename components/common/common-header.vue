@@ -23,12 +23,12 @@
         >
           <b-nav>
             <b-nav-item
-              v-for="(name, id) in $config.categoriesMap"
-              :key="id"
-              :to="`/category/${id}/1`"
-              :disabled="$route.params.category === id"
+              v-for="(name, category) in $config.categoriesMap"
+              :key="category"
+              :to="getCategoryLink({ category })"
+              :disabled="$route.params.category === category"
               :class="
-                $route.params.category === id
+                $route.params.category === category
                   ? 'shadow-sm bg-white rounded'
                   : ''
               "
@@ -72,6 +72,8 @@ import CommonIcon from '~/components/common/common-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import ModalSearch from '~/components/modal/modal-search.vue'
 
+import { getCategoryLink } from '~/utils/getLink'
+
 export default {
   components: {
     BIconList,
@@ -88,6 +90,7 @@ export default {
       searchModalOpen: false,
     }
   },
+  methods: { getCategoryLink },
 }
 </script>
 

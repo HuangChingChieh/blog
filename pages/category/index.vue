@@ -17,7 +17,7 @@
           <nuxt-link
             v-for="article in categoryObj.articles"
             :key="article.slug"
-            :to="`/${article.slug}`"
+            :to="getArticleLink(article)"
             class="d-block pl-3 py-2 border-left category-article-link"
             >{{ article.title }}</nuxt-link
           >
@@ -28,7 +28,7 @@
             <small class="mr-2 text-secondary"
               >共{{ categoryObj.count }}篇文章</small
             >
-            <button-enter :to="`/category/${category}/1`"
+            <button-enter :to="getCategoryLink({ category })"
               >文章列表</button-enter
             >
           </div>
@@ -43,6 +43,8 @@ import CommonContainer from '~/components/common/common-container.vue'
 import ButtonEnter from '~/components/button/button-enter.vue'
 
 import articleQueryAttrs from '~/utils/articleQueryAttrs'
+
+import { getArticleLink, getCategoryLink } from '~/utils/getLink'
 
 export default {
   components: { CommonContainer, ButtonEnter },
@@ -69,6 +71,7 @@ export default {
       title: `文章分類`,
     }
   },
+  methods: { getArticleLink, getCategoryLink },
 }
 </script>
 

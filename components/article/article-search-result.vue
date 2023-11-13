@@ -1,6 +1,6 @@
 <template>
   <nuxt-link
-    :to="`/${article.slug}`"
+    :to="getArticleLink(article)"
     class="text-decoration-none d-flex flex-column"
     @click.native="$emit('navigate')"
   >
@@ -19,6 +19,8 @@
 <script>
 import escapeRegExp from 'lodash/escapeRegExp'
 import TextHighlight from '~/components/text/text-highlight.vue'
+
+import { getArticleLink } from '~/utils/getLink'
 
 export default {
   components: { TextHighlight },
@@ -45,6 +47,7 @@ export default {
     },
   },
   methods: {
+    getArticleLink,
     getBreakDownText(targetStr = '', keyword = []) {
       const maxLength = 200
       if (targetStr.length > maxLength) {
