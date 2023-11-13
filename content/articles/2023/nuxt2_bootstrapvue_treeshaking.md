@@ -13,51 +13,32 @@ Bootstrap 是個很好用的 UI 框架，在 Vue 生態系中主要由 Bootstrap
 
 ## JS 部份的 Tree Shaking
 
-根據[官方文件](https://bootstrap-vue.org/docs#tree-shaking-with-nuxtjs)，Bootstrap Vue 有原生支援 Nuxt2 設定檔的 Tree Shaking 方式：
+雖然[官方文件](https://bootstrap-vue.org/docs#tree-shaking-with-nuxtjs)有提到 Bootstrap Vue 原生支援 Nuxt2 設定檔的 Tree Shaking 方式，但後來自己測試了一下，若自行引入 SCSS，JS 元件在需要時才透過最原始的方式`import`引入並註冊，似乎才是最能降低編譯後專案大小的方式。
 
-```javascript [nuxt.config.js]
-module.exports = {
-  modules: ['bootstrap-vue/nuxt'],
-  bootstrapVue: {
-    componentPlugins: [
-      'LayoutPlugin',
-      'FormPlugin',
-      'FormCheckboxPlugin',
-      'FormInputPlugin',
-      'FormRadioPlugin',
-      'ToastPlugin',
-      'ModalPlugin',
-    ],
-    directivePlugins: [
-      'VBPopoverPlugin',
-      'VBTooltipPlugin',
-      'VBScrollspyPlugin',
-    ],
+例如需要使用`b-badge`元件時，再自行引入並註冊：
+
+```vue
+<template>
+  <b-badge variant="secondary">
+    #<slot>{{ tagName }}</slot>
+  </b-badge>
+</template>
+
+<script>
+import { BBadge } from 'bootstrap-vue'
+export default {
+  components: { BBadge },
+  props: {
+    tagName: {
+      type: String,
+      default: '',
+    },
   },
 }
+</script>
 ```
 
-其中元件各自的 Plugins 名稱，皆可在官網各元件頁面的最底部找到，根據自己的需求引入即可，要注意的是有些元件之間有依賴關係，引入後若行為不符合自己的想像，可能就是有漏掉，要再小心。
-
-也可針對元件本身作引入：
-
-```javascript [nuxt.config.js]
-odule.exports = {
-  modules: ['bootstrap-vue/nuxt'],
-  bootstrapVue: {
-    components: [
-      'BContainer',
-      'BRow',
-      'BCol',
-      'BFormInput',
-      'BButton',
-      'BTable',
-      'BModal',
-    ],
-    directives: ['VBModal', 'VBPopover', 'VBTooltip', 'VBScrollspy'],
-  },
-}
-```
+透過這種方式使用 Bootstrap Vue，`nuxt.config.js`中是可以完全不做相關設定的，當然開發時都要自己手動註冊要用的元件，會比較麻煩，但因為這樣我就把這個部落格最後編譯的大小又降低了。
 
 ---
 
