@@ -133,7 +133,7 @@ sudo adb reboot bootloader
 
 這邊個人不建議使用還原，因為如果是從原生的 Android 轉過來，會有很多預裝的 APP，直接還原會全部都被裝回來。第一次轉到客製 Rom 還是建議先一個一個把要用的裝回來。
 
-以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行，這邊正常執行是指有安裝前面所說的[ih8sn 套件](pixel3a_custom_rom#下載ih8sn選擇性但建議安裝)。
+以下列出一些我有在用的 APP 清單，紀錄刷機後是否可以正常執行，這邊正常執行是指有安裝前面所說的<article-inner-link slug="pixel3a_custom_rom" hash="下載-ih8sn選擇性但建議安裝">ih8sn 套件</article-inner-link>。
 
 ### 正常可使用
 

@@ -38,11 +38,12 @@ export default {
     },
     to() {
       const { slug, hash } = this
+      const path = getArticleLink({ slug })
 
-      let url = getArticleLink({ slug })
-      if (hash) url += `#${hash}`
-
-      return url
+      return {
+        path,
+        hash,
+      }
     },
   },
 }
