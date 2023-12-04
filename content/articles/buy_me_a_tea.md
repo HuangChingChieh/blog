@@ -20,7 +20,7 @@ category: life
 
 部落格內容主要分成幾大類：
 
-- Linux 使用心得：如題紀錄 Linux 的使用心得（主要是[Fedora](https://getfedora.org/)）以及分享開源軟體
+- Linux 心得： Linux 的使用心得（主要是[Fedora](https://getfedora.org/)）以及分享開源軟體
 - 前端筆記：在前端汪洋闖蕩的筆記，會有像是工作上處理 Bug 的紀錄、步驟過程……等等。
 - 生活雜記：無法歸類在前面兩類的就會放在這類
 

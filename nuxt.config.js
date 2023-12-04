@@ -7,7 +7,7 @@ const appHost = 'https://huangchingchieh.github.io' + base
 const description =
   '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記、使用Linux（主要是Fedora）的心得，以及生活上雜七雜八的事情。'
 const categoriesMap = {
-  linux: 'Linux使用心得',
+  linux: 'Linux心得',
   frontend: '前端筆記',
   life: '生活雜記',
 }

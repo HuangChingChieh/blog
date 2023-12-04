@@ -128,6 +128,7 @@ $article-font-size-base: 1rem;
   p {
     // font-weight: $font-weight-light;
     word-break: break-all;
+    text-align: justify;
   }
 
   p code {
