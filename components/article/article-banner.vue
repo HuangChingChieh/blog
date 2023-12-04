@@ -47,7 +47,7 @@ export default {
 @media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .article-card .article-banner-img {
     position: static;
-    aspect-ratio: 2 / 1;
+    aspect-ratio: 2.2 / 1;
   }
 }
 </style>

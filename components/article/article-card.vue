@@ -4,8 +4,8 @@
     :class="[`flex-${mobileBreakpoint}-row`]"
   >
     <div
-      class="d-flex flex-column flex-grow-1 px-4 py-3 order-2"
-      :class="[`order-${mobileBreakpoint}-1`]"
+      class="d-flex flex-column flex-grow-1 px-3 py-3 order-2"
+      :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
     >
       <div class="article-title-text text-two-line">
         <h4 class="text-body font-weight-bolder article-title">
@@ -20,7 +20,10 @@
         </p>
       </div>
 
-      <div class="d-flex flex-row align-items-center mt-3">
+      <div
+        class="d-flex flex-row align-items-center"
+        :class="[`mt-${mobileBreakpoint}-3`]"
+      >
         <article-date :document="article" class="small" />
         <article-readingtime :minutes="article.readingTime" />
         <article-category :article="article" />
@@ -143,7 +146,8 @@ $article-card-text-height: $line-height-base * $article-card-content-line *
     }
 
     .article-title {
-      font-size: $h5-font-size;
+      // font-size: $h5-font-size;
+      font-size: 1.1rem;
       display: block;
     }
 

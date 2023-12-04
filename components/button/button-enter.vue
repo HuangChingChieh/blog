@@ -3,10 +3,10 @@
     :size="size"
     variant="primary"
     :to="to"
-    class="d-inline-flex align-items-center button-enter"
+    class="d-inline-flex flex-row align-items-center button-enter"
   >
     <slot></slot>
-    <b-icon-arrow-right class="ml-1" />
+    <b-icon-arrow-right />
   </b-button>
 </template>
 
@@ -37,7 +37,7 @@ export default {
   }
 
   &:hover .b-icon {
-    width: 1rem;
+    width: 1.25rem;
   }
 }
 </style>

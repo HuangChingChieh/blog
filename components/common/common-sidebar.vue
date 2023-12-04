@@ -29,7 +29,7 @@
         <hr />
         <article class="py-3">
           <h6 class="mb-3 text-center">關於我</h6>
-          <p>
+          <p class="mb-0">
             {{ $config.description }}
             <nuxt-link to="/buy_me_a_tea" class="text-body">
               <span @click="valueInner = false"

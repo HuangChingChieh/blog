@@ -1,6 +1,6 @@
 <template>
   <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
-    <b-container class="py-3" :fluid="mobileBreakpoint">
+    <b-container :fluid="mobileBreakpoint" :class="`py-${mobileBreakpoint}-3`">
       <div class="d-flex flex-row align-items-center">
         <common-icon bordered />
         <div class="ml-3 flex-grow-1">
@@ -109,6 +109,8 @@ export default {
     position: sticky;
     background-color: white;
     box-shadow: $box-shadow-sm;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
 
     .profile-btn {
       font-size: $h5-font-size;
