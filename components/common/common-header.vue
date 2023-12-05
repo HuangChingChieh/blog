@@ -1,7 +1,10 @@
 <template>
   <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
     <b-container :fluid="mobileBreakpoint" :class="`py-${mobileBreakpoint}-3`">
-      <div class="d-flex flex-row align-items-center">
+      <div
+        class="d-flex flex-row align-items-center px-2"
+        :class="`px-${mobileBreakpoint}-0`"
+      >
         <common-icon bordered />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
@@ -17,80 +20,101 @@
           >
         </div>
 
-        <div
-          class="d-none align-items-center justify-content-end"
-          :class="`d-${mobileBreakpoint}-flex`"
-        >
-          <b-nav>
-            <b-nav-item
-              v-for="(name, category) in $config.categoriesMap"
-              :key="category"
-              :to="getCategoryLink({ category })"
-              :disabled="$route.params.category === category"
-              :class="
-                $route.params.category === category
-                  ? 'shadow-sm bg-white rounded'
-                  : ''
-              "
-              >{{ name }}</b-nav-item
-            >
-          </b-nav>
+        <div class="d-flex align-items-center justify-content-end">
+          <common-header-icon
+            icon="folder"
+            title="文章分類"
+            @click="modal.categories = true"
+          >
+            <span v-if="$route.params.category" class="pl-1">{{
+              $config.categoriesMap[$route.params.category]
+            }}</span>
+            <span v-else-if="$route.path === '/'" class="pl-1">最新文章</span>
+          </common-header-icon>
+
+          <common-header-icon
+            v-if="hasToc"
+            icon="card-list"
+            title="文章摘要"
+            @click="modal.toc = true"
+          />
         </div>
 
-        <a
-          href="#"
-          class="h-100 pl-4 d-flex align-items-center profile-btn text-secondary"
-          @click.prevent="searchModalOpen = true"
-        >
-          <b-icon-search />
-        </a>
-
-        <a
-          href="#"
-          class="h-100 pl-4 d-flex align-items-center profile-btn text-secondary"
-          :class="`d-${mobileBreakpoint}-none`"
-          @click.prevent="$emit('openProfileModal')"
-        >
-          <b-icon-list />
-        </a>
+        <common-header-icon
+          icon="search"
+          title="搜尋文章"
+          @click="modal.search = true"
+        />
       </div>
     </b-container>
 
-    <modal-search v-model="searchModalOpen" />
+    <modal-search v-model="modal.search" />
+    <modal-categories v-model="modal.categories" />
+    <modal-toc v-model="modal.toc" :toc="toc" />
   </header>
 </template>
 
 <script>
-import {
-  BIconList,
-  BIconSearch,
-  BContainer,
-  BNav,
-  BNavItem,
-} from 'bootstrap-vue'
+import { BContainer } from 'bootstrap-vue'
 import CommonIcon from '~/components/common/common-icon.vue'
+import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import ModalSearch from '~/components/modal/modal-search.vue'
-
-import { getCategoryLink } from '~/utils/getLink'
+import ModalCategories from '~/components/modal/modal-categories.vue'
+import ModalToc from '~/components/modal/modal-toc.vue'
 
 export default {
   components: {
-    BIconList,
-    BIconSearch,
     BContainer,
-    BNav,
-    BNavItem,
     CommonIcon,
+    CommonHeaderIcon,
     ModalSearch,
+    ModalCategories,
+    ModalToc,
   },
   data() {
     return {
       mobileBreakpoint,
-      searchModalOpen: false,
+      modal: {
+        search: false,
+        categories: false,
+        toc: false,
+      },
+      toc: [],
     }
   },
-  methods: { getCategoryLink },
+  async fetch() {
+    await this.getToc()
+  },
+  computed: {
+    hasToc() {
+      const { toc } = this
+      return Array.isArray(toc) && toc.length > 0
+    },
+  },
+  watch: {
+    '$route.params.slug'(slug) {
+      this.getToc()
+    },
+  },
+  methods: {
+    async getToc() {
+      const { $content } = this
+      const { slug } = this.$route.params
+
+      if (slug) {
+        const articles = await $content('articles', { deep: true })
+          .only(['toc', 'slug'])
+          .where({ slug })
+          .fetch()
+
+        const article = articles[0]
+        this.toc = article?.toc || []
+      } else {
+        this.toc = []
+      }
+    },
+  },
 }
 </script>
 

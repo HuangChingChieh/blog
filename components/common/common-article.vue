@@ -1,17 +1,5 @@
 <template>
   <article class="common-article">
-    <!-- <nav>
-      <ul>
-        <li
-          v-for="link of article.toc"
-          :key="link.id"
-          @click="scrollTo(link.id)"
-        >
-          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
-        </li>
-      </ul>
-    </nav> -->
-
     <h1>
       {{ document.title }}
     </h1>
