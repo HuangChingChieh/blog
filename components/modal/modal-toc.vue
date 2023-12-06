@@ -6,6 +6,7 @@
     scrollable
     title="摘要"
     modal-class="modal-toc"
+    @hidden="hidden"
   >
     <b-nav v-b-scrollspy vertical>
       <b-nav-item
@@ -13,18 +14,21 @@
         :key="i"
         :to="{ hash: `#${item.id}` }"
         class="border-left"
-        @click="valueInner = false"
-      >
-        <span
-          class="d-block"
-          :style="{
-            'padding-left': `${item.depth - 2}rem`,
-            opacity: 1 - (item.depth - 2) * 0.1,
-          }"
-          :class="{ small: item.depth > 2, 'opacity-75': item.depth > 2 }"
-          >{{ item.text }}</span
+        link-classes="p-0"
+        ><span
+          class="d-block px-3 py-2"
+          :class="{ small: item.depth > 2, 'opacity-50': item.depth > 2 }"
+          @click.prevent.stop="scrollTo(item)"
         >
-      </b-nav-item>
+          <span
+            :style="{
+              'padding-left': `${item.depth - 2}rem`,
+              opacity: 1 - (item.depth - 2) * 0.1,
+            }"
+            >{{ item.text }}</span
+          >
+        </span></b-nav-item
+      >
     </b-nav>
   </b-modal>
 </template>
@@ -44,6 +48,9 @@ export default {
       default: () => [],
     },
   },
+  data() {
+    return { hidden: () => {} }
+  },
   computed: {
     valueInner: {
       get() {
@@ -52,6 +59,24 @@ export default {
       set(value) {
         this.$emit('input', value)
       },
+    },
+  },
+  methods: {
+    scrollTo({ id }) {
+      this.hidden = () => {
+        const element = document.querySelector(`#${id}`)
+        if (element instanceof HTMLElement) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'center',
+          })
+
+          this.hidden = () => {}
+        }
+      }
+
+      this.valueInner = false
     },
   },
 }
