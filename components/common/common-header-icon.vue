@@ -1,7 +1,7 @@
 <template>
   <b-button
     variant="link"
-    class="d-inline-flex align-items-center text-decoration-none px-0 ml-4"
+    class="d-inline-flex align-items-center text-decoration-none ml-4 common-header-icon"
     @click.prevent="$emit('click')"
   >
     <component :is="`b-icon-${icon}`" class="h5 mb-0"></component>

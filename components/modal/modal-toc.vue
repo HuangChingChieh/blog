@@ -25,6 +25,7 @@
               'padding-left': `${item.depth - 2}rem`,
               opacity: 1 - (item.depth - 2) * 0.1,
             }"
+            class="d-block"
             >{{ item.text }}</span
           >
         </span></b-nav-item
@@ -89,7 +90,11 @@ export default {
 
     &.active {
       border-color: $primary !important;
-      color: $primary;
+
+      .nav-link {
+        color: $primary;
+        font-weight: 900;
+      }
     }
   }
 }

@@ -20,16 +20,21 @@
           >
         </div>
 
-        <div class="d-flex align-items-center justify-content-end">
+        <div
+          class="d-flex align-items-center justify-content-end"
+          :class="{ 'header-icons-fixed': !headerVisible }"
+        >
           <common-header-icon
             icon="folder"
             title="文章分類"
             @click="modal.categories = true"
           >
-            <span v-if="$route.params.category" class="pl-1">{{
-              $config.categoriesMap[$route.params.category]
-            }}</span>
-            <span v-else-if="$route.path === '/'" class="pl-1">最新文章</span>
+            <template v-if="headerVisible">
+              <span v-if="$route.params.category" class="pl-1">{{
+                $config.categoriesMap[$route.params.category]
+              }}</span>
+              <span v-else-if="$route.path === '/'" class="pl-1">最新文章</span>
+            </template>
           </common-header-icon>
 
           <common-header-icon
@@ -38,24 +43,26 @@
             title="文章摘要"
             @click="modal.toc = true"
           />
-        </div>
 
-        <common-header-icon
-          icon="search"
-          title="搜尋文章"
-          @click="modal.search = true"
-        />
+          <common-header-icon
+            icon="search"
+            title="搜尋文章"
+            @click="modal.search = true"
+          />
+        </div>
       </div>
     </b-container>
 
     <modal-search v-model="modal.search" />
     <modal-categories v-model="modal.categories" />
     <modal-toc v-model="modal.toc" :toc="toc" />
+
+    <div v-b-visible="onHeaderHide"></div>
   </header>
 </template>
 
 <script>
-import { BContainer } from 'bootstrap-vue'
+import { BContainer, VBVisible } from 'bootstrap-vue'
 import CommonIcon from '~/components/common/common-icon.vue'
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
@@ -72,6 +79,7 @@ export default {
     ModalCategories,
     ModalToc,
   },
+  directives: { 'b-visible': VBVisible },
   data() {
     return {
       mobileBreakpoint,
@@ -81,6 +89,7 @@ export default {
         toc: false,
       },
       toc: [],
+      headerVisible: true,
     }
   },
   async fetch() {
@@ -114,6 +123,9 @@ export default {
         this.toc = []
       }
     },
+    onHeaderHide(isVisible) {
+      this.headerVisible = isVisible
+    },
   },
 }
 </script>
@@ -125,6 +137,33 @@ export default {
 
   .common-icon {
     height: 3rem;
+  }
+
+  .common-header-icon {
+    padding: 0;
+    transition: none;
+  }
+
+  .header-icons-fixed {
+    position: fixed;
+    top: 1rem;
+    flex-direction: column;
+
+    .common-header-icon {
+      margin-bottom: 1rem;
+      padding: 0.5rem;
+      background-color: white;
+      box-shadow: $box-shadow-sm;
+      border-radius: 90px;
+    }
+  }
+}
+
+@each $breakpoint, $max-widths in $container-max-widths {
+  @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
+    .header-icons-fixed {
+      left: calc(50% + $max-widths / 2 - 1rem);
+    }
   }
 }
 
@@ -143,6 +182,10 @@ export default {
     .common-icon {
       height: 2rem;
     }
+  }
+
+  .common-header-icon {
+    padding: 0;
   }
 }
 </style>
