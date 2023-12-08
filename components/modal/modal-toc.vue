@@ -18,7 +18,7 @@
       >
         <modal-toc-item
           :item="item"
-          :minDepth="minDepth"
+          :min-depth="minDepth"
           @click="scrollTo(item)"
         />
       </b-nav-item>
