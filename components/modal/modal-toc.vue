@@ -15,29 +15,22 @@
         :to="{ hash: `#${item.id}` }"
         class="border-left"
         link-classes="p-0"
-        ><span
-          class="d-block px-3 py-2"
-          :class="{ small: item.depth > 2, 'opacity-50': item.depth > 2 }"
-          @click.prevent.stop="scrollTo(item)"
-        >
-          <span
-            :style="{
-              'padding-left': `${item.depth - 2}rem`,
-              opacity: 1 - (item.depth - 2) * 0.1,
-            }"
-            class="d-block"
-            >{{ item.text }}</span
-          >
-        </span></b-nav-item
       >
+        <modal-toc-item
+          :item="item"
+          :minDepth="minDepth"
+          @click="scrollTo(item)"
+        />
+      </b-nav-item>
     </b-nav>
   </b-modal>
 </template>
 
 <script>
 import { BModal, VBScrollspy, BNav, BNavItem } from 'bootstrap-vue'
+import ModalTocItem from './modal-toc-item.vue'
 export default {
-  components: { BModal, BNav, BNavItem },
+  components: { BModal, BNav, BNavItem, ModalTocItem },
   directives: { 'b-scrollspy': VBScrollspy },
   props: {
     value: {
@@ -60,6 +53,12 @@ export default {
       set(value) {
         this.$emit('input', value)
       },
+    },
+    minDepth() {
+      const { toc } = this
+      return Array.isArray(toc) && toc.length > 0
+        ? toc.reduce((depth, item) => Math.min(depth, item.depth), toc[0].depth)
+        : 2
     },
   },
   methods: {
