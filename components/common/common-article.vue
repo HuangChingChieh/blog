@@ -64,7 +64,6 @@ $article-font-size-base: 1rem;
   font-size: 1rem;
 
   h1,
-  h2,
   .article-date {
     margin-bottom: 0.25rem;
   }
@@ -73,6 +72,7 @@ $article-font-size-base: 1rem;
     margin-bottom: $paragraph-margin-bottom;
   }
 
+  h2,
   h3,
   p,
   .article-banner,

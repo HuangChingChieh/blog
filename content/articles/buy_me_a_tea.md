@@ -30,7 +30,15 @@ category: life
 
 若這裡的經驗分享有幫助到你，歡迎直接斗內請我喝杯手搖飲！畢竟工程師就是需要配一杯手搖飲，才能工作啊！目前開放贊助的方式如下：
 
-<global-donations></global-donations>
+### 加密貨幣
+
+加密貨幣是無國界的資產轉移方式，若你是有在使用加密貨幣的朋友，歡迎拿幣砸我（？）喔。目前接受[MaiCoin 網站](https://www.maicoin.com/docs/fees-limits/transfers)中主網類型為 ERC20 / BSC / Polygon 的幣種。
+
+<global-donations-crypto></global-donations-crypto>
+
+### Ko-fi
+
+若想透過信用卡或簽帳卡贊助我喝飲料，可以透過 Ko-fi 平台哦！[點這裡去 Ko-fi 贊助頁面](https://ko-fi.com/chaoschaoshuang)。
 
 ### Like Coin
 
