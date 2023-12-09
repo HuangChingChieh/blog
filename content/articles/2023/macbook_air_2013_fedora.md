@@ -12,7 +12,7 @@ category: linux
 上網做了一下功課之後，發現滿多前輩都做了類似的事情，只是大家灌的發行版本不同。過程中會面對三個問題：
 
 1. Fedora 沒有原生支援 MacBook Air 2013 中 Wifi 的驅動程式
-2. 攝影機也需要額外動作去處理之後才能使用
+2. Facetime HD 也需要額外動作去處理之後才能使用
 3. Macbook 溫度容易飆高的問題
 
 除了第 3.點比較複雜以外，步驟都不會太麻煩，以下開始。
@@ -43,7 +43,7 @@ category: linux
 
 ## 安裝 Wifi 驅動程式
 
-安裝並更新 Fedora 完成後，就要來解決 Wifi 跟攝影機的問題了。首先是 Wifi，因 MacBook Air 2013 使用的 Wifi 硬體需要專有驅動程式，Fedora 可透過啟用 rpmfusion-nonfree 來獲得。
+安裝並更新 Fedora 完成後，就要來解決 Wifi 跟 Facetime HD 的問題了。首先是 Wifi，因 MacBook Air 2013 使用的 Wifi 硬體需要專有驅動程式，Fedora 可透過啟用 rpmfusion-nonfree 來獲得。
 
 ```bash
 # 啟用RPM Fusion軟體庫
@@ -69,9 +69,9 @@ sudo depmod -a && sudo modprobe wl
 
 ---
 
-## 安裝攝影機驅動程式
+## 安裝 Facetime HD 驅動程式
 
-攝影機驅動程式就稍微麻煩一點，目前還沒有直接可用的套件，必須要先自己編譯：
+Facetime HD 驅動程式就稍微麻煩一點，目前還沒有直接可用的套件，必須要先自己編譯：
 
 ```bash
 # 安裝編譯驅動程式必要的套件
@@ -84,7 +84,7 @@ cd ~ && git clone https://github.com/patjak/facetimehd-firmware.git
 ```
 
 ```bash
-# 編譯驅動程式
+# 編譯Facetime HD驅動程式
 cd facetimehd-firmware && make && sudo make install
 ```
 
@@ -108,9 +108,9 @@ sudo dnf install facetimehd
 modprobe facetimehd
 ```
 
-### 測試攝影機
+### 測試 Facetime HD
 
-因 GNOME 內建的 Cheese 程式不支援，可透過 WebRTC 網站的範例來測試：[https://webrtc.github.io/samples/src/content/getusermedia/gum/](https://webrtc.github.io/samples/src/content/getusermedia/gum/)。
+因 GNOME 內建的 Cheese 程式不支援 Facetime HD，可透過 WebRTC 網站的範例來測試：[https://webrtc.github.io/samples/src/content/getusermedia/gum/](https://webrtc.github.io/samples/src/content/getusermedia/gum/)。
 
 ---
 
@@ -146,6 +146,36 @@ sudo systemctl start mbpfan.service
 
 ---
 
+## 關閉開機音效
+
+雖然有些果迷好像覺得很棒，但在咖啡店開機的時候，那個「咚」的音效真的太引人注目了，還是關掉得好。
+
+```bash
+# 先安裝efivar
+sudo dnf install efivar
+```
+
+接下來的指令因為要暫時切換到 root 身份，務必確認指令正確，並不要做多餘的事，以免對電腦造成無法逆轉的後果。
+
+```bash
+# 切換到root身份
+sudo su
+
+# 讓控制開機音效的efivar變數可以被覆寫
+chattr -i /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+
+# 將代表「靜音」的值寫入變數
+printf "\x07\x00\x00\x00\x00" > /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+
+# 讓變數恢復為無法被覆寫的狀態
+chattr +i /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+
+# 離開root身份
+exit
+```
+
+---
+
 ## 後記
 
 大概就是這樣，其實有預料到 MacBook 封閉的環境可能要多一點步驟才能正常使用，不過過程比想像中的簡單些，主要原因是滿多前人也這樣子做，所以找資料、解決方法什麼的都很快，幾乎都是 Google 第一篇文章就有解答。
@@ -158,3 +188,4 @@ sudo systemctl start mbpfan.service
 
 1. [LIBERATING THE MACBOOK AIR 2013](https://boilingsteam.com/liberating-the-macbook-air-2013-with-linux-complete-guide/#facetimehd)
 2. [Macbook pro 2013 camera drivers - Reddit](https://www.reddit.com/r/Fedora/comments/tgyrxv/comment/i157pyq/)
+3. [macbook-mute.sh](https://gist.github.com/0xbb/ae298e2798e1c06d0753)
