@@ -4,7 +4,7 @@
     :class="tocItemOuterClass"
     @click.prevent.stop="$emit('click')"
   >
-    <span :style="tocItemInnerStyle"> {{ item.text }}</span>
+    <span :style="tocItemInnerStyle" class="d-block"> {{ item.text }}</span>
   </span>
 </template>
 
