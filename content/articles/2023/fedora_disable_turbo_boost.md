@@ -27,7 +27,7 @@ category: linux
 
 ---
 
-## GNOME 擴充套件
+## 透過 GNOME 擴充套件關閉
 
 第一個方式就是透過[cpufreq](https://extensions.gnome.org/extension/1082/cpufreq/)這個擴充套件來完成，這個套件甚至可以調整 CPU 的最低／最高頻率以及可使用的 CPU 核心數量。
 
@@ -37,7 +37,7 @@ category: linux
 
 ---
 
-## 修改設定值
+## 透過修改系統設定值關閉
 
 第二個方式就是我採用的方式了，自行修改設定值並設定為開機時自動開啟。首先建立一個 system service 檔案，可使用自己喜歡的文字編輯器：
 

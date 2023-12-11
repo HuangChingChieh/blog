@@ -55,7 +55,9 @@ sudo dnf install nautilus-megasync
 ```bash
 # 啟用Flathub軟體庫
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo && flatpak remote-modify --enable flathub
+```
 
+```bash
 # 安裝MEGA Sync
 flatpak install flathub nz.mega.MEGAsync
 ```
@@ -73,7 +75,9 @@ rpmfusion 包含了許多因為各種原因而無法被包含在 Fedora 套件�
 ```bash
 # 啟用rpmfusion套件庫
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+```
 
+```bash
 # 安裝megasync
 sudo dnf install megasync
 ```

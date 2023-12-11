@@ -1,11 +1,10 @@
 <template>
-  <nuxt-link v-if="title" :to="to">
+  <nuxt-link v-if="title" :to="{ hash }">
     <slot>《{{ title }}》</slot>
   </nuxt-link>
 </template>
 
 <script>
-import { getArticleLink } from '~/utils/getLink'
 export default {
   props: {
     slug: {
@@ -35,15 +34,6 @@ export default {
     title() {
       const { article } = this
       if (article) return article.title
-    },
-    to() {
-      const { slug, hash } = this
-      const path = getArticleLink({ slug })
-
-      return {
-        path,
-        hash,
-      }
     },
   },
 }

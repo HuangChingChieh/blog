@@ -19,7 +19,7 @@ category: frontend
 
 **使用框架：Nuxt 2(Static) + BootstrapVue + SCSS**
 
-## <article-img img="923/4y4ztl.png"></article-img>
+<article-img img="923/4y4ztl.png"></article-img>
 
 ---
 

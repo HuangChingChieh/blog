@@ -72,13 +72,19 @@ category: linux
 ```bash
 # 先更新一下系統
 sudo dnf update
+```
 
+```bash
 # 安裝編譯需要的套件
 sudo dnf install android-tools bc @"C Development Tools and Libraries" @"Development Tools" gcc gcc-c++ glibc-devel glibc-static libstdc++-devel libstdc++-static curl git-lfs gnupg gperf ImageMagick ncurses-devel.i686 ncurses-devel.x86_64 ncurses-compat-libs.i686 ncurses-compat-libs.x86_64 readline-devel.i686 zlib-devel.i686 elfutils-libelf-devel lz4-libs ncurses-libs  sdl12-compat-devel openssl-devel libxml2 libxml2-devel lzop pngcrush rsync schedtool squashfs-tools xsltproc zip zlib-devel java-11-openjdk python3 repo wget python3-protobuf -y
+```
 
+```bash
 # 設定git身份(email)
 git config --global user.email "you@example.com"
+```
 
+```bash
 # 設定git身份(名稱)
 git config --global user.name "Your Name"
 ```

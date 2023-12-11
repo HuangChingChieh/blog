@@ -100,10 +100,14 @@ sudo gnome-text-editor /etc/dracut.conf.d/facetimehd.conf
 ```bash
 # 啟用套件褲
 sudo dnf copr enable frgt10/facetimehd-dkms
+```
 
+```bash
 # 安裝套件
 sudo dnf install facetimehd
+```
 
+```bash
 # 載入驅動程式模組
 modprobe facetimehd
 ```
@@ -129,10 +133,17 @@ modprobe facetimehd
 sudo dnf install mbpfan
 ```
 
+接下來要設定`mbpfan`在開機後就自動啟動：
+
 ```bash
-# 設定mbpfan在開機後就自動啟動
 sudo systemctl enable mbpfan.service
+```
+
+```bash
 sudo systemctl daemon-reload
+```
+
+```bash
 sudo systemctl start mbpfan.service
 ```
 
@@ -160,16 +171,24 @@ sudo dnf install efivar
 ```bash
 # 切換到root身份
 sudo su
+```
 
+```bash
 # 讓控制開機音效的efivar變數可以被覆寫
 chattr -i /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+```
 
+```bash
 # 將代表「靜音」的值寫入變數
 printf "\x07\x00\x00\x00\x00" > /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+```
 
+```bash
 # 讓變數恢復為無法被覆寫的狀態
 chattr +i /sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82
+```
 
+```bash
 # 離開root身份
 exit
 ```

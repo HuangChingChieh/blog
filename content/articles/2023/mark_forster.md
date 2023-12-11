@@ -11,7 +11,7 @@ category: life
 
 ---
 
-## 《The Voice》片段
+## 在《The Voice》擔任評審的片段
 
 之前有一陣子（不是疫情時）很喜歡看 Youtube 的 The Voice 片段，類似像好聲音那種節目，看那種很厲害的素人詮釋一些歌曲，順便也發掘一些沒聽過的歌。而《The Voice》在許多不同國家都有拍攝，也會找來當地知名的歌手來當導師，德國有幾季就是由 Mark Forster 擔任其中之一。
 
@@ -55,7 +55,7 @@ Flash mich 的意思就是電我（mich 就是英文的 me），這首歌原曲�
 
 ---
 
-## 從《Bist du Okay》開始
+## 聽的第一首歌：《Bist du Okay》
 
 那時候把 Mark Forster 當關鍵字餵進去 Youtube 搜尋，第一個影片就是《Bist du Okay》的 MV。
 

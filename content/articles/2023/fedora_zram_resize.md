@@ -14,7 +14,9 @@ category: linux
 ```bash
 # 首先檢查一下目前的ZRAM大小
 swapon
+```
 
+```bash
 # 會看到這樣子的輸出，可以看到SIZE是8GB。
 NAME       TYPE      SIZE  USED PRIO
 /dev/zram0 partition   8G 15.8M  100
@@ -43,7 +45,9 @@ zram-size = min(ram, 8192)
 ```bash
 # 檢查一下調整後的大小
 swapon
+```
 
+```bash
 # SIZE變成16GB就對囉
 NAME       TYPE      SIZE USED PRIO
 /dev/zram0 partition  16G   0B  100

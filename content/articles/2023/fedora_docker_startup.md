@@ -11,36 +11,50 @@ category: linux
 
 ---
 
-### 安裝 Docker
+## 安裝 Docker
 
 ```bash
 # Fedora 38已內建此套件
 sudo dnf -y install dnf-plugins-core
+```
 
+```bash
 # 新增 Docker 的套件庫
 sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+```
 
+```bash
 # 安裝 Docker
 sudo dnf install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
+```bash
 # 啟動 Docker
 sudo systemctl start docker
 ```
 
-### 安裝後設定
+---
+
+## 安裝後的設定
 
 設定讓 Docker 可以無需特權（sudo）執行
 
 ```bash
 # 將目前的使用者加入docker群組
 sudo usermod -aG docker $USER
+```
 
+```bash
 # 讓使用者設定生效
 newgrp docker
+```
 
+```bash
 # 測試Docker是否安裝成功
 docker run --rm hello-world
+```
 
+```bash
 # 有成功執行的話刪除剛剛下載的image
 docker image rm hello-world
 ```

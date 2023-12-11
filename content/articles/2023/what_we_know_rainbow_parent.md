@@ -49,7 +49,7 @@ category: life
 
 ## 引用文獻
 
-### 75 個認為同志家庭的小孩與一般小孩無異的研究
+### 認為同志家庭的小孩與一般小孩無異的研究（共 75 篇）
 
 1. Adams, J., & Light, R. (2015). Scientific consensus, the law, and same sex parenting outcomes. Social Science Research, 53, 300–310.
 2. Allen, M., & Burrell, N. (1996). Comparing the impact of homosexual and heterosexual parents on children: metaanalysis of existing research. Journal of Homosexuality, 32(2), 19–35.
@@ -127,7 +127,7 @@ category: life
 74. Wainright, J. L., & Patterson, C. J. (2008). Peer relations among adolescents with female same-sex parents. Developmental Psychology, 44(1), 117–126.
 75. Wainright, J. L., Russell, S. T., & Patterson, C. J. (2004). Psychosocial adjustment, school outcomes, and romantic relationships of adolescents with same-sex parents. Child Development, 75(6), 1886–1898.
 
-### 4 個認為同志家庭的小孩會面臨額外風險的研究
+### 認為同志家庭的小孩會面臨額外風險的研究（共 4 篇）
 
 1. Allen, D. W. (2013). High school graduation rates among children of same-sex households. Review of Economics of the Household, 11(4), 635–658.
 2. Regnerus, M. (2012). How different are the adult children of parents who have same-sex relationships? Findings from the New Family Structures Study. Social Science Research, 41(4), 752–770.

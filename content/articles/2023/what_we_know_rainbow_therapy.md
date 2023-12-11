@@ -43,7 +43,7 @@ category: life
 
 ## 引用文獻
 
-### 12 個認為轉換療法無效／有害的學術研究
+### 認為轉換療法無效／有害的學術研究（共 12 篇）
 
 1. Beckstead, A. L., & Morrow, S. L. (2004). Mormon clients’ experiences of conversion therapy: The need for a new treatment approach. The Counseling Psychologist, 32(5), 651–690.
 2. Borowich, A. (2008). Failed reparative therapy of orthodox Jewish homosexuals.Journal of Gay & Lesbian Mental Health, 12(3), 167–177.
@@ -58,11 +58,11 @@ category: life
 11. Smith, G., Bartlett, A. & King, M. (2004). Treatments of homosexuality in Britain since 1950 — an oral history: The experience of patients. British Medical Journal, 328(7437), 427–429.
 12. Weiss, E. M., Morehouse, J., Yeager, T., & Berry, T. (2010). A qualitative study of ex-gay and ex-ex-gay experiences. Journal of Gay & Lesbian Mental Health, 14(4), 291-319.
 
-### 1 個認為轉換療法有效的研究
+### 認為轉換療法有效的研究（共 1 篇）
 
 1. Nicolosi, J., Byrd, A. D., & Potts, R. W. (2000). Retrospective self-reports of changes in homosexual orientation: A consumer survey of conversion therapy clients. Psychological Reports, 86, 1071–1088.
 
-### 34 個並未作出結論但對於面對 LGB 個案的臨床工作者可能有用的研究
+### 並未作出結論但對於面對 LGB 個案的臨床工作者可能有用的研究（共 34 篇）
 
 1. Beckstead, A. L. (2012). Can we change sexual orientation? Archives of Sexual Behavior, 41(1), 121–134.
 2. Bright, C. (2004). Deconstructing reparative therapy: an examination of the processes involved when attempting to change sexual orientation. Clinical Social Work Journal, 32(4), 471–481.

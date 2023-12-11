@@ -20,10 +20,14 @@ category: linux
 ```bash
 # 移除用不到的套件
 sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* rhythmbox -y
+```
 
+```bash
 # 移除用不到的 Gnome 擴充套件與 GNOME Classic
 sudo dnf remove gnome-shell-extension-*
+```
 
+```bash
 # 更新
 sudo dnf update -y
 ```
@@ -50,10 +54,14 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 ```bash
 sudo dnf install p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter gnome-console megasync nautilus-megasync -y
+```
 
+```bash
 # 安裝 Chrome
 sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+```
 
+```bash
 # 安裝多媒體編碼套件
 sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 ```
@@ -73,20 +81,24 @@ flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.
 sudo dnf install git gh -y
 ```
 
-安裝 Visual Studio Code
+### 安裝 Visual Studio Code
 
 ```bash
 # 匯入微軟套件庫金鑰
 sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+```
 
+```bash
 # 新增VS Code套件庫
 sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+```
 
+```bash
 # 安裝
 sudo dnf check-update && sudo dnf install code
 ```
 
-Github CLI 設定
+### Github CLI 設定
 
 ```bash
 gh auth login
@@ -99,10 +111,14 @@ gh auth login
 ```bash
 # 安裝額外的桌布
 sudo dnf install *backgrounds*gnome* *gnome*backgrounds*
+```
 
+```bash
 # 安裝 GTK 主題／圖示主題／字型
 sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni-uming-fonts wqy-microhei-fonts google-noto-sans-cjk-tc-fonts google-noto-sans-mono-cjk-tc-fonts google-noto-serif-cjk-tc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+```
 
+```bash
 # 從內建的軟體庫安裝 Gnome 擴充套件
 sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu -y
 ```

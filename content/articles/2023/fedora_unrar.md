@@ -11,6 +11,8 @@ category: linux
 
 ---
 
+## 前置作業
+
 ### 先移除原本安裝的 unrar（選擇性）
 
 由於官方套件庫也有一個叫做 unrar 的套件，是用上面所說的`libarchive`去模擬`unrar`的指令，若有先安裝須先移除。
@@ -25,13 +27,19 @@ sudo dnf remove unrar
 sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
-### 安裝 unrar
+---
+
+## 安裝 unrar
+
+啟用 rpmfusiuon-nonfree 後就能透過指令界面安裝了。
 
 ```bash
 sud dnf install unrar
 ```
 
-### 解壓縮檔案
+---
+
+## 使用 unrar
 
 unrar 的指令也很單純，如下所示，若檔案經由密碼壓縮，會有互動式指令介面讓你輸入密碼。
 

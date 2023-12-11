@@ -11,11 +11,15 @@ category: frontend
 
 把元素 sticky 在頂部似乎沒啥問題，但 sticky 到底部時就在 Android 的 Chrome 遇到問題了（Firefox 不會）。
 
-### 問題
+---
+
+## 問題
 
 Chrome 上面的網址列在往下滾動會隱藏，這時底部的 Sticky 元素會往上跳一個距離；而在往上滾動時，Chrome 網址列又會出現，這時底部的 Sticky 元素又會回到原本正確的位置。
 
-### 解決方式
+---
+
+## 解決方式
 
 上網嘗試了一些方式後都沒有解決，後來查到這篇文章[Mobile browser bars being hidden can affect CSS position sticky bottom](https://www.stevefenton.co.uk/blog/2022/12/mobile-position-sticky-issue/)，發現他用了一個非常輕巧的方式解決。只要加一條`position: fixed`的元素：
 

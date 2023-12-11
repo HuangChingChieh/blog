@@ -14,11 +14,15 @@ category: linux
 ```bash
 # 首先檢查一下目前的SWAP大小
 swapon
+```
 
+```bash
 # 會看到這樣子的輸出，可以看到SIZE是8GB。
 NAME       TYPE      SIZE  USED PRIO
 /dev/sdb0 partition   8G 15.8M  100
+```
 
+```bash
 # 先關閉SWAP
 sudo swapoff -a
 ```
@@ -26,13 +30,19 @@ sudo swapoff -a
 ```bash
 # 建立一個SWAP檔案
 sudo fallocate -l 16G /swapfile
+```
 
+```bash
 # 改變檔案的權限
 sudo chmod 600 /swapfile
+```
 
+```bash
 # 標記檔案爲SWAP
 sudo mkswap /swapfile
+```
 
+```bash
 # 啟用
 sudo swapon /swapfile
 ```
@@ -40,7 +50,9 @@ sudo swapon /swapfile
 ```bash
 # 檢查一下調整後的大小
 swapon
+```
 
+```bash
 # SIZE變成16GB就對囉
 NAME       TYPE      SIZE USED PRIO
 /dev/zram0 partition  16G   0B  100

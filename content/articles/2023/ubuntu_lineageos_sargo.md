@@ -5,11 +5,15 @@ img: 922/DxakSn.jpg
 category: linux
 ---
 
-最近因為 LineageOS 各裝置紛紛升上 LineageOS 20.0（Android 13），但手上的 Pixel 3a 卻遲遲沒有消息，後來上了 [XDA](https://forum.xda-developers.com/t/official-lineageos-19-1-for-the-google-pixel-3a.4436933/post-88303289) 看了一下討論串，發現開發者說是因為 eSIM 無法使用的關係，所以才無法公告升級上去。心裡想著反正我也用不到 eSIM，不如就來順便學學怎麼自己編譯 LineageOS 好了。
+<article-note>雖然 eSIM 問題仍然存在，但目前官方已將 Pixel 3a 的官方版本升到 LineageOS 20.0 囉！若只是單純要升級的朋友，可直接[下載官方編譯的 ROM](https://download.lineageos.org/devices/sargo/builds)就好。</article-note>
+
+之前因為 LineageOS 各裝置紛紛升上 LineageOS 20.0（Android 13），但手上的 Pixel 3a 卻遲遲沒有消息，後來上了 [XDA](https://forum.xda-developers.com/t/official-lineageos-19-1-for-the-google-pixel-3a.4436933/post-88303289) 看了一下討論串，發現開發者說是因為 eSIM 無法使用的關係，所以之前才無法公告升級上去。心裡想著反正我也用不到 eSIM，不如就來順便學學怎麼自己編譯 LineageOS 好了。
 
 <!--more-->
 
-### 免責聲明
+---
+
+## 免責聲明
 
 本篇的內容是參考[官方文件](https://wiki.lineageos.org/devices/sargo/build)的編譯過程紀錄，內容可能有所出入，請斟酌服用，因本篇文章內容錯誤導致手機損壞，本人不負任何責任。
 
@@ -51,7 +55,9 @@ sudo apt install bc bison build-essential ccache curl flex g++-multilib gcc-mult
 ```bash
 # 設定git身份(email)
 git config --global user.email "you@example.com"
+```
 
+```bash
 # 設定git身份(名稱)
 git config --global user.name "Your Name"
 ```
@@ -70,13 +76,19 @@ git lfs install
 ```bash
 # 建立資料夾以儲存原始碼
 mkdir -p ~/android/lineage
+```
 
+```bash
 # 移到原始碼資料夾
 cd ~/android/lineage
+```
 
+```bash
 # 初始化 repo
 repo init
+```
 
+```bash
 # 設定要同步的套件庫與分支
 repo init -u https://github.com/LineageOS/android.git -b lineage-20.0 --git-lfs
 ```
@@ -95,7 +107,9 @@ repo sync
 ```bash
 # 設定編譯的環境變數
 source build/envsetup.sh
+```
 
+```bash
 # 同步Pixel 3a原始碼
 breakfast sargo
 ```
@@ -118,12 +132,14 @@ ls ~/android/lineage/device/google/sargo/extract-files.sh
 
 ## 提取 Pixel 3a 的專有驅動程式
 
-接下來要開始提取 Pixel 3a 的驅動程式，
+接下來要開始提取 Pixel 3a 的驅動程式，步驟稍微複雜一些。
 
 ```bash
 # 建立暫存資料以儲存抽出來的驅動程式
 mkdir -p ~/android/system_dump
+```
 
+```bash
 # 移到資料夾
 cd ~/android/system_dump
 ```
@@ -133,36 +149,66 @@ cd ~/android/system_dump
 ```bash
 # 下載安裝檔
 wget https://mirrorbits.lineageos.org/full/sargo/20230919/lineage-19.1-20230919-nightly-sargo-signed.zip
+```
 
-# 取得提取映像檔的程式
+接下來要取得可以提取映像檔的程式，並從檔案中提取映像檔。
+
+```bash
 git clone https://github.com/LineageOS/android_tools_extract-utils android/tools/extract-utils
-git clone https://github.com/LineageOS/android_system_update_engine android/system/update_engine
+```
 
+```bash
+git clone https://github.com/LineageOS/android_system_update_engine android/system/update_engine
+```
+
+```bash
 # 從檔案中提取映像檔
 python android/tools/extract-utils/extract_ota.py lineage-19.1-20230919-nightly-sargo-signed.zip
+```
 
-這裡執行可能需要一段時間，期間沒有文字提示要耐心等候，等到完成之後，再執行下面指令。
+這裡執行可能需要一段時間，期間沒有文字提示要耐心等候，等到完成之後，再執行下面指令來掛載取得的映像檔。
 
-# 掛載映像檔
+```bash
+# 建立資料夾來提供掛載點
 mkdir system/
-sudo mount -o ro system.img system/
-sudo mount -o ro vendor.img system/vendor/
-sudo mount -o ro product.img system/product/
-sudo mount -o ro system_ext.img system/system_ext/
+```
 
+```bash
+sudo mount -o ro system.img system/
+```
+
+```bash
+sudo mount -o ro vendor.img system/vendor/
+```
+
+```bash
+sudo mount -o ro product.img system/product/
+```
+
+```bash
+sudo mount -o ro system_ext.img system/system_ext/
+```
+
+都掛載完成後，最後就可以從映像檔中提取驅動程式了。提取驅動程式會執行一小段時間，看電腦規格而定，我自己的是大概幾分鐘。
+
+```bash
 # 移到Pixel 3a的原始碼資料夾
 cd ~/android/lineage/device/google/sargo
+```
 
+```bash
 # 執行提取驅動程式的指令
 ./extract-files.sh ~/android/system_dump/
 ```
 
-提取驅動程式會執行一小段時間，看電腦規格而定，我自己的是大概幾分鐘。最後作一些收尾工作：
+提取完成後，作一些收尾工作：
 
 ```bash
 # 卸載剛剛掛載的映像檔
 sudo umount -R ~/android/system_dump/system/
+```
 
+```bash
 # 移除用來暫存的資料夾
 rm -rf ~/android/system_dump/
 ```
@@ -185,10 +231,14 @@ cd ~/android/lineage
 ```bash
 # 強制同步原始碼為最新
 repo sync --force-sync
+```
 
+```bash
 # 設定編譯的環境變數
 source build/envsetup.sh
+```
 
+```bash
 # 再次同步Pixel 3a原始碼為最新
 breakfast sargo
 ```
@@ -198,10 +248,14 @@ breakfast sargo
 ```bash
 # 啟用CCACHE
 export USE_CCACHE=1
+```
 
+```bash
 # 設定CCACHE
 ccache -M 50G
+```
 
+```bash
 # 設定CCACHE壓縮
 ccache -o compression=true
 ```
