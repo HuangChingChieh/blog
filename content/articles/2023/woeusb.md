@@ -59,7 +59,7 @@ sudo woeusb --device '/home/{{someuser}}/下載/Win11_22H2_Chinese_Traditional_x
 
 執行並輸入管理者密碼後，若有錯誤就會自動停止，可能要看一下錯誤訊息來排解。若正確，會看類似這樣的訊息：
 
-```
+```bash
 Info: Mounting source filesystem...
 Info: Wiping all existing partition table and filesystem signatures in /dev/sda...
 /dev/sda: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54

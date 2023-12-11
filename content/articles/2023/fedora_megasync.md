@@ -19,7 +19,7 @@ category: linux
 
 <article-img img="922/H6rlOP.png"></article-img>
 
-下載完後用自己喜歡的方式安裝（例如使用終端機），安裝完成後就會啟用 MEGA 官方的套件庫，
+下載完後用自己喜歡的方式安裝（例如使用終端機），安裝完成後就會啟用 MEGA 官方的套件庫囉！
 
 ```bash
 # /some-path/megasync-Fedora_38.x86_64.rpm要更換成自己下載的目錄喔

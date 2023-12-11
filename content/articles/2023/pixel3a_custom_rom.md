@@ -77,7 +77,7 @@ Safetynet 是 Google 用來檢查安裝 Android 的裝置是否有經過竄改�
 sudo dnf install android-tools
 ```
 
-沒錯就是這樣一條指令，adb 跟 fastboot 裝到好。如果是第一次安裝，安裝完建議重新開機一次。
+沒錯！就是這樣一條指令，adb 跟 fastboot 裝到好。如果是第一次安裝，安裝完建議重新開機一次。
 
 ### 下載相關的 ROM 以及 Recovery
 

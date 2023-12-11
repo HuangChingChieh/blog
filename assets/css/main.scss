@@ -140,19 +140,15 @@ img {
     font-size: $small-font-size;
     line-height: 1;
     color: white;
-
-    & + pre {
-      margin-top: 0;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
   }
 
   pre {
     border-radius: $border-radius-lg;
     font-size: $small-font-size !important;
-    white-space: pre-wrap;
-    margin: $paragraph-margin-bottom 0;
+    margin: 0 0 $paragraph-margin-bottom 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    padding: 1rem;
   }
 }
 

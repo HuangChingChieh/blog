@@ -101,7 +101,9 @@ java -version
 ```bash
 # 設定Java版本
 sudo alternatives --config java
+```
 
+```bash
 # 會看到像這樣的畫面，要選擇是java-11-openjdk的那條。
 有 2 個程式提供「java」。
 

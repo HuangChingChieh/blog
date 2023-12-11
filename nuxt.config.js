@@ -1,4 +1,5 @@
 import readingTime from 'reading-time'
+import shiki from 'shiki'
 
 const perPage = 10
 const base = '/blog/'
@@ -161,8 +162,27 @@ export default {
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {
     markdown: {
-      prism: {
-        theme: 'prism-themes/themes/prism-vsc-dark-plus.min.css',
+      async highlighter() {
+        const highlighter = await shiki.getHighlighter({
+          // Complete themes: https://github.com/shikijs/shiki/tree/main/packages/shiki/themes
+          theme: 'nord',
+        })
+        return (rawCode, lang, { fileName }, { h, node, u }) => {
+          const highlightedCode = highlighter.codeToHtml(rawCode, lang)
+
+          const children = []
+          children.push(u('raw', highlightedCode))
+
+          return h(
+            node,
+            'article-code',
+            {
+              className: 'nuxt-content-highlight',
+              fileName,
+            },
+            children
+          )
+        }
       },
     },
     ignores: ['draft'],

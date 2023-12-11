@@ -169,10 +169,6 @@ npm install --save-dev sass sass-loader@10
 ```javascript [nuxt.config.js]
 module.exports = {
   modules: ['bootstrap-vue/nuxt'],
-  bootstrapVue: {
-    bootstrapCSS: false, // Or `css: false`
-    bootstrapVueCSS: false, // Or `bvCSS: false`
-  },
   css: [
     // SCSS file in the project
     '~/assets/css/main.scss',

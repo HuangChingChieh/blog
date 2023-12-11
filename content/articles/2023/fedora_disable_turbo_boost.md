@@ -67,8 +67,17 @@ WantedBy=sysinit.target
 
 ```bash
 sudo systemctl daemon-reload
+```
+
+```bash
 sudo systemctl enable disable-intel-turboboost
+```
+
+```bash
 sudo systemctl start disable-intel-turboboost
+```
+
+```bash
 sudo systemctl status disable-intel-turboboost
 ```
 
@@ -77,7 +86,9 @@ sudo systemctl status disable-intel-turboboost
 ```bash
 # 永久性恢復使用Turbo Boost
 sudo systemctl disable disable-intel-turboboost
+```
 
+```bash
 # 暫時恢復使用Turbo Boost（重開後仍停用）
 sudo systemctl stop disable-intel-turboboost
 ```
