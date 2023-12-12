@@ -179,6 +179,7 @@ export default {
             {
               className: 'nuxt-content-highlight',
               fileName,
+              lang,
             },
             children
           )

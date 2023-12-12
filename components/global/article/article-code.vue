@@ -1,7 +1,7 @@
 <template>
   <div class="article-code position-relative">
     <div
-      class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-dark"
+      class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-secondary"
     >
       <div
         class="flex-grow-1 text-truncate pr-3 small font-weight-bold text-monospace"
