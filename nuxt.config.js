@@ -165,7 +165,7 @@ export default {
       async highlighter() {
         const highlighter = await shiki.getHighlighter({
           // Complete themes: https://github.com/shikijs/shiki/tree/main/packages/shiki/themes
-          theme: 'nord',
+          theme: 'dark-plus',
         })
         return (rawCode, lang, { fileName }, { h, node, u }) => {
           const highlightedCode = highlighter.codeToHtml(rawCode, lang)

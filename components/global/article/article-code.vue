@@ -1,7 +1,13 @@
 <template>
   <div class="article-code position-relative">
-    <div class="filename d-flex flex-row align-items-center">
-      <div class="flex-grow-1 text-truncate">{{ fileName }}</div>
+    <div
+      class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-dark"
+    >
+      <div
+        class="flex-grow-1 text-truncate pr-3 small font-weight-bold text-monospace"
+      >
+        {{ fileName }}
+      </div>
 
       <b-button
         @click="copyCode"
@@ -17,8 +23,6 @@
     <div ref="code">
       <slot></slot>
     </div>
-
-    <input ref="hiddenInput" v-model="toCopyCode" type="hidden" />
   </div>
 </template>
 
@@ -31,9 +35,13 @@ export default {
       type: String,
       default: '',
     },
+    lang: {
+      type: String,
+      default: '',
+    },
   },
   data() {
-    return { toCopyCode: '', copied: false, copiedTimeout: null }
+    return { copied: false, copiedTimeout: null }
   },
   methods: {
     setCopied() {
@@ -46,18 +54,24 @@ export default {
     copyCode() {
       if (this.copied) return
 
-      const { code, hiddenInput } = this.$refs
+      const { code } = this.$refs
 
       if (navigator.clipboard?.writeText) {
-        navigator.clipboard
-          .writeText(code.querySelector('pre').innerText)
-          .then(() => {
-            this.setCopied()
-          })
-      } else if (hiddenInput instanceof HTMLInputElement) {
-        hiddenInput.select()
+        const toCopyCode = code.innerText
+        navigator.clipboard.writeText(toCopyCode).then(() => {
+          this.setCopied()
+        })
+      } else {
+        const range = document.createRange()
+        range.selectNode(code)
+
+        const selection = window.getSelection()
+        selection.removeAllRanges()
+        selection.addRange(range)
 
         document.execCommand('copy')
+        selection.removeAllRanges()
+
         this.setCopied()
       }
     },

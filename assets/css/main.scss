@@ -128,20 +128,6 @@ img {
 .nuxt-content-highlight {
   position: relative;
 
-  .filename {
-    display: block;
-    font-family: $font-family-monospace;
-    font-weight: $font-weight-bold;
-    background-color: $primary;
-    border-top-left-radius: $border-radius-lg;
-    border-top-right-radius: $border-radius-lg;
-    padding: 0.5rem 1rem;
-    z-index: 1;
-    font-size: $small-font-size;
-    line-height: 1;
-    color: white;
-  }
-
   pre {
     border-radius: $border-radius-lg;
     font-size: $small-font-size !important;
