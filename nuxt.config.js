@@ -146,6 +146,7 @@ export default {
   pwa: {
     manifest: {
       name: '隨機手札',
+      short_name: '隨機手札',
       description,
       lang: 'zh-Hant-TW',
     },
