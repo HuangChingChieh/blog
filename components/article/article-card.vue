@@ -7,8 +7,8 @@
       class="d-flex flex-column flex-grow-1 px-3 py-3 order-2"
       :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
     >
-      <div class="article-title-text text-two-line">
-        <h4 class="text-body font-weight-bolder article-title">
+      <div class="article-title-text">
+        <h4 class="text-body font-weight-bolder article-title text-two-line">
           {{ article.title }}
         </h4>
 

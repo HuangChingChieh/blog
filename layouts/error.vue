@@ -30,15 +30,21 @@ export default {
     return { article: null }
   },
   async fetch() {
+    const { count } = this.$store.state.articlesMetadata
+    const randomIndex = Math.ceil(Math.random() * count)
+
     const articles = await this.$content('articles', { deep: true })
       .only(articleQueryAttrs.card)
       .sortBy('updatedAt', 'desc')
+      .skip(randomIndex)
+      .limit(1)
       .fetch()
 
-    debugger
-    const randomIndex = Math.ceil(Math.random() * articles.length) - 1
-    const article = articles[randomIndex]
+    const article = articles[0]
     if (article) this.article = article
+  },
+  head: {
+    title: '哎呀～你尋找的網頁不存在哦！',
   },
 }
 </script>

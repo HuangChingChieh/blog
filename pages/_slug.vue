@@ -20,9 +20,8 @@ import { getHeadForArticle } from '~/utils/seo'
 export default {
   components: { LikerButton, CommonArticle, CommonContainer },
   async asyncData({ $content, params, error }) {
-    const articles = await $content('', { deep: true })
-      .where({ slug: params.slug })
-      .fetch()
+    const { slug } = params
+    const articles = await $content('', { deep: true }).where({ slug }).fetch()
 
     const article = articles[0]
     if (!article) error({ statusCode: '404' })
