@@ -15,11 +15,14 @@ import { getCategoryLink } from '~/utils/getLink'
 
 export default {
   components: { ArticlesList },
-  async asyncData({ $content, store, params, redirect, $config }) {
+  async asyncData({ $content, store, params, error, $config }) {
+    let articles = []
+    let numberOfPages = 1
+    let basePath = '/'
+
     const { perPage } = $config
     const { categories } = store.state
     const { category, page } = params
-    const basePath = getCategoryLink({ category })
 
     // 檢驗
     if (
@@ -28,20 +31,24 @@ export default {
       !categories[category] ||
       page > categories[category].pageCount
     )
-      redirect(basePath)
+      error({ statusCode: '404' })
+    else {
+      // 取得文章
+      articles = await $content('articles', { deep: true })
+        .only(articleQueryAttrs.card)
+        .where({ category })
+        .sortBy('updatedAt', 'desc')
+        .skip((page - 1) * perPage)
+        .limit(perPage)
+        .fetch()
 
-    // 取得文章
-    const articles = await $content('articles', { deep: true })
-      .only(articleQueryAttrs.card)
-      .where({ category })
-      .sortBy('updatedAt', 'desc')
-      .skip((page - 1) * perPage)
-      .limit(perPage)
-      .fetch()
+      numberOfPages = categories[category]?.pageCount || 1
+      basePath = getCategoryLink({ category })
+    }
 
     return {
       articles,
-      numberOfPages: categories[category].pageCount,
+      numberOfPages,
       basePath,
       page,
       category,

@@ -13,22 +13,26 @@ import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
 export default {
   components: { ArticlesList },
-  async asyncData({ $content, store, params, redirect, $config }) {
+  async asyncData({ $content, store, params, error, $config }) {
+    let articles = []
+
     const { pageCount } = store.state.articlesMetadata
     const { perPage } = $config
-    const page = Number(params.page || 1)
+    const page = Number(params.page)
 
-    if (isNaN(page) || page <= 0 || page > pageCount) redirect('/')
+    if (isNaN(page) || page <= 0 || page > pageCount)
+      error({ statusCode: '404' })
+    else {
+      articles = await $content('articles', { deep: true })
+        .only(articleQueryAttrs.card)
+        .sortBy('updatedAt', 'desc')
+        .where()
+        .skip((page - 1) * perPage)
+        .limit(perPage)
+        .fetch()
+    }
 
-    const articles = await $content('articles', { deep: true })
-      .only(articleQueryAttrs.card)
-      .sortBy('updatedAt', 'desc')
-      .where()
-      .skip((page - 1) * perPage)
-      .limit(perPage)
-      .fetch()
-
-    if (articles.length === 0) redirect('/')
+    if (articles.length === 0) error({ statusCode: '404' })
 
     return { articles, numberOfPages: pageCount, page }
   },
