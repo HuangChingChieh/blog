@@ -132,11 +132,16 @@ export default {
 
 <style lang="scss">
 .common-header {
+  position: sticky;
+  background-color: white;
+  box-shadow: $box-shadow-sm;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
   top: 0;
   z-index: $zindex-sticky;
 
   .common-icon {
-    height: 3rem;
+    height: 2rem;
   }
 
   .common-header-icon {
@@ -167,20 +172,16 @@ export default {
   }
 }
 
-@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .common-header {
-    position: sticky;
-    background-color: white;
-    box-shadow: $box-shadow-sm;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-
-    .profile-btn {
-      font-size: $h5-font-size;
-    }
+    position: static;
+    background-color: transparent;
+    box-shadow: none;
+    padding-top: 0;
+    padding-bottom: 0;
 
     .common-icon {
-      height: 2rem;
+      height: 3rem;
     }
   }
 

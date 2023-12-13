@@ -36,18 +36,8 @@ export default {
 }
 
 .article-card .article-banner-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
   width: 100%;
   height: 100%;
-}
-
-@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  .article-card .article-banner-img {
-    position: static;
-    aspect-ratio: 2.2 / 1;
-  }
+  aspect-ratio: 16 / 9;
 }
 </style>

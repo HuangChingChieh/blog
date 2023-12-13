@@ -100,14 +100,14 @@ $theme-colors: (
 html,
 body,
 main {
-  background-color: $gray-200;
+  background-color: $light;
 }
 
-@media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   html,
   body,
   main {
-    background-color: $light;
+    background-color: $gray-200;
   }
 }
 
