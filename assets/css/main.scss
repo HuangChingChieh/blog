@@ -121,6 +121,14 @@ img {
   object-fit: cover;
 }
 
+hr {
+  display: block;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
+  margin: $paragraph-margin-bottom * 3 auto;
+}
+
 // .nuxt-content {
 //   word-break: break-all;
 // }

@@ -126,11 +126,7 @@ $article-font-size-base: 1rem;
   }
 
   hr {
-    border: 1px solid $secondary;
-    border-bottom: 0;
-    border-right: 0;
-    border-left: 0;
-    margin: $paragraph-margin-bottom * 3 auto;
+    border-top: 1px solid $secondary;
     width: 3rem;
   }
 

@@ -20,7 +20,7 @@
       </b-button>
     </div>
 
-    <div ref="code">
+    <div ref="code" class="rounded-bottom">
       <slot></slot>
     </div>
   </div>
