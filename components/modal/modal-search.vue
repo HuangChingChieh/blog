@@ -37,7 +37,7 @@
               :key="article.slug"
               class="small"
             >
-              <hr v-if="index > 0" />
+              <hr v-if="index > 0" class="my-3" />
 
               <article-seach-result
                 :article="article"
@@ -47,7 +47,7 @@
             </div>
 
             <div class="text-center">
-              <hr />
+              <hr class="my-3" />
               <b-button
                 v-if="hasMore"
                 variant="primary"
