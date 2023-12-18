@@ -3,7 +3,8 @@
     <common-img
       :img="img"
       :img-class="imgClass"
-      :max-width="maxWidth"
+      :sizes="sizes"
+      :preload="preload"
       class="article-banner-img"
     />
   </div>
@@ -11,6 +12,7 @@
 
 <script>
 import CommonImg from '../common/common-img.vue'
+import getImgSizes from '~/utils/getImgSizes'
 export default {
   components: { CommonImg },
   props: {
@@ -22,9 +24,13 @@ export default {
       type: [Array, String],
       default: () => [],
     },
-    maxWidth: {
-      type: [String, Number],
-      default: 0,
+    sizes: {
+      type: Array,
+      default: () => getImgSizes(),
+    },
+    preload: {
+      type: Boolean,
+      default: false,
     },
   },
 }

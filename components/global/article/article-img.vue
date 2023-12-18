@@ -1,6 +1,5 @@
 <template>
   <common-img
-    max-width="700"
     img-class="w-100 img-fluid rounded-lg shadow-sm article-img d-block"
     :img="img"
   />
@@ -8,6 +7,8 @@
 
 <script>
 import commonImg from '~/components/common/common-img.vue'
+import getImgSizes from '~/utils/getImgSizes'
+
 export default {
   components: { commonImg },
   props: {

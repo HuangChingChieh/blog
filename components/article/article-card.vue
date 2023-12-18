@@ -36,9 +36,10 @@
     <article-banner
       v-if="article.img"
       :img="article.img"
-      max-width="400"
       class="align-self-stretch order-1"
       :class="[`order-${mobileBreakpoint}-2`]"
+      :sizes="bannerSizes"
+      :preload="preloadImg"
     />
   </article>
 </template>
@@ -53,6 +54,7 @@ import ArticleCategory from '~/components/article/article-category.vue'
 import ButtonEnter from '~/components/button/button-enter.vue'
 
 import { getArticleLink } from '~/utils/getLink'
+import getImgSizes from '~/utils/getImgSizes'
 
 export default {
   components: {
@@ -67,10 +69,25 @@ export default {
       type: Object,
       default: () => ({}),
     },
+    preloadImg: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
+    const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
+      let imageWidth = containerMaxWidth
+      if (!isMobile) {
+        const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
+        imageWidth = Number(containerMaxWidthNum) * 0.4 + 'px'
+      }
+
+      return imageWidth
+    })
+
     return {
       mobileBreakpoint,
+      bannerSizes,
     }
   },
   methods: {

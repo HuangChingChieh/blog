@@ -26,7 +26,7 @@
       :img="document.img"
       img-class="rounded-lg"
       class="rounded-lg"
-      max-width="700"
+      preload
     />
 
     <nuxt-content :document="document" />

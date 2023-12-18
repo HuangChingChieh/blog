@@ -2,14 +2,17 @@
   <b-img-lazy
     v-if="img"
     :srcset="srcset"
-    :src="$config.imageServer + img"
+    :src="src"
     :class="imgClass"
     class="common-img"
+    :sizes="sizes"
   />
 </template>
 
 <script>
 import { BImgLazy } from 'bootstrap-vue'
+import getImgSizes from '~/utils/getImgSizes'
+
 export default {
   components: { BImgLazy },
   props: {
@@ -21,10 +24,13 @@ export default {
       type: [Array, String],
       default: '',
     },
-    maxWidth: {
-      type: [Number, String],
-      default: 0,
-      validator: (value) => !isNaN(Number(value)),
+    sizes: {
+      type: [Array, String],
+      default: () => getImgSizes(),
+    },
+    preload: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -69,19 +75,32 @@ export default {
       ],
     }
   },
+  head() {
+    if (this.preload) {
+      const { img, srcset, src, sizes } = this
+      return {
+        link: [
+          {
+            hid: img,
+            rel: 'preload',
+            as: 'image',
+            href: src,
+            imagesrcset: srcset,
+            imagesizes: sizes,
+          },
+        ],
+      }
+    }
+  },
   computed: {
+    src() {
+      return this.$config.imageServer + this.img
+    },
     srcset() {
-      const { sources, id, extension, maxWidth } = this
+      const { sources, id, extension } = this
       const { imageServer } = this.$config
 
-      // 找到最接近maxWidth的index
-      const maxWidthIndex =
-        maxWidth > 0
-          ? sources.findIndex(({ width }) => width >= maxWidth)
-          : sources.length - 1
-
       return sources
-        .slice(0, maxWidthIndex + 1)
         .map(
           ({ height, width }) =>
             `${imageServer}${width}x${height}q70/${id}.${extension}` +

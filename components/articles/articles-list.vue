@@ -5,6 +5,7 @@
       :key="index"
       :article="article"
       class="mb-4"
+      :preload-img="index <= 4"
     />
 
     <common-pagination-nav

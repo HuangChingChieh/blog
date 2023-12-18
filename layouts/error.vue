@@ -11,7 +11,11 @@
     </div>
 
     <div v-if="article">
-      <article-card :article="article" class="border"></article-card>
+      <article-card
+        :article="article"
+        class="border"
+        preload-img
+      ></article-card>
     </div>
   </common-container>
 </template>
