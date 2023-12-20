@@ -1,14 +1,6 @@
 @import 'custom';
 
-$theme-colors: (
-  'primary': $primary,
-  'secondary': $secondary,
-  'dark': $dark,
-  'gray': $gray-100,
-);
-
 /* Bootstrap Tree Shaking */
-@import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/root';
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';

@@ -21,22 +21,35 @@ $modal-backdrop-opacity: 0.7;
 $link-decoration: underline;
 
 $container-max-widths: (
-  sm: 540px,
-  md: 670px,
+  sm: 640px,
   lg: 800px,
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 768px,
+  lg: 992px,
 );
 
 $input-btn-focus-box-shadow: initial;
 $b-sidebar-width: 100%;
 
+@import '~bootstrap/scss/mixins';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
 @import '~bootstrap-vue/src/variables';
 
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'dark': $dark,
+  'gray': $gray-100,
+);
+
 $zindex-overlay: calc($zindex-tooltip + 10);
 $link-color: $body-color;
 
-$mobile-breakpoint: 'md';
+$mobile-breakpoint: 'sm';
 
 :export {
   mobileBreakpoint: unquote($mobile-breakpoint);
