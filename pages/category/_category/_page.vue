@@ -54,19 +54,6 @@ export default {
       category,
     }
   },
-  data() {
-    const { category } = this.$route.params
-    return {
-      items: [
-        { text: '文章分類', to: '/category/' },
-        {
-          text: this.$config.categoriesMap[category],
-          to: getCategoryLink({ category }),
-          active: true,
-        },
-      ],
-    }
-  },
   head() {
     const { page, category, $config } = this
     return {

@@ -62,6 +62,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import { BContainer, VBVisible } from 'bootstrap-vue'
 import CommonIcon from '~/components/common/common-icon.vue'
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
@@ -88,41 +89,17 @@ export default {
         categories: false,
         toc: false,
       },
-      toc: [],
       headerVisible: true,
     }
   },
-  async fetch() {
-    await this.getToc()
-  },
   computed: {
+    ...mapState(['toc']),
     hasToc() {
       const { toc } = this
       return Array.isArray(toc) && toc.length > 0
     },
   },
-  watch: {
-    '$route.params.slug'(slug) {
-      this.getToc()
-    },
-  },
   methods: {
-    async getToc() {
-      const { $content } = this
-      const { slug } = this.$route.params
-
-      if (slug) {
-        const articles = await $content('articles', { deep: true })
-          .only(['toc', 'slug'])
-          .where({ slug })
-          .fetch()
-
-        const article = articles[0]
-        this.toc = article?.toc || []
-      } else {
-        this.toc = []
-      }
-    },
     onHeaderHide(isVisible) {
       this.headerVisible = isVisible
     },

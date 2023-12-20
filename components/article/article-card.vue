@@ -75,6 +75,12 @@ export default {
     },
   },
   data() {
+    return {
+      mobileBreakpoint,
+      bannerSizes: [],
+    }
+  },
+  fetch() {
     const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
       let imageWidth = containerMaxWidth
       if (!isMobile) {
@@ -85,10 +91,7 @@ export default {
       return imageWidth
     })
 
-    return {
-      mobileBreakpoint,
-      bannerSizes,
-    }
+    this.bannerSizes = bannerSizes
   },
   methods: {
     getArticleLink,

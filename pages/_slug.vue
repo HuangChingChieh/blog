@@ -30,9 +30,15 @@ import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
 export default {
   components: { LikerButton, CommonArticle, CommonContainer, ArticlesRelated },
-  async asyncData({ $content, params, error }) {
+  beforeRouteLeave(to, from, next) {
+    this.$store.commit('setToc', [])
+    next()
+  },
+  async asyncData({ $content, params, error, store }) {
     const { slug } = params
-    const articles = await $content('', { deep: true }).where({ slug }).fetch()
+    const articles = await $content('articles', { deep: true })
+      .where({ slug })
+      .fetch()
 
     const article = articles[0]
     if (!article) {
@@ -43,6 +49,8 @@ export default {
         .only([...articleQueryAttrs.card, 'tags'])
         .sortBy('updatedAt', 'desc')
         .fetch()
+
+      store.commit('setToc', article.toc)
 
       const relatedArticles = getReltedArticles({ articles, article })
 

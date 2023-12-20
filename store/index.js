@@ -8,7 +8,14 @@ export const state = () => ({
     count: 0,
     pageCount: 0,
   },
+  toc: [],
 })
+
+export const mutations = {
+  setToc(state, toc) {
+    state.toc = toc
+  },
+}
 
 export const actions = {
   async nuxtServerInit({ state }, { app, $config }) {
