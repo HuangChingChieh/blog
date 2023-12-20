@@ -7,7 +7,6 @@
 
 <script>
 import commonImg from '~/components/common/common-img.vue'
-import getImgSizes from '~/utils/getImgSizes'
 
 export default {
   components: { commonImg },
