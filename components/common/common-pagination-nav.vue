@@ -59,3 +59,16 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.b-pagination-pills .page-item .page-link {
+  padding: 0;
+  font-size: 1rem;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: $box-shadow-sm;
+}
+</style>

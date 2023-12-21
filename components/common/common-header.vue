@@ -8,7 +8,7 @@
         <common-icon bordered />
         <div class="ml-3 flex-grow-1">
           <nuxt-link
-            class="font-weight-bold text-dark d-block text-decoration-none"
+            class="font-weight-bold text-body d-block text-decoration-none"
             to="/"
           >
             隨機手札

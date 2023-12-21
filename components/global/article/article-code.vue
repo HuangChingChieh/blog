@@ -78,3 +78,14 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.article-code pre {
+  border-radius: $border-radius-lg;
+  font-size: $small-font-size !important;
+  margin: 0 0 $paragraph-margin-bottom 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 1rem;
+}
+</style>

@@ -179,7 +179,6 @@ export default {
             node,
             'article-code',
             {
-              className: 'nuxt-content-highlight',
               fileName,
               lang,
             },

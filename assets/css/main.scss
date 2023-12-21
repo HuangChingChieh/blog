@@ -60,7 +60,7 @@
 // @import '~bootstrap-vue/src/custom-controls';
 // @import '~bootstrap-vue/src/icons/index';
 
-// 將~bootstrap-vue/src/components/index.scss展開
+/* 將~bootstrap-vue/src/components/index.scss展開 */
 // @import "~bootstrap-vue/src/components/avatar/index";
 // @import "~bootstrap-vue/src/components/calendar/index";
 // @import '~bootstrap-vue/src/components/card/index';
@@ -121,30 +121,10 @@ hr {
   margin: $paragraph-margin-bottom * 3 auto;
 }
 
-// .nuxt-content {
-//   word-break: break-all;
-// }
-
-.nuxt-content-highlight {
-  position: relative;
-
-  pre {
-    border-radius: $border-radius-lg;
-    font-size: $small-font-size !important;
-    margin: 0 0 $paragraph-margin-bottom 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding: 1rem;
-  }
-}
-
 .cursor-pointer {
   cursor: pointer;
 }
 
-// .modal {
-//   backdrop-filter: blur(4px);
-// }
 .modal-content {
   box-shadow: $box-shadow;
 }
@@ -160,21 +140,6 @@ hr {
 .page-enter,
 .page-leave-to {
   opacity: 0;
-}
-
-// .pagination {
-//   margin-bottom: 0;
-// }
-
-.b-pagination-pills .page-item .page-link {
-  padding: 0;
-  font-size: 1rem;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: $box-shadow-sm;
 }
 
 @mixin line-clamp-base {
