@@ -8,14 +8,6 @@
   >
     <b-nav vertical>
       <b-nav-item
-        to="/"
-        active-class="font-weight-bold"
-        exact-path
-        @click="valueInner = false"
-        >最新文章</b-nav-item
-      >
-
-      <b-nav-item
         v-for="(name, category) in $config.categoriesMap"
         :key="category"
         :to="getCategoryLink({ category })"

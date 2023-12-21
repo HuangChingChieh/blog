@@ -2,18 +2,20 @@
   <div>
     <common-container>
       <common-article :document="article" />
+
+      <hr class="mb-0" />
+      <liker-button />
     </common-container>
-    <hr :class="`d-${mobileBreakpoint}-none`" />
-    <!-- <common-container :class="`mt-${mobileBreakpoint}-4`"> -->
+    <hr
+      v-if="hasRelatedArticles"
+      :class="`d-${mobileBreakpoint}-none`"
+      class="mt-3"
+    />
 
     <articles-related
       :articles="relatedArticles"
       :class="`mt-${mobileBreakpoint}-5`"
     />
-
-    <!-- </common-container> -->
-    <hr class="mb-0" :class="`d-${mobileBreakpoint}-none`" />
-    <liker-button />
   </div>
 </template>
 
@@ -83,6 +85,12 @@ export default {
     })
 
     return head
+  },
+  computed: {
+    hasRelatedArticles() {
+      const { relatedArticles } = this
+      return Array.isArray(relatedArticles) && relatedArticles.length > 0
+    },
   },
   methods: {
     scrollTo(id) {

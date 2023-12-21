@@ -50,6 +50,7 @@ $link-color: $body-color;
 $mobile-breakpoint: 'sm';
 
 :export {
+  gridColumns: $grid-columns;
   mobileBreakpoint: unquote($mobile-breakpoint);
   zIndexOverlay: $zindex-overlay;
   containerMaxWidthsKeys: map-keys($container-max-widths);

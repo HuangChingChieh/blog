@@ -3,6 +3,7 @@
     v-if="likerButton"
     :src="likerButton"
     frameborder="0"
+    loading="lazy"
     class="d-block mx-auto"
   ></iframe>
 </template>

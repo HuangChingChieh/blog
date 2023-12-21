@@ -1,17 +1,16 @@
 <template>
   <common-container>
+    <h1>文章分類</h1>
     <div
       v-for="(categoryObj, category) in categories"
       :key="category"
-      class="mb-5"
+      class="mt-4"
     >
-      <h5>{{ $config.categoriesMap[category] }}</h5>
-
       <div class="rounded-lg overflow-hidden shadow-sm">
         <div
           class="px-3 py-2 bg-secondary text-white d-flex align-items-center"
         >
-          最新文章
+          {{ $config.categoriesMap[category] }}
         </div>
         <nav class="p-3 bg-white">
           <nuxt-link
@@ -49,7 +48,8 @@ import { getArticleLink, getCategoryLink } from '~/utils/getLink'
 export default {
   components: { CommonContainer, ButtonEnter },
   async asyncData({ $content, store }) {
-    const { categories } = store.state
+    const categories = JSON.parse(JSON.stringify(store.state.categories))
+    delete categories.all
     await Promise.all(
       Object.keys(categories).map((category) =>
         $content('articles', { deep: true })
@@ -59,7 +59,8 @@ export default {
           .limit(3)
           .fetch()
           .then((articles) => {
-            categories[category].articles = articles
+            const categoryObj = categories[category]
+            categoryObj.articles = articles
           })
       )
     )

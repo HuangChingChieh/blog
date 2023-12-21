@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    class="common-container px-2"
+    class="common-container"
     :class="`p-${mobileBreakpoint}-5`"
   >
     <slot></slot>

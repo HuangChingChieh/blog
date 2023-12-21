@@ -10,10 +10,10 @@
       </div>
 
       <b-button
-        @click="copyCode"
         :disabled="copied"
         class="p-0 d-flex align-items-center justify-content-center text-white"
         variant="link"
+        @click="copyCode"
       >
         <b-icon-clipboard-check v-if="copied" />
         <b-icon-clipboard v-else />

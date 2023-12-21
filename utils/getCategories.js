@@ -12,6 +12,8 @@ export const getCategories = ({ articles = [], perPage = 10 }) => {
       }
     })
 
+    categories.all = { count: articles.length, pageCount: 1 }
+
     Object.keys(categories).forEach((categoryName) => {
       const category = categories[categoryName]
       setPageCount({ category, perPage })

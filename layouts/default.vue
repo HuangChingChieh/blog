@@ -4,6 +4,7 @@
     <b-container :fluid="mobileBreakpoint" class="py-4">
       <Nuxt />
     </b-container>
+    <common-footer class="mt-4" />
   </main>
 </template>
 
@@ -11,9 +12,10 @@
 import { BContainer } from 'bootstrap-vue'
 import commonHeader from '~/components/common/common-header.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
+import CommonFooter from '~/components/common/common-footer.vue'
 
 export default {
-  components: { BContainer, commonHeader },
+  components: { BContainer, commonHeader, CommonFooter },
   data() {
     return {
       mobileBreakpoint,

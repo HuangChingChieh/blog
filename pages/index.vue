@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     linkGen(page) {
-      return `/pages/${page}`
+      return `/category/all/${page}`
     },
   },
 }

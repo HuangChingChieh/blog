@@ -2,6 +2,7 @@
   <img
     :src="src"
     :height="height"
+    :width="height"
     class="common-icon rounded-circle shadow-sm"
     :class="{ bordered }"
   />

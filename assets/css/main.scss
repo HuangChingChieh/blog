@@ -153,3 +153,15 @@ hr {
   @include line-clamp-base();
   -webkit-line-clamp: 2;
 }
+
+.container-#{$mobile-breakpoint} {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  .container-#{$mobile-breakpoint} {
+    padding-left: 0rem;
+    padding-right: 0rem;
+  }
+}

@@ -1,55 +1,51 @@
 <template>
   <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
-    <b-container :fluid="mobileBreakpoint" :class="`py-${mobileBreakpoint}-3`">
-      <div
-        class="d-flex flex-row align-items-center px-2"
-        :class="`px-${mobileBreakpoint}-0`"
-      >
-        <common-icon bordered />
-        <div class="ml-3 flex-grow-1">
-          <nuxt-link
-            class="font-weight-bold text-body d-block text-decoration-none"
-            to="/"
-          >
-            隨機手札
-          </nuxt-link>
-          <small
-            class="text-secondary d-none"
-            :class="`d-${mobileBreakpoint}-block`"
-            >雜七雜八之地</small
-          >
-        </div>
-
-        <div
-          class="d-flex align-items-center justify-content-end"
-          :class="{ 'header-icons-fixed': !headerVisible }"
+    <b-container
+      :fluid="mobileBreakpoint"
+      :class="`py-${mobileBreakpoint}-3`"
+      class="d-flex flex-row align-items-center"
+    >
+      <common-icon bordered />
+      <div class="ml-3 flex-grow-1">
+        <nuxt-link
+          class="font-weight-bold text-body d-block text-decoration-none"
+          to="/"
         >
-          <common-header-icon
-            icon="folder"
-            title="文章分類"
-            @click="modal.categories = true"
-          >
-            <template v-if="headerVisible">
-              <span v-if="$route.params.category" class="pl-1">{{
-                $config.categoriesMap[$route.params.category]
-              }}</span>
-              <span v-else-if="$route.path === '/'" class="pl-1">最新文章</span>
-            </template>
-          </common-header-icon>
+          隨機手札
+        </nuxt-link>
+        <small
+          class="text-secondary d-none"
+          :class="`d-${mobileBreakpoint}-block`"
+          >雜七雜八之地</small
+        >
+      </div>
 
-          <common-header-icon
-            v-if="hasToc"
-            icon="card-list"
-            title="文章摘要"
-            @click="modal.toc = true"
-          />
+      <div
+        class="d-flex align-items-center justify-content-end"
+        :class="{ 'header-icons-fixed': !headerVisible }"
+      >
+        <common-header-icon
+          icon="folder"
+          title="文章分類"
+          @click="modal.categories = true"
+        >
+          <span v-if="headerVisible" class="pl-1">{{
+            $config.categoriesMap[$route.params.category]
+          }}</span>
+        </common-header-icon>
 
-          <common-header-icon
-            icon="search"
-            title="搜尋文章"
-            @click="modal.search = true"
-          />
-        </div>
+        <common-header-icon
+          v-if="hasToc"
+          icon="card-list"
+          title="文章摘要"
+          @click="modal.toc = true"
+        />
+
+        <common-header-icon
+          icon="search"
+          title="搜尋文章"
+          @click="modal.search = true"
+        />
       </div>
     </b-container>
 
@@ -119,6 +115,7 @@ export default {
 
   .common-icon {
     height: 2rem;
+    width: 2rem;
   }
 
   .common-header-icon {
@@ -144,7 +141,7 @@ export default {
 @each $breakpoint, $max-widths in $container-max-widths {
   @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
     .header-icons-fixed {
-      left: calc(50% + $max-widths / 2 - 1rem);
+      left: calc(50% + $max-widths / 2 - 0.5rem);
     }
   }
 }
@@ -159,6 +156,7 @@ export default {
 
     .common-icon {
       height: 3rem;
+      width: 3rem;
     }
   }
 

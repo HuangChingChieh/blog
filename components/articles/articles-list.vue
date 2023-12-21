@@ -1,5 +1,5 @@
 <template>
-  <div class="px-2" :class="`px-${mobileBreakpoint}-0`">
+  <div>
     <article-card
       v-for="(article, index) in articles"
       :key="index"

@@ -34,9 +34,13 @@ export default {
       error({ statusCode: '404' })
     else {
       // 取得文章
-      articles = await $content('articles', { deep: true })
-        .only(articleQueryAttrs.card)
-        .where({ category })
+      let contentQuery = $content('articles', { deep: true }).only(
+        articleQueryAttrs.card
+      )
+
+      if (category !== 'all') contentQuery = contentQuery.where({ category })
+
+      articles = await contentQuery
         .sortBy('updatedAt', 'desc')
         .skip((page - 1) * perPage)
         .limit(perPage)
