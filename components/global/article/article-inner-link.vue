@@ -31,6 +31,9 @@ export default {
 
     if (articles.length > 0) this.article = articles[0]
   },
+  fetchKey() {
+    return this.slug
+  },
   computed: {
     title() {
       const { article } = this
