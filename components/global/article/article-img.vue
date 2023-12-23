@@ -2,6 +2,7 @@
   <common-img
     img-class="w-100 img-fluid rounded-lg shadow-sm article-img d-block"
     :img="img"
+    :style="{ aspectRatio }"
   />
 </template>
 
@@ -15,12 +16,10 @@ export default {
       type: String,
       default: '',
     },
+    aspectRatio: {
+      type: String,
+      default: '16/9',
+    },
   },
 }
 </script>
-
-<style lang="scss">
-.article-img {
-  aspect-ratio: 16 / 9;
-}
-</style>

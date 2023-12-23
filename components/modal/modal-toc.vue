@@ -68,7 +68,7 @@ export default {
         if (element instanceof HTMLElement) {
           element.scrollIntoView({
             behavior: 'smooth',
-            block: 'center',
+            block: 'start',
             inline: 'center',
           })
 

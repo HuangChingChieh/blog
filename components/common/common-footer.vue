@@ -3,8 +3,14 @@
     <b-container :fluid="mobileBreakpoint" class="text-white">
       <b-row>
         <footer-block>
-          <footer-title
-            >關於我 <common-icon height="16" class="ml-2"
+          <footer-title>
+            <nuxt-link
+              :to="{ path: '/buy_me_a_tea', hash: '關於我' }"
+              class="text-primary"
+              >關於我</nuxt-link
+            >
+
+            <common-icon height="16" class="ml-2"
           /></footer-title>
 
           <footer-content>
@@ -14,7 +20,13 @@
         </footer-block>
 
         <footer-block>
-          <footer-title>關於隨機手札</footer-title>
+          <footer-title>
+            <nuxt-link
+              :to="{ path: '/buy_me_a_tea', hash: '關於隨機手札' }"
+              class="text-primary"
+              >關於隨機手札</nuxt-link
+            ></footer-title
+          >
           <footer-content
             >使用
             <footer-link href="https://v2.nuxt.com/">Nuxt 2</footer-link>
@@ -32,7 +44,13 @@
         </footer-block>
 
         <footer-block>
-          <footer-title>請我喝杯手搖飲吧！</footer-title>
+          <footer-title>
+            <nuxt-link
+              :to="{ path: '/buy_me_a_tea', hash: '請我喝杯手搖飲吧！' }"
+              class="text-primary"
+              >請我喝杯手搖飲吧！</nuxt-link
+            ></footer-title
+          >
 
           <footer-content
             >若這裡的經驗分享有幫助到你，可以透過<footer-link

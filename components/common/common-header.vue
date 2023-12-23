@@ -29,9 +29,13 @@
           title="文章分類"
           @click="modal.categories = true"
         >
-          <span v-if="headerVisible" class="pl-1">{{
-            $config.categoriesMap[$route.params.category]
-          }}</span>
+          <span
+            v-if="
+              headerVisible && $config.categoriesMap[$route.params.category]
+            "
+            class="pl-1"
+            >{{ $config.categoriesMap[$route.params.category] }}</span
+          >
         </common-header-icon>
 
         <common-header-icon
