@@ -30,7 +30,7 @@ export default {
   .common-container {
     // border: 1px solid $secondary;
     box-shadow: $box-shadow-sm;
-    background-color: white;
+    background-color: var(--foreground);
     border-radius: $border-radius-lg;
   }
 }

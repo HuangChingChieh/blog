@@ -84,17 +84,12 @@ $article-font-size-base: 1rem;
   h1,
   h2,
   h3 {
-    color: black;
+    color: var(--black);
+    font-weight: 900;
   }
 
   h1 {
-    font-weight: 900;
     font-size: $article-font-size-base * 2;
-  }
-
-  h2,
-  h3 {
-    font-weight: 700;
   }
 
   h2 {

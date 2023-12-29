@@ -1,7 +1,118 @@
 @import 'custom';
 
+/* 消除警告訊息 */
+
+@function divide($dividend, $divisor, $precision: 10) {
+  $sign: if(
+    $dividend > 0 and $divisor > 0 or $dividend < 0 and $divisor < 0,
+    1,
+    -1
+  );
+  $dividend: math.abs($dividend);
+  $divisor: math.abs($divisor);
+  @if $dividend == 0 {
+    @return 0;
+  }
+  @if $divisor == 0 {
+    @error "Cannot divide by 0";
+  }
+  $remainder: $dividend;
+  $result: 0;
+  $factor: 10;
+  @while ($remainder > 0 and $precision >= 0) {
+    $quotient: 0;
+    @while ($remainder >= $divisor) {
+      $remainder: $remainder - $divisor;
+      $quotient: $quotient + 1;
+    }
+    $result: $result * 10 + $quotient;
+    $factor: $factor * 0.1;
+    $remainder: $remainder * 10;
+    $precision: $precision - 1;
+    @if ($precision < 0 and $remainder >= $divisor * 5) {
+      $result: $result + 1;
+    }
+  }
+  $result: $result * $factor * $sign;
+  $dividend-unit: unit($dividend);
+  $divisor-unit: unit($divisor);
+  $unit-map: (
+    'px': 1px,
+    'rem': 1rem,
+    'em': 1em,
+    '%': 1%,
+  );
+  @if (
+    $dividend-unit != $divisor-unit and map-has-key($unit-map, $dividend-unit)
+  ) {
+    $result: $result * map-get($unit-map, $dividend-unit);
+  }
+  @return $result;
+}
+
+@mixin dark-theme {
+  --white: #{$black};
+  --gray-100: #{$gray-900};
+  --gray-200: #{$gray-800};
+  --gray-300: #{$gray-700};
+  --gray-400: #{$gray-600};
+  --gray-500: #{$gray-500};
+  --gray-600: #{$gray-400};
+  --gray-700: #{$gray-300};
+  --gray-800: #{$gray-200};
+  --gray-900: #{$gray-100};
+  --black: #{$white};
+
+  --background: var(--gray-100);
+  --foreground: var(--gray-200);
+}
+
+@mixin light-theme {
+  --white: #{$white};
+  --gray-100: #{$gray-100};
+  --gray-200: #{$gray-200};
+  --gray-300: #{$gray-300};
+  --gray-400: #{$gray-400};
+  --gray-500: #{$gray-500};
+  --gray-600: #{$gray-600};
+  --gray-700: #{$gray-700};
+  --gray-800: #{$gray-800};
+  --gray-900: #{$gray-900};
+  --black: #{$black};
+
+  --background: var(--gray-200);
+  --foreground: var(--white);
+}
+
 /* Bootstrap Tree Shaking */
-@import '~bootstrap/scss/root';
+
+/* root展開 */
+// @import '~bootstrap/scss/root';
+:root {
+  @each $color, $value in $theme-colors {
+    --#{$color}: #{$value};
+  }
+
+  @media (prefers-color-scheme: light) {
+    @include light-theme();
+  }
+
+  &,
+  &[data-theme='dark'] {
+    @include dark-theme();
+  }
+
+  &[data-theme='light'] {
+    @include light-theme();
+  }
+}
+
+// @media (prefers-color-scheme: light) {
+//   :root {
+//     @include light-theme();
+//   }
+// }
+
 @import '~bootstrap/scss/reboot';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/images';
@@ -89,18 +200,8 @@
 // @import "~bootstrap-vue/src/components/toast/index";
 // @import "~bootstrap-vue/src/components/tooltip/index";
 
-html,
-body,
 main {
-  background-color: $light;
-}
-
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  html,
-  body,
-  main {
-    background-color: $gray-200;
-  }
+  background-color: var(--background);
 }
 
 ol,

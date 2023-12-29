@@ -1,5 +1,5 @@
 <template>
-  <p class="article-note text-secondary small px-3 py-2 rounded align-middle">
+  <p class="article-note small px-3 py-2 rounded align-middle">
     <b-icon-lightbulb class="mr-1" />
     <slot></slot>
   </p>
@@ -12,10 +12,10 @@ export default { components: { BIconLightbulb } }
 
 <style lang="scss">
 .article-note {
-  background-color: $gray-200;
+  background-color: var(--background);
   &,
   * {
-    color: $secondary;
+    color: var(--gray-600);
   }
 }
 </style>

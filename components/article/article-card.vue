@@ -8,7 +8,7 @@
       :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
     >
       <div class="article-title-text">
-        <h4 class="text-body font-weight-bolder article-title text-two-line">
+        <h4 class="text-body article-title text-two-line">
           {{ article.title }}
         </h4>
 
@@ -110,7 +110,7 @@ $article-card-text-height: $line-height-base * $article-card-content-line *
   $font-size-base;
 
 .article-card {
-  background-color: white;
+  background-color: var(--foreground);
   border-radius: $border-radius-lg;
   overflow: hidden;
   transition: $btn-transition, transform 0.15s ease-in-out;
@@ -134,6 +134,7 @@ $article-card-text-height: $line-height-base * $article-card-content-line *
 
   .article-title {
     font-size: 1.1rem;
+    font-weight: 900;
   }
 }
 

@@ -38,6 +38,6 @@ export default {
 
 <style lang="scss">
 .common-icon.bordered {
-  border: 3px solid white;
+  border: 3px solid $white;
 }
 </style>

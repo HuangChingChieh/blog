@@ -199,6 +199,15 @@ export default {
       // See: https://github.com/bootstrap-vue/bootstrap-vue/issues/5627
       compact: true,
     },
+    loaders: {
+      scss: {
+        // sassOptions: {
+        //   quietDeps: true,
+        //   hoistUseStatements: true,
+        // },
+        additionalData: '@use "sass:math";',
+      },
+    },
   },
 
   // Sitemap Module: https://sitemap.nuxtjs.org/usage/sitemap/

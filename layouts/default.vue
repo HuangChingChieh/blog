@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main :class="$store.state.theme">
     <common-header @openProfileModal="sidebar.open = true" />
     <b-container :fluid="mobileBreakpoint" class="py-4">
       <Nuxt />

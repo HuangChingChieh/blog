@@ -94,6 +94,6 @@ export default {
 
 <style lang="scss">
 .common-footer {
-  background-color: $dark;
+  background-color: $gray-800;
 }
 </style>
