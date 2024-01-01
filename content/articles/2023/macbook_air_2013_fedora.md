@@ -1,6 +1,6 @@
 ---
 title: 在MacBook Air 2013上安裝Fedora 38
-tags: [fedora, macbook air, apple]
+tags: [fedora, macbook air, apple, 舊筆電復活]
 img: 922/4x6lR7.jpg
 category: linux
 ---
