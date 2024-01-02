@@ -1,18 +1,17 @@
 <template>
   <common-container>
     <h1>文章分類</h1>
+    <hr class="my-4" />
     <div
       v-for="(categoryObj, category) in categories"
       :key="category"
       class="mt-4"
     >
-      <div class="rounded-lg overflow-hidden shadow-sm">
-        <div
-          class="px-3 py-2 bg-secondary text-white d-flex align-items-center"
-        >
+      <div class="rounded-lg overflow-hidden">
+        <h3 class="py-2 d-flex align-items-center mb-0">
           {{ $config.categoriesMap[category] }}
-        </div>
-        <nav class="p-3 bg-white">
+        </h3>
+        <nav class="py-3">
           <nuxt-link
             v-for="article in categoryObj.articles"
             :key="article.slug"
@@ -21,12 +20,8 @@
             >{{ article.title }}</nuxt-link
           >
 
-          <div
-            class="mt-2 d-flex align-items-center flex-row justify-content-end"
-          >
-            <small class="mr-2 text-secondary"
-              >共{{ categoryObj.count }}篇文章</small
-            >
+          <div class="mt-2 d-flex align-items-center flex-row">
+            <small class="mr-2">共{{ categoryObj.count }}篇文章</small>
             <button-enter :to="getCategoryLink({ category })"
               >文章列表</button-enter
             >

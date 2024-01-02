@@ -12,10 +12,10 @@ export default { components: { BIconLightbulb } }
 
 <style lang="scss">
 .article-note {
-  background-color: var(--background);
+  background-color: var(--gray-400);
   &,
   * {
-    color: var(--gray-600);
+    color: var(--gray-900);
   }
 }
 </style>
