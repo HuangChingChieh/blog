@@ -5,40 +5,20 @@
 </template>
 
 <script>
+import { mapGetters, mapState, mapMutations } from 'vuex'
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 
 export default {
   components: { CommonHeaderIcon },
-  data() {
-    let dark = null
-    if (process.client && localStorage.getItem('dark')) {
-      dark = !!Number(localStorage.getItem('dark'))
-    }
-
-    return {
-      dark,
-      preferDark: true,
-    }
-  },
   computed: {
-    darkComputed() {
-      let darkComputed = true
-      const { dark, preferDark } = this
-
-      if (typeof dark === 'boolean') {
-        darkComputed = dark
-      } else {
-        darkComputed = preferDark
-      }
-
-      return darkComputed
-    },
+    ...mapState('theme', ['dark', 'preferDark']),
+    ...mapGetters('theme', ['darkComputed']),
     icon() {
       return this.darkComputed ? 'moon-stars' : 'sun'
     },
   },
   watch: {
-    darkComputed(dark) {
+    darkComputed() {
       if (process.client) {
         this.themeToRoot()
       }
@@ -49,16 +29,21 @@ export default {
     if (matchMedia && typeof matchMedia === 'function') {
       const mediaQuery = matchMedia('(prefers-color-scheme: dark)')
       mediaQuery.addEventListener('change', ({ matches }) => {
-        this.preferDark = matches
+        this.setPreferDark(matches)
       })
 
-      this.preferDark = mediaQuery.matches
+      this.setPreferDark(mediaQuery.matches)
       this.themeToRoot()
+    }
+
+    if (localStorage.getItem('dark')) {
+      this.setDark(!!Number(localStorage.getItem('dark')))
     }
   },
   methods: {
+    ...mapMutations('theme', ['setDark', 'setPreferDark']),
     toggle() {
-      this.dark = !this.darkComputed
+      this.setDark(!this.darkComputed)
 
       const { dark } = this
       localStorage.setItem('dark', Number(dark))

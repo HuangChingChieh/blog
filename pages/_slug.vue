@@ -2,20 +2,16 @@
   <div>
     <common-container>
       <common-article :document="article" />
-
-      <hr class="mb-0" />
-      <liker-button />
     </common-container>
-    <hr
-      v-if="hasRelatedArticles"
-      :class="`d-${mobileBreakpoint}-none`"
-      class="mt-3"
-    />
 
-    <articles-related
-      :articles="relatedArticles"
-      :class="`mt-${mobileBreakpoint}-5`"
-    />
+    <div class="mt-4">
+      <hr class="mb-0 d-block" :class="`d-${mobileBreakpoint}-none`" />
+      <liker-button />
+
+      <article-comment class="mt-4" />
+    </div>
+
+    <articles-related :articles="relatedArticles" class="mt-5" />
   </div>
 </template>
 
@@ -29,9 +25,16 @@ import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import { getHeadForArticle } from '~/utils/seo'
 import getReltedArticles from '~/utils/getRelatedArticles'
 import articleQueryAttrs from '~/utils/articleQueryAttrs'
+import ArticleComment from '~/components/article/article-comment.vue'
 
 export default {
-  components: { LikerButton, CommonArticle, CommonContainer, ArticlesRelated },
+  components: {
+    LikerButton,
+    CommonArticle,
+    CommonContainer,
+    ArticlesRelated,
+    ArticleComment,
+  },
   beforeRouteLeave(to, from, next) {
     this.$store.commit('setToc', [])
     next()

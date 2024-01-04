@@ -63,6 +63,11 @@ $article-font-size-base: 1rem;
 .common-article {
   font-size: 1rem;
 
+  b,
+  strong {
+    color: var(--black);
+  }
+
   h1,
   .article-date {
     margin-bottom: 0.25rem;
@@ -84,7 +89,6 @@ $article-font-size-base: 1rem;
   h1,
   h2,
   h3 {
-    color: var(--black);
     font-weight: 900;
   }
 
