@@ -1,6 +1,7 @@
 ---
 title: 關於我跟隨機手札的二三事
 img: 923/Id0UIh.jpg
+tags: [部落格, 關於我, 贊助]
 category: life
 ---
 
