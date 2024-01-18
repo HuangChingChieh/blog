@@ -1,22 +1,15 @@
 <template>
-  <b-overlay
-    :show="loading"
-    class="overlay-loading"
-    fixed
-    no-wrap
-    :z-index="zIndex"
-  ></b-overlay>
+  <InterfaceOverlay :show="loading" />
 </template>
 
 <script>
-import { BOverlay } from 'bootstrap-vue'
-import { zIndexOverlay } from '~/assets/css/custom.scss'
+import InterfaceOverlay from '~/components/interface/interface-overlay.vue'
+
 export default {
-  components: { BOverlay },
+  components: { InterfaceOverlay },
   data: () => ({
     loading: false,
     timeoutFn: null,
-    zIndex: zIndexOverlay,
     throttle: 200,
   }),
   methods: {
@@ -32,13 +25,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.overlay-loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-}
-</style>

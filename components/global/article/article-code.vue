@@ -9,15 +9,15 @@
         {{ fileName }}
       </div>
 
-      <b-button
+      <InterfaceButton
         :disabled="copied"
         class="p-0 d-flex align-items-center justify-content-center text-white"
         variant="link"
         @click="copyCode"
       >
-        <b-icon-clipboard-check v-if="copied" />
-        <b-icon-clipboard v-else />
-      </b-button>
+        <InterfaceIcon v-if="copied" icon="clipboard-check" />
+        <InterfaceIcon v-else icon="clipboard" />
+      </InterfaceButton>
     </div>
 
     <div ref="code" class="rounded-bottom">
@@ -27,9 +27,11 @@
 </template>
 
 <script>
-import { BButton, BIconClipboard, BIconClipboardCheck } from 'bootstrap-vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+
 export default {
-  components: { BButton, BIconClipboard, BIconClipboardCheck },
+  components: { InterfaceButton, InterfaceIcon },
   props: {
     fileName: {
       type: String,

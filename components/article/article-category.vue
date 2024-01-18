@@ -1,19 +1,19 @@
 <template>
-  <nuxt-link
+  <NuxtLink
     v-if="article && article.category"
     :to="getCategoryLink({ category: article.category })"
     class="text-muted small d-inline-flex align-items-center"
   >
-    <b-icon-folder class="mr-1" />
+    <InterfaceIcon icon="folder" class="mr-1" />
     <span>{{ $config.categoriesMap[article.category] }}</span>
-  </nuxt-link>
+  </NuxtLink>
 </template>
 
 <script>
-import { BIconFolder } from 'bootstrap-vue'
 import { getCategoryLink } from '~/utils/getLink'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
 export default {
-  components: { BIconFolder },
+  components: { InterfaceIcon },
   props: {
     article: {
       type: Object,

@@ -1,9 +1,6 @@
 <template>
-  <b-modal
+  <InterfaceModal
     v-model="valueInner"
-    centered
-    hide-footer
-    scrollable
     title="搜尋文章"
     size="lg"
     @shown="shown"
@@ -11,21 +8,20 @@
   >
     <div class="d-flex flex-column">
       <div class="modal-search-input-group position-relative">
-        <b-form-input
+        <InterfaceFormInput
           ref="input"
           v-model="keyword"
-          trim
           placeholder="請輸入關鍵字"
           @input="
             beforeSearch()
             search()
           "
-        ></b-form-input>
+        />
 
         <div
           class="d-flex align-items-center justify-content-center px-3 modal-search-input-icon-wrapper"
         >
-          <b-icon-search />
+          <InterfaceIcon icon="search" />
         </div>
       </div>
 
@@ -48,7 +44,7 @@
 
             <div class="text-center">
               <hr class="my-3" />
-              <b-button
+              <InterfaceButton
                 v-if="hasMore"
                 variant="primary"
                 size="sm"
@@ -56,7 +52,7 @@
                 @click="searchMore"
               >
                 {{ searchingMore ? '載入中' : '載入更多搜尋結果' }}
-              </b-button>
+              </InterfaceButton>
               <div v-else class="text-muted small">沒有更多搜尋結果了</div>
             </div>
           </div>
@@ -69,21 +65,25 @@
         </div>
       </div>
     </div>
-  </b-modal>
+  </InterfaceModal>
 </template>
 
 <script>
 import debounce from 'lodash/debounce'
-import { BModal, BFormInput, BIconSearch, BButton } from 'bootstrap-vue'
+
+import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 import ArticleSeachResult from '~/components/article/article-search-result.vue'
 
 export default {
   components: {
-    BModal,
-    BFormInput,
-    BIconSearch,
-    BButton,
+    InterfaceFormInput,
+    InterfaceButton,
+    InterfaceIcon,
+    InterfaceModal,
     ArticleSeachResult,
   },
   props: {
@@ -135,7 +135,7 @@ export default {
       this.articles = []
     },
     shown() {
-      this.$refs.input.focus()
+      this.$refs.input.$el.focus()
     },
     async searchMore() {
       this.searchingMore = true

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <article-card
+    <ArticleCard
       v-for="(article, index) in articles"
       :key="index"
       :article="article"
@@ -8,20 +8,18 @@
       :preload-img="index <= 4"
     />
 
-    <common-pagination-nav
-      :link-gen="linkGen"
-      :number-of-pages="numberOfPages"
-    />
+    <InterfacePagination :link-gen="linkGen" :number-of-pages="numberOfPages" />
   </div>
 </template>
 
 <script>
-import ArticleCard from '~/components/article/article-card.vue'
-import CommonPaginationNav from '~/components/common/common-pagination-nav.vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
+import ArticleCard from '~/components/article/article-card.vue'
+import InterfacePagination from '~/components/interface/interface-pagination.vue'
+
 export default {
-  components: { ArticleCard, CommonPaginationNav },
+  components: { ArticleCard, InterfacePagination },
   props: {
     articles: {
       type: Array,

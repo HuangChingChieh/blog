@@ -3,16 +3,15 @@
     v-if="minutes"
     class="text-muted small d-inline-flex align-items-center"
   >
-    <b-icon-clock class="mr-1" />
+    <InterfaceIcon class="mr-1" icon="clock" />
     <span class="mr-3">{{ minutes }} min</span>
   </span>
 </template>
 
 <script>
-import { BIconClock } from 'bootstrap-vue'
-
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
 export default {
-  components: { BIconClock },
+  components: { InterfaceIcon },
   props: {
     minutes: {
       type: Number,

@@ -1,19 +1,21 @@
 <template>
-  <b-button
+  <InterfaceButton
     :size="size"
     variant="primary"
     :to="to"
     class="d-inline-flex flex-row align-items-center button-enter"
   >
     <slot></slot>
-    <b-icon-arrow-right />
-  </b-button>
+    <InterfaceIcon icon="arrow-right" />
+  </InterfaceButton>
 </template>
 
 <script>
-import { BIconArrowRight, BButton } from 'bootstrap-vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+
 export default {
-  components: { BIconArrowRight, BButton },
+  components: { InterfaceButton, InterfaceIcon },
   props: {
     to: {
       type: [String, Object],

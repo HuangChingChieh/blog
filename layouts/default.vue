@@ -1,25 +1,21 @@
 <template>
   <main :class="$store.state.theme">
     <common-header @openProfileModal="sidebar.open = true" />
-    <b-container :fluid="mobileBreakpoint" class="py-4">
+    <InterfaceContainer class="py-4">
       <Nuxt />
-    </b-container>
+    </InterfaceContainer>
+
     <common-footer class="mt-4" />
   </main>
 </template>
 
 <script>
-import { BContainer } from 'bootstrap-vue'
+import InterfaceContainer from '~/components/interface/interface-container.vue'
+
 import commonHeader from '~/components/common/common-header.vue'
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
 import CommonFooter from '~/components/common/common-footer.vue'
 
 export default {
-  components: { BContainer, commonHeader, CommonFooter },
-  data() {
-    return {
-      mobileBreakpoint,
-    }
-  },
+  components: { InterfaceContainer, commonHeader, CommonFooter },
 }
 </script>

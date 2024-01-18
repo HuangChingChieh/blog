@@ -1,5 +1,5 @@
 <template>
-  <common-img
+  <InterfaceImg
     img-class="w-100 img-fluid rounded-lg shadow-sm article-img d-block"
     :img="img"
     :style="{ aspectRatio }"
@@ -7,10 +7,10 @@
 </template>
 
 <script>
-import commonImg from '~/components/common/common-img.vue'
+import InterfaceImg from '~/components/interface/interface-img.vue'
 
 export default {
-  components: { commonImg },
+  components: { InterfaceImg },
   props: {
     img: {
       type: String,

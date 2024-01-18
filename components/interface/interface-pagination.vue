@@ -1,5 +1,5 @@
 <template>
-  <b-pagination-nav
+  <BPaginationNav
     :link-gen="linkGen"
     :number-of-pages="numberOfPages"
     use-router
@@ -8,44 +8,35 @@
     :value="$route.params.page || 1"
   >
     <template #first-text>
-      <b-icon-chevron-double-left />
+      <InterfaceIcon icon="chevron-double-left" />
     </template>
 
     <template #prev-text>
-      <b-icon-chevron-left />
+      <InterfaceIcon icon="chevron-left" />
     </template>
 
     <template #ellipsis-text>
-      <b-icon-three-dots />
+      <InterfaceIcon icon="three-dots" />
     </template>
 
     <template #next-text>
-      <b-icon-chevron-right />
+      <InterfaceIcon icon="chevron-right" />
     </template>
 
     <template #last-text>
-      <b-icon-chevron-double-right />
+      <InterfaceIcon icon="chevron-double-right" />
     </template>
-  </b-pagination-nav>
+  </BPaginationNav>
 </template>
 
 <script>
-import {
-  BPaginationNav,
-  BIconChevronDoubleLeft,
-  BIconChevronLeft,
-  BIconThreeDots,
-  BIconChevronRight,
-  BIconChevronDoubleRight,
-} from 'bootstrap-vue'
+import { BPaginationNav } from 'bootstrap-vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+
 export default {
   components: {
     BPaginationNav,
-    BIconChevronDoubleLeft,
-    BIconChevronLeft,
-    BIconThreeDots,
-    BIconChevronRight,
-    BIconChevronDoubleRight,
+    InterfaceIcon,
   },
   props: {
     linkGen: {

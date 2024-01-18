@@ -1,7 +1,6 @@
 <template>
   <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
-    <b-container
-      :fluid="mobileBreakpoint"
+    <InterfaceContainer
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
     >
@@ -27,14 +26,16 @@
         <header-icon-theme />
         <header-icon-search />
       </div>
-    </b-container>
+    </InterfaceContainer>
 
     <div v-b-visible="onHeaderHide"></div>
   </header>
 </template>
 
 <script>
-import { BContainer, VBVisible } from 'bootstrap-vue'
+import { VBVisible } from 'bootstrap-vue'
+
+import InterfaceContainer from '~/components/interface/interface-container.vue'
 
 import CommonIcon from '~/components/common/common-icon.vue'
 import HeaderIconToc from '~/components/header/header-icon-toc.vue'
@@ -46,7 +47,7 @@ import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 export default {
   components: {
-    BContainer,
+    InterfaceContainer,
     CommonIcon,
     HeaderIconToc,
     HeaderIconSearch,

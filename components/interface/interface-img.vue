@@ -1,10 +1,10 @@
 <template>
-  <b-img-lazy
+  <BImgLazy
     v-if="img"
     :srcset="srcset"
     :src="src"
     :class="imgClass"
-    class="common-img"
+    class="interface-img"
     :sizes="sizes"
   />
 </template>

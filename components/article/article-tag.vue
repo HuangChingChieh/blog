@@ -1,20 +1,14 @@
 <template>
-  <b-badge
-    variant="secondary"
-    class="d-inline-block font-weight-normal text-monospace"
-  >
+  <InterfaceBadge class="d-inline-block font-weight-normal text-monospace">
     #<slot>{{ tagName }}</slot>
-    <!-- <nuxt-link
-      :to="`/tags/${tagName}`"
-      class="text-decoration-none text-white"
-    >{{ tagName }}</nuxt-link> -->
-  </b-badge>
+  </InterfaceBadge>
 </template>
 
 <script>
-import { BBadge } from 'bootstrap-vue'
+import InterfaceBadge from '~/components/interface/interface-badge.vue'
+
 export default {
-  components: { BBadge },
+  components: { InterfaceBadge },
   props: {
     tagName: {
       type: String,

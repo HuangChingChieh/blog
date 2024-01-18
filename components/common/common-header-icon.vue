@@ -1,31 +1,22 @@
 <template>
-  <b-button
+  <InterfaceButton
     variant="link"
     class="d-flex align-items-center text-decoration-none ml-4 common-header-icon"
-    @click.prevent="$emit('click')"
+    @click="$emit('click')"
   >
-    <component :is="`b-icon-${icon}`" class="h5 mb-0"></component>
+    <InterfaceIcon :icon="icon" class="h5 mb-0" />
     <slot></slot>
-  </b-button>
+  </InterfaceButton>
 </template>
 
 <script>
-import {
-  BIconSearch,
-  BIconFolder,
-  BIconCardList,
-  BIconSun,
-  BIconMoonStars,
-  BButton,
-} from 'bootstrap-vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+
 export default {
   components: {
-    BIconSearch,
-    BIconFolder,
-    BIconCardList,
-    BIconSun,
-    BIconMoonStars,
-    BButton,
+    InterfaceButton,
+    InterfaceIcon,
   },
   props: {
     icon: {

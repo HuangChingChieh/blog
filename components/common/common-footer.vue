@@ -1,7 +1,7 @@
 <template>
   <footer class="common-footer pb-5">
-    <b-container :fluid="mobileBreakpoint" class="text-white">
-      <b-row>
+    <InterfaceContainer class="text-white">
+      <InterfaceRow>
         <footer-block>
           <footer-title>
             <nuxt-link
@@ -59,15 +59,17 @@
             >請我喝杯手搖飲哦！</footer-content
           >
         </footer-block>
-      </b-row>
-    </b-container>
+      </InterfaceRow>
+    </InterfaceContainer>
   </footer>
 </template>
 
 <script>
-import { BContainer, BRow } from 'bootstrap-vue'
-import { mobileBreakpoint, gridColumns } from '~/assets/css/custom.scss'
+import { gridColumns } from '~/assets/css/custom.scss'
 import { getCategoryLink } from '~/utils/getLink'
+
+import InterfaceContainer from '~/components/interface/interface-container.vue'
+import InterfaceRow from '~/components/interface/interface-row.vue'
 
 import FooterTitle from '~/components/footer/footer-title.vue'
 import FooterBlock from '~/components/footer/footer-block.vue'
@@ -77,8 +79,8 @@ import CommonIcon from '~/components/common/common-icon.vue'
 
 export default {
   components: {
-    BContainer,
-    BRow,
+    InterfaceContainer,
+    InterfaceRow,
     FooterTitle,
     FooterBlock,
     FooterContent,
@@ -86,7 +88,7 @@ export default {
     CommonIcon,
   },
   data() {
-    return { mobileBreakpoint, gridColumns }
+    return { gridColumns }
   },
   methods: { getCategoryLink },
 }

@@ -1,36 +1,44 @@
 <template>
-  <b-modal
+  <InterfaceModal
     v-model="valueInner"
-    centered
-    hide-footer
-    scrollable
     title="摘要"
     modal-class="modal-toc"
     @hidden="hidden"
   >
-    <b-nav v-b-scrollspy vertical>
-      <b-nav-item
+    <InterfaceNav v-b-scrollspy vertical>
+      <InterfaceNavItem
         v-for="(item, i) in toc"
         :key="i"
         :to="{ hash: `#${item.id}` }"
         class="border-left"
         link-classes="p-0"
       >
-        <modal-toc-item
+        <ModalTocItem
           :item="item"
           :min-depth="minDepth"
           @click="scrollTo(item)"
         />
-      </b-nav-item>
-    </b-nav>
-  </b-modal>
+      </InterfaceNavItem>
+    </InterfaceNav>
+  </InterfaceModal>
 </template>
 
 <script>
-import { BModal, VBScrollspy, BNav, BNavItem } from 'bootstrap-vue'
+import { VBScrollspy } from 'bootstrap-vue'
+
+import InterfaceNav from '~/components/interface/interface-nav.vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
+import InterfaceNavItem from '~/components/interface/interface-nav-item.vue'
+
 import ModalTocItem from './modal-toc-item.vue'
+
 export default {
-  components: { BModal, BNav, BNavItem, ModalTocItem },
+  components: {
+    InterfaceNav,
+    InterfaceModal,
+    InterfaceNavItem,
+    ModalTocItem,
+  },
   directives: { 'b-scrollspy': VBScrollspy },
   props: {
     value: {
