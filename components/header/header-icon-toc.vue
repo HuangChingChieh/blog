@@ -4,6 +4,7 @@
       v-if="hasToc"
       icon="card-list"
       title="文章摘要"
+      :class="iconClass"
       @click="open = true"
     />
 
@@ -19,6 +20,12 @@ import ModalToc from '~/components/modal/modal-toc.vue'
 
 export default {
   components: { CommonHeaderIcon, ModalToc },
+  props: {
+    iconClass: {
+      type: [String, Array],
+      default: '',
+    },
+  },
   data() {
     return {
       open: false,

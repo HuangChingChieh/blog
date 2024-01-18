@@ -1,5 +1,5 @@
 <template>
-  <common-container class="error-404">
+  <common-container>
     <div class="text-center">
       <div class="h1 font-weight-boldest text-muted">404</div>
       <div class="my-4">
@@ -47,9 +47,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.error-404 .common-icon {
-  filter: grayscale(1);
-}
-</style>

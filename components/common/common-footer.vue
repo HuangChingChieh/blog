@@ -1,5 +1,5 @@
 <template>
-  <footer class="common-footer pb-5">
+  <footer class="pb-5" :class="$style.footer">
     <InterfaceContainer class="text-white">
       <InterfaceRow>
         <footer-block>
@@ -94,8 +94,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.common-footer {
+<style lang="scss" module>
+.footer {
   background-color: $gray-800;
 }
 </style>

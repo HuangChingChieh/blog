@@ -1,19 +1,20 @@
 <template>
   <article
-    class="d-flex flex-column align-items-stretch common-container article-card"
-    :class="[`flex-${mobileBreakpoint}-row`]"
+    class="d-flex flex-column align-items-stretch common-container"
+    :class="[`flex-${mobileBreakpoint}-row`, $style.card]"
   >
     <div
       class="d-flex flex-column flex-grow-1 px-3 py-3 order-2"
       :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
     >
-      <div class="article-title-text">
-        <h4 class="text-body article-title text-two-line">
+      <div :class="$style.content">
+        <h4 class="text-body text-two-line" :class="$style.title">
           {{ article.title }}
         </h4>
 
         <p
-          class="text-muted article-text text-two-line"
+          class="text-muted text-two-line"
+          :class="$style.description"
           :title="article.description"
         >
           {{ article.description }}
@@ -37,9 +38,10 @@
       v-if="article.img"
       :img="article.img"
       class="align-self-stretch order-1"
-      :class="[`order-${mobileBreakpoint}-2`]"
+      :class="[`order-${mobileBreakpoint}-2`, $style.banner]"
       :sizes="bannerSizes"
       :preload="preloadImg"
+      :img-class="$style.img"
     />
   </article>
 </template>
@@ -99,17 +101,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$article-card-content-line: 2;
-$article-card-text-line: 2;
-$article-card-title-font-size: $h4-font-size;
-$article-card-title-height: $headings-line-height * $article-card-content-line *
-  $article-card-title-font-size;
-$article-card-text-font-size: $font-size-base;
-$article-card-text-height: $line-height-base * $article-card-content-line *
-  $font-size-base;
+<style lang="scss" module>
+$card-content-line: 2;
+$card-text-line: 2;
+$card-title-font-size: $h4-font-size;
+$card-title-height: $headings-line-height * $card-content-line *
+  $card-title-font-size;
+$card-text-font-size: $font-size-base;
+$card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
-.article-card {
+.card {
   background-color: var(--foreground);
   border-radius: $border-radius-lg;
   overflow: hidden;
@@ -120,43 +121,50 @@ $article-card-text-height: $line-height-base * $article-card-content-line *
     transform: scale(1.025);
   }
 
-  .article-banner {
+  .banner {
     width: 100%;
     min-width: 40%;
   }
 
-  .article-text {
+  .description {
     font-size: $font-size-base;
-    max-height: $article-card-text-height;
+    max-height: $card-text-height;
     margin: 0;
     display: none;
   }
 
-  .article-title {
-    font-size: 1.1rem;
-    font-weight: 900;
+  .content {
+    .title {
+      font-size: 1.1rem;
+      font-weight: 900;
+    }
+  }
+
+  .img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
   }
 }
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  .article-card {
+  .card {
     background-color: transparent;
-    .article-banner {
+    .banner {
       width: 40%;
       min-width: 40%;
     }
 
-    .article-title-text {
-      height: $article-card-title-height + $article-card-text-height +
-        $headings-margin-bottom;
+    .content {
+      height: $card-title-height + $card-text-height + $headings-margin-bottom;
+
+      .title {
+        font-size: $card-title-font-size;
+        max-height: $card-title-height;
+      }
     }
 
-    .article-title {
-      font-size: $article-card-title-font-size;
-      max-height: $article-card-title-height;
-    }
-
-    .article-text {
+    .description {
       display: block;
     }
   }

@@ -16,7 +16,8 @@
             v-for="article in categoryObj.articles"
             :key="article.slug"
             :to="getArticleLink(article)"
-            class="d-block pl-3 py-2 border-left category-article-link"
+            class="d-block pl-3 py-2 border-left"
+            :class="$style.link"
             >{{ article.title }}</nuxt-link
           >
 
@@ -71,8 +72,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.category-article-link {
+<style lang="scss" module>
+.link {
   border-width: 3px !important;
 
   &:hover {

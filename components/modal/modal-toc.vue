@@ -2,7 +2,7 @@
   <InterfaceModal
     v-model="valueInner"
     title="摘要"
-    modal-class="modal-toc"
+    :modal-class="$style.modal"
     @hidden="hidden"
   >
     <InterfaceNav v-b-scrollspy vertical>
@@ -11,7 +11,9 @@
         :key="i"
         :to="{ hash: `#${item.id}` }"
         class="border-left"
-        link-classes="p-0"
+        :link-classes="[`p-0`, $style.navLink]"
+        :active-class="$style.active"
+        :class="$style.navItem"
       >
         <ModalTocItem
           :item="item"
@@ -30,7 +32,7 @@ import InterfaceNav from '~/components/interface/interface-nav.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 import InterfaceNavItem from '~/components/interface/interface-nav-item.vue'
 
-import ModalTocItem from './modal-toc-item.vue'
+import ModalTocItem from '~/components/modal/modal-toc-item.vue'
 
 export default {
   components: {
@@ -90,15 +92,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.modal-toc {
-  .nav-item {
+<style lang="scss" module>
+.modal {
+  .navItem {
     border-width: 3px !important;
 
     &.active {
       border-color: $primary !important;
 
-      .nav-link {
+      .navLink {
         color: $primary;
         font-weight: 900;
       }

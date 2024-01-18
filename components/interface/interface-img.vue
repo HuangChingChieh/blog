@@ -3,7 +3,7 @@
     v-if="img"
     :srcset="srcset"
     :src="src"
-    :class="imgClass"
+    :class="imgClassComputed"
     class="interface-img"
     :sizes="sizes"
   />
@@ -93,6 +93,15 @@ export default {
     }
   },
   computed: {
+    imgClassComputed() {
+      const imgClassComputed = [this.$style.img]
+
+      const { imgClass } = this
+      if (typeof imgClass === 'string') imgClassComputed.push(imgClass)
+      else if (Array.isArray(imgClass)) imgClassComputed.push(...imgClass)
+
+      return imgClassComputed
+    },
     src() {
       return this.$config.imageServer + this.img
     },
@@ -128,8 +137,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.common-img {
+<style lang="scss" module>
+.img {
   height: 100%;
   width: 100%;
   background-color: $gray-200;

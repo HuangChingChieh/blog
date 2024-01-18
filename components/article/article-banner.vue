@@ -1,11 +1,10 @@
 <template>
-  <div class="article-banner position-relative">
+  <div class="position-relative">
     <InterfaceImg
       :img="img"
       :img-class="imgClass"
       :sizes="sizes"
       :preload="preload"
-      class="article-banner-img"
     />
   </div>
 </template>
@@ -36,11 +35,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.article-card .article-banner-img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;
-}
-</style>

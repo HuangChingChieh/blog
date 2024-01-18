@@ -1,7 +1,7 @@
 <template>
   <BOverlay
     :show="show"
-    class="overlay-loading"
+    :class="$style.overlay"
     fixed
     no-wrap
     blur="0"
@@ -28,8 +28,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.overlay-loading {
+<style lang="scss" module>
+.overlay {
   position: fixed;
   top: 0;
   left: 0;

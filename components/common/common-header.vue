@@ -1,10 +1,10 @@
 <template>
-  <header class="common-header" :class="`pt-${mobileBreakpoint}-4`">
+  <header :class="[`pt-${mobileBreakpoint}-4`, $style.header]">
     <InterfaceContainer
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
     >
-      <common-icon bordered />
+      <common-icon bordered :class="$style.logo" />
       <div class="ml-3 flex-grow-1">
         <nuxt-link
           class="font-weight-bold text-body d-block text-decoration-none"
@@ -19,12 +19,15 @@
 
       <div
         class="d-flex align-items-center justify-content-end"
-        :class="{ 'header-icons-fixed': !headerVisible }"
+        :class="{ [$style.iconsFixed]: !headerVisible }"
       >
-        <header-icon-categories :show-text="headerVisible" />
-        <header-icon-toc />
-        <header-icon-theme />
-        <header-icon-search />
+        <header-icon-categories
+          :icon-class="$style.icon"
+          :show-text="headerVisible"
+        />
+        <header-icon-toc :icon-class="$style.icon" />
+        <header-icon-theme :icon-class="$style.icon" />
+        <header-icon-search :icon-class="$style.icon" />
       </div>
     </InterfaceContainer>
 
@@ -69,8 +72,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.common-header {
+<style lang="scss" module>
+.header {
   position: sticky;
   background-color: var(--foreground);
   box-shadow: $box-shadow-sm;
@@ -79,22 +82,22 @@ export default {
   top: 0;
   z-index: $zindex-sticky;
 
-  .common-icon {
+  .logo {
     height: 2rem;
     width: 2rem;
   }
 
-  .common-header-icon {
+  .icon {
     padding: 0;
     transition: none;
   }
 
-  .header-icons-fixed {
+  .iconsFixed {
     position: fixed;
     top: 1rem;
     flex-direction: column;
 
-    .common-header-icon {
+    .icon {
       margin-bottom: 1rem;
       padding: 0.5rem;
       background-color: var(--foreground);
@@ -106,27 +109,27 @@ export default {
 
 @each $breakpoint, $max-widths in $container-max-widths {
   @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
-    .header-icons-fixed {
+    .iconsFixed {
       left: calc(50% + $max-widths / 2 - 0.5rem);
     }
   }
 }
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  .common-header {
+  .header {
     position: static;
     background-color: transparent;
     box-shadow: none;
     padding-top: 0;
     padding-bottom: 0;
 
-    .common-icon {
+    .logo {
       height: 3rem;
       width: 3rem;
     }
   }
 
-  .common-header-icon {
+  .icon {
     padding: 0;
   }
 }

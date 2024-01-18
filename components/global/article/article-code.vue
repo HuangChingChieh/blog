@@ -20,7 +20,7 @@
       </InterfaceButton>
     </div>
 
-    <div ref="code" class="rounded-bottom">
+    <div ref="code" class="rounded-bottom" :class="$style.pre">
       <slot></slot>
     </div>
   </div>
@@ -81,8 +81,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.article-code pre {
+<style lang="scss" module>
+.pre {
   border-radius: $border-radius-lg;
   font-size: $small-font-size !important;
   margin: 0 0 $paragraph-margin-bottom 0;

@@ -7,11 +7,12 @@
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div class="modal-search-input-group position-relative">
+      <div class="position-relative" :class="$style.inputGroup">
         <InterfaceFormInput
           ref="input"
           v-model="keyword"
           placeholder="請輸入關鍵字"
+          :class="$style.input"
           @input="
             beforeSearch()
             search()
@@ -19,13 +20,14 @@
         />
 
         <div
-          class="d-flex align-items-center justify-content-center px-3 modal-search-input-icon-wrapper"
+          class="d-flex align-items-center justify-content-center px-3"
+          :class="$style.iconWrapper"
         >
-          <InterfaceIcon icon="search" />
+          <InterfaceIcon icon="search" :class="$style.icon" />
         </div>
       </div>
 
-      <div class="mt-3 modal-search-results">
+      <div class="mt-3" :class="$style.results">
         <div v-if="keyword" class="h-100">
           <div v-if="hasSearchResult" class="flex-grow-1">
             <div
@@ -168,23 +170,23 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.modal-search-results {
+<style lang="scss" module>
+.results {
   height: 400px;
   overflow-y: auto;
   word-break: break-all;
 }
 
-.modal-search-input-group {
-  input {
+.inputGroup {
+  .input {
     padding-right: calc(1.5rem + 1rem);
 
-    &:focus ~ .modal-search-input-icon-wrapper .b-icon {
+    &:focus ~ .iconWrapper .icon {
       color: $primary;
     }
   }
 
-  .modal-search-input-icon-wrapper {
+  .iconWrapper {
     position: absolute;
     top: 0;
     right: 0;

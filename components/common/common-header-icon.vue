@@ -1,7 +1,7 @@
 <template>
   <InterfaceButton
     variant="link"
-    class="d-flex align-items-center text-decoration-none ml-4 common-header-icon"
+    class="d-flex align-items-center text-decoration-none ml-4"
     @click="$emit('click')"
   >
     <InterfaceIcon :icon="icon" class="h5 mb-0" />

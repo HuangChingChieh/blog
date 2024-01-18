@@ -1,6 +1,11 @@
 <template>
   <div>
-    <common-header-icon icon="folder" title="文章分類" @click="open = true">
+    <common-header-icon
+      icon="folder"
+      title="文章分類"
+      :class="iconClass"
+      @click="open = true"
+    >
       <span v-if="showText && text" class="pl-1">{{ text }}</span>
     </common-header-icon>
 
@@ -21,6 +26,10 @@ export default {
     showText: {
       type: Boolean,
       default: false,
+    },
+    iconClass: {
+      type: [String, Array],
+      default: '',
     },
   },
   data() {

@@ -1,7 +1,5 @@
 <template>
-  <div @click="toggle">
-    <common-header-icon :icon="icon" />
-  </div>
+  <common-header-icon :icon="icon" @click="toggle" />
 </template>
 
 <script>

@@ -6,7 +6,8 @@
     allowfullscreen
     allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy"
-    class="embed-spotify-list rounded-lg w-100"
+    class="rounded-lg w-100"
+    :class="$style.list"
   ></iframe>
 </template>
 
@@ -27,8 +28,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.embed-spotify-list {
+<style lang="scss" module>
+.list {
   aspect-ratio: 4 / 3;
 }
 </style>
