@@ -23,16 +23,13 @@ category: frontend
 
 1. 建立 Nuxt3 專案並同步設定值
 2. 平行轉移模組，並檢視相關的設定值是否須修改，若是跟 component 有關的修改則先擱置，待確定 UI 框架、開始重刻元件後再一起處理。
-3. 確定 UI 框架是否使用 Nuxt UI，確認的話開始轉移元件：
-   - html 視需要應可重刻
-   - scss 部份有套用 BS 變數的部份，要想一下怎麼修改。
-   - script 則改用 ts，並以 composition api 重寫。
+3. 確定 UI 框架（這個可能要擺很後面了 XD）。
 
 ---
 
 ## Nuxt 設定值
 
-首先從原本的`nuxt.config.js`中轉移設定值並升級對應的模組：
+首先從原本的`nuxt.config.js`中轉移非模組的設定值。
 
 ### 資料夾結構
 
@@ -40,7 +37,7 @@ category: frontend
 
 ### 基本設定
 
-網站用到的基本設定值不多，變動也不大，就一起整理在這邊，雖然官方有 Upgrade Guide 可以看，但有些並沒有完全提到，我還是自己打開兩個版本的文件對應起來。
+網站用到的基本設定值不多，變動也不大，就一起整理在這邊。雖然官方有 [Upgrade Guide](https://nuxt.com/docs/getting-started/upgrade#nuxt-2-to-nuxt-3) 可以看，但有些設定值沒有提到，我最終還是打開兩個版本的文件自己去對應起來。
 
 ```js
 export default defineNuxtConfig({
@@ -99,8 +96,8 @@ export default defineNuxtConfig({
 
 由於新版的 Nuxt Content 會自動為`content`資料夾下的文章建立 route，但我網址是統一讓文章的`slug`都接在網域後面，參考[官方文件](https://content.nuxt.com/usage/content-directory)修改如下：
 
-- `_articles/年份/文章們.md`
-- `.draft/草稿們.md`
+- `_articles/年份/文章們.md`：「`_`」開頭的資料夾下的所有文件都不會自動產生 route
+- `.draft/草稿們.md`：「`.`」開頭
 
 ### nuxt-content-git
 
@@ -114,34 +111,20 @@ export default defineNuxtConfig({
 
 ### manifest
 
-設定值的部份，`pwa.manifest`對照過之後發現直接平移到 modules 設定值就好。
+設定值的部份，`pwa.manifest`對照過之後發現直接平移就好。
 
 ```js
 import { VitePWA } from 'vite-plugin-pwa'
 export default defineNuxtConfig({
-  //   pwa: {
-  //     manifest: {
-  //       name: '隨機手札',
-  //       short_name: '隨機手札',
-  //       description,
-  //       lang: 'zh-Hant-TW',
-  //     }
-  //   },
-  modules: [
-    [
-      '@vite-pwa/nuxt',
-      // 傳遞模組設定值
-      VitePWA({
-        // manifest基本上直接平移過來
-        manifest: {
-          name: '隨機手札',
-          short_name: '隨機手札',
-          description,
-          lang: 'zh-Hant-TW',
-        },
-      }),
-    ],
-  ],
+  pwa: {
+    manifest: {
+      name: '隨機手札',
+      short_name: '隨機手札',
+      description,
+      lang: 'zh-Hant-TW',
+    },
+  },
+  modules: ['@vite-pwa/nuxt'],
 })
 ```
 
@@ -171,47 +154,39 @@ npm run generate-pwa-assets
 ```js
 import { VitePWA } from 'vite-plugin-pwa'
 export default defineNuxtConfig({
-  //   pwa: {
-  //     icon: {
-  //       source: 'static/icon.png',
-  //       fileName: 'icon.png',
-  //       sizes: [64, 120, 144, 152, 192, 384, 512],
-  //       targetDir: 'icons',
-  //       plugin: true,
-  //       purpose: ['any', 'maskable'],
-  //     },
-  //   },
-  modules: [
-    [
-      '@vite-pwa/nuxt',
-      VitePWA({
-        manifest: {
-          icons: [
-            {
-              src: 'pwa-64x64.png',
-              sizes: '64x64',
-              type: 'image/png',
-            },
-            {
-              src: 'pwa-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-            },
-            {
-              src: 'pwa-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-            },
-            {
-              src: 'maskable-icon-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'maskable',
-            },
-          ],
-        },
-      }),
+  pwa: {
+    // icon: {
+    //   source: 'static/icon.png',
+    //   fileName: 'icon.png',
+    //   sizes: [64, 120, 144, 152, 192, 384, 512],
+    //   targetDir: 'icons',
+    //   plugin: true,
+    //   purpose: ['any', 'maskable'],
+    // },
+    icons: [
+      {
+        src: 'pwa-64x64.png',
+        sizes: '64x64',
+        type: 'image/png',
+      },
+      {
+        src: 'pwa-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        src: 'pwa-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+      {
+        src: 'maskable-icon-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
     ],
-  ],
+  },
+  modules: ['@vite-pwa/nuxt'],
 })
 ```
