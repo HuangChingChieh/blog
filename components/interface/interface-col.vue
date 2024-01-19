@@ -1,5 +1,5 @@
 <template>
-  <BCol>
+  <BCol :sm="sm" :md="md" :lg="lg" :xl="xl">
     <slot></slot>
   </BCol>
 </template>
@@ -10,21 +10,23 @@ export default {
   components: {
     BCol,
   },
-  sm: {
-    type: [String, Number],
-    default: '',
-  },
-  md: {
-    type: [String, Number],
-    default: '',
-  },
-  lg: {
-    type: [String, Number],
-    default: '',
-  },
-  xl: {
-    type: [String, Number],
-    default: '',
+  props: {
+    sm: {
+      type: [String, Number],
+      default: '',
+    },
+    md: {
+      type: [String, Number],
+      default: '',
+    },
+    lg: {
+      type: [String, Number],
+      default: '',
+    },
+    xl: {
+      type: [String, Number],
+      default: '',
+    },
   },
 }
 </script>
