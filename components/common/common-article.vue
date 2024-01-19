@@ -21,15 +21,15 @@
         v-for="tag in document.tags"
         :key="tag"
         :tag-name="tag"
-        class="mr-1 mb-1"
+        class="me-1 mb-1"
       />
     </div>
 
     <article-banner
       v-if="document.img"
       :img="document.img"
-      img-class="rounded-lg"
-      class="rounded-lg"
+      img-class="rounded"
+      class="rounded"
       :class="$style.banner"
       preload
     />
@@ -66,11 +66,6 @@ export default {
 $article-font-size-base: 1rem;
 
 .nuxt-content {
-  b,
-  strong {
-    color: var(--black);
-  }
-
   h2,
   h3,
   p,

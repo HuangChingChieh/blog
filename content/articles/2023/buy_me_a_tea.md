@@ -50,7 +50,3 @@ category: life
 加密貨幣是無國界的資產轉移方式，若你是有在使用加密貨幣的朋友，歡迎拿幣砸我（？）喔。目前接受[MaiCoin 網站](https://www.maicoin.com/docs/fees-limits/transfers)中主網類型為 ERC20 / BSC / Polygon 的幣種。
 
 <global-donations-crypto></global-donations-crypto>
-
-### Like Coin
-
-也可以在每篇文章下方的 Liker 點讚（需有 Liker 帳號），[Liker Land](https://docs.like.co/v/zh/user-guide/liker-id/register)是基於區塊鏈技術的內容創作者激勵與分享系統，不花一毛錢就能讓我獲得獎勵哦！

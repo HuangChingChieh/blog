@@ -1,6 +1,6 @@
 <template>
   <InterfaceImg
-    img-class="w-100 img-fluid rounded-lg shadow-sm d-block"
+    img-class="w-100 img-fluid rounded shadow-sm d-block"
     :img="img"
     :style="{ aspectRatio }"
   />

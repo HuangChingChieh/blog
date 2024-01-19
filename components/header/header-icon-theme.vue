@@ -53,7 +53,7 @@ export default {
       localStorage.setItem('dark', Number(dark))
     },
     themeToRoot() {
-      document.querySelector(':root').dataset.theme = this.darkComputed
+      document.querySelector(':root').dataset.bsTheme = this.darkComputed
         ? 'dark'
         : 'light'
     },

@@ -9,19 +9,31 @@
 </template>
 
 <script>
-import { VBVisible } from 'bootstrap-vue'
+import bVisible from '~/utils/bVisible'
 
 export default {
-  directives: { 'b-visible': VBVisible },
+  directives: { 'b-visible': bVisible },
   data() {
     return { likerButton: '' }
   },
   methods: {
     init(isVisible) {
+      // SEE https://docs.like.co/developer/likecoin-button/iframe
       if (isVisible && !this.likerButton) {
-        this.likerButton = `https://button.like.co/in/embed/chaoshuang/button?referrer=${encodeURIComponent(
-          window.location.origin + window.location.pathname
-        )}`
+        const likerButton = new URL(
+          `https://button.like.co/in/embed/chaoshuang/button`
+        )
+        const { searchParams } = likerButton
+        searchParams.append(
+          'referrer',
+          encodeURIComponent(
+            this.$config.appHost + this.$route.path.substring(1)
+          )
+        )
+
+        if (this.$config.isDev) searchParams.append('preview', 1)
+
+        this.likerButton = likerButton.toString()
       }
     },
   },

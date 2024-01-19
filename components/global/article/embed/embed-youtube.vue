@@ -7,7 +7,7 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
     loading="lazy"
-    class="rounded-lg w-100"
+    class="rounded w-100"
     :class="$style.youtube"
   ></iframe>
 </template>

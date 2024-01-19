@@ -4,12 +4,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import { VBVisible } from 'bootstrap-vue'
 
 import kebabCase from 'lodash/kebabCase'
 
+import bVisible from '~/utils/bVisible'
+
 export default {
-  directives: { 'b-visible': VBVisible },
+  directives: { 'b-visible': bVisible },
   data() {
     return {
       inited: false,

@@ -4,8 +4,8 @@
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
     >
-      <common-icon bordered :class="$style.logo" />
-      <div class="ml-3 flex-grow-1">
+      <CommonIcon bordered :class="$style.logo" />
+      <div class="ms-3 flex-grow-1">
         <nuxt-link
           class="font-weight-bold text-body d-block text-decoration-none"
           to="/"
@@ -21,13 +21,13 @@
         class="d-flex align-items-center justify-content-end"
         :class="{ [$style.iconsFixed]: !headerVisible }"
       >
-        <header-icon-categories
-          :icon-class="$style.icon"
+        <HeaderIconCategories
+          :icon-class="[$style.icon, 'd-flex']"
           :show-text="headerVisible"
         />
-        <header-icon-toc :icon-class="$style.icon" />
-        <header-icon-theme :icon-class="$style.icon" />
-        <header-icon-search :icon-class="$style.icon" />
+        <HeaderIconToc :icon-class="[$style.icon, 'd-flex']" />
+        <HeaderIconTheme :icon-class="[$style.icon, 'd-flex']" />
+        <HeaderIconSearch :icon-class="[$style.icon, 'd-flex']" />
       </div>
     </InterfaceContainer>
 
@@ -36,8 +36,6 @@
 </template>
 
 <script>
-import { VBVisible } from 'bootstrap-vue'
-
 import InterfaceContainer from '~/components/interface/interface-container.vue'
 
 import CommonIcon from '~/components/common/common-icon.vue'
@@ -48,6 +46,8 @@ import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
 
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
+import bVisible from '~/utils/bVisible'
+
 export default {
   components: {
     InterfaceContainer,
@@ -57,16 +57,24 @@ export default {
     HeaderIconCategories,
     HeaderIconTheme,
   },
-  directives: { 'b-visible': VBVisible },
+  directives: { 'b-visible': bVisible },
   data() {
     return {
       mobileBreakpoint,
       headerVisible: true,
+      modal: {
+        toc: false,
+        categories: false,
+        search: false,
+      },
     }
   },
   methods: {
     onHeaderHide(isVisible) {
       this.headerVisible = isVisible
+    },
+    openModal(key) {
+      this.toggleModal({ key, isOpen: true })
     },
   },
 }
@@ -75,12 +83,22 @@ export default {
 <style lang="scss" module>
 .header {
   position: sticky;
-  background-color: var(--foreground);
+  background-color: var(--bs-secondary-bg);
   box-shadow: $box-shadow-sm;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
   z-index: $zindex-sticky;
+
+  @media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+    [data-bs-theme='light'] & {
+      background-color: var(--bs-body-bg);
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+    background-color: var(--bs-body-bg);
+  }
 
   .logo {
     height: 2rem;
@@ -90,6 +108,7 @@ export default {
   .icon {
     padding: 0;
     transition: none;
+    display: flex;
   }
 
   .iconsFixed {
@@ -100,7 +119,7 @@ export default {
     .icon {
       margin-bottom: 1rem;
       padding: 0.5rem;
-      background-color: var(--foreground);
+      background-color: var(--bs-body-bg);
       box-shadow: $box-shadow-sm;
       border-radius: 90px;
     }

@@ -1,14 +1,5 @@
 <template>
-  <BRow>
+  <div class="row">
     <slot></slot>
-  </BRow>
+  </div>
 </template>
-
-<script>
-import { BRow } from 'bootstrap-vue'
-export default {
-  components: {
-    BRow,
-  },
-}
-</script>

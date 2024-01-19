@@ -1,26 +1,22 @@
 <template>
-  <div>
-    <common-header-icon
-      icon="folder"
-      title="文章分類"
-      :class="iconClass"
-      @click="open = true"
-    >
-      <span v-if="showText && text" class="pl-1">{{ text }}</span>
-    </common-header-icon>
-
-    <modal-categories v-model="open" />
-  </div>
+  <common-header-icon
+    icon="folder"
+    title="文章分類"
+    :class="iconClass"
+    @click="toggleModal({ key: 'categories', isOpen: true })"
+  >
+    <span v-if="showText && text" class="ps-1">{{ text }}</span>
+  </common-header-icon>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
-import ModalCategories from '~/components/modal/modal-categories.vue'
 
 export default {
   components: {
     CommonHeaderIcon,
-    ModalCategories,
   },
   props: {
     showText: {
@@ -32,13 +28,13 @@ export default {
       default: '',
     },
   },
-  data() {
-    return { open: false }
-  },
   computed: {
     text() {
       return this.$config.categoriesMap[this.$route.params.category]
     },
+  },
+  methods: {
+    ...mapMutations('modal', ['toggleModal']),
   },
 }
 </script>

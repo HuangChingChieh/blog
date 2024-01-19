@@ -1,12 +1,17 @@
 <template>
-  <InterfaceOverlay :show="loading" />
+  <div
+    v-if="loading"
+    :class="$style.overlay"
+    class="position-fixed h-100 w-100 d-flex align-items-center justify-content-center"
+  >
+    <div class="spinner-border" role="status" :class="$style.spinner">
+      <span class="visually-hidden">讀取中</span>
+    </div>
+  </div>
 </template>
 
 <script>
-import InterfaceOverlay from '~/components/interface/interface-overlay.vue'
-
 export default {
-  components: { InterfaceOverlay },
   data: () => ({
     loading: false,
     timeoutFn: null,
@@ -25,3 +30,15 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" module>
+.overlay {
+  top: 0;
+  left: 0;
+  background-color: rgba($color: var(--bs-body-bg-rgb), $alpha: 0.9);
+
+  .spinner {
+    color: var(--bs-body-color);
+  }
+}
+</style>

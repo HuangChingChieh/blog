@@ -6,7 +6,7 @@
     allowfullscreen
     allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
     loading="lazy"
-    class="rounded-lg w-100"
+    class="rounded w-100"
     :class="$style.list"
   ></iframe>
 </template>

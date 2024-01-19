@@ -1,15 +1,12 @@
 <template>
-  <BCol :sm="sm" :md="md" :lg="lg" :xl="xl">
+  <div :class="classes">
     <slot></slot>
-  </BCol>
+  </div>
 </template>
 
 <script>
-import { BCol } from 'bootstrap-vue'
+import { gridColumns } from '~/assets/css/custom.scss'
 export default {
-  components: {
-    BCol,
-  },
   props: {
     sm: {
       type: [String, Number],
@@ -26,6 +23,23 @@ export default {
     xl: {
       type: [String, Number],
       default: '',
+    },
+  },
+  data() {
+    return { gridColumns }
+  },
+  computed: {
+    classes() {
+      const classes = []
+
+      const { sm, md, lg, xl, gridColumns } = this
+      if (sm) classes.push(`col-sm-${sm}`)
+      if (md) classes.push(`col-sm-${md}`)
+      if (lg) classes.push(`col-sm-${lg}`)
+      if (xl) classes.push(`col-sm-${xl}`)
+      classes.push(`col${gridColumns}`)
+
+      return classes
     },
   },
 }

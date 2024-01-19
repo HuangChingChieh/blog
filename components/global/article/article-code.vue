@@ -4,7 +4,7 @@
       class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-secondary"
     >
       <div
-        class="flex-grow-1 text-truncate pr-3 small font-weight-bold text-monospace"
+        class="flex-grow-1 text-truncate pe-3 small font-weight-bold text-monospace"
       >
         {{ fileName }}
       </div>
@@ -83,7 +83,7 @@ export default {
 
 <style lang="scss">
 .article-code pre {
-  border-radius: $border-radius-lg;
+  border-radius: $border-radius;
   font-size: $small-font-size !important;
   margin: 0 0 $paragraph-margin-bottom 0;
   border-top-left-radius: 0;

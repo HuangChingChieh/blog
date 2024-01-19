@@ -1,20 +1,18 @@
 <template>
-  <BImgLazy
+  <img
     v-if="img"
     :srcset="srcset"
     :src="src"
-    :class="imgClassComputed"
-    class="interface-img"
+    :class="[$style.img, ...imgClassComputed]"
     :sizes="sizes"
+    loading="lazy"
   />
 </template>
 
 <script>
-import { BImgLazy } from 'bootstrap-vue'
 import getImgSizes from '~/utils/getImgSizes'
 
 export default {
-  components: { BImgLazy },
   props: {
     img: {
       type: String,
@@ -94,7 +92,7 @@ export default {
   },
   computed: {
     imgClassComputed() {
-      const imgClassComputed = [this.$style.img]
+      const imgClassComputed = []
 
       const { imgClass } = this
       if (typeof imgClass === 'string') imgClassComputed.push(imgClass)

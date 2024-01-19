@@ -1,15 +1,13 @@
 <template>
-  <BContainer :fluid="mobileBreakpoint">
+  <div class="container" :class="`container-${mobileBreakpoint}`">
     <slot></slot>
-  </BContainer>
+  </div>
 </template>
 
 <script>
-import { BContainer } from 'bootstrap-vue'
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 export default {
-  components: { BContainer },
   data() {
     return { mobileBreakpoint }
   },

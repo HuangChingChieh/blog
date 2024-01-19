@@ -1,19 +1,18 @@
 <template>
-  <BButton
-    :variant="variant"
-    :size="size"
-    :disabled="disabled"
+  <component
+    :is="to ? `nuxt-link` : `button`"
+    :class="btnClass"
+    class="btn"
+    :type="to ? false : `button`"
     :to="to"
-    @click="$emit('click')"
+    @click.prevent="$emit('click')"
   >
     <slot></slot>
-  </BButton>
+  </component>
 </template>
 
 <script>
-import { BButton } from 'bootstrap-vue'
 export default {
-  components: { BButton },
   props: {
     variant: {
       type: String,
@@ -30,6 +29,22 @@ export default {
     to: {
       type: [String, Object],
       default: '',
+    },
+  },
+  computed: {
+    btnClass() {
+      const btnClass = []
+
+      const { variant, size } = this
+      if (variant) {
+        btnClass.push(`btn-${variant}`)
+      }
+
+      if (size) {
+        btnClass.push(`btn-${size}`)
+      }
+
+      return btnClass
     },
   },
 }

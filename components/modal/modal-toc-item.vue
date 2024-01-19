@@ -35,18 +35,7 @@ export default {
       const { minDepth } = this
       const { depth } = this.item
       return {
-        small: depth > minDepth,
-        'opacity-50': depth > minDepth,
-      }
-    },
-  },
-  methods: {
-    getTocItemInnerStyle({ depth }) {},
-    getTocItemOuterClass({ depth }) {
-      const { minDepth } = this
-      return {
-        small: depth > minDepth,
-        'opacity-50': depth > minDepth,
+        'text-muted': depth > minDepth,
       }
     },
   },

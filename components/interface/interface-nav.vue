@@ -1,24 +1,21 @@
 <template>
-  <BNav :vertical="vertical">
-    <BNavItem
-      v-for="(item, i) in items"
-      :key="i"
-      :to="linkGenerateFunc(item)"
-      :active-class="activeClass"
-      :link-classes="linkClasses"
-      :class="itemClass"
-      @click="$emit('click-item', item)"
-    >
-      <slot name="item" :item="item"></slot>
-    </BNavItem>
-  </BNav>
+  <ul class="nav" :class="vertical ? `flex-column` : ''">
+    <li v-for="(item, i) in items" :key="i" class="nav-item" :class="itemClass">
+      <nuxt-link
+        :to="linkGenerateFunc(item)"
+        class="nav-link"
+        :class="linkClasses"
+        :active-class="activeClass"
+        @click.native="$emit('click-item', item)"
+      >
+        <slot name="item" :item="item"></slot>
+      </nuxt-link>
+    </li>
+  </ul>
 </template>
 
 <script>
-import { BNav, BNavItem } from 'bootstrap-vue'
-
 export default {
-  components: { BNav, BNavItem },
   props: {
     vertical: {
       type: Boolean,

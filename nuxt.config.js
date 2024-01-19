@@ -25,6 +25,7 @@ export default {
     perPage,
     categoriesMap,
     description,
+    isDev: process.env.NODE_ENV !== 'production',
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',

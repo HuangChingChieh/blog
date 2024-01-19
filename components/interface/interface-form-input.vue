@@ -1,13 +1,14 @@
 <template>
-  <b-form-input v-model="valueInner" :placeholder="placeholder" trim />
+  <input
+    v-model.trim="valueInner"
+    :placeholder="placeholder"
+    type="text"
+    class="form-control"
+  />
 </template>
 
 <script>
-import { BFormInput } from 'bootstrap-vue'
 export default {
-  components: {
-    BFormInput,
-  },
   props: {
     value: {
       type: String,

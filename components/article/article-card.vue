@@ -1,6 +1,6 @@
 <template>
   <article
-    class="d-flex flex-column align-items-stretch common-container"
+    class="d-flex flex-column align-items-stretch rounded"
     :class="[`flex-${mobileBreakpoint}-row`, $style.card]"
   >
     <div
@@ -28,7 +28,7 @@
         <article-date :document="article" class="small" />
         <article-readingtime :minutes="article.readingTime" />
         <article-category :article="article" />
-        <div class="text-right flex-grow-1">
+        <div class="text-end flex-grow-1">
           <button-enter :to="getArticleLink(article)"> 閱讀更多</button-enter>
         </div>
       </div>
@@ -111,14 +111,21 @@ $card-text-font-size: $font-size-base;
 $card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
 .card {
-  background-color: var(--foreground);
-  border-radius: $border-radius-lg;
+  background-color: var(--bs-secondary-bg);
   overflow: hidden;
   transition: $btn-transition, transform 0.15s ease-in-out;
   box-shadow: $box-shadow-sm;
   &:hover {
     box-shadow: $box-shadow;
     transform: scale(1.025);
+  }
+
+  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+    background-color: var(--bs-body-bg);
+  }
+
+  [data-bs-theme='light'] & {
+    background-color: var(--bs-body-bg);
   }
 
   .banner {

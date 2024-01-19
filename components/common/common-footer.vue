@@ -10,7 +10,7 @@
               >關於我</nuxt-link
             >
 
-            <common-icon height="16" class="ml-2"
+            <common-icon height="16" class="ms-2"
           /></footer-title>
 
           <footer-content>
@@ -96,6 +96,10 @@ export default {
 
 <style lang="scss" module>
 .footer {
-  background-color: $gray-800;
+  background-color: var(--bs-gray-800);
+
+  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+    background-color: var(--bs-gray-900);
+  }
 }
 </style>

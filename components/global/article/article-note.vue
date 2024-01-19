@@ -1,6 +1,6 @@
 <template>
-  <p class="small px-3 py-2 rounded align-middle" :class="$style.note">
-    <InterfaceIcon icon="lightbulb" class="mr-1" />
+  <p class="article-note small px-3 py-2 rounded align-middle">
+    <InterfaceIcon icon="lightbulb" class="me-1" />
     <slot></slot>
   </p>
 </template>
@@ -11,12 +11,12 @@ import InterfaceIcon from '~/components/interface/interface-icon.vue'
 export default { components: { InterfaceIcon } }
 </script>
 
-<style lang="scss" module>
-.note {
-  background-color: var(--gray-400);
+<style lang="scss">
+.article-note {
+  background-color: var(--bs-secondary-bg);
   &,
   * {
-    color: var(--gray-900);
+    color: var(--bs-secondary-color);
   }
 }
 </style>

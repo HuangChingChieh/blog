@@ -9,7 +9,7 @@
       v-b-scrollspy
       :items="toc"
       :link-generate-func="getLink"
-      :link-classes="[`p-0`, `border-left`, $style.navLink]"
+      :link-classes="[`p-0`, `border-start`, $style.navLink]"
       vertical
     >
       <template #item="{ item }">
@@ -24,11 +24,13 @@
 </template>
 
 <script>
-import { VBScrollspy } from 'bootstrap-vue'
+import { mapState } from 'vuex'
+
 import InterfaceNav from '~/components/interface/interface-nav.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 import ModalTocItem from '~/components/modal/modal-toc-item.vue'
+import bScrollspy from '~/utils/bScrollspy'
 
 export default {
   components: {
@@ -36,21 +38,18 @@ export default {
     InterfaceModal,
     ModalTocItem,
   },
-  directives: { 'b-scrollspy': VBScrollspy },
+  directives: { 'b-scrollspy': bScrollspy },
   props: {
     value: {
       type: Boolean,
       default: false,
-    },
-    toc: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
     return { hidden: () => {} }
   },
   computed: {
+    ...mapState(['toc']),
     valueInner: {
       get() {
         return this.value

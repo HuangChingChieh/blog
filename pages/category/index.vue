@@ -7,7 +7,7 @@
       :key="category"
       class="mt-4"
     >
-      <div class="rounded-lg overflow-hidden">
+      <div class="rounded overflow-hidden">
         <h3 class="py-2 d-flex align-items-center mb-0">
           {{ $config.categoriesMap[category] }}
         </h3>
@@ -16,13 +16,13 @@
             v-for="article in categoryObj.articles"
             :key="article.slug"
             :to="getArticleLink(article)"
-            class="d-block pl-3 py-2 border-left"
+            class="d-block ps-3 py-2 border-start"
             :class="$style.link"
             >{{ article.title }}</nuxt-link
           >
 
           <div class="mt-2 d-flex align-items-center flex-row">
-            <small class="mr-2">共{{ categoryObj.count }}篇文章</small>
+            <small class="me-2">共{{ categoryObj.count }}篇文章</small>
             <button-enter :to="getCategoryLink({ category })"
               >文章列表</button-enter
             >

@@ -1,19 +1,5 @@
 <template>
-  <BBadge :variant="variant">
+  <span class="badge bg-secondary text-bg-secondary">
     <slot></slot>
-  </BBadge>
+  </span>
 </template>
-
-<script>
-import { BBadge } from 'bootstrap-vue'
-
-export default {
-  components: { BBadge },
-  props: {
-    variant: {
-      type: String,
-      default: 'secondary',
-    },
-  },
-}
-</script>

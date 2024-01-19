@@ -1,0 +1,57 @@
+// @import '../../node_modules/bootstrap-icons/font/bootstrap-icons.scss';
+$bootstrap-icons-font: 'bootstrap-icons' !default;
+// $bootstrap-icons-font-dir: './fonts' !default;
+$bootstrap-icons-font-dir: '~/assets/fonts';
+$bootstrap-icons-font-file: '#{$bootstrap-icons-font-dir}/#{$bootstrap-icons-font}' !default;
+$bootstrap-icons-font-hash: '24e3eb84d0bcaf83d77f904c78ac1f47' !default;
+$bootstrap-icons-font-src: url('#{$bootstrap-icons-font-file}.woff2?#{$bootstrap-icons-font-hash}')
+    format('woff2'),
+  url('#{$bootstrap-icons-font-file}.woff?#{$bootstrap-icons-font-hash}')
+    format('woff') !default;
+
+@font-face {
+  font-display: block;
+  font-family: $bootstrap-icons-font;
+  src: $bootstrap-icons-font-src;
+}
+
+.bi::before,
+[class^='bi-']::before,
+[class*=' bi-']::before {
+  display: inline-block;
+  font-family: $bootstrap-icons-font !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -0.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$bootstrap-icons-map: (
+  'folder': '\F3D7',
+  'pencil-square': '\f4ca',
+  'calendar-event': '\f1e8',
+  'clock': '\f293',
+  'arrow-right': '\f138',
+  'house': '\f425',
+  'chevron-double-left': '\f27f',
+  'chevron-double-right': '\f280',
+  'chevron-left': '\f284',
+  'chevron-right': '\f285',
+  'clipboard': '\f290',
+  'clipboard-check': '\f28b',
+  'lightbulb': '\f46b',
+  'search': '\f52a',
+  'card-list': '\f227',
+  'sun': '\f5a2',
+  'moon-stars': '\f496',
+);
+
+@each $icon, $codepoint in $bootstrap-icons-map {
+  .bi-#{$icon}::before {
+    content: $codepoint;
+  }
+}
