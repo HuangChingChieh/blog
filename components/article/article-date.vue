@@ -1,7 +1,7 @@
 <template>
   <time
     v-if="createTime || updateTime"
-    class="article-date d-flex align-items-center flex-row text-muted small mb-0"
+    class="d-flex align-items-center flex-row text-muted small mb-0"
   >
     <template v-if="createTime !== updateTime">
       <InterfaceIcon v-if="!hideIcon" class="mr-1" icon="pencil-square" />

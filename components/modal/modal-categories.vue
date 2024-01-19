@@ -1,14 +1,13 @@
 <template>
   <InterfaceModal v-model="valueInner" title="文章分類">
-    <InterfaceNav vertical>
-      <InterfaceNavItem
-        v-for="(name, category) in $config.categoriesMap"
-        :key="category"
-        :to="getCategoryLink({ category })"
-        active-class="font-weight-bold"
-        @click="valueInner = false"
-        >{{ name }}</InterfaceNavItem
-      >
+    <InterfaceNav
+      active-class="font-weight-bold"
+      vertical
+      :items="items"
+      :link-generate-func="getLink"
+      @click-item="valueInner = false"
+    >
+      <template #item="{ item }">{{ item.name }}</template>
     </InterfaceNav>
   </InterfaceModal>
 </template>
@@ -18,10 +17,9 @@ import { getCategoryLink } from '~/utils/getLink'
 
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 import InterfaceNav from '~/components/interface/interface-nav.vue'
-import InterfaceNavItem from '~/components/interface/interface-nav-item.vue'
 
 export default {
-  components: { InterfaceModal, InterfaceNav, InterfaceNavItem },
+  components: { InterfaceModal, InterfaceNav },
   props: {
     value: {
       type: Boolean,
@@ -40,9 +38,18 @@ export default {
         this.$emit('input', value)
       },
     },
+    items() {
+      const { categoriesMap } = this.$config
+      return Object.keys(categoriesMap).map((key) => ({
+        name: categoriesMap[key],
+        value: key,
+      }))
+    },
   },
   methods: {
-    getCategoryLink,
+    getLink({ value }) {
+      return getCategoryLink({ category: value })
+    },
   },
 }
 </script>

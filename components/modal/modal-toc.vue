@@ -2,35 +2,31 @@
   <InterfaceModal
     v-model="valueInner"
     title="摘要"
-    :modal-class="$style.modal"
+    :modal-class="[$style.modal, 'modal-toc']"
     @hidden="hidden"
   >
-    <InterfaceNav v-b-scrollspy vertical>
-      <InterfaceNavItem
-        v-for="(item, i) in toc"
-        :key="i"
-        :to="{ hash: `#${item.id}` }"
-        class="border-left"
-        :link-classes="[`p-0`, $style.navLink]"
-        :active-class="$style.active"
-        :class="$style.navItem"
-      >
+    <InterfaceNav
+      v-b-scrollspy
+      :items="toc"
+      :link-generate-func="getLink"
+      :link-classes="[`p-0`, `border-left`, $style.navLink]"
+      vertical
+    >
+      <template #item="{ item }">
         <ModalTocItem
           :item="item"
           :min-depth="minDepth"
           @click="scrollTo(item)"
         />
-      </InterfaceNavItem>
+      </template>
     </InterfaceNav>
   </InterfaceModal>
 </template>
 
 <script>
 import { VBScrollspy } from 'bootstrap-vue'
-
 import InterfaceNav from '~/components/interface/interface-nav.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
-import InterfaceNavItem from '~/components/interface/interface-nav-item.vue'
 
 import ModalTocItem from '~/components/modal/modal-toc-item.vue'
 
@@ -38,7 +34,6 @@ export default {
   components: {
     InterfaceNav,
     InterfaceModal,
-    InterfaceNavItem,
     ModalTocItem,
   },
   directives: { 'b-scrollspy': VBScrollspy },
@@ -72,8 +67,11 @@ export default {
     },
   },
   methods: {
+    getLink({ id }) {
+      return { hash: `#${id}` }
+    },
     scrollTo({ id }) {
-      this.hidden = () => {
+      this.$nextTick(() => {
         const element = document.querySelector(`#${id}`)
         if (element instanceof HTMLElement) {
           element.scrollIntoView({
@@ -81,10 +79,8 @@ export default {
             block: 'start',
             inline: 'center',
           })
-
-          this.hidden = () => {}
         }
-      }
+      })
 
       this.valueInner = false
     },
@@ -92,19 +88,20 @@ export default {
 }
 </script>
 
+<style lang="scss">
+.modal-toc {
+  .nav-link.active {
+    font-weight: 900;
+    color: $primary;
+    border-color: $primary !important;
+  }
+}
+</style>
+
 <style lang="scss" module>
 .modal {
-  .navItem {
+  .navLink {
     border-width: 3px !important;
-
-    &.active {
-      border-color: $primary !important;
-
-      .navLink {
-        color: $primary;
-        font-weight: 900;
-      }
-    }
   }
 }
 </style>

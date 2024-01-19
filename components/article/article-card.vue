@@ -149,7 +149,7 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .card {
-    background-color: transparent;
+    // background-color: transparent;
     .banner {
       width: 40%;
       min-width: 40%;

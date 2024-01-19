@@ -1,5 +1,5 @@
 <template>
-  <common-header-icon :icon="icon" @click="toggle" />
+  <common-header-icon :icon="icon" :class="iconClass" @click="toggle" />
 </template>
 
 <script>
@@ -8,6 +8,12 @@ import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 
 export default {
   components: { CommonHeaderIcon },
+  props: {
+    iconClass: {
+      type: [String, Array],
+      default: '',
+    },
+  },
   computed: {
     ...mapState('theme', ['dark', 'preferDark']),
     ...mapGetters('theme', ['darkComputed']),
