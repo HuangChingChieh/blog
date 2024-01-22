@@ -36,6 +36,7 @@ export default {
   top: 0;
   left: 0;
   background-color: rgba($color: var(--bs-body-bg-rgb), $alpha: 0.9);
+  z-index: 99999;
 
   .spinner {
     color: var(--bs-body-color);
