@@ -1,0 +1,53 @@
+{
+  "name": "隨機手札",
+  "short_name": "隨機手札",
+  "description": "一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記、使用Linux（主要是Fedora）的心得，以及生活上雜七雜八的事情。",
+  "icons": [
+    {
+      "src": "/blog/_nuxt/icons/icon_64x64.4af7d7.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_120x120.4af7d7.png",
+      "sizes": "120x120",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_144x144.4af7d7.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_152x152.4af7d7.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_192x192.4af7d7.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_384x384.4af7d7.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/blog/_nuxt/icons/icon_512x512.4af7d7.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/blog/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "zh-Hant-TW"
+}
