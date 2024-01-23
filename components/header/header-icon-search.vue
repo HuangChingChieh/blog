@@ -1,17 +1,27 @@
 <template>
-  <div>
-    <common-header-icon icon="search" title="搜尋文章" @click="open = true" />
-    <modal-search v-model="open" />
-  </div>
+  <common-header-icon
+    icon="search"
+    title="搜尋文章"
+    :class="iconClass"
+    @click="toggleModal({ key: 'search', isOpen: true })"
+  />
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
-import ModalSearch from '~/components/modal/modal-search.vue'
+
 export default {
-  components: { CommonHeaderIcon, ModalSearch },
-  data() {
-    return { open: false }
+  components: { CommonHeaderIcon },
+  props: {
+    iconClass: {
+      type: [String, Array],
+      default: '',
+    },
+  },
+  methods: {
+    ...mapMutations('modal', ['toggleModal']),
   },
 }
 </script>

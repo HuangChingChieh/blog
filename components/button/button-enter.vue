@@ -1,19 +1,22 @@
 <template>
-  <b-button
+  <InterfaceButton
     :size="size"
     variant="primary"
     :to="to"
-    class="d-inline-flex flex-row align-items-center button-enter"
+    class="d-inline-flex flex-row align-items-center"
+    :class="$style.btn"
   >
     <slot></slot>
-    <b-icon-arrow-right />
-  </b-button>
+    <InterfaceIcon icon="arrow-right" :class="$style.icon" />
+  </InterfaceButton>
 </template>
 
 <script>
-import { BIconArrowRight, BButton } from 'bootstrap-vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+
 export default {
-  components: { BIconArrowRight, BButton },
+  components: { InterfaceButton, InterfaceIcon },
   props: {
     to: {
       type: [String, Object],
@@ -27,16 +30,16 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.button-enter.btn {
-  .b-icon {
+<style lang="scss" module>
+.btn {
+  .icon {
     width: 0;
     font-size: inherit;
     overflow: hidden;
     transition: $transition-collapse-width;
   }
 
-  &:hover .b-icon {
+  &:hover .icon {
     width: 1.25rem;
   }
 }

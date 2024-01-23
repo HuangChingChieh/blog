@@ -1,22 +1,20 @@
 <template>
-  <b-overlay
-    :show="loading"
-    class="overlay-loading"
-    fixed
-    no-wrap
-    :z-index="zIndex"
-  ></b-overlay>
+  <div
+    v-if="loading"
+    :class="$style.overlay"
+    class="position-fixed h-100 w-100 d-flex align-items-center justify-content-center"
+  >
+    <div class="spinner-border" role="status" :class="$style.spinner">
+      <span class="visually-hidden">讀取中</span>
+    </div>
+  </div>
 </template>
 
 <script>
-import { BOverlay } from 'bootstrap-vue'
-import { zIndexOverlay } from '~/assets/css/custom.scss'
 export default {
-  components: { BOverlay },
   data: () => ({
     loading: false,
     timeoutFn: null,
-    zIndex: zIndexOverlay,
     throttle: 200,
   }),
   methods: {
@@ -33,12 +31,15 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.overlay-loading {
-  position: fixed;
+<style lang="scss" module>
+.overlay {
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  background-color: rgba($color: var(--bs-body-bg-rgb), $alpha: 0.9);
+  z-index: 99999;
+
+  .spinner {
+    color: var(--bs-body-color);
+  }
 }
 </style>

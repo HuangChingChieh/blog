@@ -1,7 +1,5 @@
 <template>
-  <div @click="toggle">
-    <common-header-icon :icon="icon" />
-  </div>
+  <common-header-icon :icon="icon" :class="iconClass" @click="toggle" />
 </template>
 
 <script>
@@ -10,6 +8,12 @@ import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 
 export default {
   components: { CommonHeaderIcon },
+  props: {
+    iconClass: {
+      type: [String, Array],
+      default: '',
+    },
+  },
   computed: {
     ...mapState('theme', ['dark', 'preferDark']),
     ...mapGetters('theme', ['darkComputed']),
@@ -49,7 +53,7 @@ export default {
       localStorage.setItem('dark', Number(dark))
     },
     themeToRoot() {
-      document.querySelector(':root').dataset.theme = this.darkComputed
+      document.querySelector(':root').dataset.bsTheme = this.darkComputed
         ? 'dark'
         : 'light'
     },

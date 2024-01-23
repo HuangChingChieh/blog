@@ -3,13 +3,8 @@
     <common-container>
       <common-article :document="article" />
     </common-container>
-
-    <div class="mt-4">
-      <hr class="mb-0 d-block" :class="`d-${mobileBreakpoint}-none`" />
-      <liker-button />
-
-      <article-comment class="mt-4" />
-    </div>
+    <hr class="d-block" :class="`d-${mobileBreakpoint}-none`" />
+    <article-comment class="mt-5" />
 
     <articles-related :articles="relatedArticles" class="mt-5" />
   </div>
@@ -19,7 +14,7 @@
 import CommonContainer from '~/components/common/common-container.vue'
 import CommonArticle from '~/components/common/common-article.vue'
 import ArticlesRelated from '~/components/articles/articles-related.vue'
-import LikerButton from '~/components/liker-button.vue'
+
 import { mobileBreakpoint } from '~/assets/css/custom.scss'
 
 import { getHeadForArticle } from '~/utils/seo'
@@ -29,7 +24,6 @@ import ArticleComment from '~/components/article/article-comment.vue'
 
 export default {
   components: {
-    LikerButton,
     CommonArticle,
     CommonContainer,
     ArticlesRelated,

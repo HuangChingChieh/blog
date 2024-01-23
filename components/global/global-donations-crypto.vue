@@ -6,14 +6,8 @@
       >，或是直接複製：0x9440eb4BDe15e64985f3fC5875914A6Fd20863b5 。
     </p>
 
-    <b-modal
-      v-model="modal.open"
-      title="加密貨幣"
-      hide-footer
-      centered
-      size="sm"
-    >
-      <common-img img="923/5F8nt1.png" img-class="w-100" />
+    <InterfaceModal v-model="modal.open" title="加密貨幣" size="sm">
+      <InterfaceImg img="923/5F8nt1.png" img-class="w-100" />
 
       <div>
         目前接受<a
@@ -22,15 +16,15 @@
           >MaiCoin網站</a
         >中主網類型為ERC20 / BSC / Polygon的幣種。
       </div>
-    </b-modal>
+    </InterfaceModal>
   </div>
 </template>
 
 <script>
-import { BModal } from 'bootstrap-vue'
-import CommonImg from '../common/common-img.vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
+import InterfaceImg from '~/components/interface/interface-img.vue'
 export default {
-  components: { BModal, CommonImg },
+  components: { InterfaceModal, InterfaceImg },
   data() {
     return {
       modal: {

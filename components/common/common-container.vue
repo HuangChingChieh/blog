@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    class="common-container"
-    :class="`p-${mobileBreakpoint}-5`"
-  >
+  <component :is="tag" :class="[`p-${mobileBreakpoint}-5`, $style.container]">
     <slot></slot>
   </component>
 </template>
@@ -25,13 +21,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  .common-container {
+  .container {
     // border: 1px solid $secondary;
     box-shadow: $box-shadow-sm;
-    background-color: var(--foreground);
-    border-radius: $border-radius-lg;
+    background-color: var(--bs-body-bg);
+    border-radius: $border-radius;
   }
 }
 </style>

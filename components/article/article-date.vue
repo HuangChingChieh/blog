@@ -1,25 +1,26 @@
 <template>
   <time
     v-if="createTime || updateTime"
-    class="article-date d-flex align-items-center flex-row text-muted small mb-0"
+    class="d-flex align-items-center flex-row text-muted small mb-0"
   >
     <template v-if="createTime !== updateTime">
-      <b-icon-pencil-square v-if="!hideIcon" class="mr-1" />
-      <span class="mr-3">{{ updateTime }}</span>
+      <InterfaceIcon v-if="!hideIcon" class="me-1" icon="pencil-square" />
+
+      <span class="me-3">{{ updateTime }}</span>
     </template>
 
     <template v-else>
-      <b-icon-calendar-event v-if="!hideIcon" class="mr-1" />
-      <span class="mr-3">{{ createTime }}</span>
+      <InterfaceIcon v-if="!hideIcon" class="me-1" icon="calendar-event" />
+      <span class="me-3">{{ createTime }}</span>
     </template>
   </time>
 </template>
 <script>
-import { BIconCalendarEvent, BIconPencilSquare } from 'bootstrap-vue'
+import InterfaceIcon from '../interface/interface-icon.vue'
+
 export default {
   components: {
-    BIconCalendarEvent,
-    BIconPencilSquare,
+    InterfaceIcon,
   },
   props: {
     document: {

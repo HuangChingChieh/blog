@@ -1,35 +1,33 @@
 <template>
-  <b-modal
+  <InterfaceModal
     v-model="valueInner"
-    centered
-    hide-footer
-    scrollable
     title="搜尋文章"
     size="lg"
     @shown="shown"
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div class="modal-search-input-group position-relative">
-        <b-form-input
+      <div class="position-relative" :class="$style.inputGroup">
+        <InterfaceFormInput
           ref="input"
           v-model="keyword"
-          trim
           placeholder="請輸入關鍵字"
+          :class="$style.input"
           @input="
             beforeSearch()
             search()
           "
-        ></b-form-input>
+        />
 
         <div
-          class="d-flex align-items-center justify-content-center px-3 modal-search-input-icon-wrapper"
+          class="d-flex align-items-center justify-content-center px-3"
+          :class="$style.iconWrapper"
         >
-          <b-icon-search />
+          <InterfaceIcon icon="search" :class="$style.icon" />
         </div>
       </div>
 
-      <div class="mt-3 modal-search-results">
+      <div class="mt-3" :class="$style.results">
         <div v-if="keyword" class="h-100">
           <div v-if="hasSearchResult" class="flex-grow-1">
             <div
@@ -48,7 +46,7 @@
 
             <div class="text-center">
               <hr class="my-3" />
-              <b-button
+              <InterfaceButton
                 v-if="hasMore"
                 variant="primary"
                 size="sm"
@@ -56,7 +54,7 @@
                 @click="searchMore"
               >
                 {{ searchingMore ? '載入中' : '載入更多搜尋結果' }}
-              </b-button>
+              </InterfaceButton>
               <div v-else class="text-muted small">沒有更多搜尋結果了</div>
             </div>
           </div>
@@ -69,21 +67,25 @@
         </div>
       </div>
     </div>
-  </b-modal>
+  </InterfaceModal>
 </template>
 
 <script>
 import debounce from 'lodash/debounce'
-import { BModal, BFormInput, BIconSearch, BButton } from 'bootstrap-vue'
+
+import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
+import InterfaceButton from '~/components/interface/interface-button.vue'
+import InterfaceIcon from '~/components/interface/interface-icon.vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 import ArticleSeachResult from '~/components/article/article-search-result.vue'
 
 export default {
   components: {
-    BModal,
-    BFormInput,
-    BIconSearch,
-    BButton,
+    InterfaceFormInput,
+    InterfaceButton,
+    InterfaceIcon,
+    InterfaceModal,
     ArticleSeachResult,
   },
   props: {
@@ -135,7 +137,7 @@ export default {
       this.articles = []
     },
     shown() {
-      this.$refs.input.focus()
+      this.$refs.input.$el.focus()
     },
     async searchMore() {
       this.searchingMore = true
@@ -168,23 +170,23 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.modal-search-results {
+<style lang="scss" module>
+.results {
   height: 400px;
   overflow-y: auto;
   word-break: break-all;
 }
 
-.modal-search-input-group {
-  input {
+.inputGroup {
+  .input {
     padding-right: calc(1.5rem + 1rem);
 
-    &:focus ~ .modal-search-input-icon-wrapper .b-icon {
+    &:focus ~ .iconWrapper .icon {
       color: $primary;
     }
   }
 
-  .modal-search-input-icon-wrapper {
+  .iconWrapper {
     position: absolute;
     top: 0;
     right: 0;

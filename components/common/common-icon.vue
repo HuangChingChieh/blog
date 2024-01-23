@@ -4,7 +4,7 @@
     :height="height"
     :width="height"
     class="common-icon rounded-circle shadow-sm"
-    :class="{ bordered }"
+    :class="{ bordered, [$style.bordered]: bordered }"
   />
 </template>
 
@@ -36,8 +36,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.common-icon.bordered {
+<style lang="scss" module>
+.bordered {
   border: 3px solid $white;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <b-modal v-model="valueInner" centered hide-footer scrollable title="關於我">
+  <InterfaceModal v-model="valueInner" title="關於我">
     <p>
       {{ $config.description }}
       <nuxt-link to="/buy_me_a_tea" class="text-body">
@@ -8,13 +8,14 @@
         >
       </nuxt-link>
     </p>
-  </b-modal>
+  </InterfaceModal>
 </template>
 
 <script>
-import { BModal } from 'bootstrap-vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
+
 export default {
-  components: { BModal },
+  components: { InterfaceModal },
   props: {
     value: {
       type: Boolean,

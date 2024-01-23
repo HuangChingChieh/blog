@@ -7,7 +7,8 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
     loading="lazy"
-    class="embed-youtube rounded-lg w-100"
+    class="rounded w-100"
+    :class="$style.youtube"
   ></iframe>
 </template>
 
@@ -28,8 +29,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.embed-youtube {
+<style lang="scss" module>
+.youtube {
   aspect-ratio: 16 / 9;
 }
 </style>

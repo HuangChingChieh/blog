@@ -1,16 +1,17 @@
 <template>
-  <b-col :[mobileBreakpoint]="gridColumns / 3" class="mt-5">
+  <InterfaceCol :[mobileBreakpoint]="gridColumns / 3" class="mt-5">
     <slot></slot>
-  </b-col>
+  </InterfaceCol>
 </template>
 
 <script>
-import { BCol } from 'bootstrap-vue'
 import { mobileBreakpoint, gridColumns } from '~/assets/css/custom.scss'
+
+import InterfaceCol from '../interface/interface-col.vue'
 
 export default {
   components: {
-    BCol,
+    InterfaceCol,
   },
   data() {
     return { mobileBreakpoint, gridColumns }

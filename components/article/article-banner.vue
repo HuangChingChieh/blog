@@ -1,20 +1,20 @@
 <template>
-  <div class="article-banner">
-    <common-img
+  <div class="position-relative">
+    <InterfaceImg
       :img="img"
       :img-class="imgClass"
       :sizes="sizes"
       :preload="preload"
-      class="article-banner-img"
     />
   </div>
 </template>
 
 <script>
-import CommonImg from '../common/common-img.vue'
+import InterfaceImg from '~/components//interface/interface-img.vue'
 import getImgSizes from '~/utils/getImgSizes'
+
 export default {
-  components: { CommonImg },
+  components: { InterfaceImg },
   props: {
     img: {
       type: String,
@@ -35,15 +35,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss">
-.article-banner {
-  position: relative;
-}
-
-.article-card .article-banner-img {
-  width: 100%;
-  height: 100%;
-  aspect-ratio: 16 / 9;
-}
-</style>

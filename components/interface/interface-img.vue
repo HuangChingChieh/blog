@@ -1,20 +1,18 @@
 <template>
-  <b-img-lazy
+  <img
     v-if="img"
     :srcset="srcset"
     :src="src"
-    :class="imgClass"
-    class="common-img"
+    :class="[$style.img, ...imgClassComputed]"
     :sizes="sizes"
+    loading="lazy"
   />
 </template>
 
 <script>
-import { BImgLazy } from 'bootstrap-vue'
 import getImgSizes from '~/utils/getImgSizes'
 
 export default {
-  components: { BImgLazy },
   props: {
     img: {
       type: String,
@@ -93,6 +91,15 @@ export default {
     }
   },
   computed: {
+    imgClassComputed() {
+      const imgClassComputed = []
+
+      const { imgClass } = this
+      if (typeof imgClass === 'string') imgClassComputed.push(imgClass)
+      else if (Array.isArray(imgClass)) imgClassComputed.push(...imgClass)
+
+      return imgClassComputed
+    },
     src() {
       return this.$config.imageServer + this.img
     },
@@ -128,8 +135,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.common-img {
+<style lang="scss" module>
+.img {
   height: 100%;
   width: 100%;
   background-color: $gray-200;

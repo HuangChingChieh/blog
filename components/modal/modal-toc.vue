@@ -1,51 +1,55 @@
 <template>
-  <b-modal
+  <InterfaceModal
     v-model="valueInner"
-    centered
-    hide-footer
-    scrollable
     title="摘要"
-    modal-class="modal-toc"
+    :modal-class="[$style.modal, 'modal-toc']"
     @hidden="hidden"
   >
-    <b-nav v-b-scrollspy vertical>
-      <b-nav-item
-        v-for="(item, i) in toc"
-        :key="i"
-        :to="{ hash: `#${item.id}` }"
-        class="border-left"
-        link-classes="p-0"
-      >
-        <modal-toc-item
+    <InterfaceNav
+      v-b-scrollspy
+      :items="toc"
+      :link-generate-func="getLink"
+      :link-classes="[`p-0`, `border-start`, $style.navLink]"
+      vertical
+    >
+      <template #item="{ item }">
+        <ModalTocItem
           :item="item"
           :min-depth="minDepth"
           @click="scrollTo(item)"
         />
-      </b-nav-item>
-    </b-nav>
-  </b-modal>
+      </template>
+    </InterfaceNav>
+  </InterfaceModal>
 </template>
 
 <script>
-import { BModal, VBScrollspy, BNav, BNavItem } from 'bootstrap-vue'
-import ModalTocItem from './modal-toc-item.vue'
+import { mapState } from 'vuex'
+
+import InterfaceNav from '~/components/interface/interface-nav.vue'
+import InterfaceModal from '~/components/interface/interface-modal.vue'
+
+import ModalTocItem from '~/components/modal/modal-toc-item.vue'
+import bScrollspy from '~/utils/bScrollspy'
+
 export default {
-  components: { BModal, BNav, BNavItem, ModalTocItem },
-  directives: { 'b-scrollspy': VBScrollspy },
+  components: {
+    InterfaceNav,
+    InterfaceModal,
+    ModalTocItem,
+  },
+  directives: { 'b-scrollspy': bScrollspy },
   props: {
     value: {
       type: Boolean,
       default: false,
-    },
-    toc: {
-      type: Array,
-      default: () => [],
     },
   },
   data() {
     return { hidden: () => {} }
   },
   computed: {
+    ...mapState(['toc']),
     valueInner: {
       get() {
         return this.value
@@ -62,8 +66,11 @@ export default {
     },
   },
   methods: {
+    getLink({ id }) {
+      return { hash: `#${id}` }
+    },
     scrollTo({ id }) {
-      this.hidden = () => {
+      this.$nextTick(() => {
         const element = document.querySelector(`#${id}`)
         if (element instanceof HTMLElement) {
           element.scrollIntoView({
@@ -71,10 +78,8 @@ export default {
             block: 'start',
             inline: 'center',
           })
-
-          this.hidden = () => {}
         }
-      }
+      })
 
       this.valueInner = false
     },
@@ -84,17 +89,18 @@ export default {
 
 <style lang="scss">
 .modal-toc {
-  .nav-item {
+  .nav-link.active {
+    font-weight: 900;
+    color: $primary;
+    border-color: $primary !important;
+  }
+}
+</style>
+
+<style lang="scss" module>
+.modal {
+  .navLink {
     border-width: 3px !important;
-
-    &.active {
-      border-color: $primary !important;
-
-      .nav-link {
-        color: $primary;
-        font-weight: 900;
-      }
-    }
   }
 }
 </style>
