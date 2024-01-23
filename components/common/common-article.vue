@@ -98,7 +98,7 @@ $article-font-size-base: 1rem;
   }
 
   hr {
-    border-top: 1px solid $secondary;
+    border-top: 1px solid var(--bs-body-color);
     width: 3rem;
   }
 
