@@ -1,19 +1,29 @@
 <template>
   <nav>
     <ul class="pagination justify-content-center">
-      <li class="page-item" :class="{ disabled: thePage === 1 }">
-        <nuxt-link class="page-link" :class="$style.link" :to="linkGen(1)">
+      <li
+        class="page-item"
+        :class="{ disabled: thePage === 1 }"
+      >
+        <NuxtLink
+          class="page-link"
+          :class="$style.link"
+          :to="linkGen(1)"
+        >
           <InterfaceIcon icon="chevron-double-left" />
-        </nuxt-link>
+        </NuxtLink>
       </li>
-      <li class="page-item" :class="{ disabled: thePage === 1 }">
-        <nuxt-link
+      <li
+        class="page-item"
+        :class="{ disabled: thePage === 1 }"
+      >
+        <NuxtLink
           class="page-link"
           :class="$style.link"
           :to="linkGen(thePage > 1 ? thePage - 1 : 1)"
         >
           <InterfaceIcon icon="chevron-left" />
-        </nuxt-link>
+        </NuxtLink>
       </li>
       <li
         v-for="page in pages"
@@ -21,83 +31,85 @@
         class="page-item"
         :class="{ active: page === thePage }"
       >
-        <nuxt-link class="page-link" :class="$style.link" :to="linkGen(page)">
+        <NuxtLink
+          class="page-link"
+          :class="$style.link"
+          :to="linkGen(page)"
+        >
           {{ page }}
-        </nuxt-link>
+        </NuxtLink>
       </li>
-      <li class="page-item" :class="{ disabled: thePage === numberOfPages }">
-        <nuxt-link
+      <li
+        class="page-item"
+        :class="{ disabled: thePage === numberOfPages }"
+      >
+        <NuxtLink
           class="page-link"
           :class="$style.link"
           :to="linkGen(thePage < numberOfPages ? thePage + 1 : numberOfPages)"
         >
           <InterfaceIcon icon="chevron-right" />
-        </nuxt-link>
+        </NuxtLink>
       </li>
-      <li class="page-item" :class="{ disabled: thePage === numberOfPages }">
-        <nuxt-link
+      <li
+        class="page-item"
+        :class="{ disabled: thePage === numberOfPages }"
+      >
+        <NuxtLink
           class="page-link"
           :class="$style.link"
           :to="linkGen(numberOfPages)"
         >
           <InterfaceIcon icon="chevron-double-right" />
-        </nuxt-link>
+        </NuxtLink>
       </li>
     </ul>
   </nav>
 </template>
 
-<script>
+<script setup>
+import { computed } from 'vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
-export default {
-  components: {
-    InterfaceIcon,
+const props = defineProps({
+  linkGen: {
+    type: Function,
+    default: () => {},
   },
-  props: {
-    linkGen: {
-      type: Function,
-      default: () => {},
-    },
-    numberOfPages: {
-      type: [String, Number],
-      default: 1,
-    },
+  numberOfPages: {
+    type: [String, Number],
+    default: 1,
   },
-  data() {
-    return {
-      pageInterval: 3,
+})
+
+const pageInterval = 3
+
+const route = useRoute()
+const thePage = computed(() => Number(route.params.page) || 1)
+
+const pages = computed(() => {
+  const pages = []
+
+  const { numberOfPages } = props
+
+  if (numberOfPages >= pageInterval) {
+    let middlePage = thePage.value
+    const minMiddlePage = Math.ceil(pageInterval / 2)
+    const maxMiddlePage = numberOfPages - minMiddlePage + 1
+    if (middlePage < minMiddlePage) middlePage = minMiddlePage
+    else if (middlePage > maxMiddlePage) middlePage = maxMiddlePage
+
+    while (pages.length < pageInterval) {
+      pages.push(middlePage - minMiddlePage + 1 + pages.length)
     }
-  },
-  computed: {
-    thePage() {
-      return Number(this.$route.params.page) || 1
-    },
-    pages() {
-      const pages = []
+  } else {
+    while (pages.length < numberOfPages) {
+      pages.unshift(numberOfPages - pages.length)
+    }
+  }
 
-      const { thePage, numberOfPages, pageInterval } = this
-
-      if (numberOfPages >= pageInterval) {
-        let middlePage = thePage
-        const minMiddlePage = Math.ceil(pageInterval / 2)
-        const maxMiddlePage = numberOfPages - minMiddlePage + 1
-        if (middlePage < minMiddlePage) middlePage = minMiddlePage
-        else if (middlePage > maxMiddlePage) middlePage = maxMiddlePage
-
-        while (pages.length < pageInterval) {
-          pages.push(middlePage - minMiddlePage + 1 + pages.length)
-        }
-      } else {
-        while (pages.length < numberOfPages) {
-          pages.unshift(numberOfPages - pages.length)
-        }
-      }
-
-      return pages
-    },
-  },
-}
+  return pages
+})
 </script>
 
 <style lang="scss" module>

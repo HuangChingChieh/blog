@@ -8,12 +8,15 @@
       :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
     >
       <div :class="$style.content">
-        <h4 class="text-body text-two-line" :class="$style.title">
+        <h4
+          class="text-body text-line-2"
+          :class="$style.title"
+        >
           {{ article.title }}
         </h4>
 
         <p
-          class="text-muted text-two-line"
+          class="text-muted text-line-2"
           :class="$style.description"
           :title="article.description"
         >
@@ -25,16 +28,21 @@
         class="d-flex flex-row align-items-center"
         :class="[`mt-${mobileBreakpoint}-3`]"
       >
-        <article-date :document="article" class="small" />
-        <article-readingtime :minutes="article.readingTime" />
-        <article-category :article="article" />
+        <ArticleDate
+          :document="article"
+          class="small"
+        />
+        <ArticleReadingtime :minutes="article.readingTime.minutes" />
+        <ArticleCategory :article="article" />
         <div class="text-end flex-grow-1">
-          <button-enter :to="getArticleLink(article)"> 閱讀更多</button-enter>
+          <ButtonEnter :to="getArticleLink(article)">
+            閱讀更多
+          </ButtonEnter>
         </div>
       </div>
     </div>
 
-    <article-banner
+    <ArticleBanner
       v-if="article.img"
       :img="article.img"
       class="align-self-stretch order-1"
@@ -46,8 +54,8 @@
   </article>
 </template>
 
-<script>
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
+<script setup>
+import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
@@ -58,47 +66,26 @@ import ButtonEnter from '~/components/button/button-enter.vue'
 import { getArticleLink } from '~/utils/getLink'
 import getImgSizes from '~/utils/getImgSizes'
 
-export default {
-  components: {
-    ArticleDate,
-    ArticleBanner,
-    ArticleReadingtime,
-    ArticleCategory,
-    ButtonEnter,
+const props = defineProps({
+  article: {
+    type: Object,
+    default: () => ({}),
   },
-  props: {
-    article: {
-      type: Object,
-      default: () => ({}),
-    },
-    preloadImg: {
-      type: Boolean,
-      default: false,
-    },
+  preloadImg: {
+    type: Boolean,
+    default: false,
   },
-  data() {
-    return {
-      mobileBreakpoint,
-      bannerSizes: [],
-    }
-  },
-  fetch() {
-    const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
-      let imageWidth = containerMaxWidth
-      if (!isMobile) {
-        const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
-        imageWidth = Number(containerMaxWidthNum) * 0.4 + 'px'
-      }
+})
 
-      return imageWidth
-    })
+const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
+  let imageWidth = containerMaxWidth
+  if (!isMobile) {
+    const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
+    imageWidth = Number(containerMaxWidthNum) * 0.4 + 'px'
+  }
 
-    this.bannerSizes = bannerSizes
-  },
-  methods: {
-    getArticleLink,
-  },
-}
+  return imageWidth
+})
 </script>
 
 <style lang="scss" module>

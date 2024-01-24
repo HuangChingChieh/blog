@@ -4,17 +4,21 @@
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
     >
-      <CommonIcon bordered :class="$style.logo" />
+      <CommonIcon
+        bordered
+        :class="$style.logo"
+      />
       <div class="ms-3 flex-grow-1">
-        <nuxt-link
-          class="font-weight-bold text-body d-block text-decoration-none"
+        <NuxtLink
+          class="fw-bold text-body d-block text-decoration-none"
           to="/"
         >
           隨機手札
-        </nuxt-link>
-        <small class="text-muted d-none" :class="`d-${mobileBreakpoint}-block`"
-          >雜七雜八之地</small
-        >
+        </NuxtLink>
+        <small
+          class="text-muted d-none"
+          :class="`d-${mobileBreakpoint}-block`"
+        >雜七雜八之地</small>
       </div>
 
       <div
@@ -31,11 +35,11 @@
       </div>
     </InterfaceContainer>
 
-    <div v-b-visible="onHeaderHide"></div>
+    <div v-b-visible="onHeaderHide" />
   </header>
 </template>
 
-<script>
+<script setup>
 import InterfaceContainer from '~/components/interface/interface-container.vue'
 
 import CommonIcon from '~/components/common/common-icon.vue'
@@ -44,39 +48,15 @@ import HeaderIconSearch from '~/components/header/header-icon-search.vue'
 import HeaderIconCategories from '~/components/header/header-icon-categories.vue'
 import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
 
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
+import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 
-import bVisible from '~/utils/bVisible'
+import vBVisible from '~/utils/bVisible'
+import { ref } from 'vue'
 
-export default {
-  components: {
-    InterfaceContainer,
-    CommonIcon,
-    HeaderIconToc,
-    HeaderIconSearch,
-    HeaderIconCategories,
-    HeaderIconTheme,
-  },
-  directives: { 'b-visible': bVisible },
-  data() {
-    return {
-      mobileBreakpoint,
-      headerVisible: true,
-      modal: {
-        toc: false,
-        categories: false,
-        search: false,
-      },
-    }
-  },
-  methods: {
-    onHeaderHide(isVisible) {
-      this.headerVisible = isVisible
-    },
-    openModal(key) {
-      this.toggleModal({ key, isOpen: true })
-    },
-  },
+const headerVisible = ref(true)
+
+const onHeaderHide = (isVisible) => {
+  headerVisible.value = isVisible
 }
 </script>
 

@@ -1,24 +1,21 @@
 <template>
-  <component :is="tag" :class="[`p-${mobileBreakpoint}-5`, $style.container]">
-    <slot></slot>
+  <component
+    :is="tag"
+    :class="[`p-${mobileBreakpoint}-5`, $style.container]"
+  >
+    <slot />
   </component>
 </template>
 
-<script>
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
-export default {
-  props: {
-    tag: {
-      type: String,
-      default: 'div',
-    },
+<script setup>
+import { mobileBreakpoint } from '~/assets/css/export.module.scss'
+
+const props = defineProps({
+  tag: {
+    type: String,
+    default: 'div',
   },
-  data() {
-    return {
-      mobileBreakpoint,
-    }
-  },
-}
+})
 </script>
 
 <style lang="scss" module>

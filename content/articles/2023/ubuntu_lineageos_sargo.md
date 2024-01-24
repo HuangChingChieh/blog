@@ -5,11 +5,11 @@ img: 922/DxakSn.jpg
 category: linux
 ---
 
-<article-note>雖然 eSIM 問題仍然存在，但目前官方已將 Pixel 3a 的官方版本升到 LineageOS 20.0 囉！若只是單純要升級的朋友，可直接[下載官方編譯的 ROM](https://download.lineageos.org/devices/sargo/builds)就好。</article-note>
-
 之前因為 LineageOS 各裝置紛紛升上 LineageOS 20.0（Android 13），但手上的 Pixel 3a 卻遲遲沒有消息，後來上了 [XDA](https://forum.xda-developers.com/t/official-lineageos-19-1-for-the-google-pixel-3a.4436933/post-88303289) 看了一下討論串，發現開發者說是因為 eSIM 無法使用的關係，所以之前才無法公告升級上去。心裡想著反正我也用不到 eSIM，不如就來順便學學怎麼自己編譯 LineageOS 好了。
 
 <!--more-->
+
+<article-note>雖然 eSIM 問題仍然存在，但目前官方已將 Pixel 3a 的官方版本升到 LineageOS 20.0 囉！若只是單純要升級的朋友，可直接[下載官方編譯的 ROM](https://download.lineageos.org/devices/sargo/builds)就好。</article-note>
 
 ---
 
@@ -276,7 +276,7 @@ brunch sargo
 
 ## 全新安裝、升級或更新
 
-根據不同狀況，Lineageos 官方 WIKI 的操作說明也不同，可以分成[全新安裝](<(https://wiki.lineageos.org/devices/sargo/install)>)、[升級](https://wiki.lineageos.org/devices/sargo/upgrade)或[更新](https://wiki.lineageos.org/devices/sargo/update)三種。
+根據不同狀況，Lineageos 官方 WIKI 的操作說明也不同，可以分成[全新安裝](https://wiki.lineageos.org/devices/sargo/install)、[升級](https://wiki.lineageos.org/devices/sargo/upgrade)或[更新](https://wiki.lineageos.org/devices/sargo/update)三種。
 
 ### 從 19.1 升級
 

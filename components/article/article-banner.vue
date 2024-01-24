@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import InterfaceImg from '~/components//interface/interface-img.vue'
+import InterfaceImg from '~/components/interface/interface-img.vue'
 import getImgSizes from '~/utils/getImgSizes'
 
-export default {
+export default defineNuxtComponent({
   components: { InterfaceImg },
   props: {
     img: {
@@ -33,5 +33,5 @@ export default {
       default: false,
     },
   },
-}
+})
 </script>

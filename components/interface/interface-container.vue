@@ -1,15 +1,20 @@
 <template>
-  <div class="container" :class="`container-${mobileBreakpoint}`">
-    <slot></slot>
-  </div>
+  <component
+    :is="tag"
+    class="container"
+    :class="`container-${mobileBreakpoint}`"
+  >
+    <slot />
+  </component>
 </template>
 
-<script>
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
+<script setup>
+import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 
-export default {
-  data() {
-    return { mobileBreakpoint }
+const props = defineProps({
+  tag: {
+    type: String,
+    default: 'div',
   },
-}
+})
 </script>

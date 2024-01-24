@@ -4,30 +4,30 @@
     :class="$style.overlay"
     class="position-fixed h-100 w-100 d-flex align-items-center justify-content-center"
   >
-    <div class="spinner-border" role="status" :class="$style.spinner">
+    <div
+      class="spinner-border"
+      role="status"
+      :class="$style.spinner"
+    >
       <span class="visually-hidden">讀取中</span>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  data: () => ({
-    loading: false,
-    timeoutFn: null,
-    throttle: 200,
-  }),
-  methods: {
-    start() {
-      this.timeoutFn = setTimeout(() => {
-        this.loading = true
-      }, this.throttle)
-    },
-    finish() {
-      clearTimeout(this.timeoutFn)
-      this.loading = false
-    },
-  },
+<script setup>
+const loading = ref(false)
+let timeoutFn = null
+const throttle = 200
+
+const start = () => {
+  timeoutFn = setTimeout(() => {
+    loading.value = true
+  }, throttle)
+}
+
+const finish = () => {
+  clearTimeout(timeoutFn)
+  loading.value = false
 }
 </script>
 

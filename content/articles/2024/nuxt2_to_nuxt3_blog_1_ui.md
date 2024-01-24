@@ -36,7 +36,7 @@ category: frontend
 
 原本 bootstrapVue 的作法，是把`.modal-backdrop`元素連同`.modal`元素一起加到`body`裡面，使其脫離可能受影響的父層，猜想這邊應該是使用`$mount`去做處理。但因為部落格用到的 modal 元件很少而且全部都在 header 裡面（基本上等於全域），所以就乾脆移轉到`layouts/default.vue`元件裡了，開關則從 store 做處理。
 
-畢竟之後還會再更換 UI 框架，這邊就簡單處理。
+畢竟之後還會再更換 UI 框架，這邊就簡單處理，升上 Nuxt 3 之後再直接使用`<Teleport>`元件。
 
 ---
 
@@ -116,4 +116,4 @@ export default {
 
 ## 後記
 
-在部落格升級的過程中，自己覺得比較困難或要特別注意的就是這幾個了。其他像原本代表左右的`l`與`r`要換成`start`與`end`、圓角使用的`rounded`大小不再是使用`sm`/`lg`這種而是轉用數字……之類的小事，直接看[官方的升級指引](https://getbootstrap.com/docs/5.3/migration/)就 OK 了。
+在部落格升級的過程中，自己覺得比較困難或要特別注意的就是上述這幾個了。其他像原本代表左右的`l`與`r`要換成`start`與`end`、圓角使用的`rounded`大小不再是使用`sm`/`lg`這種而是轉用數字……之類的小事，直接看[官方的升級指引](https://getbootstrap.com/docs/5.3/migration/)就 OK。

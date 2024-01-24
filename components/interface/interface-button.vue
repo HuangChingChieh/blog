@@ -1,51 +1,43 @@
 <template>
-  <component
-    :is="to ? `nuxt-link` : `button`"
+  <button
     :class="btnClass"
     class="btn"
-    :type="to ? false : `button`"
-    :to="to"
-    @click.prevent="$emit('click')"
+    type="button"
   >
-    <slot></slot>
-  </component>
+    <slot />
+  </button>
 </template>
 
-<script>
-export default {
-  props: {
-    variant: {
-      type: String,
-      default: '',
-    },
-    disabled: {
-      type: Boolean,
-      default: false,
-    },
-    size: {
-      type: String,
-      default: '',
-    },
-    to: {
-      type: [String, Object],
-      default: '',
-    },
+<script setup>
+import { computed } from 'vue'
+
+const props = defineProps({
+  variant: {
+    type: String,
+    default: '',
   },
-  computed: {
-    btnClass() {
-      const btnClass = []
-
-      const { variant, size } = this
-      if (variant) {
-        btnClass.push(`btn-${variant}`)
-      }
-
-      if (size) {
-        btnClass.push(`btn-${size}`)
-      }
-
-      return btnClass
-    },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
-}
+  size: {
+    type: String,
+    default: '',
+  },
+})
+
+const btnClass = computed(() => {
+  const btnClass = []
+
+  const { variant, size } = props
+  if (variant) {
+    btnClass.push(`btn-${variant}`)
+  }
+
+  if (size) {
+    btnClass.push(`btn-${size}`)
+  }
+
+  return btnClass
+})
 </script>

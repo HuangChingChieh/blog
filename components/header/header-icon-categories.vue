@@ -1,40 +1,42 @@
 <template>
-  <common-header-icon
-    icon="folder"
-    title="文章分類"
-    :class="iconClass"
-    @click="toggleModal({ key: 'categories', isOpen: true })"
-  >
-    <span v-if="showText && text" class="ps-1">{{ text }}</span>
-  </common-header-icon>
+  <div>
+    <CommonHeaderIcon
+      icon="folder"
+      title="文章分類"
+      :class="iconClass"
+      @click="modalOpen = true"
+    >
+      <span
+        v-if="showText && text"
+        class="ps-1"
+      >{{ text }}</span>
+    </CommonHeaderIcon>
+
+    <ModalCategories v-model="modalOpen" />
+  </div>
 </template>
 
-<script>
-import { mapMutations } from 'vuex'
-
+<script setup>
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
+import ModalCategories from '~/components/modal/modal-categories.vue'
 
-export default {
-  components: {
-    CommonHeaderIcon,
+import { computed } from 'vue'
+
+const props = defineProps({
+  showText: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    showText: {
-      type: Boolean,
-      default: false,
-    },
-    iconClass: {
-      type: [String, Array],
-      default: '',
-    },
+  iconClass: {
+    type: [String, Array],
+    default: '',
   },
-  computed: {
-    text() {
-      return this.$config.categoriesMap[this.$route.params.category]
-    },
-  },
-  methods: {
-    ...mapMutations('modal', ['toggleModal']),
-  },
-}
+})
+
+const modalOpen = ref(false)
+
+const { categoriesMap } = useRuntimeConfig().public
+const route = useRoute()
+
+const text = computed(() => categoriesMap[route.params.category])
 </script>

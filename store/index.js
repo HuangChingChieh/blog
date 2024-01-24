@@ -1,38 +1,26 @@
+import { defineStore } from 'pinia'
+
 import { getCategories, setPageCount } from '~/utils/getCategories'
 import getTags from '~/utils/getTags'
 
-export const state = () => ({
-  tagsObj: {},
-  categories: {},
-  articlesMetadata: {
-    count: 0,
-    pageCount: 0,
-  },
-  toc: [],
-})
-
-export const mutations = {
-  setToc(state, toc) {
-    state.toc = toc
-  },
-}
-
-export const actions = {
-  async nuxtServerInit({ state }, { app, $config }) {
-    if (process.server) {
-      const { $content } = app
-      const { perPage } = $config
-
-      const articles = await $content('articles', { deep: true })
-        .only(['tags', 'category'])
-        .fetch()
-
-      const { articlesMetadata } = state
+export const useMainStore = defineStore('main', {
+  state: () => ({
+    tagsObj: {},
+    categories: {},
+    articlesMetadata: {
+      count: 0,
+      pageCount: 0,
+    },
+    toc: [],
+  }),
+  actions: {
+    nuxtServerInit({ articles = [], perPage }) {
+      const { articlesMetadata } = this
       articlesMetadata.count = articles.length
       setPageCount({ category: articlesMetadata, perPage })
 
-      state.categories = getCategories({ articles, perPage })
-      state.tagsObj = getTags({ articles })
-    }
+      this.categories = getCategories({ articles, perPage })
+      this.tagsObj = getTags({ articles })
+    },
   },
-}
+})

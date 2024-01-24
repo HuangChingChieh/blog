@@ -8,34 +8,29 @@
       :preload-img="index <= 4"
     />
 
-    <InterfacePagination :link-gen="linkGen" :number-of-pages="numberOfPages" />
+    <InterfacePagination
+      :link-gen="linkGen"
+      :number-of-pages="numberOfPages"
+    />
   </div>
 </template>
 
-<script>
-import { mobileBreakpoint } from '~/assets/css/custom.scss'
-
+<script setup>
 import ArticleCard from '~/components/article/article-card.vue'
 import InterfacePagination from '~/components/interface/interface-pagination.vue'
 
-export default {
-  components: { ArticleCard, InterfacePagination },
-  props: {
-    articles: {
-      type: Array,
-      default: () => [],
-    },
-    linkGen: {
-      type: Function,
-      default: () => {},
-    },
-    numberOfPages: {
-      type: [String, Number],
-      default: 1,
-    },
+const props = defineProps({
+  articles: {
+    type: Array,
+    default: () => [],
   },
-  data() {
-    return { mobileBreakpoint }
+  linkGen: {
+    type: Function,
+    default: () => {},
   },
-}
+  numberOfPages: {
+    type: [String, Number],
+    default: 1,
+  },
+})
 </script>

@@ -1,14 +1,12 @@
 <template>
-  <i :class="`bi-${icon}`"></i>
+  <i :class="`bi-${icon}`" />
 </template>
 
-<script>
-export default {
-  props: {
-    icon: {
-      type: String,
-      default: '',
-    },
+<script setup>
+const props = defineProps({
+  icon: {
+    type: String,
+    default: '',
   },
-}
+})
 </script>

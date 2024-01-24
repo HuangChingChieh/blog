@@ -5,7 +5,7 @@ tags: [fedora, zram]
 category: linux
 ---
 
-這篇是[在 Fedora 環境中編譯 LineageOS](fedora_lineageos_sargo)時，嘗試複製在 Ubuntu 中可透過增加 SWAP 來補足記憶體不足的作法。後來發現即便把 ZRAM 增大也會編譯失敗，就很乾脆擴充實體 RAM，本篇就當個紀錄這樣。
+這篇是<article-inner-link slug="fedora_lineageos_sargo">在 Fedora 環境中編譯 LineageOS</article-inner-link>時，嘗試複製在 Ubuntu 中可透過增加 SWAP 來補足記憶體不足的作法。後來發現即便把 ZRAM 增大也會編譯失敗，就很乾脆擴充實體 RAM，本篇就當個紀錄這樣。
 
 <!--more-->
 

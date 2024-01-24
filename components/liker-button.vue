@@ -1,41 +1,14 @@
 <template>
-  <iframe
-    v-b-visible="init"
-    :src="likerButton"
-    frameborder="0"
-    loading="lazy"
-    class="d-block mx-auto"
-  ></iframe>
+  <CommonOuterLink href="https://ko-fi.com/chaoschaoshuang">
+    <img
+      :src="`${$config.public.base}images/donation/kofi_button_blue.png`"
+      alt="Support me on Ko-fi"
+      class="img-fluid d-block"
+      width="200"
+    >
+  </CommonOuterLink>
 </template>
 
-<script>
-import bVisible from '~/utils/bVisible'
-
-export default {
-  directives: { 'b-visible': bVisible },
-  data() {
-    return { likerButton: '' }
-  },
-  methods: {
-    init(isVisible) {
-      // SEE https://docs.like.co/developer/likecoin-button/iframe
-      if (isVisible && !this.likerButton) {
-        const likerButton = new URL(
-          `https://button.like.co/in/embed/chaoshuang/button`
-        )
-        const { searchParams } = likerButton
-        searchParams.append(
-          'referrer',
-          encodeURIComponent(
-            this.$config.appHost + this.$route.path.substring(1)
-          )
-        )
-
-        if (this.$config.isDev) searchParams.append('preview', 1)
-
-        this.likerButton = likerButton.toString()
-      }
-    },
-  },
-}
+<script setup>
+import CommonOuterLink from '~/components/common/common-outer-link.vue';
 </script>

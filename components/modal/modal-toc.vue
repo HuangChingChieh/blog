@@ -1,13 +1,13 @@
 <template>
   <InterfaceModal
-    v-model="valueInner"
+    v-model="model"
     title="摘要"
     :modal-class="[$style.modal, 'modal-toc']"
     @hidden="hidden"
   >
     <InterfaceNav
       v-b-scrollspy
-      :items="toc"
+      :items="mainStore.toc"
       :link-generate-func="getLink"
       :link-classes="[`p-0`, `border-start`, $style.navLink]"
       vertical
@@ -23,67 +23,47 @@
   </InterfaceModal>
 </template>
 
-<script>
-import { mapState } from 'vuex'
+<script setup>
+import { useMainStore } from '~/store/index'
 
 import InterfaceNav from '~/components/interface/interface-nav.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 import ModalTocItem from '~/components/modal/modal-toc-item.vue'
-import bScrollspy from '~/utils/bScrollspy'
+import vBScrollspy from '~/utils/bScrollspy'
+import { computed } from 'vue'
 
-export default {
-  components: {
-    InterfaceNav,
-    InterfaceModal,
-    ModalTocItem,
-  },
-  directives: { 'b-scrollspy': bScrollspy },
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return { hidden: () => {} }
-  },
-  computed: {
-    ...mapState(['toc']),
-    valueInner: {
-      get() {
-        return this.value
-      },
-      set(value) {
-        this.$emit('input', value)
-      },
-    },
-    minDepth() {
-      const { toc } = this
-      return Array.isArray(toc) && toc.length > 0
-        ? toc.reduce((depth, item) => Math.min(depth, item.depth), toc[0].depth)
-        : 2
-    },
-  },
-  methods: {
-    getLink({ id }) {
-      return { hash: `#${id}` }
-    },
-    scrollTo({ id }) {
-      this.$nextTick(() => {
-        const element = document.querySelector(`#${id}`)
-        if (element instanceof HTMLElement) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-            inline: 'center',
-          })
-        }
+const model = defineModel({
+  type: Boolean,
+  default: false,
+})
+
+const hidden = () => {}
+
+const mainStore = useMainStore()
+
+const minDepth = computed(() => {
+  const { toc } = mainStore
+  return Array.isArray(toc) && toc.length > 0
+    ? toc.reduce((depth, item) => Math.min(depth, item.depth), toc[0].depth)
+    : 2
+})
+
+const getLink = ({ id }) => ({ hash: `#${id}` })
+
+const scrollTo = ({ id }) => {
+  nextTick(() => {
+    const element = document.querySelector(`#${id}`)
+    if (element instanceof HTMLElement) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'center',
       })
+    }
+  })
 
-      this.valueInner = false
-    },
-  },
+  model.value = false
 }
 </script>
 

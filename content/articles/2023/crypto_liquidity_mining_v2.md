@@ -5,13 +5,13 @@ tags: [DeFi, 投資, 流動性挖礦, 加密貨幣]
 category: life
 ---
 
-<article-note>**此篇文章是從原本使用的部落格平台轉移過來，目前在[Uniswap v3 原始碼許可證過期](https://support.uniswap.org/hc/en-us/articles/14569783029645-Uniswap-v3-Licensing-)後，許多龍頭交易所已紛紛分叉 Uniswap v3 的原始碼並將流動性挖礦功能升級到 v3，大部分的 v2 流動性礦池已無利益可言，此篇文章僅為當時投入 v2 時的一份紀錄。**</article-note>
-
-<!--more-->
-
 在幣圈跌撞這兩年，知道自己不是一個好的交易員，無法判斷買賣點更不會看線圖，也不想隨時都要盯著幣圈資訊，但對於 DeFi 蓬勃的生態與創新的概念感到很有興趣，最後選擇了有存幣色彩的流動性挖礦。
 
 當然一定要先聲明的就是，本篇文章僅是個人心得分享，不構成任何投資建議，投資有賺有賠，請詳閱公開白皮書（？）。
+
+<!--more-->
+
+<article-note>**此篇文章是從原本使用的部落格平台轉移過來，目前在[Uniswap v3 原始碼許可證過期](https://support.uniswap.org/hc/en-us/articles/14569783029645-Uniswap-v3-Licensing-)後，許多龍頭交易所已紛紛分叉 Uniswap v3 的原始碼並將流動性挖礦功能升級到 v3，大部分的 v2 流動性礦池已無利益可言，此篇文章僅為當時投入 v2 時的一份紀錄。**</article-note>
 
 ---
 

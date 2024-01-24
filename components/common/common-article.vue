@@ -5,19 +5,20 @@
     </h1>
 
     <div class="d-flex flex-row align-items-center my-2">
-      <article-date :document="document" :class="$style.date" />
-      <article-readingtime :minutes="document.readingTime" />
-      <article-category :article="document" />
+      <ArticleDate
+        :document="document"
+        :class="$style.date"
+      />
+      <ArticleReadingtime :minutes="document.readingTime.minutes" />
+      <ArticleCategory :article="document" />
     </div>
-
-    <!-- <prev-next :prev="prev" :next="next"></prev-next> -->
 
     <div
       v-if="document.tags"
       class="d-flex flex-wrap my-2"
       :class="$style.tags"
     >
-      <article-tag
+      <ArticleTag
         v-for="tag in document.tags"
         :key="tag"
         :tag-name="tag"
@@ -25,7 +26,7 @@
       />
     </div>
 
-    <article-banner
+    <ArticleBanner
       v-if="document.img"
       :img="document.img"
       img-class="rounded"
@@ -34,32 +35,26 @@
       preload
     />
 
-    <nuxt-content :document="document" />
+    <ContentRenderer
+      :value="document"
+      class="nuxt-content"
+    />
   </article>
 </template>
 
-<script>
+<script setup>
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
 import ArticleDate from '../article/article-date.vue'
 import ArticleReadingtime from '../article/article-readingtime.vue'
 import ArticleCategory from '../article/article-category.vue'
 
-export default {
-  components: {
-    ArticleBanner,
-    ArticleTag,
-    ArticleDate,
-    ArticleReadingtime,
-    ArticleCategory,
+const props = defineProps({
+  document: {
+    type: Object,
+    default: () => ({}),
   },
-  props: {
-    document: {
-      type: Object,
-      default: () => ({}),
-    },
-  },
-}
+})
 </script>
 
 <style lang="scss">

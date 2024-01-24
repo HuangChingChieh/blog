@@ -9,42 +9,42 @@ export const getHeadForArticle = ({
 }) => {
   const meta = [
     {
-      hid: 'description',
+      key: 'description',
       name: 'description',
       content: description,
     },
     {
-      hid: 'og:url',
+      key: 'og:url',
       property: 'og:url',
       content: url,
     },
     {
-      hid: 'og:type',
+      key: 'og:type',
       property: 'og:type',
       content: 'article',
     },
     {
-      hid: 'og:title',
+      key: 'og:title',
       property: 'og:title',
       content: title,
     },
     {
-      hid: 'og:description',
+      key: 'og:description',
       property: 'og:description',
       content: description,
     },
     {
-      hid: 'og:image',
+      key: 'og:image',
       property: 'og:image',
       content: img,
     },
     {
-      hid: 'og:article:published_time',
+      key: 'og:article:published_time',
       property: 'og:article:published_time',
       content: createdAt,
     },
     {
-      hid: 'og:article:modified_time',
+      key: 'og:article:modified_time',
       property: 'og:article:modified_time',
       content: updatedAt,
     },

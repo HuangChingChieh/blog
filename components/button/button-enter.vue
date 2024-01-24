@@ -1,33 +1,33 @@
 <template>
-  <InterfaceButton
+  <InterfaceButtonLink
     :size="size"
     variant="primary"
     :to="to"
     class="d-inline-flex flex-row align-items-center"
     :class="$style.btn"
   >
-    <slot></slot>
-    <InterfaceIcon icon="arrow-right" :class="$style.icon" />
-  </InterfaceButton>
+    <slot />
+    <InterfaceIcon
+      icon="arrow-right"
+      :class="$style.icon"
+    />
+  </InterfaceButtonLink>
 </template>
 
-<script>
-import InterfaceButton from '~/components/interface/interface-button.vue'
+<script setup>
+import InterfaceButtonLink from '~/components/interface/interface-button-link.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
-export default {
-  components: { InterfaceButton, InterfaceIcon },
-  props: {
-    to: {
-      type: [String, Object],
-      default: '',
-    },
-    size: {
-      type: String,
-      default: 'sm',
-    },
+const props = defineProps({
+  to: {
+    type: [String, Object],
+    default: '',
   },
-}
+  size: {
+    type: String,
+    default: 'sm',
+  },
+})
 </script>
 
 <style lang="scss" module>

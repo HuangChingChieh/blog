@@ -1,55 +1,41 @@
 <template>
-  <InterfaceModal v-model="valueInner" title="文章分類">
+  <InterfaceModal
+    v-model="model"
+    title="文章分類"
+  >
     <InterfaceNav
-      active-class="font-weight-bold"
+      active-class="fw-bold"
       vertical
       :items="items"
       :link-generate-func="getLink"
-      @click-item="valueInner = false"
+      @click-item="model = false"
     >
-      <template #item="{ item }">{{ item.name }}</template>
+      <template #item="{ item }">
+        {{ item.name }}
+      </template>
     </InterfaceNav>
   </InterfaceModal>
 </template>
 
-<script>
+<script setup>
 import { getCategoryLink } from '~/utils/getLink'
 
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 import InterfaceNav from '~/components/interface/interface-nav.vue'
+import { computed } from 'vue'
 
-export default {
-  components: { InterfaceModal, InterfaceNav },
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    allCate() {
-      return this.$route.path === '/'
-    },
-    valueInner: {
-      get() {
-        return this.value
-      },
-      set(value) {
-        this.$emit('input', value)
-      },
-    },
-    items() {
-      const { categoriesMap } = this.$config
-      return Object.keys(categoriesMap).map((key) => ({
-        name: categoriesMap[key],
-        value: key,
-      }))
-    },
-  },
-  methods: {
-    getLink({ value }) {
-      return getCategoryLink({ category: value })
-    },
-  },
-}
+const model = defineModel({
+  type: Boolean,
+  default: false,
+})
+
+const { categoriesMap } = useRuntimeConfig().public
+const items = computed(() =>
+  Object.keys(categoriesMap).map((key) => ({
+    name: categoriesMap[key],
+    value: key,
+  }))
+)
+
+const getLink = ({ value }) => getCategoryLink({ category: value })
 </script>

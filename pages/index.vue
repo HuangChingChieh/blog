@@ -1,53 +1,41 @@
 <template>
-  <articles-list
+  <ArticlesList
     :link-gen="linkGen"
     :articles="articles"
-    :number-of-pages="numberOfPages"
-  ></articles-list>
+    :number-of-pages="pageCount"
+  />
 </template>
 
-<script>
+<script setup>
 import ArticlesList from '~/components/articles/articles-list.vue'
+import { useMainStore } from '~/store'
 
-import articleQueryAttrs from '~/utils/articleQueryAttrs'
+const mainStore = useMainStore()
 
-export default {
-  name: 'IndexPage',
-  components: { ArticlesList },
-  async asyncData({ $content, store, $config }) {
-    const { perPage } = $config
-    const { pageCount } = store.state.articlesMetadata
+const { appHost, description } = useRuntimeConfig().public
+const { pageCount } = mainStore.articlesMetadata
 
-    const articles = await $content('articles', { deep: true })
-      .only(articleQueryAttrs.card)
-      .sortBy('updatedAt', 'desc')
-      .limit(perPage)
-      .fetch()
+const { data: articles } = await useArticlesByPageAndCategory({
+  page: 1,
+  category: 'all',
+})
 
-    return { articles, numberOfPages: pageCount }
-  },
-  head() {
-    return {
-      title: '',
-      titleTemplate: '隨機手札',
-      meta: [
-        {
-          hid: 'og:url',
-          property: 'og:url',
-          content: this.$config.appHost,
-        },
-        {
-          hid: 'og:description',
-          property: 'og:description',
-          content: this.$config.description,
-        },
-      ],
-    }
-  },
-  methods: {
-    linkGen(page) {
-      return `/category/all/${page}`
+useHead({
+  title: '',
+  titleTemplate: '隨機手札',
+  meta: [
+    {
+      key: 'og:url',
+      property: 'og:url',
+      content: appHost,
     },
-  },
-}
+    {
+      key: 'og:description',
+      property: 'og:description',
+      content: description,
+    },
+  ],
+})
+
+const linkGen = (page) => `/category/all/${page}`
 </script>

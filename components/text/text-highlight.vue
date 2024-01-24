@@ -1,42 +1,41 @@
 <template>
-  <span v-html="textHighlight"></span>
+  <span v-html="textHighlight" />
 </template>
 
-<script>
+<script setup>
 import escapeRegExp from 'lodash/escapeRegExp'
 import escape from 'lodash/escape'
+import { computed } from 'vue'
 
-export default {
-  props: {
-    keyword: {
-      type: [String, Array],
-      default: '',
-    },
-    text: {
-      type: String,
-      default: '',
-    },
+const props = defineProps({
+  keyword: {
+    type: [String, Array],
+    default: '',
   },
-  computed: {
-    keywordArr() {
-      const { keyword } = this
-      return typeof keyword === 'string'
-        ? keyword.split(' ').map((str) => escapeRegExp(escape(str)))
-        : Array.isArray(keyword)
-        ? keyword.map((str) => escapeRegExp(escape(str)))
-        : []
-    },
-    textHighlight() {
-      const { keywordArr, text } = this
-      const regex = new RegExp(keywordArr.join('|'), 'gi')
+  text: {
+    type: String,
+    default: '',
+  },
+})
 
-      return typeof text === 'string'
-        ? escape(text).replace(
-            regex,
-            (match) => `<b class="text-primary">${match}</b>`
-          )
-        : text
-    },
-  },
-}
+const keywordArr = computed(() => {
+  const { keyword } = props
+  return typeof keyword === 'string'
+    ? keyword.split(' ').map((str) => escapeRegExp(escape(str)))
+    : Array.isArray(keyword)
+    ? keyword.map((str) => escapeRegExp(escape(str)))
+    : []
+})
+
+const textHighlight = computed(() => {
+  const { text } = props
+  const regex = new RegExp(keywordArr.value.join('|'), 'gi')
+
+  return typeof text === 'string'
+    ? escape(text).replace(
+        regex,
+        (match) => `<b class="text-primary">${match}</b>`
+      )
+    : text
+})
 </script>

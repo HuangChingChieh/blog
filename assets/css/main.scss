@@ -1,5 +1,80 @@
-@import 'custom';
+@import 'custom.module';
 @import 'icon';
+
+$colors: (
+  // "blue":       $blue,
+  // "indigo":     $indigo,
+  // "purple":     $purple,
+  // "pink":       $pink,
+  // "red":        $red,
+  // "orange":     $orange,
+  // "yellow":     $yellow,
+  // 'green': $green,
+  // "teal":       $teal,
+  // "cyan":       $cyan,
+  'black': $black,
+  'white': $white,
+  'gray': $gray-600,
+  'gray-dark': $gray-800
+);
+
+$theme-colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+);
+
+$theme-colors-text: (
+  'primary': $primary-text-emphasis,
+  'secondary': $secondary-text-emphasis,
+);
+
+$theme-colors-bg-subtle: (
+  'primary': $primary-bg-subtle,
+  'secondary': $secondary-bg-subtle,
+);
+
+$theme-colors-border-subtle: (
+  'primary': $primary-border-subtle,
+  'secondary': $secondary-border-subtle,
+);
+
+@if $enable-dark-mode {
+  // scss-docs-start theme-text-dark-map
+  $theme-colors-text-dark: (
+    'primary': $primary-text-emphasis-dark,
+    'secondary': $secondary-text-emphasis-dark,
+  );
+  // scss-docs-end theme-text-dark-map
+
+  // scss-docs-start theme-bg-subtle-dark-map
+  $theme-colors-bg-subtle-dark: (
+    'primary': $primary-bg-subtle-dark,
+    'secondary': $secondary-bg-subtle-dark,
+  );
+  // scss-docs-end theme-bg-subtle-dark-map
+
+  // scss-docs-start theme-border-subtle-dark-map
+  $theme-colors-border-subtle-dark: (
+    'primary': $primary-border-subtle-dark,
+    'secondary': $secondary-border-subtle-dark,
+  );
+  // scss-docs-end theme-border-subtle-dark-map
+}
+
+$utilities-text-emphasis-colors: (
+  'primary-emphasis': var(--#{$prefix}primary-text-emphasis),
+  'secondary-emphasis': var(--#{$prefix}secondary-text-emphasis),
+);
+
+$utilities-bg-subtle: (
+  'primary-subtle': var(--#{$prefix}primary-bg-subtle),
+  'secondary-subtle': var(--#{$prefix}secondary-bg-subtle),
+) !default;
+
+$utilities-border-subtle: (
+  'primary-subtle': var(--#{$prefix}primary-border-subtle),
+  'secondary-subtle': var(--#{$prefix}secondary-border-subtle),
+) !default;
 
 /* Bootstrap Tree Shaking */
 
@@ -12,7 +87,19 @@
 @import '../../node_modules/bootstrap/scss/containers';
 @import '../../node_modules/bootstrap/scss/grid';
 // @import '../../node_modules/bootstrap/scss/tables';
-@import '../../node_modules/bootstrap/scss/forms';
+
+/* Forms 展開 */
+// @import '../../node_modules/bootstrap/scss/forms';
+// @import "../../node_modules/bootstrap/scss/forms/labels";
+// @import "../../node_modules/bootstrap/scss/forms/form-text";
+@import '../../node_modules/bootstrap/scss/forms/form-control';
+// @import "../../node_modules/bootstrap/scss/forms/form-select";
+// @import "../../node_modules/bootstrap/scss/forms/form-check";
+// @import "../../node_modules/bootstrap/scss/forms/form-range";
+// @import "../../node_modules/bootstrap/scss/forms/floating-labels";
+// @import "../../node_modules/bootstrap/scss/forms/input-group";
+// @import "../../node_modules/bootstrap/scss/forms/validation";
+
 @import '../../node_modules/bootstrap/scss/buttons';
 @import '../../node_modules/bootstrap/scss/transitions';
 // @import '../../node_modules/bootstrap/scss/dropdown';
@@ -37,14 +124,26 @@
 // @import '../../node_modules/bootstrap/scss/offcanvas';
 // @import '../../node_modules/bootstrap/scss/placeholders';
 
-// Helpers
-@import '../../node_modules/bootstrap/scss/helpers';
+/* Helpers 展開 */
+// @import '../../node_modules/bootstrap/scss/helpers';
+// @import '../../node_modules/bootstrap/scss/helpers/clearfix';
+@import '../../node_modules/bootstrap/scss/helpers/color-bg';
+// @import '../../node_modules/bootstrap/scss/helpers/colored-links';
+// @import '../../node_modules/bootstrap/scss/helpers/focus-ring';
+// @import '../../node_modules/bootstrap/scss/helpers/icon-link';
+// @import '../../node_modules/bootstrap/scss/helpers/ratio';
+@import '../../node_modules/bootstrap/scss/helpers/position';
+// @import '../../node_modules/bootstrap/scss/helpers/stacks';
+@import '../../node_modules/bootstrap/scss/helpers/visually-hidden';
+// @import '../../node_modules/bootstrap/scss/helpers/stretched-link';
+@import '../../node_modules/bootstrap/scss/helpers/text-truncation';
+// @import '../../node_modules/bootstrap/scss/helpers/vr';
 
 // Utilities
 @import '../../node_modules/bootstrap/scss/utilities/api';
 // scss-docs-end import-stack
 
-main {
+body {
   background-color: var(--bs-body-bg);
 
   @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
@@ -86,15 +185,6 @@ hr {
   padding-top: 0;
 }
 
-.page-enter-active,
-.page-leave-active {
-  transition: $transition-fade;
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0;
-}
-
 @mixin line-clamp-base {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -102,9 +192,14 @@ hr {
   -webkit-box-orient: vertical;
 }
 
-.text-two-line {
+.text-line-2 {
   @include line-clamp-base();
   -webkit-line-clamp: 2;
+}
+
+.text-line-3 {
+  @include line-clamp-base();
+  -webkit-line-clamp: 3;
 }
 
 .container-#{$mobile-breakpoint} {

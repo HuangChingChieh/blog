@@ -1,61 +1,60 @@
 <template>
   <InterfaceModal
-    v-model="valueInner"
+    v-model="model"
     title="搜尋文章"
     size="lg"
     @shown="shown"
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div class="position-relative" :class="$style.inputGroup">
+      <div
+        class="position-relative"
+        :class="$style.inputGroup"
+      >
         <InterfaceFormInput
           ref="input"
           v-model="keyword"
           placeholder="請輸入關鍵字"
           :class="$style.input"
-          @input="
-            beforeSearch()
-            search()
-          "
+          @input="keywordChanged"
         />
 
         <div
           class="d-flex align-items-center justify-content-center px-3"
           :class="$style.iconWrapper"
         >
-          <InterfaceIcon icon="search" :class="$style.icon" />
+          <InterfaceIcon
+            icon="search"
+            :class="$style.icon"
+          />
         </div>
       </div>
 
-      <div class="mt-3" :class="$style.results">
-        <div v-if="keyword" class="h-100">
-          <div v-if="hasSearchResult" class="flex-grow-1">
+      <div
+        class="mt-3"
+        :class="$style.results"
+      >
+        <div
+          v-if="keyword"
+          class="h-100"
+        >
+          <div v-if="hasSearchResult">
             <div
               v-for="(article, index) in articles"
               :key="article.slug"
               class="small"
             >
-              <hr v-if="index > 0" class="my-3" />
+              <hr
+                v-if="index > 0"
+                class="my-3"
+              >
 
-              <article-seach-result
+              <ArticleSeachResult
                 :article="article"
                 :keyword="keyword"
-                @navigate="valueInner = false"
+                :slug="article.slug"
+                @navigate="model = false"
               />
-            </div>
-
-            <div class="text-center">
-              <hr class="my-3" />
-              <InterfaceButton
-                v-if="hasMore"
-                variant="primary"
-                size="sm"
-                :disabled="searchingMore"
-                @click="searchMore"
-              >
-                {{ searchingMore ? '載入中' : '載入更多搜尋結果' }}
-              </InterfaceButton>
-              <div v-else class="text-muted small">沒有更多搜尋結果了</div>
             </div>
           </div>
           <div
@@ -70,103 +69,128 @@
   </InterfaceModal>
 </template>
 
-<script>
+<script setup>
 import debounce from 'lodash/debounce'
 
 import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
-import InterfaceButton from '~/components/interface/interface-button.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 import ArticleSeachResult from '~/components/article/article-search-result.vue'
+import { computed, ref } from 'vue'
 
-export default {
-  components: {
-    InterfaceFormInput,
-    InterfaceButton,
-    InterfaceIcon,
-    InterfaceModal,
-    ArticleSeachResult,
-  },
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      keyword: '',
-      articles: [],
-      searching: false,
-      searchingMore: false,
-      hasMore: false,
-      page: 1,
-    }
-  },
-  computed: {
-    valueInner: {
-      get() {
-        return this.value
-      },
-      set(value) {
-        this.$emit('input', value)
-      },
-    },
-    hasSearchResult() {
-      return !this.searching && this.articles.length > 0
-    },
-    hasNoSearchResult() {
-      return !this.searching && this.articles.length === 0
-    },
-  },
-  methods: {
-    beforeSearch() {
-      this.page = 1
-      this.searching = true
-      this.searchingMore = false
-      this.hasMore = false
-      this.articles = []
-    },
-    reset() {
-      this.page = 1
-      this.searching = false
-      this.searchingMore = false
-      this.hasMore = false
-      this.keyword = ''
-      this.articles = []
-    },
-    shown() {
-      this.$refs.input.$el.focus()
-    },
-    async searchMore() {
-      this.searchingMore = true
-      this.page++
-      await this.searchCommon()
-      this.searchingMore = false
-    },
-    async searchCommon() {
-      const { perPage } = this.$config
-      const { page, keyword } = this
-      if (keyword) {
-        const articles = await this.$content('articles', { deep: true })
-          .only(['title', 'slug', 'description', 'plainText'])
-          .search(this.keyword)
-          // .sortBy('updatedAt', 'desc')
-          .skip((page - 1) * perPage)
-          .limit(perPage + 1)
-          .fetch()
+const model = defineModel({
+  type: Boolean,
+  default: false,
+})
 
-        this.hasMore = articles.length > perPage
+const keyword = ref('')
+const {
+  data: paragraphs,
+  pending: searching,
+  refresh,
+} = await useAsyncData(
+  `search:${keyword.value}`,
+  () => searchContent(keyword),
+  {
+    server: false,
+    immediate: false,
+    default: () => [],
+  }
+)
 
-        this.articles.push(...articles.slice(0, perPage))
-        this.searching = false
+const { data: titleMap } = await useAsyncData('titleMap', async () => {
+  const titleMap = {}
+  await queryContent('articles')
+    .only(['title', 'slug'])
+    .find()
+    .then((articles) => {
+      if (Array.isArray(articles) && articles.length > 0) {
+        articles.forEach(({ slug, title }) => {
+          if (!titleMap[slug]) titleMap[slug] = title
+        })
       }
-    },
-    search: debounce(async function () {
-      await this.searchCommon()
-    }, 500),
+    })
+  return titleMap
+})
+
+const {
+  data: articles,
+  pending: searchingTitle,
+  refresh: refreshArticles,
+} = await useAsyncData(
+  `titleMap:${keyword.value}`,
+  () => {
+    const ps = unref(paragraphs.value)
+    if (Array.isArray(ps) && ps.length > 0) {
+      const titleMapC = {}
+      ps.forEach((p) => {
+        const { id, score } = p
+        const slugHash = id.split('/').pop().split('#')
+        const slug = slugHash[0]
+        const hash = slugHash[1]
+        if (!titleMapC[slug])
+          titleMapC[slug] = {
+            title: unref(titleMap)[slug],
+            score: 0,
+            paragraphs: [],
+            slug,
+          }
+
+        titleMapC[slug].score += score
+        titleMapC[slug].paragraphs.push({
+          content: p.content,
+          id,
+          score,
+          title: p.title,
+          hash
+        })
+      })
+
+      const slugs = Object.keys(titleMapC)
+
+      return slugs
+        .map((slug) => titleMapC[slug])
+        .sort((a, b) => b.score - a.score)
+    } else return []
   },
+  {
+    server: false,
+    immediate: false,
+    default: () => [],
+  }
+)
+
+const searchComputed = computed(() => unref(searching) || unref(searchingTitle))
+
+const hasSearchResult = computed(
+  () => !unref(searchComputed) && unref(articles).length > 0
+)
+const hasNoSearchResult = computed(
+  () => !unref(searchComputed) && unref(articles).length === 0
+)
+
+const keywordChanged = () => {
+  if (keyword.value) {
+    searching.value = true
+    searchingTitle.value = true
+    search()
+  }
+}
+
+const reset = () => {
+  keyword.value = ''
+}
+
+const search = debounce(async () => {
+  await refresh()
+  await refreshArticles()
+}, 500)
+
+// Input相關
+const input = ref(null)
+const shown = () => {
+  input.value.$el.focus()
 }
 </script>
 
@@ -181,7 +205,7 @@ export default {
   .input {
     padding-right: calc(1.5rem + 1rem);
 
-    &:focus ~ .iconWrapper .icon {
+    &:focus~.iconWrapper .icon {
       color: $primary;
     }
   }

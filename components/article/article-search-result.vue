@@ -1,106 +1,54 @@
 <template>
-  <nuxt-link
-    :to="getArticleLink(article)"
-    class="text-decoration-none d-flex flex-column"
-    @click.native="$emit('navigate')"
-  >
-    <text-highlight
-      :keyword="keywordByTitle"
+  <div>
+    <ArticleSearchResultText
+      :keyword="keyword"
+      :to="getArticleLink({ slug })"
       :text="article.title"
-      class="text-body font-weight-bold"
+      class="h5 mb-3 fw-bolder"
+      @click="$emit('navigate')"
     />
-    <text-highlight
-      :keyword="keywordByPlainText"
-      :text="getBreakDownText(article.plainText, keywordByPlainText)"
-      class="text-muted text-two-line"
-    />
-  </nuxt-link>
+
+    <div
+      v-for="p in article.paragraphs"
+      :key="p.id"
+    >
+      <ArticleSearchResultText
+        :keyword="keyword"
+        :to="getArticleLink({ slug, hash: p.hash })"
+        :text="p.title"
+        class="text-body fw-bold my-2"
+        @click="$emit('navigate')"
+      />
+
+      <ArticleSearchResultText
+        :keyword="keyword"
+        :to="getArticleLink({ slug, hash: p.hash })"
+        :text="p.content"
+        class="text-muted text-line-3 my-2"
+        break-down
+        @click="$emit('navigate')"
+      />
+    </div>
+  </div>
 </template>
-<script>
-import escapeRegExp from 'lodash/escapeRegExp'
-import TextHighlight from '~/components/text/text-highlight.vue'
+
+<script setup>
+import ArticleSearchResultText from './article-search-result-text.vue'
 
 import { getArticleLink } from '~/utils/getLink'
 
-export default {
-  components: { TextHighlight },
-  props: {
-    article: {
-      type: Object,
-      default: () => ({}),
-    },
-    keyword: {
-      type: String,
-      default: '',
-    },
+const props = defineProps({
+  article: {
+    type: Object,
+    default: () => ({}),
   },
-  computed: {
-    keywordArr() {
-      const { keyword } = this
-      return typeof keyword === 'string' ? keyword.split(' ') : []
-    },
-    keywordByTitle() {
-      return this.getBreakdownKeyword(this.article.title, this.keywordArr)
-    },
-    keywordByPlainText() {
-      return this.getBreakdownKeyword(this.article.plainText, this.keywordArr)
-    },
+  keyword: {
+    type: String,
+    default: '',
   },
-  methods: {
-    getArticleLink,
-    getBreakDownText(targetStr = '', keyword = []) {
-      const maxLength = 200
-      if (targetStr.length > maxLength) {
-        const regex = new RegExp(
-          keyword.map((str) => escapeRegExp(str)).join('|'),
-          'gi'
-        )
-
-        const matched = [...targetStr.matchAll(regex)]
-
-        let { startIndex } = matched.reduce(
-          (calc, { index }) => {
-            const { maxContainCount } = calc
-
-            const containCount = matched.filter(
-              (contain) =>
-                index + maxLength >= contain.index && contain.index >= index
-            ).length
-
-            if (containCount > maxContainCount) {
-              calc.maxContainCount = containCount
-              calc.startIndex = index
-            }
-
-            return calc
-          },
-          { maxContainCount: 0, startIndex: 0 }
-        )
-
-        startIndex = Math.min(startIndex, targetStr.length - maxLength - 1)
-        targetStr = targetStr.substring(startIndex, startIndex + maxLength - 1)
-      }
-
-      return targetStr
-    },
-    getBreakdownKeyword(targetStr = '', keywordArr = []) {
-      const keywordHandled = []
-
-      if (targetStr && Array.isArray(keywordArr) && keywordArr.length > 0) {
-        keywordArr.forEach((str) => {
-          let matched = null
-          while (!matched && str) {
-            const regex = new RegExp(escapeRegExp(str), 'i')
-            matched = regex.test(targetStr)
-
-            if (matched) keywordHandled.push(str)
-            else str = str.substring(0, str.length - 1)
-          }
-        })
-      }
-
-      return keywordHandled
-    },
+  slug: {
+    type: String,
+    default: '',
   },
-}
+})
 </script>

@@ -1,28 +1,40 @@
 <template>
   <div v-if="hasArticles">
-    <div class="h5 mb-4 text-center">相關文章</div>
+    <div class="h5 mb-4 text-center">
+      相關文章
+    </div>
 
-    <article-card
-      v-for="(article, index) in articles"
+    <ArticleCard
+      v-for="(article, index) in relatedArticles"
       :key="index"
       :article="article"
       class="mt-3"
-    ></article-card>
+    />
   </div>
 </template>
 
 <script>
 import ArticleCard from '~/components/article/article-card.vue'
-export default {
+import useArticles from '~/composables/useArticles'
+import getReltedArticles from '~/utils/getRelatedArticles'
+
+export default defineNuxtComponent({
   components: { ArticleCard },
   props: {
-    articles: { type: Array, default: () => [] },
+    article: { type: Object, default: () => ({ tags: [], slug: '' }) },
   },
-  computed: {
-    hasArticles() {
-      const { articles } = this
-      return Array.isArray(articles) && articles.length > 0
-    },
+  async setup({ article }) {
+    const { data: articles } = await useArticles()
+
+    const relatedArticles = getReltedArticles({
+      articles: unref(articles),
+      article,
+    })
+
+    const hasArticles =
+      Array.isArray(relatedArticles) && relatedArticles.length > 0
+
+    return { relatedArticles, hasArticles }
   },
-}
+})
 </script>

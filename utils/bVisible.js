@@ -1,7 +1,7 @@
 let intersectionObserver = null
 
 export default {
-  inserted(el, { value }) {
+  mounted(el, { value }) {
     if (typeof value === 'function') {
       intersectionObserver = new IntersectionObserver((entries) => {
         value(entries[0].intersectionRatio > 0)
@@ -10,7 +10,7 @@ export default {
       intersectionObserver.observe(el)
     }
   },
-  unbind() {
+  beforeUnmount() {
     if (
       intersectionObserver &&
       intersectionObserver instanceof IntersectionObserver

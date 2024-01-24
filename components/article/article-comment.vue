@@ -2,79 +2,69 @@
   <div ref="comments" v-b-visible="init" class="giscus"></div>
 </template>
 
-<script>
-import { mapGetters } from 'vuex'
-
+<script setup>
+import { computed, ref, watch } from 'vue'
 import kebabCase from 'lodash/kebabCase'
+import vBVisible from '~/utils/bVisible'
+import { useThemeStore } from '~/store/theme'
 
-import bVisible from '~/utils/bVisible'
+const themeStore = useThemeStore()
 
-export default {
-  directives: { 'b-visible': bVisible },
-  data() {
-    return {
-      inited: false,
+const theme = computed(() => (themeStore.darkComputed ? 'dark' : 'light'))
+
+const giscus = {
+  repo: 'HuangChingChieh/blog',
+  repoId: 'R_kgDOHHJsJQ',
+  category: 'Announcements',
+  categoryId: 'DIC_kwDOHHJsJc4CcL42',
+  // term: string,
+  // description: string,
+  // backLink: string,
+  // number: number,
+  // strict: boolean,
+  reactionsEnabled: 0,
+  emitMetadata: 0,
+  inputPosition: 'top',
+  lang: 'zh-TW',
+  loading: 'lazy',
+  theme: theme.value,
+}
+const inited = ref(false)
+const comments = ref(null)
+const script = computed(() => {
+  const script = []
+
+  if (inited.value) {
+    const scriptGisgus = {
+      src: 'https://giscus.app/client.js',
+      crossorigin: 'anonymous',
     }
-  },
-  head() {
-    const { inited, giscus } = this
 
-    const script = []
+    Object.keys(giscus).forEach((key) => {
+      scriptGisgus[`data-${kebabCase(key)}`] = giscus[key]
+    })
+    script.push(scriptGisgus)
+  }
 
-    if (inited) {
-      const scriptGisgus = {
-        src: 'https://giscus.app/client.js',
-        crossorigin: 'anonymous',
-      }
+  return script
+})
 
-      Object.keys(giscus).forEach((key) => {
-        scriptGisgus[`data-${kebabCase(key)}`] = giscus[key]
-      })
-      script.push(scriptGisgus)
-    }
+useHead({
+  script,
+})
 
-    return {
-      script,
-    }
-  },
-  computed: {
-    ...mapGetters('theme', ['darkComputed']),
-    giscus() {
-      return {
-        theme: this.darkComputed ? 'dark' : 'light',
-        repo: 'HuangChingChieh/blog',
-        repoId: 'R_kgDOHHJsJQ',
-        category: 'Announcements',
-        categoryId: 'DIC_kwDOHHJsJc4CcL42',
-        // term: string,
-        // description: string,
-        // backLink: string,
-        // number: number,
-        // strict: boolean,
-        reactionsEnabled: 0,
-        emitMetadata: 0,
-        inputPosition: 'top',
-        lang: 'zh-TW',
-        loading: 'lazy',
-      }
-    },
-  },
-  watch: {
-    darkComputed() {
-      if (this.inited) {
-        // See https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
-        const iframe = this.$refs.comments.querySelector('iframe.giscus-frame')
-        if (iframe && iframe instanceof HTMLIFrameElement) {
-          const { giscus } = this
-          iframe.contentWindow.postMessage({ giscus }, 'https://giscus.app')
-        }
-      }
-    },
-  },
-  methods: {
-    init(isVisible) {
-      if (isVisible && !this.inited) this.inited = true
-    },
-  },
+watch(theme, () => {
+  // See https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
+  const iframe = comments.value.querySelector('iframe.giscus-frame')
+  if (iframe && iframe instanceof HTMLIFrameElement) {
+    iframe.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: theme.value } } },
+      'https://giscus.app'
+    )
+  }
+})
+
+const init = (isVisible) => {
+  if (isVisible && !inited.value) inited.value = true
 }
 </script>
