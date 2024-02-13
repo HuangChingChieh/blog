@@ -1,1 +1,0 @@
-import{o as a,c as s,e as t,R as o,r as l}from"./entry.p-R_Zo4F.js";const c={class:"article-note small px-3 py-2 rounded align-middle"},i={__name:"article-note",setup(r){return(e,n)=>(a(),s("p",c,[t(o,{icon:"lightbulb",class:"me-1"}),l(e.$slots,"default")]))}};export{i as default};
