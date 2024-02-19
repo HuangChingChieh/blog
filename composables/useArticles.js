@@ -2,6 +2,6 @@ export default () =>
   useAsyncData(`articles`, () =>
     queryContent('articles')
       .only([...articleQueryAttrs.card, 'tags'])
-      .sort({ updatedAt: -1 })
+      .sort({ createdAt: -1 })
       .find()
   )

@@ -8,9 +8,7 @@ export default ({ page, category }) =>
     if (category !== 'all') contentQuery = contentQuery.where({ category })
 
     return contentQuery
-      .sort({
-        updatedAt: -1,
-      })
+      .sort({ createdAt: -1 })
       .skip((page - 1) * perPage)
       .limit(perPage)
       .find()

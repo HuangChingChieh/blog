@@ -5,7 +5,7 @@ tags: [fedora, intel turbo boost]
 category: linux
 ---
 
-<article-inner-link slug="macbook_air_2013_fedora">在 Macbook Air 2013 安裝 Fedora</article-inner-link>後，發現會有容易過熱的問題（溫度直上 90°C 甚至 100 °C），找到了一個解決方式是直接關閉 Intel Turbo Boost。因為過程稍微複雜一些，所以就把他紀錄下來了。
+在 <article-inner-link slug="macbook_air_2013_fedora">Macbook Air 2013 上 安裝 Fedora</article-inner-link>後，發現會有容易過熱的問題（溫度直上 90°C 甚至 100 °C），找到了一個解決方式是直接關閉 Intel Turbo Boost。因為過程稍微複雜一些，所以就把他紀錄下來了。
 
 <!--more-->
 

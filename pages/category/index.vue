@@ -53,7 +53,7 @@ const { data: categories } = await useAsyncData('categories', async () => {
     Object.keys(categories).map((category) =>
       queryContent()
         .only(articleQueryAttrs.card)
-        .sort({ updatedAt: -1 })
+        .sort({ createdAt: -1 })
         .where({ category })
         .limit(3)
         .find()
