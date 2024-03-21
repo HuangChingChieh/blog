@@ -52,29 +52,29 @@ if (!article?.value) {
   mainStore.toc = article.value.body.toc.links
 }
 
-useHead(
-  (() => {
-    let head = []
+const head = computed(() => {
+  let head = []
 
-    if (article) {
-      const { appHost, imageServer } = useRuntimeConfig().public
-      const { title, description, img, tags, updatedAt, createdAt } =
-        article.value
-      const url = appHost + route.fullPath.substring(1)
-      head = getHeadForArticle({
-        description,
-        url,
-        title,
-        img: img
-          ? `${imageServer}1600x1200q100/${img}`
-          : `${appHost}images/default-og.png`,
-        tags,
-        updatedAt,
-        createdAt,
-      })
-    }
+  if (article?.value) {
+    const { appHost, imageServer } = useRuntimeConfig().public
+    const { title, description, img, tags, updatedAt, createdAt } =
+      article.value
+    const url = appHost + route.fullPath.substring(1)
+    head = getHeadForArticle({
+      description,
+      url,
+      title,
+      img: img
+        ? `${imageServer}1600x1200q100/${img}`
+        : `${appHost}images/default-og.png`,
+      tags,
+      updatedAt,
+      createdAt,
+    })
+  }
 
-    return head
-  })(),
-)
+  return head
+})
+
+useHead(head.value)
 </script>

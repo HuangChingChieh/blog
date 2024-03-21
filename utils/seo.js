@@ -62,8 +62,9 @@ export const getHeadForArticle = ({
     meta,
     script: [
       {
+        hid: 'article-json-ld',
         type: 'application/ld+json',
-        json: {
+        innerHTML: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'BlogPosting',
           headline: title,
@@ -77,7 +78,7 @@ export const getHeadForArticle = ({
               url: 'https://huangchingchieh.github.io/',
             },
           ],
-        },
+        }),
       },
     ],
   }

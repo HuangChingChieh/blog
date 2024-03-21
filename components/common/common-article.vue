@@ -61,10 +61,12 @@ const props = defineProps({
 $article-font-size-base: 1rem;
 
 .nuxt-content {
+
   h2,
   h3,
   p,
-  blockquote {
+  blockquote,
+  img {
     margin: $paragraph-margin-bottom * 1.75 0;
   }
 
@@ -101,7 +103,7 @@ $article-font-size-base: 1rem;
     text-decoration: underline;
   }
 
-  > *:last-child {
+  >*:last-child {
     margin-bottom: 0;
   }
 
@@ -116,6 +118,7 @@ $article-font-size-base: 1rem;
     em {
       font-size: $small-font-size;
       color: $secondary;
+
       &::before {
         content: '——';
       }
@@ -124,7 +127,10 @@ $article-font-size-base: 1rem;
 }
 </style>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 $article-font-size-base: 1rem;
 
 .article {

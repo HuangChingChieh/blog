@@ -2,7 +2,6 @@
   <img
     v-if="img"
     :srcset="srcset"
-    :src="src"
     :class="[$style.img, ...imgClassComputed]"
     :sizes="sizes"
     loading="lazy"
@@ -130,7 +129,10 @@ const srcset = computed(() =>
 )
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .img {
   height: 100%;
   width: 100%;

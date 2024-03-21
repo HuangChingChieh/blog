@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class="pagination justify-content-center">
+    <ul class="pagination justify-content-center mb-2">
       <li
         class="page-item"
         :class="{ disabled: thePage === 1 }"
@@ -64,6 +64,10 @@
         </NuxtLink>
       </li>
     </ul>
+
+    <aside class="text-center small">
+      共 {{ numberOfPages }} 頁
+    </aside>
   </nav>
 </template>
 
@@ -74,7 +78,7 @@ import InterfaceIcon from '~/components/interface/interface-icon.vue'
 const props = defineProps({
   linkGen: {
     type: Function,
-    default: () => {},
+    default: () => { },
   },
   numberOfPages: {
     type: [String, Number],
@@ -112,7 +116,10 @@ const pages = computed(() => {
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .link {
   padding: 0;
   font-size: 1rem;
