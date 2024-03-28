@@ -9,29 +9,30 @@
   </div>
 </template>
 
-<script>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
 import InterfaceImg from '~/components/interface/interface-img.vue'
 import getImgSizes from '~/utils/getImgSizes'
 
-export default defineNuxtComponent({
-  components: { InterfaceImg },
-  props: {
-    img: {
-      type: String,
-      default: '',
-    },
-    imgClass: {
-      type: [Array, String],
-      default: () => [],
-    },
-    sizes: {
-      type: Array,
-      default: () => getImgSizes(),
-    },
-    preload: {
-      type: Boolean,
-      default: false,
-    },
+const props = defineProps({
+  img: {
+    type: String,
+    default: '',
+  },
+  imgClass: {
+    type: [Array, String] as PropType<string[] | string>,
+    default: () => [],
+  },
+  sizes: {
+    type: Array as PropType<string[]>,
+    default: () => getImgSizes(),
+  },
+  preload: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>

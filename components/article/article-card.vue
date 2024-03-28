@@ -54,8 +54,14 @@
   </article>
 </template>
 
-<script setup>
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
+import scssVariables from '~/assets/css/export.module.scss'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
@@ -66,9 +72,11 @@ import ButtonEnter from '~/components/button/button-enter.vue'
 import { getArticleLink } from '~/utils/getLink'
 import getImgSizes from '~/utils/getImgSizes'
 
+const mobileBreakpoint = (scssVariables.mobileBreakpoint) as string;
+
 const props = defineProps({
   article: {
-    type: Object,
+    type: Object as PropType<Article>,
     default: () => ({}),
   },
   preloadImg: {
@@ -77,8 +85,8 @@ const props = defineProps({
   },
 })
 
-const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
-  let imageWidth = containerMaxWidth
+const bannerSizes = getImgSizes(({ containerMaxWidth = '', isMobile = false }) => {
+  let imageWidth: string = containerMaxWidth
   if (!isMobile) {
     const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
     imageWidth = Number(containerMaxWidthNum) * 0.4 + 'px'
@@ -88,12 +96,14 @@ const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 $card-content-line: 2;
 $card-text-line: 2;
 $card-title-font-size: $h4-font-size;
-$card-title-height: $headings-line-height * $card-content-line *
-  $card-title-font-size;
+$card-title-height: $headings-line-height * $card-content-line * $card-title-font-size;
 $card-text-font-size: $font-size-base;
 $card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
@@ -102,6 +112,7 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
   overflow: hidden;
   transition: $btn-transition, transform 0.15s ease-in-out;
   box-shadow: $box-shadow-sm;
+
   &:hover {
     box-shadow: $box-shadow;
     transform: scale(1.025);
@@ -143,6 +154,7 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .card {
+
     // background-color: transparent;
     .banner {
       width: 40%;

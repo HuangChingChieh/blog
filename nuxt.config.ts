@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import { CategoriesMap } from '~/types/dictionary-categories'
 
 const perPage = 10
 const base = '/blog/'
@@ -6,17 +7,14 @@ const imageServer = 'https://imagizer.imageshack.com/v2/'
 const appHost = 'https://huangchingchieh.github.io' + base
 const description =
   '一個非本科系的前端小碼農，紀錄一些身為前端小碼農的技術筆記、使用Linux（主要是Fedora）的心得，以及生活上雜七雜八的事情。'
-const categoriesMap = {
-  all: '最新文章',
-  linux: 'Linux心得',
-  frontend: '前端筆記',
-  life: '生活雜記',
-}
 
 // 從generate hooks偷routes出來給sitemap使用
 // const routes = []
 
 export default defineNuxtConfig({
+  typescript: {
+    typeCheck: true,
+  },
   /* 不確定對應到哪邊的設定值 START */
   // loading: "~/components/common-loading.vue",
   /* 不確定對應到哪邊的設定值 END */
@@ -60,7 +58,7 @@ export default defineNuxtConfig({
       imageServer,
       appHost,
       perPage,
-      categoriesMap,
+      categoriesMap: CategoriesMap,
       description,
       isDev: process.env.NODE_ENV !== 'production',
     },

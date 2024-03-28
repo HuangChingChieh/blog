@@ -1,5 +1,9 @@
 <template>
-  <div ref="comments" v-b-visible="init" class="giscus"></div>
+  <div
+    ref="comments"
+    v-b-visible="init"
+    class="giscus"
+  />
 </template>
 
 <script setup>

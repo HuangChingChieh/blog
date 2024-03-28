@@ -1,6 +1,5 @@
 import type { ParsedContent } from '@nuxt/content/dist/runtime/types'
 import { serverQueryContent } from '#content/server'
-import { asSitemapUrl, defineSitemapEventHandler } from '#imports'
 
 export default defineSitemapEventHandler(async (e) => {
   const { base } = useRuntimeConfig().public

@@ -12,13 +12,19 @@
   </NuxtLink>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
 import { getCategoryLink } from '~/utils/getLink'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
 const props = defineProps({
   article: {
-    type: Object,
+    type: Object as PropType<Article>,
     default: () => ({}),
   },
 })

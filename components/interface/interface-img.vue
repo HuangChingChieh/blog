@@ -3,13 +3,47 @@
     v-if="img"
     :srcset="srcset"
     :class="[$style.img, ...imgClassComputed]"
-    :sizes="sizes"
+    :sizes="sizesAttrString"
     loading="lazy"
   >
 </template>
 
-<script>
-const sources = [
+<script
+  lang="ts"
+  setup
+>
+import type { Link } from '@unhead/schema';
+import type { PropType } from 'vue'
+
+import { computed } from 'vue'
+
+import getImgSizes from '~/utils/getImgSizes'
+
+const props = defineProps({
+  img: {
+    type: String,
+    default: '',
+  },
+  imgClass: {
+    type: [Array, String] as PropType<string[] | string>,
+    default: () => [],
+  },
+  sizes: {
+    type: [Array, String] as PropType<string[] | string>,
+    default: () => getImgSizes(),
+  },
+  preload: {
+    type: Boolean,
+    default: false,
+  },
+})
+
+interface Source {
+  height: Number,
+  width: Number
+}
+
+const sources: Source[] = [
   {
     height: 75,
     width: 100,
@@ -47,42 +81,23 @@ const sources = [
     width: 1600,
   },
 ]
-</script>
 
-<script setup>
-import { computed } from 'vue'
-import getImgSizes from '~/utils/getImgSizes'
-
-const props = defineProps({
-  img: {
-    type: String,
-    default: '',
-  },
-  imgClass: {
-    type: [Array, String],
-    default: '',
-  },
-  sizes: {
-    type: [Array, String],
-    default: () => getImgSizes(),
-  },
-  preload: {
-    type: Boolean,
-    default: false,
-  },
+const sizesAttrString = computed(() => {
+  const { sizes } = props
+  return Array.isArray(sizes) ? sizes.join(',') : sizes;
 })
 
 const link = computed(() => {
-  const link = []
+  const link: Link[] = []
   if (props.preload) {
-    const { img, srcset, src, sizes } = props
+    const imagesizes = sizesAttrString.value
     link.push({
-      key: img,
+      // key: img,
       rel: 'preload',
       as: 'image',
-      href: src,
-      imagesrcset: srcset,
-      imagesizes: sizes,
+      href: src.value,
+      imagesrcset: srcset.value,
+      imagesizes,
     })
   }
 
@@ -93,7 +108,7 @@ useHead({
 })
 
 const imgClassComputed = computed(() => {
-  const imgClassComputed = []
+  const imgClassComputed: string[] = []
 
   const { imgClass } = props
   if (typeof imgClass === 'string') imgClassComputed.push(imgClass)
@@ -107,7 +122,7 @@ const src = computed(() => imageServer + props.img)
 
 const imgInfo = computed(() => {
   const { img } = props
-  const info = {}
+  const info: { id: string, extension: string } = { id: '', extension: '' }
 
   if (typeof img === 'string' && img) {
     info.id = img.split('.')[0]
