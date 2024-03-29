@@ -24,13 +24,18 @@
   </time>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
 import { computed } from 'vue'
+import type { Article } from '~/types/article'
 import InterfaceIcon from '../interface/interface-icon.vue'
 
 const props = defineProps({
   document: {
-    type: Object,
+    type: Object as PropType<Article>,
     default: () => ({}),
   },
   hideIcon: {
@@ -40,7 +45,7 @@ const props = defineProps({
 })
 
 const locale = 'zh-TW'
-const options = {
+const options: Intl.DateTimeFormatOptions = {
   year: 'numeric',
   month: '2-digit',
   day: '2-digit',
@@ -50,11 +55,11 @@ const formatter = Intl.DateTimeFormat(locale, options)
 
 const createTime = computed(() => {
   const { createdAt } = props.document
-  return createdAt ? formatter.format(new Date(createdAt)) : ''
+  return createdAt && typeof createdAt === 'string' ? formatter.format(new Date(createdAt)) : ''
 })
 
 const updateTime = computed(() => {
   const { updatedAt } = props.document
-  return updatedAt ? formatter.format(new Date(updatedAt)) : ''
+  return updatedAt && typeof updatedAt === 'string' ? formatter.format(new Date(updatedAt)) : ''
 })
 </script>

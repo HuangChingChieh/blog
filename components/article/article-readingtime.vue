@@ -11,7 +11,10 @@
   </span>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
 const props = defineProps({

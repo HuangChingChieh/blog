@@ -11,23 +11,28 @@
     />
   </NuxtLink>
 </template>
-  
-<script setup>
-import escapeRegExp from 'lodash/escapeRegExp'
+
+<script
+  lang="ts"
+  setup
+>
+import { escapeRegExp } from 'lodash'
 import { computed } from 'vue'
+import type { PropType } from 'vue'
+import type { RouteLocationRaw } from 'vue-router'
 import TextHighlight from '~/components/text/text-highlight.vue'
 
 const props = defineProps({
   to: {
-    type: [String, Object],
-    default: ''
+    type: Object as PropType<RouteLocationRaw>,
+    default: () => ({})
   },
   keyword: {
     type: String,
     default: '',
   },
   textClass: {
-    type: [String, Object, Array],
+    type: [String, Object, Array] as PropType<string | Record<string, boolean> | string[]>,
     default: ''
   },
   text: {
@@ -53,12 +58,12 @@ const keywordByText = computed(() =>
   getBreakdownKeyword(props.text, keywordArr.value)
 )
 
-const getBreakdownKeyword = (targetStr = '', keywordArr = []) => {
-  const keywordHandled = []
+const getBreakdownKeyword = (targetStr: string, keywordArr: string[]) => {
+  const keywordHandled: string[] = []
 
   if (targetStr && Array.isArray(keywordArr) && keywordArr.length > 0) {
     keywordArr.forEach((str) => {
-      let matched = null
+      let matched: boolean = false
       while (!matched && str) {
         const regex = new RegExp(escapeRegExp(str), 'i')
         matched = regex.test(targetStr)
@@ -74,8 +79,8 @@ const getBreakdownKeyword = (targetStr = '', keywordArr = []) => {
 
 const textBreakDown = computed(() => {
   let { text } = props
-  const { textMaxLength } = props
-  if (text.length > textMaxLength) {
+  const textMaxLength = Number(props.textMaxLength)
+  if (text.length > Number(textMaxLength)) {
     const regex = new RegExp(
       keywordByText.value.map((str) => escapeRegExp(str)).join('|'),
       'gi'
@@ -85,16 +90,21 @@ const textBreakDown = computed(() => {
 
     let { startIndex } = matched.reduce(
       (calc, { index }) => {
-        const { maxContainCount } = calc
+        if (typeof index !== 'undefined') {
 
-        const containCount = matched.filter(
-          (contain) =>
-            index + textMaxLength >= contain.index && contain.index >= index
-        ).length
+          const { maxContainCount } = calc
 
-        if (containCount > maxContainCount) {
-          calc.maxContainCount = containCount
-          calc.startIndex = index
+          const containCount = matched.filter(
+            (contain) => {
+              const containIndex = contain.index
+              return typeof containIndex === 'number' && index + textMaxLength >= containIndex && containIndex >= index
+            }
+          ).length
+
+          if (containCount > maxContainCount) {
+            calc.maxContainCount = containCount
+            calc.startIndex = index
+          }
         }
 
         return calc
@@ -109,4 +119,3 @@ const textBreakDown = computed(() => {
   return text
 })
 </script>
-  

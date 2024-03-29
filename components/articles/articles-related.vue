@@ -13,7 +13,10 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
 import ArticleCard from '~/components/article/article-card.vue'
 import useArticles from '~/composables/useArticles'
 import getReltedArticles from '~/utils/getRelatedArticles'
@@ -21,13 +24,13 @@ import getReltedArticles from '~/utils/getRelatedArticles'
 export default defineNuxtComponent({
   components: { ArticleCard },
   props: {
-    article: { type: Object, default: () => ({ tags: [], slug: '' }) },
+    article: { type: Object as PropType<Article>, default: () => ({ tags: [], slug: '' }) },
   },
   async setup({ article }) {
     const { data: articles } = await useArticles()
 
     const relatedArticles = getReltedArticles({
-      articles: unref(articles),
+      articles: (unref(articles)) as Article[],
       article,
     })
 

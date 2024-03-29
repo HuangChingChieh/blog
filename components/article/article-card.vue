@@ -35,7 +35,7 @@
         <ArticleReadingtime :minutes="article.readingTime.minutes" />
         <ArticleCategory :article="article" />
         <div class="text-end flex-grow-1">
-          <ButtonEnter :to="getArticleLink(article)">
+          <ButtonEnter :to="getArticleLink({ slug: article.slug })">
             閱讀更多
           </ButtonEnter>
         </div>

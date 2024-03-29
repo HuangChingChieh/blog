@@ -1,10 +1,19 @@
-import type { Article } from '~/types/article'
+import type { RouteLocationRaw } from 'vue-router'
 import type { ArticleCategory } from '~/types/article-category'
 
-export const getArticleLink = ({ slug, hash }: Article) => {
-  let to = `/${slug}/`
-  if (hash) to += `#${hash}`
-  return to
+export const getArticleLink = ({
+  slug,
+  hash,
+}: {
+  slug: string
+  hash?: string
+}) => {
+  const link: RouteLocationRaw = {
+    path: `/${slug}/`,
+    hash: `#${hash}`,
+  }
+
+  return link
 }
 
 export const getCategoryLink = ({ category, page = 1 }: ArticleCategory) =>

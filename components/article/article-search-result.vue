@@ -32,14 +32,20 @@
   </div>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
 import ArticleSearchResultText from './article-search-result-text.vue'
 
 import { getArticleLink } from '~/utils/getLink'
 
 const props = defineProps({
   article: {
-    type: Object,
+    type: Object as PropType<Article>,
     default: () => ({}),
   },
   keyword: {

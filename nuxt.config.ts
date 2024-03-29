@@ -1,5 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import { CategoriesMap } from '~/types/dictionary-categories'
+import { CategoriesMap } from './types/dictionary-categories'
 
 const perPage = 10
 const base = '/blog/'

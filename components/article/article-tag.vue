@@ -4,7 +4,10 @@
   </InterfaceBadge>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import InterfaceBadge from '~/components/interface/interface-badge.vue'
 
 const props = defineProps({

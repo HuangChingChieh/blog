@@ -15,18 +15,23 @@
   </div>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
 import ArticleCard from '~/components/article/article-card.vue'
 import InterfacePagination from '~/components/interface/interface-pagination.vue'
 
 const props = defineProps({
   articles: {
-    type: Array,
+    type: Array as PropType<Article[]>,
     default: () => [],
   },
   linkGen: {
     type: Function,
-    default: () => {},
+    default: () => { },
   },
   numberOfPages: {
     type: [String, Number],
