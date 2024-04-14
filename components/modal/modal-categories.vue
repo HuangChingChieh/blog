@@ -17,12 +17,12 @@
   </InterfaceModal>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import { computed } from 'vue'
 import { getCategoryLink } from '~/utils/getLink'
-
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 import InterfaceNav from '~/components/interface/interface-nav.vue'
-import { computed } from 'vue'
+import type { Category } from '~/types/dictionary-categories';
 
 const model = defineModel({
   type: Boolean,
@@ -30,12 +30,13 @@ const model = defineModel({
 })
 
 const { categoriesMap } = useRuntimeConfig().public
-const items = computed(() =>
-  Object.keys(categoriesMap).map((key) => ({
+const items = computed(() => {
+  const keys = Object.keys(categoriesMap) as Category[]
+  return keys.map((key) => ({
     name: categoriesMap[key],
     value: key,
   }))
-)
+})
 
-const getLink = ({ value }) => getCategoryLink({ category: value })
+const getLink = ({ value }: { value: Category }) => getCategoryLink({ category: value })
 </script>

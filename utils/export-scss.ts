@@ -10,5 +10,5 @@ export const gridBreakpointsKeys = scssVariables.gridBreakpointsKeys as string
 export const gridBreakpointsValues =
   scssVariables.gridBreakpointsValues as string
 
-export type BsVariants = 'black' | 'white' | 'gray' | 'gray-dark'
+export type BsVariants = 'black' | 'white' | 'gray' | 'gray-dark' | 'link'
 export type BsSize = 'sm' | 'md' | 'lg'

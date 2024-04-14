@@ -11,7 +11,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 import ModalSearch from '~/components/modal/modal-search.vue'
 

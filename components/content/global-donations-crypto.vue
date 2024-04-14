@@ -26,7 +26,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 import InterfaceImg from '~/components/interface/interface-img.vue'
 import CommonOuterLink from '~/components/common/common-outer-link.vue';

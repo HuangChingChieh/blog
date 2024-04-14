@@ -15,10 +15,7 @@
   </div>
 </template>
 
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import type { PropType } from 'vue'
 import type { Article } from '~/types/article'
 import ArticleCard from '~/components/article/article-card.vue'
@@ -34,7 +31,7 @@ const props = defineProps({
     default: () => { },
   },
   numberOfPages: {
-    type: [String, Number],
+    type: Number,
     default: 1,
   },
 })

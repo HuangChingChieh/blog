@@ -71,7 +71,7 @@
   </nav>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
@@ -81,7 +81,7 @@ const props = defineProps({
     default: () => { },
   },
   numberOfPages: {
-    type: [String, Number],
+    type: Number,
     default: 1,
   },
 })
@@ -116,10 +116,7 @@ const pages = computed(() => {
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .link {
   padding: 0;
   font-size: 1rem;

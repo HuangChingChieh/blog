@@ -1,6 +1,6 @@
 <template>
   <InterfaceCol
-    :[mobileBreakpoint]="gridColumns / 3"
+    :[mobileBreakpoint]="mobileColumns"
     class="mt-5"
   >
     <FooterTitle>
@@ -20,8 +20,8 @@
   </InterfaceCol>
 </template>
 
-<script setup>
-import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
+<script lang="ts" setup>
+import { mobileBreakpoint, gridColumns } from '~/utils/export-scss'
 import FooterTitle from '~/components/footer/footer-title.vue'
 import FooterContent from '~/components/footer/footer-content.vue'
 
@@ -37,4 +37,6 @@ const props = defineProps({
     default: '',
   },
 })
+
+const mobileColumns = Number(gridColumns) / 3
 </script>

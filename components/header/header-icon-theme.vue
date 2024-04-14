@@ -6,7 +6,7 @@
   />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useThemeStore } from '~/store/theme'
 
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'

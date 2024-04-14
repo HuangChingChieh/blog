@@ -2,7 +2,7 @@
   <span>{{ text }}</span>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -24,6 +24,6 @@ const text = computed(() => {
     currency,
     currencyDisplay: 'code',
     maximumFractionDigits: 0,
-  }).format(price)
+  }).format(Number(price))
 })
 </script>

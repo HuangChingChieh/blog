@@ -15,7 +15,7 @@
   </InterfaceModal>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 
 const model = defineModel({

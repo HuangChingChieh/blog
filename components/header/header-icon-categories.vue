@@ -16,7 +16,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
 import ModalCategories from '~/components/modal/modal-categories.vue'
 
@@ -38,5 +38,9 @@ const modalOpen = ref(false)
 const { categoriesMap } = useRuntimeConfig().public
 const route = useRoute()
 
-const text = computed(() => categoriesMap[route.params.category])
+const text = computed(() => {
+  const { category } = route.params
+  const theCategory = (typeof category === 'string' ? category : category[0]) as keyof typeof categoriesMap
+  return categoriesMap[theCategory]
+})
 </script>

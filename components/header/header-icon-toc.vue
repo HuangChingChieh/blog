@@ -14,7 +14,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { useMainStore } from '~/store/index'
 
 import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
@@ -32,8 +32,5 @@ const props = defineProps({
 const modalOpen = ref(false)
 
 const mainStore = useMainStore()
-const hasToc = computed(() => {
-  const { toc } = mainStore
-  return Array.isArray(toc) && toc.length > 0
-})
+const hasToc = computed(() => mainStore.toc.length > 0)
 </script>

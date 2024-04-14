@@ -7,7 +7,7 @@
   </CommonOuterLink>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import CommonOuterLink from "~/components/common/common-outer-link.vue";
 const props = defineProps({
   href: {

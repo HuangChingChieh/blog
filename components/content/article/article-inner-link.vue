@@ -7,7 +7,7 @@
   </NuxtLink>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { computed } from 'vue'
 import { getArticleLink } from '~/utils/getLink'
 
@@ -26,11 +26,8 @@ const { data: title } = await useArticleTitle(props.slug)
 
 const to = computed(() => {
   const { slug, hash } = props
-  const path = getArticleLink({ slug })
+  const path = getArticleLink({ slug, hash })
 
-  return {
-    path,
-    hash: hash ? `#${hash}` : undefined,
-  }
+  return path
 })
 </script>

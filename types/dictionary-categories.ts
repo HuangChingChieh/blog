@@ -4,3 +4,5 @@ export enum CategoriesMap {
   frontend = '前端筆記',
   life = '生活雜記',
 }
+
+export type Category = keyof typeof CategoriesMap

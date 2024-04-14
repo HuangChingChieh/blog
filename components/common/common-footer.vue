@@ -52,22 +52,15 @@
   </footer>
 </template>
 
-<script
-  lang="ts"
-  setup
->
+<script lang="ts" setup>
 import InterfaceContainer from '~/components/interface/interface-container.vue'
 import InterfaceRow from '~/components/interface/interface-row.vue'
-
 import FooterBlock from '~/components/footer/footer-block.vue'
 import FooterLink from '~/components/footer/footer-link.vue'
 import CommonIcon from '~/components/common/common-icon.vue'
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .footer {
   background-color: var(--bs-gray-800);
 

@@ -8,13 +8,14 @@
   </p>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 </script>
 
 <style lang="scss">
 .article-note {
   background-color: var(--bs-secondary-bg);
+
   &,
   * {
     color: var(--bs-secondary-color);

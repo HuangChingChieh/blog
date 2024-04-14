@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue'
-import { gridColumns } from '~/assets/css/export.module.scss'
+import { gridColumns } from '~/utils/export-scss'
 
 const props = defineProps({
   sm: {
