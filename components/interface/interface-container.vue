@@ -8,8 +8,8 @@
   </component>
 </template>
 
-<script setup>
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
+<script lang="ts" setup>
+import { mobileBreakpoint } from '~/utils/export-scss'
 
 const props = defineProps({
   tag: {

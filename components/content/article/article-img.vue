@@ -6,7 +6,7 @@
   />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import InterfaceImg from '~/components/interface/interface-img.vue'
 
 const props = defineProps({

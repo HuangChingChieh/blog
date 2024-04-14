@@ -12,7 +12,10 @@
   />
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -28,7 +31,10 @@ const src = computed(() => {
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .youtube {
   aspect-ratio: 16 / 9;
 }

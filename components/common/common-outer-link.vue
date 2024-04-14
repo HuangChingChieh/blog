@@ -8,7 +8,10 @@
   </a>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 const props = defineProps({
   href: {
     type: String,

@@ -24,7 +24,10 @@ import getReltedArticles from '~/utils/getRelatedArticles'
 export default defineNuxtComponent({
   components: { ArticleCard },
   props: {
-    article: { type: Object as PropType<Article>, default: () => ({ tags: [], slug: '' }) },
+    article: {
+      type: Object as PropType<Article>,
+      default: () => ({ tags: [], slug: '' })
+    },
   },
   async setup({ article }) {
     const { data: articles } = await useArticles()

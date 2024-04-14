@@ -2,7 +2,7 @@
   <i :class="`bi-${icon}`" />
 </template>
 
-<script setup>
+<script lang="ts" setup>
 const props = defineProps({
   icon: {
     type: String,

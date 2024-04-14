@@ -25,7 +25,13 @@
   </CommonContainer>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
 import ArticleCard from '~/components/article/article-card.vue'
 import CommonContainer from '~/components/common/common-container.vue'
 
@@ -36,16 +42,21 @@ const props = defineProps({
   },
 })
 
-const { data: articles } = await useArticles()
+const { data: articles } = await useArticles(['slug'])
 
-const article = ref(null)
+const randomNumber = ref(-1)
+
+const article = computed(() => {
+  const articlesUnref = unref(articles)
+  const randomNumberUnref = unref(randomNumber)
+  return Array.isArray(articlesUnref) && articlesUnref.length > 0 && randomNumberUnref >= 0 ?
+    (articlesUnref[randomNumber.value]) as Article : null
+})
 
 onMounted(() => {
   const articlesUnref = unref(articles)
-
   if (Array.isArray(articlesUnref) && articlesUnref.length > 0) {
-    const randomIndex = Math.round(Math.random() * (articlesUnref.length - 1))
-    article.value = articlesUnref[randomIndex]
+    randomNumber.value = Math.round(Math.random() * (articlesUnref.length - 1))
   }
 })
 </script>

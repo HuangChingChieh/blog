@@ -11,7 +11,10 @@
   </InterfaceButton>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import InterfaceButton from '~/components/interface/interface-button.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 

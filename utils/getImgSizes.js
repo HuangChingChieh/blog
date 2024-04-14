@@ -4,7 +4,8 @@ import {
   gridBreakpointsKeys,
   gridBreakpointsValues,
   mobileBreakpoint,
-} from '~/assets/css/export.module.scss'
+} from '~/utils/export-scss'
+
 import { getScssMap, getScssArray } from '~/utils/scssMap'
 
 const gridBreakpoints = getScssMap({

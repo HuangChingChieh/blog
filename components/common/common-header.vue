@@ -39,7 +39,10 @@
   </header>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import InterfaceContainer from '~/components/interface/interface-container.vue'
 
 import CommonIcon from '~/components/common/common-icon.vue'
@@ -48,19 +51,22 @@ import HeaderIconSearch from '~/components/header/header-icon-search.vue'
 import HeaderIconCategories from '~/components/header/header-icon-categories.vue'
 import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
 
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
+import { mobileBreakpoint } from '~/utils/export-scss'
 
 import vBVisible from '~/utils/bVisible'
 import { ref } from 'vue'
 
 const headerVisible = ref(true)
 
-const onHeaderHide = (isVisible) => {
+const onHeaderHide = (isVisible: boolean) => {
   headerVisible.value = isVisible
 }
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .header {
   position: sticky;
   background-color: var(--bs-secondary-bg);

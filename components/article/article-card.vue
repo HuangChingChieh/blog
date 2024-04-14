@@ -61,7 +61,7 @@
 import type { PropType } from 'vue'
 import type { Article } from '~/types/article'
 
-import scssVariables from '~/assets/css/export.module.scss'
+import { mobileBreakpoint } from '~/utils/export-scss'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
@@ -71,8 +71,6 @@ import ButtonEnter from '~/components/button/button-enter.vue'
 
 import { getArticleLink } from '~/utils/getLink'
 import getImgSizes from '~/utils/getImgSizes'
-
-const mobileBreakpoint = (scssVariables.mobileBreakpoint) as string;
 
 const props = defineProps({
   article: {
@@ -176,3 +174,4 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
   }
 }
 </style>
+~/utils/export-scss

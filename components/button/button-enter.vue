@@ -14,7 +14,10 @@
   </InterfaceButtonLink>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import InterfaceButtonLink from '~/components/interface/interface-button-link.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
@@ -30,7 +33,10 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .btn {
   .icon {
     width: 0;

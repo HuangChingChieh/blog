@@ -8,7 +8,10 @@
   </NuxtLink>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import type { RouteLocationRaw } from 'vue-router'
+import type { PropType } from 'vue'
+
 import { computed } from 'vue'
 
 const props = defineProps({
@@ -25,8 +28,8 @@ const props = defineProps({
     default: '',
   },
   to: {
-    type: [String, Object],
-    default: '',
+    type: Object as PropType<RouteLocationRaw>,
+    default: () => ({})
   },
 })
 

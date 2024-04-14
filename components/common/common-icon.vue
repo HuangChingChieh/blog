@@ -8,18 +8,18 @@
   >
 </template>
 
-<script>
-const sizes = [64, 192, 512]
-export default {}
-</script>
-
-<script setup>
+<script
+  lang="ts"
+  setup
+>
 import { computed } from 'vue'
+
+const sizes = [64, 192, 512]
 
 const props = defineProps({
   height: {
     type: [String, Number],
-    default: sizes[0],
+    default: 64,
   },
   bordered: {
     type: Boolean,
@@ -36,7 +36,10 @@ const src = computed(() => {
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .bordered {
   border: 3px solid $white;
 }

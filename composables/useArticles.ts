@@ -1,7 +1,7 @@
-export default () =>
+export default (only?: string[]) =>
   useAsyncData(`articles`, () =>
     queryContent('articles')
-      .only([...articleQueryAttrs.card, 'tags'])
+      .only(only || [...articleQueryAttrs.card, 'tags'])
       .sort({ createdAt: -1 })
       .find()
   )

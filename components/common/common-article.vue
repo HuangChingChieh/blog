@@ -42,7 +42,13 @@
   </article>
 </template>
 
-<script setup>
+<script
+  lang="ts"
+  setup
+>
+import type { PropType } from 'vue'
+import type { Article } from '~/types/article'
+
 import ArticleBanner from '../article/article-banner.vue'
 import ArticleTag from '../article/article-tag.vue'
 import ArticleDate from '../article/article-date.vue'
@@ -51,7 +57,7 @@ import ArticleCategory from '../article/article-category.vue'
 
 const props = defineProps({
   document: {
-    type: Object,
+    type: Object as PropType<Article>,
     default: () => ({}),
   },
 })

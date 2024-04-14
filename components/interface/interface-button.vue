@@ -8,12 +8,14 @@
   </button>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import type { PropType } from 'vue'
+import type { BsVariants, BsSize } from '~/utils/export-scss.ts'
 import { computed } from 'vue'
 
 const props = defineProps({
   variant: {
-    type: String,
+    type: String as PropType<BsVariants>,
     default: '',
   },
   disabled: {
@@ -21,7 +23,7 @@ const props = defineProps({
     default: false,
   },
   size: {
-    type: String,
+    type: String as PropType<BsSize>,
     default: '',
   },
 })

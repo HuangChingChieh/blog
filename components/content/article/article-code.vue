@@ -1,8 +1,6 @@
 <template>
   <div class="position-relative">
-    <div
-      class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-secondary"
-    >
+    <div class="d-flex flex-row align-items-center text-white py-2 px-3 rounded-top bg-secondary">
       <div class="flex-grow-1 text-truncate pe-3 small fw-bold font-monospace">
         {{ filename }}
       </div>
@@ -33,7 +31,7 @@
   </div>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
 import InterfaceButton from '~/components/interface/interface-button.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
@@ -50,13 +48,13 @@ const props = defineProps({
 })
 
 const copied = ref(false)
-const copiedTimeout = ref(null)
+const copiedTimeout = ref(0)
 const code = ref(null)
 
 const setCopied = () => {
   clearTimeout(copiedTimeout.value)
   copied.value = true
-  copiedTimeout.value = setTimeout(() => {
+  copiedTimeout.value = window.setTimeout(() => {
     copied.value = false
   }, 2000)
 }
@@ -64,16 +62,21 @@ const setCopied = () => {
 const copyCode = () => {
   if (copied.value) return
 
+  const codeElement: any = code.value;
+  if (!codeElement || !(codeElement instanceof HTMLElement)) return
+
   if (navigator.clipboard?.writeText) {
-    const toCopyCode = code.value.innerText.trim()
+    const toCopyCode = codeElement.innerText.trim()
     navigator.clipboard.writeText(toCopyCode).then(() => {
       setCopied()
     })
   } else {
     const range = document.createRange()
-    range.selectNode(code)
+    range.selectNode(codeElement)
 
     const selection = window.getSelection()
+    if (!selection) return
+
     selection.removeAllRanges()
     selection.addRange(range)
 

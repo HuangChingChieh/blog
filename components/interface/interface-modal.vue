@@ -32,7 +32,9 @@
   </Teleport>
 </template>
 
-<script setup>
+<script lang="ts" setup>
+import Modal from 'bootstrap/js/dist/modal'
+
 import { onBeforeUnmount, onMounted, watch } from 'vue'
 
 const props = defineProps({
@@ -57,17 +59,16 @@ const model = defineModel({
 
 const modal = ref(null)
 
-let modalInstance = null
-let Modal = null
+let modalInstance: Modal | null = null
 
 watch(model, (value) => {
-  if (modalInstance && Modal && modalInstance instanceof Modal) {
+  if (modalInstance) {
     value ? modalInstance.show() : modalInstance.hide()
   }
 })
 
 onBeforeUnmount(() => {
-  if (modalInstance && Modal && modalInstance instanceof Modal) {
+  if (modalInstance) {
     modalInstance.dispose()
   }
 })
@@ -76,26 +77,26 @@ const emit = defineEmits(['hide', 'hidden', 'show', 'shown'])
 
 onMounted(() => {
   nextTick(async () => {
-    const modalModuule = await import(`bootstrap/js/dist/modal`)
-    Modal = modalModuule.default
+    const modalElement: any = modal.value
+    if (!modalElement || !(modalElement instanceof HTMLElement)) return
 
-    modalInstance = new Modal(modal.value)
+    modalInstance = new Modal(modalElement)
 
-    modal.value.addEventListener('hide.bs.modal', () => {
+    modalElement.addEventListener('hide.bs.modal', () => {
       model.value = false
       emit('hide')
     })
 
-    modal.value.addEventListener('hidden.bs.modal', () => {
+    modalElement.addEventListener('hidden.bs.modal', () => {
       emit('hidden')
     })
 
-    modal.value.addEventListener('show.bs.modal', () => {
+    modalElement.addEventListener('show.bs.modal', () => {
       model.value = true
       emit('show')
     })
 
-    modal.value.addEventListener('shown.bs.modal', () => {
+    modalElement.addEventListener('shown.bs.modal', () => {
       emit('shown')
     })
   })

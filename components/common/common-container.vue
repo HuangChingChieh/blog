@@ -7,8 +7,11 @@
   </component>
 </template>
 
-<script setup>
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
+<script
+  lang="ts"
+  setup
+>
+import { mobileBreakpoint } from '~/utils/export-scss'
 
 const props = defineProps({
   tag: {
@@ -18,7 +21,10 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .container {
     // border: 1px solid $secondary;
