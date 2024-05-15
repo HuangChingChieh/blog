@@ -4,7 +4,7 @@
       v-for="(source, i) in srcset"
       :key="i"
       :media="source.media"
-      :src="source.src"
+      :srcset="source.src"
     >
     <img
       :class="[$style.img, ...imgClassComputed]"
@@ -89,7 +89,7 @@ const imgClassComputed = computed(() => {
 })
 
 const { imageServer } = useRuntimeConfig().public
-const src = computed(() => imageServer + props.img)
+const src = computed(() => `${imageServer}640x480q70/${id.value}.${extension.value}`)
 
 const imgInfo = computed(() => {
   const { img } = props
@@ -114,7 +114,7 @@ const srcset = computed(() => {
       if (theSource) {
         const { width, height } = theSource
         srcset.push({
-          media: `(min-width: ${mediaMinWidth}px`,
+          media: `(min-width: ${mediaMinWidth})`,
           src: `${imageServer}${width}x${height}q70/${id.value}.${extension.value}`
         })
       }
