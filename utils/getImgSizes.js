@@ -29,27 +29,23 @@ export default (getImageWidth = () => {}) => {
 
   const containerMaxWidthsKeysArray = getScssArray(containerMaxWidthsKeys)
   if (Array.isArray(containerMaxWidthsKeysArray)) {
-    let lastImageWidth = ''
-
     containerMaxWidthsKeysArray
       .slice()
       .reverse()
       .forEach((breakpoint, i) => {
-        const breakpointMinWith = `(min-width: ${gridBreakpoints[breakpoint]})`
         const containerMaxWidth = containerMaxWidths[breakpoint]
         const isMobile = i >= mobileBreakpointIndex
 
-        const imageWidth =
+        const imgWidth =
           getImageWidth({
-            breakpointMinWith,
             containerMaxWidth,
             isMobile,
           }) || containerMaxWidth
-        sizes.push(`${breakpointMinWith} ${imageWidth}`)
-        lastImageWidth = imageWidth
+        sizes.push({
+          mediaMinWidth: gridBreakpoints[breakpoint],
+          imgWidth,
+        })
       })
-
-    sizes.push(`${lastImageWidth}`)
   }
 
   return sizes

@@ -1,11 +1,17 @@
 <template>
-  <img
-    v-if="img"
-    :srcset="srcset"
-    :class="[$style.img, ...imgClassComputed]"
-    :sizes="sizes"
-    loading="lazy"
-  >
+  <picture v-if="img">
+    <source
+      v-for="(source, i) in srcset"
+      :key="i"
+      :media="source.media"
+      :src="source.src"
+    >
+    <img
+      :class="[$style.img, ...imgClassComputed]"
+      :src="src"
+      loading="lazy"
+    >
+  </picture>
 </template>
 
 <script>
@@ -63,33 +69,13 @@ const props = defineProps({
     default: '',
   },
   sizes: {
-    type: [Array, String],
+    type: Array,
     default: () => getImgSizes(),
   },
   preload: {
     type: Boolean,
     default: false,
   },
-})
-
-const link = computed(() => {
-  const link = []
-  if (props.preload) {
-    const { img, srcset, src, sizes } = props
-    link.push({
-      key: img,
-      rel: 'preload',
-      as: 'image',
-      href: src,
-      imagesrcset: srcset,
-      imagesizes: sizes,
-    })
-  }
-
-  return link
-})
-useHead({
-  link,
 })
 
 const imgClassComputed = computed(() => {
@@ -118,15 +104,25 @@ const imgInfo = computed(() => {
 const id = computed(() => imgInfo.value.id)
 const extension = computed(() => imgInfo.value.extension)
 
-const srcset = computed(() =>
-  sources
-    .map(
-      ({ height, width }) =>
-        `${imageServer}${width}x${height}q70/${id.value}.${extension.value}` +
-        (width ? ` ${width}w` : '')
-    )
-    .join(', ')
-)
+const srcset = computed(() => {
+  const srcset = [];
+
+  const { sizes } = props
+  if (Array.isArray(sizes)) {
+    sizes.forEach(({ mediaMinWidth, imgWidth }) => {
+      const theSource = sources.find(({ width }) => imgWidth <= width)
+      if (theSource) {
+        const { width, height } = theSource
+        srcset.push({
+          media: `(min-width: ${mediaMinWidth}px`,
+          src: `${imageServer}${width}x${height}q70/${id.value}.${extension.value}`
+        })
+      }
+    });
+  }
+
+  return srcset
+})
 </script>
 
 <style

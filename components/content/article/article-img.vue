@@ -1,8 +1,7 @@
 <template>
   <InterfaceImg
-    img-class="w-100 img-fluid rounded shadow-sm d-block"
     :img="img"
-    :style="{ aspectRatio }"
+    :img-class="[$style.img, 'w-100 img-fluid rounded shadow-sm d-block']"
   />
 </template>
 
@@ -20,3 +19,12 @@ const props = defineProps({
   },
 })
 </script>
+
+<style
+  module
+  lang="scss"
+>
+.img {
+  aspect-ratio: v-bind(aspectRatio);
+}
+</style>
