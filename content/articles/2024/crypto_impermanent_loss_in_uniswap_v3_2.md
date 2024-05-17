@@ -1,5 +1,5 @@
 ---
-title: Uniswap v3中的無常損失：回顧與研究方法
+title: Uniswap v3中的無常損失(2)：回顧與研究方法
 img: 922/6v2E92.jpg
 tags: [DeFi, 投資, 流動性挖礦, 加密貨幣, uniswap v3, uniswap]
 category: life
