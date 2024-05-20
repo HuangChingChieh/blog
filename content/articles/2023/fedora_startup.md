@@ -11,7 +11,7 @@ category: linux
 
 內容可能會隨著 Fedora 版本更新，有用到的套件都會盡量附上官網，有興趣的朋友可選擇參考，**並請自行承擔指令安裝責任**。
 
-撰寫文章時使用版本：**Fedora 38**。
+撰寫文章時使用版本：**Fedora 40**。
 
 ---
 
@@ -19,7 +19,7 @@ category: linux
 
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes cheese gnome-contacts simple-scan gnome-photos ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* rhythmbox -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes gnome-contacts simple-scan ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* rhythmbox -y
 ```
 
 ```bash
@@ -53,7 +53,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install p7zip gimp uget transmission gnome-tweaks soundconverter ibus-chewing VirtualBox android-tools remmina mediawriter gnome-console megasync nautilus-megasync -y
+sudo dnf install p7zip gimp gnome-tweaks ibus-chewing VirtualBox android-tools mediawriter gnome-console megasync nautilus-megasync -y
 ```
 
 ```bash
@@ -69,7 +69,7 @@ sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
 ### 從 flathub 安裝日常軟體
 
 ```bash
-flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
+flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader org.kde.kget
 ```
 
 ---
@@ -120,7 +120,7 @@ sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni
 
 ```bash
 # 從內建的軟體庫安裝 Gnome 擴充套件
-sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-caffeine gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-just-perfection gnome-shell-extension-no-overview gnome-shell-extension-places-menu -y
+sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-places-menu -y
 ```
 
 ---
