@@ -16,26 +16,26 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^18.5.0",
-    "@nuxt/content": "^2.11.0",
+    "@nuxt/content": "^2.12.1",
     "@nuxt/eslint-config": "^0.2.0",
-    "@vite-pwa/assets-generator": "^0.2.3",
-    "@vite-pwa/nuxt": "^0.4.0",
+    "@vite-pwa/assets-generator": "^0.2.4",
+    "@vite-pwa/nuxt": "^0.8.0",
     "commitlint": "^18.5.0",
     "eslint": "^8.56.0",
     "gh-pages": "^6.1.1",
     "husky": "^8.0.0",
-    "nuxt": "^3.10.0",
+    "nuxt": "^3.11.2",
     "sass": "^1.70.0",
-    "vue": "^3.4.15",
-    "vue-router": "^4.2.5"
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.2"
   },
   "dependencies": {
-    "@nuxtjs/sitemap": "^5.0.5",
+    "@nuxtjs/sitemap": "^5.2.0",
     "@pinia/nuxt": "^0.5.1",
-    "bootstrap": "^5.3.2",
+    "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "lodash": "^4.17.21",
-    "nuxt-content-git": "^3.0.32",
+    "nuxt-content-git": "^4.0.1",
     "pinia": "^2.1.7",
     "remark-reading-time": "^2.0.1"
   }
