@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --no-fork",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "lint": "eslint --ignore-path .gitignore .",
