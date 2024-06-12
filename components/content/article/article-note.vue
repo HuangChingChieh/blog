@@ -1,5 +1,5 @@
 <template>
-  <p class="article-note small px-3 py-2 rounded align-middle">
+  <p class="article-note small px-3 py-2 rounded align-middle shadow-sm">
     <InterfaceIcon
       icon="lightbulb"
       class="me-1"
@@ -14,10 +14,11 @@ import InterfaceIcon from '~/components/interface/interface-icon.vue'
 
 <style lang="scss">
 .article-note {
-  background-color: var(--bs-secondary-bg);
+  background-color: $primary-bg-subtle;
+
   &,
   * {
-    color: var(--bs-secondary-color);
+    color: $dark-text-emphasis;
   }
 }
 </style>
