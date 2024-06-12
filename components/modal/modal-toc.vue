@@ -2,43 +2,40 @@
   <InterfaceModal
     v-model="model"
     title="摘要"
-    :modal-class="[$style.modal, 'modal-toc']"
+    modal-class="modal-toc"
     @hidden="hidden"
   >
-    <InterfaceNav
+    <ModalTocNav
       v-b-scrollspy
       :items="mainStore.toc"
-      :link-generate-func="getLink"
-      :link-classes="[`p-0`, `border-start`, $style.navLink]"
-      vertical
+      :min-depth="minDepth"
+      @scroll-to="scrollTo"
     >
-      <template #item="{ item }">
-        <ModalTocItem
-          :item="item"
+      <template #default="{ item }">
+        <ModalTocNav
+          :items="item.children"
           :min-depth="minDepth"
-          @click="scrollTo(item)"
+          @scroll-to="scrollTo"
         />
       </template>
-    </InterfaceNav>
+    </ModalTocNav>
   </InterfaceModal>
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useMainStore } from '~/store/index'
 
-import InterfaceNav from '~/components/interface/interface-nav.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
-
-import ModalTocItem from '~/components/modal/modal-toc-item.vue'
+import ModalTocNav from '~/components/modal/modal-toc-nav.vue'
 import vBScrollspy from '~/utils/bScrollspy'
-import { computed } from 'vue'
 
 const model = defineModel({
   type: Boolean,
   default: false,
 })
 
-const hidden = () => {}
+const hidden = () => { }
 
 const mainStore = useMainStore()
 
@@ -49,20 +46,7 @@ const minDepth = computed(() => {
     : 2
 })
 
-const getLink = ({ id }) => ({ hash: `#${id}` })
-
-const scrollTo = ({ id }) => {
-  nextTick(() => {
-    const element = document.querySelector(`#${id}`)
-    if (element instanceof HTMLElement) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-        inline: 'center',
-      })
-    }
-  })
-
+const scrollTo = () => {
   model.value = false
 }
 </script>
@@ -73,14 +57,6 @@ const scrollTo = ({ id }) => {
     font-weight: 900;
     color: $primary;
     border-color: $primary !important;
-  }
-}
-</style>
-
-<style lang="scss" module>
-.modal {
-  .navLink {
-    border-width: 3px !important;
   }
 }
 </style>

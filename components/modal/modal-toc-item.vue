@@ -1,8 +1,7 @@
 <template>
   <span
     class="d-block px-3 py-2"
-    :class="tocItemOuterClass"
-    @click.prevent.stop="$emit('click')"
+    @click.prevent.stop="scrollTo"
   >
     <span
       :style="tocItemInnerStyle"
@@ -28,19 +27,30 @@ const props = defineProps({
   },
 })
 
+const emit = defineEmits(['scroll-to'])
+
+const scrollTo = () => {
+  nextTick(() => {
+    const { id } = props.item
+    const element = document.querySelector(`#${id}`)
+    if (element instanceof HTMLElement) {
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'center',
+      })
+    }
+  })
+
+  emit('scroll-to')
+}
+
 const tocItemInnerStyle = computed(() => {
   const diff = props.item.depth - props.minDepth
   return {
     'padding-left': `${diff}rem`,
     opacity: 1 - diff * 0.1,
-  }
-})
-
-const tocItemOuterClass = computed(() => {
-  const { minDepth } = props
-  const { depth } = props.item
-  return {
-    'text-muted': depth > minDepth,
+    'font-size': `${(1 - diff * 0.1) * 100}%`
   }
 })
 </script>

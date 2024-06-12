@@ -14,13 +14,15 @@
         class="nav-link"
         :class="linkClasses"
         :active-class="activeClass"
-        @click="$emit('click-item', item)"
+        @click="emit('click-item', item)"
       >
         <slot
           name="item"
           :item="item"
         />
       </NuxtLink>
+
+      <slot :item="item" />
     </li>
   </ul>
 </template>
@@ -52,4 +54,6 @@ const props = defineProps({
     default: () => '',
   },
 })
+
+const emit = defineEmits(['click-item'])
 </script>

@@ -1,16 +1,13 @@
 <template>
-  <div>
-    <ClientOnly>
-      <CommonHeaderIcon
-        v-if="hasToc"
-        icon="card-list"
-        title="文章摘要"
-        :class="iconClass"
-        @click="modalOpen = true"
-      />
+  <div v-show="hasToc">
+    <CommonHeaderIcon
+      icon="card-list"
+      title="文章摘要"
+      :class="iconClass"
+      @click="modalOpen = true"
+    />
 
-      <ModalToc v-model="modalOpen" />
-    </ClientOnly>
+    <ModalToc v-model="modalOpen" />
   </div>
 </template>
 
