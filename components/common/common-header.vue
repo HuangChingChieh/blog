@@ -1,5 +1,8 @@
 <template>
-  <header :class="[`pt-${mobileBreakpoint}-4`, $style.header]">
+  <header
+    :class="$style.header"
+    class="border-bottom border-primary border-2 position-sticky shadow-sm"
+  >
     <InterfaceContainer
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
@@ -21,21 +24,16 @@
         >雜七雜八之地</small>
       </div>
 
-      <div
-        class="d-flex align-items-center justify-content-end"
-        :class="{ [$style.iconsFixed]: !headerVisible }"
-      >
+      <div class="d-flex align-items-center justify-content-end">
         <HeaderIconCategories
-          :icon-class="[$style.icon, 'd-flex']"
-          :show-text="headerVisible"
+          icon-class="d-flex p-0"
+          show-text
         />
-        <HeaderIconToc :icon-class="[$style.icon, 'd-flex']" />
-        <HeaderIconTheme :icon-class="[$style.icon, 'd-flex']" />
-        <HeaderIconSearch :icon-class="[$style.icon, 'd-flex']" />
+        <HeaderIconToc icon-class="d-flex p-0" />
+        <HeaderIconTheme icon-class="d-flex p-0" />
+        <HeaderIconSearch icon-class="d-flex p-0" />
       </div>
     </InterfaceContainer>
-
-    <div v-b-visible="onHeaderHide" />
   </header>
 </template>
 
@@ -49,22 +47,14 @@ import HeaderIconCategories from '~/components/header/header-icon-categories.vue
 import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
 
 import { mobileBreakpoint } from '~/assets/css/export.module.scss'
-
-import vBVisible from '~/utils/bVisible'
-import { ref } from 'vue'
-
-const headerVisible = ref(true)
-
-const onHeaderHide = (isVisible) => {
-  headerVisible.value = isVisible
-}
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .header {
-  position: sticky;
   background-color: var(--bs-secondary-bg);
-  box-shadow: $box-shadow-sm;
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
@@ -84,41 +74,10 @@ const onHeaderHide = (isVisible) => {
     height: 2rem;
     width: 2rem;
   }
-
-  .icon {
-    padding: 0;
-    transition: none;
-    display: flex;
-  }
-
-  .iconsFixed {
-    position: fixed;
-    top: 1rem;
-    flex-direction: column;
-
-    .icon {
-      margin-bottom: 1rem;
-      padding: 0.5rem;
-      background-color: var(--bs-body-bg);
-      box-shadow: $box-shadow-sm;
-      border-radius: 90px;
-    }
-  }
-}
-
-@each $breakpoint, $max-widths in $container-max-widths {
-  @media (min-width: map-get($grid-breakpoints, $breakpoint)) {
-    .iconsFixed {
-      left: calc(50% + $max-widths / 2 - 0.5rem);
-    }
-  }
 }
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .header {
-    position: static;
-    background-color: transparent;
-    box-shadow: none;
     padding-top: 0;
     padding-bottom: 0;
 
@@ -126,10 +85,6 @@ const onHeaderHide = (isVisible) => {
       height: 3rem;
       width: 3rem;
     }
-  }
-
-  .icon {
-    padding: 0;
   }
 }
 </style>
