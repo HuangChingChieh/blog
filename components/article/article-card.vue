@@ -1,12 +1,18 @@
 <template>
   <article
-    class="d-flex flex-column align-items-stretch rounded"
-    :class="[`flex-${mobileBreakpoint}-row`, $style.card]"
+    class="d-flex flex-column rounded"
+    :class="$style.card"
   >
-    <div
-      class="d-flex flex-column flex-grow-1 px-3 py-3 order-2"
-      :class="[`order-${mobileBreakpoint}-1`, `px-${mobileBreakpoint}-4`]"
-    >
+    <ArticleBanner
+      v-if="article.img"
+      :img="article.img"
+      :class="$style.banner"
+      :sizes="bannerSizes"
+      :preload="preloadImg"
+      :img-class="$style.img"
+    />
+
+    <div class="d-flex flex-column flex-grow-1 px-3 py-3">
       <div :class="$style.content">
         <h4
           class="text-body text-line-2"
@@ -24,10 +30,7 @@
         </p>
       </div>
 
-      <div
-        class="d-flex flex-row align-items-center"
-        :class="[`mt-${mobileBreakpoint}-3`]"
-      >
+      <div class="d-flex flex-row align-items-center mt-3">
         <ArticleDate
           :document="article"
           class="small"
@@ -41,21 +44,10 @@
         </div>
       </div>
     </div>
-
-    <ArticleBanner
-      v-if="article.img"
-      :img="article.img"
-      class="align-self-stretch order-1"
-      :class="[`order-${mobileBreakpoint}-2`, $style.banner]"
-      :sizes="bannerSizes"
-      :preload="preloadImg"
-      :img-class="$style.img"
-    />
   </article>
 </template>
 
 <script setup>
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
@@ -118,16 +110,9 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
     background-color: var(--bs-body-bg);
   }
 
-  .banner {
-    width: 100%;
-    min-width: 40%;
-  }
-
   .description {
     font-size: $font-size-base;
     max-height: $card-text-height;
-    margin: 0;
-    display: none;
   }
 
   .content {
@@ -146,13 +131,6 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .card {
-
-    // background-color: transparent;
-    .banner {
-      width: 40%;
-      min-width: 40%;
-    }
-
     .content {
       height: $card-title-height + $card-text-height + $headings-margin-bottom;
 
