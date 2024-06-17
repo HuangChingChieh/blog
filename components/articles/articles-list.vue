@@ -1,6 +1,7 @@
 <template>
   <div>
-    <ArticleCard
+    <component
+      :is="cardComponent"
       v-for="(article, index) in articles"
       :key="index"
       :article="article"
@@ -26,11 +27,15 @@ const props = defineProps({
   },
   linkGen: {
     type: Function,
-    default: () => {},
+    default: () => { },
   },
   numberOfPages: {
     type: [String, Number],
     default: 1,
   },
+  cardComponent: {
+    type: Object,
+    default: ArticleCard
+  }
 })
 </script>

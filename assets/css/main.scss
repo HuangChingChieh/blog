@@ -192,6 +192,11 @@ hr {
   -webkit-box-orient: vertical;
 }
 
+.text-line-1 {
+  @include line-clamp-base();
+  -webkit-line-clamp: 1;
+}
+
 .text-line-2 {
   @include line-clamp-base();
   -webkit-line-clamp: 2;
@@ -209,5 +214,18 @@ hr {
   @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
     padding-left: 0rem;
     padding-right: 0rem;
+  }
+}
+
+/* bg */
+.bg-foreground {
+  background-color: var(--bs-secondary-bg);
+
+  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+    background-color: var(--bs-body-bg);
+  }
+
+  [data-bs-theme='light'] & {
+    background-color: var(--bs-body-bg);
   }
 }

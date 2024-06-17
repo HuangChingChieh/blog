@@ -1,48 +1,82 @@
 <template>
-  <InterfaceContainer>
-    <InterfaceRow>
-      <InterfaceCol :[mobileBreakpoint]="gridColumns / 3">
-        <ArticlesListPickContainer
-          :title="categoriesMap.life"
-          class="mt-2"
+  <InterfaceRow>
+    <InterfaceCol class="col-12 mt-4">
+      <ArticleCardOverlay
+        :article="articlesNewest[0]"
+        class="shadow-sm"
+      />
+    </InterfaceCol>
+
+    <InterfaceCol class="col-12">
+      <InterfaceRow>
+        <InterfaceCol
+          :lg="gridColumns / 3"
+          :md="gridColumns / 2"
+          class="order-1"
+          :class="`order-${mobileBreakpoint}-1`"
         >
-          <ArticleCard :article="articleLife" />
-        </ArticlesListPickContainer>
-      </InterfaceCol>
-      <InterfaceCol :[mobileBreakpoint]="gridColumns / 3">
-        <ArticlesListPickContainer
-          :title="categoriesMap.frontend"
-          class="mt-2 h-100"
-        >
-          <div
-            v-for="article in articlesFrontend"
-            :key="article.slug"
-            :class="$style.middle"
-            class="h-100"
+          <ArticlesListPickContainer
+            :title="categoriesMap.life"
+            class="mt-5"
           >
-            <article class="d-flex flex-row">
-              <InterfaceImg
-                :img="article.img"
-                :img-class="$style.img"
-              />
-            </article>
-          </div>
-        </ArticlesListPickContainer>
-      </InterfaceCol>
-      <InterfaceCol :[mobileBreakpoint]="gridColumns / 3">
-        <ArticlesListPickContainer
-          :title="categoriesMap.linux"
-          class="mt-2"
+            <ArticleCard :article="articleLife" />
+          </ArticlesListPickContainer>
+        </InterfaceCol>
+        <InterfaceCol
+          :lg="gridColumns / 3"
+          :md="gridColumns / 2"
+          class="d-flex order-3"
+          :class="[$style.col, `order-${mobileBreakpoint}-2`]"
         >
-          <ArticleCard :article="articleLinux" />
-        </ArticlesListPickContainer>
-      </InterfaceCol>
-    </InterfaceRow>
-  </InterfaceContainer>
+          <ArticlesListPickContainer
+            :title="categoriesMap.frontend"
+            class="mt-5 flex-grow-1"
+          >
+            <div :class="$style.middle">
+              <ArticleCardCompact
+                v-for="article in articlesFrontend"
+                :key="article.slug"
+                :article="article"
+                class="bg-foreground rounded shadow-sm"
+              />
+            </div>
+          </ArticlesListPickContainer>
+        </InterfaceCol>
+        <InterfaceCol
+          :lg="gridColumns / 3"
+          :md="gridColumns"
+          class="order-2"
+          :class="`order-${mobileBreakpoint}-3`"
+        >
+          <ArticlesListPickContainer
+            :title="categoriesMap.linux"
+            class="mt-5"
+          >
+            <ArticleCard :article="articleLinux" />
+          </ArticlesListPickContainer>
+        </InterfaceCol>
+      </InterfaceRow>
+    </InterfaceCol>
+
+    <InterfaceCol class="col-12">
+      <hr class="my-5">
+    </InterfaceCol>
+
+    <InterfaceCol :md="8">
+      <ArticlesListPickContainer title="最新文章">
+        <ArticlesList
+          :articles="articles"
+          :number-of-pages="pageCount"
+          :card-component="ArticleCardOverlay"
+        />
+      </ArticlesListPickContainer>
+    </InterfaceCol>
+  </InterfaceRow>
 </template>
 
 <script setup>
 import ArticleCard from '~/components/article/article-card.vue'
+import ArticleCardOverlay from '~/components/article/article-card-overlay.vue';
 
 import { useMainStore } from '~/store'
 import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
@@ -70,6 +104,26 @@ const { data: articleLinux } = await useAsyncData(`IndexArticleLinux`, () =>
     .sort({ createdAt: -1 })
     .findOne())
 
+const { data: articlesNewest } = await useAsyncData('IndexArticlesNewest', async () => {
+  const { data } = await useArticlesByPageAndCategory({ page: 1, category: 'all' })
+  let articles = data.value
+
+  if (Array.isArray(articles) && articles.length > 0) {
+    articles = articles.filter(({ slug }) => slug !== articleLife.value.slug && slug !== articleLinux.value.slug && !articlesFrontend.value.find((articleFrontend) => articleFrontend.slug === slug))
+  }
+
+  return articles
+})
+
+const articles = computed(() => {
+  let articles = articlesNewest.value
+  if (Array.isArray(articles) && articles.length > 0) {
+    articles = articles.slice(1);
+  }
+
+  return articles
+})
+
 useHead({
   title: '',
   titleTemplate: '隨機手札',
@@ -96,14 +150,24 @@ const linkGen = (page) => `/category/all/${page}`
 >
 .middle {
   display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, calc((100% - var(--bs-gutter-x) * 2) / 3));
+  gap: var(--bs-gutter-x);
 
-  .img {
-    aspect-ratio: 1/1;
-    width: 33.3333%;
-    height: auto;
+
+  height: 388.34px;
+
+
+  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+    height: 363.59px;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, 'xl')) {
+    height: 397.34px;
+  }
+
+  @media (min-width: map-get($grid-breakpoints, 'xxl')) {
+    height: 431.09px;
   }
 }
 </style>

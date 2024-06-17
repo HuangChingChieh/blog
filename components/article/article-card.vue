@@ -1,6 +1,6 @@
 <template>
   <article
-    class="d-flex flex-column rounded"
+    class="d-flex flex-column rounded bg-foreground"
     :class="$style.card"
   >
     <ArticleBanner
@@ -14,12 +14,9 @@
 
     <div class="d-flex flex-column flex-grow-1 px-3 py-3">
       <div :class="$style.content">
-        <h4
-          class="text-body text-line-2"
-          :class="$style.title"
-        >
+        <ArticleCardTitle>
           {{ article.title }}
-        </h4>
+        </ArticleCardTitle>
 
         <p
           class="text-muted text-line-2"
@@ -48,6 +45,7 @@
 </template>
 
 <script setup>
+import ArticleCardTitle from '~/components/article/article-card-title.vue'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
@@ -84,15 +82,9 @@ const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
   lang="scss"
   module
 >
-$card-content-line: 2;
-$card-text-line: 2;
-$card-title-font-size: $h4-font-size;
-$card-title-height: $headings-line-height * $card-content-line * $card-title-font-size;
-$card-text-font-size: $font-size-base;
-$card-text-height: $line-height-base * $card-content-line * $font-size-base;
+@import "../../assets/css/article-card.module.scss";
 
 .card {
-  background-color: var(--bs-secondary-bg);
   overflow: hidden;
   transition: $btn-transition, transform 0.15s ease-in-out;
   box-shadow: $box-shadow-sm;
@@ -102,24 +94,9 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
     transform: scale(1.025);
   }
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-    background-color: var(--bs-body-bg);
-  }
-
-  [data-bs-theme='light'] & {
-    background-color: var(--bs-body-bg);
-  }
-
   .description {
     font-size: $font-size-base;
     max-height: $card-text-height;
-  }
-
-  .content {
-    .title {
-      font-size: 1.1rem;
-      font-weight: 900;
-    }
   }
 
   .img {
@@ -135,7 +112,6 @@ $card-text-height: $line-height-base * $card-content-line * $font-size-base;
       height: $card-title-height + $card-text-height + $headings-margin-bottom;
 
       .title {
-        font-size: $card-title-font-size;
         max-height: $card-title-height;
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <header
     :class="$style.header"
-    class="border-bottom border-primary border-2 position-sticky shadow-sm"
+    class="border-bottom border-primary border-2 position-sticky shadow-sm bg-foreground"
   >
     <InterfaceContainer
       :class="`py-${mobileBreakpoint}-3`"
@@ -54,21 +54,10 @@ import { mobileBreakpoint } from '~/assets/css/export.module.scss'
   module
 >
 .header {
-  background-color: var(--bs-secondary-bg);
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
   top: 0;
   z-index: $zindex-sticky;
-
-  @media (max-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-    [data-bs-theme='light'] & {
-      background-color: var(--bs-body-bg);
-    }
-  }
-
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-    background-color: var(--bs-body-bg);
-  }
 
   .logo {
     height: 2rem;

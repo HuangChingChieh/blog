@@ -1,7 +1,6 @@
 <template>
   <component
     :is="tag"
-    class="container"
     :class="`container-${mobileBreakpoint}`"
   >
     <slot />

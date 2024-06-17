@@ -1,0 +1,7 @@
+$card-content-line: 2;
+$card-text-line: 2;
+$card-title-font-size: $h4-font-size;
+$card-title-height: $headings-line-height * $card-content-line *
+  $card-title-font-size;
+$card-text-font-size: $font-size-base;
+$card-text-height: $line-height-base * $card-content-line * $font-size-base;
