@@ -64,7 +64,7 @@ const props = defineProps({
 
 <style lang="scss" module>
 .img {
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
 }
 
 .titleWrapper {
@@ -79,10 +79,6 @@ const props = defineProps({
 }
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
-  .img {
-    aspect-ratio: 16/9;
-  }
-
   .titleWrapper {
     max-width: 75%;
   }
