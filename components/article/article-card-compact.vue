@@ -19,10 +19,7 @@
           </ArticleCardTitle>
         </div>
         <div class="d-flex flex-row">
-          <ArticleDate
-            :document="article"
-            class="small"
-          />
+          <ArticleDate :document="article" class="small me-3" />
           <ArticleReadingtime :minutes="article.readingTime.minutes" />
         </div>
       </div>
@@ -36,15 +33,12 @@ import { getArticleLink } from '~/utils/getLink'
 const props = defineProps({
   article: {
     type: Object,
-    default: null
+    default: null,
   },
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .img {
   aspect-ratio: 1/1;
   height: 100%;

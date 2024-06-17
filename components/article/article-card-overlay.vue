@@ -1,22 +1,50 @@
 <template>
   <NuxtLink
     v-if="article"
-    class="position-relative rounded shadow-sm d-block text-decoration-none"
+    class="position-relative rounded d-block text-decoration-none"
     :to="getArticleLink(article)"
   >
     <InterfaceImg
-      :img-class="[$style.img, 'rounded']"
+      :img-class="[$style.img, 'rounded', 'shadow-sm']"
       :img="article.img"
     />
 
     <div
       :class="[$style.titleWrapper, `p-${mobileBreakpoint}-3`]"
-      class="position-absolute text-center p-2 d-flex"
+      class="position-absolute p-2"
     >
-      <div class="p-3 rounded mb-0 bg-foreground shadow-sm border-bottom border-primary border-2">
+      <div
+        class="p-2 rounded bg-foreground shadow border-bottom border-primary border-2"
+        :class="`p-${mobileBreakpoint}-3`"
+      >
         <ArticleCardTitle class="mb-0">
           {{ article.title }}
         </ArticleCardTitle>
+
+        <div class="d-none mt-2" :class="`d-${mobileBreakpoint}-block`">
+          <ArticleCardDescription
+            :description="article.description"
+            class="mb-0"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div
+      :class="[$style.hintWrapper, `p-${mobileBreakpoint}-3`]"
+      class="position-absolute p-2"
+    >
+      <div class="d-flex">
+        <ArticleDate
+          :document="article"
+          class="small py-1 px-2 rounded bg-foreground shadow-sm me-2"
+          :class="`p-${mobileBreakpoint}-2`"
+        />
+        <ArticleReadingtime
+          :minutes="article.readingTime.minutes"
+          :class="`p-${mobileBreakpoint}-2`"
+          class="py-1 px-2 rounded bg-foreground shadow-sm"
+        />
       </div>
     </div>
   </NuxtLink>
@@ -29,32 +57,34 @@ import { getArticleLink } from '~/utils/getLink'
 const props = defineProps({
   article: {
     type: Object,
-    default: null
+    default: null,
   },
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .img {
   aspect-ratio: 4/3;
 }
 
 .titleWrapper {
-  bottom: 0;
+  top: 0;
   left: 0;
-  width: 100%;
+  max-width: 75%;
+}
+
+.hintWrapper {
+  bottom: 0;
+  right: 0;
 }
 
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .img {
-    aspect-ratio: 2/1;
+    aspect-ratio: 16/9;
   }
 
   .titleWrapper {
-    width: 50%;
+    max-width: 75%;
   }
 }
 </style>

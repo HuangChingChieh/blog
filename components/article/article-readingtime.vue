@@ -3,11 +3,8 @@
     v-if="minutes"
     class="text-muted small d-inline-flex align-items-center"
   >
-    <InterfaceIcon
-      class="me-1"
-      icon="clock"
-    />
-    <span class="me-3">{{ minText }}</span>
+    <InterfaceIcon class="me-1" icon="clock" />
+    <span>{{ minText }}</span>
   </span>
 </template>
 

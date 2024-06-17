@@ -4,22 +4,14 @@
     class="d-flex align-items-center flex-row text-muted small mb-0"
   >
     <template v-if="createTime !== updateTime">
-      <InterfaceIcon
-        v-if="!hideIcon"
-        class="me-1"
-        icon="pencil-square"
-      />
+      <InterfaceIcon v-if="!hideIcon" class="me-1" icon="pencil-square" />
 
-      <span class="me-3">{{ updateTime }}</span>
+      <span>{{ updateTime }}</span>
     </template>
 
     <template v-else>
-      <InterfaceIcon
-        v-if="!hideIcon"
-        class="me-1"
-        icon="calendar-event"
-      />
-      <span class="me-3">{{ createTime }}</span>
+      <InterfaceIcon v-if="!hideIcon" class="me-1" icon="calendar-event" />
+      <span>{{ createTime }}</span>
     </template>
   </time>
 </template>

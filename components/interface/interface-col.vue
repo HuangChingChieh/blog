@@ -25,6 +25,10 @@ const props = defineProps({
     type: [String, Number],
     default: '',
   },
+  cols: {
+    type: [String, Number],
+    default: gridColumns,
+  },
 })
 
 const classes = computed(() => {
@@ -35,7 +39,7 @@ const classes = computed(() => {
   if (md) classes.push(`col-md-${md}`)
   if (lg) classes.push(`col-lg-${lg}`)
   if (xl) classes.push(`col-xl-${xl}`)
-  classes.push(`col-${gridColumns}`)
+  classes.push(`col-${props.cols}`)
 
   return classes
 })

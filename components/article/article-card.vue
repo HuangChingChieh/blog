@@ -18,26 +18,18 @@
           {{ article.title }}
         </ArticleCardTitle>
 
-        <p
-          class="text-muted text-line-2"
-          :class="$style.description"
-          :title="article.description"
-        >
-          {{ article.description }}
-        </p>
+        <ArticleCardDescription :description="article.description" />
       </div>
 
       <div class="d-flex flex-row align-items-center mt-3">
-        <ArticleDate
-          :document="article"
-          class="small"
+        <ArticleDate :document="article" class="small me-3" />
+        <ArticleReadingtime
+          :minutes="article.readingTime.minutes"
+          class="me-3"
         />
-        <ArticleReadingtime :minutes="article.readingTime.minutes" />
         <ArticleCategory :article="article" />
         <div class="text-end flex-grow-1">
-          <ButtonEnter :to="getArticleLink(article)">
-            閱讀更多
-          </ButtonEnter>
+          <ButtonEnter :to="getArticleLink(article)"> 閱讀更多 </ButtonEnter>
         </div>
       </div>
     </div>
@@ -73,16 +65,12 @@ const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
   const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
   imageWidth = Number(containerMaxWidthNum) * 0.4
 
-
   return imageWidth
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
-@import "../../assets/css/article-card.module.scss";
+<style lang="scss" module>
+@import '../../assets/css/article-card.module.scss';
 
 .card {
   overflow: hidden;
