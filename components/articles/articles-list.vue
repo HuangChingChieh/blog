@@ -9,10 +9,12 @@
       :preload-img="index <= 4"
     />
 
-    <InterfacePagination
-      :link-gen="linkGen"
-      :number-of-pages="numberOfPages"
-    />
+    <slot>
+      <InterfacePagination
+        :link-gen="linkGen"
+        :number-of-pages="numberOfPages"
+      />
+    </slot>
   </div>
 </template>
 
@@ -27,7 +29,7 @@ const props = defineProps({
   },
   linkGen: {
     type: Function,
-    default: () => { },
+    default: () => {},
   },
   numberOfPages: {
     type: [String, Number],
@@ -35,7 +37,7 @@ const props = defineProps({
   },
   cardComponent: {
     type: Object,
-    default: ArticleCard
-  }
+    default: ArticleCard,
+  },
 })
 </script>

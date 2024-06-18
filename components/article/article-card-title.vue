@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    class="text-body"
-    :class="[$style.title, `text-line-${line}`]"
-  >
+  <component :is="tag" :class="[$style.title, `text-line-${line}`]">
     <slot />
   </component>
 </template>

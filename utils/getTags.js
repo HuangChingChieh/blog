@@ -1,4 +1,4 @@
-export default (articles) => {
+export default ({ articles }) => {
   const tagsObj = {}
 
   if (articles.length > 0) {
