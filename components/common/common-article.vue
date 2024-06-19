@@ -55,7 +55,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss">
-$article-font-size-base: 1rem;
+$article-font-size-base: 1.125rem;
 
 .nuxt-content {
   h2,
@@ -82,6 +82,7 @@ $article-font-size-base: 1rem;
   p {
     word-break: break-all;
     text-align: justify;
+    font-size: $article-font-size-base;
   }
 
   p code {
@@ -124,7 +125,7 @@ $article-font-size-base: 1rem;
 </style>
 
 <style lang="scss" module>
-$article-font-size-base: 1rem;
+$article-font-size-base: 1.125rem;
 
 .article {
   font-size: 1rem;

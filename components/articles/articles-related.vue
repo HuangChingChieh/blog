@@ -1,8 +1,6 @@
 <template>
   <div v-if="hasArticles">
-    <div class="h5 mb-4 text-center">
-      相關文章
-    </div>
+    <div class="h5 mb-4 text-center">相關文章</div>
 
     <ArticleCard
       v-for="(article, index) in relatedArticles"

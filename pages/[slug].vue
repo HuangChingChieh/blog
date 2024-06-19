@@ -1,21 +1,17 @@
 <template>
-  <div>
-    <CommonContainer>
-      <CommonArticle :document="article" />
-    </CommonContainer>
+  <CommonLayout>
+    <div>
+      <CommonContainer>
+        <CommonArticle :document="article" />
+      </CommonContainer>
 
-    <hr
-      class="d-block"
-      :class="`d-${mobileBreakpoint}-none`"
-    >
-    <LikerButton class="mt-5 d-flex justify-content-center" />
-    <ArticleComment class="mt-5" />
+      <hr class="d-block" :class="`d-${mobileBreakpoint}-none`" />
+      <LikerButton class="mt-5 d-flex justify-content-center" />
+      <ArticleComment class="mt-5" />
 
-    <ArticlesRelated
-      :article="article"
-      class="mt-5"
-    />
-  </div>
+      <ArticlesRelated :article="article" class="mt-5" />
+    </div>
+  </CommonLayout>
 </template>
 
 <script setup>

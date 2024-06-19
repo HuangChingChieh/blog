@@ -17,7 +17,11 @@
           :class="`order-${mobileBreakpoint}-1`"
         >
           <ArticlesListPickContainer :title="categoriesMap.life" class="mt-5">
-            <ArticleCard :article="articleLife" />
+            <ArticleCard
+              v-for="article in articleLife"
+              :key="article.slug"
+              :article="article"
+            />
           </ArticlesListPickContainer>
         </InterfaceCol>
         <InterfaceCol
@@ -47,61 +51,39 @@
           :class="`order-${mobileBreakpoint}-3`"
         >
           <ArticlesListPickContainer :title="categoriesMap.linux" class="mt-5">
-            <ArticleCard :article="articleLinux" />
+            <ArticleCard
+              v-for="article in articleLinux"
+              :key="article.slug"
+              :article="article"
+            />
           </ArticlesListPickContainer>
         </InterfaceCol>
       </InterfaceRow>
     </InterfaceCol>
 
     <InterfaceCol cols="12">
-      <hr class="my-5" />
+      <hr class="mt-5 mb-0" />
     </InterfaceCol>
 
-    <InterfaceCol cols="12">
-      <InterfaceRow>
-        <InterfaceCol cols="12" lg="7" xl="8" class="mt-5 order-2 order-lg-1">
-          <ArticlesListPickContainer title="最新文章">
-            <ArticlesList
-              :articles="articles"
-              :number-of-pages="pageCount"
-              :card-component="ArticleCardOverlay"
+    <CommonLayout reverse-order-when-mobile class="mt-5">
+      <ArticlesListPickContainer title="最新文章">
+        <ArticlesList
+          :articles="articles"
+          :number-of-pages="pageCount"
+          :card-component="ArticleCardOverlay"
+        >
+          <div class="text-center">
+            <ButtonEnter
+              :to="{ path: '/category/all/1' }"
+              size="lg"
+              class="mb-4"
             >
-              <div class="text-center">
-                <ButtonEnter
-                  :to="{ path: '/category/all/1' }"
-                  size="lg"
-                  class="mb-4"
-                >
-                  更多文章
-                </ButtonEnter>
-              </div>
-            </ArticlesList>
-          </ArticlesListPickContainer>
-        </InterfaceCol>
-
-        <InterfaceCol cols="12" lg="5" xl="4" class="order-1 order-lg-2">
-          <InterfaceRow>
-            <InterfaceCol cols="12" class="mb-4">
-              <ArticlesListPickContainer title="關於隨機手札與我">
-                <AsideAboutMe />
-              </ArticlesListPickContainer>
-            </InterfaceCol>
-
-            <InterfaceCol cols="12" class="mb-4">
-              <AsideCategories />
-            </InterfaceCol>
-
-            <InterfaceCol cols="12" class="mb-4">
-              <AsideTags />
-            </InterfaceCol>
-
-            <InterfaceCol cols="12">
-              <AsideSelect :articles="articlesSelect" />
-            </InterfaceCol>
-          </InterfaceRow>
-        </InterfaceCol>
-      </InterfaceRow>
-    </InterfaceCol>
+              更多文章
+            </ButtonEnter>
+          </div>
+        </ArticlesList>
+      </ArticlesListPickContainer>
+    </CommonLayout>
   </InterfaceRow>
 </template>
 
@@ -115,34 +97,22 @@ import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
 const mainStore = useMainStore()
 
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
-const { pageCount, count } = mainStore.articlesMetadata
+const { pageCount } = mainStore.articlesMetadata
 
-const { data: articlesFrontend } = await useAsyncData(
-  `IndexArticlesFrontend`,
-  () =>
-    queryContent('articles')
-      .where({ category: 'frontend' })
-      .only(articleQueryAttrs.card)
-      .sort({ createdAt: -1 })
-      .limit(3)
-      .find()
-)
+const { data: articlesFrontend } = await await useArticlesByPageAndCategory({
+  category: 'frontend',
+  limit: 3,
+})
 
-const { data: articleLife } = await useAsyncData(`IndexArticleLife`, () =>
-  queryContent('articles')
-    .where({ category: 'life' })
-    .only(articleQueryAttrs.card)
-    .sort({ createdAt: -1 })
-    .findOne()
-)
+const { data: articleLife } = await useArticlesByPageAndCategory({
+  category: 'life',
+  limit: 1,
+})
 
-const { data: articleLinux } = await useAsyncData(`IndexArticleLinux`, () =>
-  queryContent('articles')
-    .where({ category: 'linux' })
-    .only(articleQueryAttrs.card)
-    .sort({ createdAt: -1 })
-    .findOne()
-)
+const { data: articleLinux } = await useArticlesByPageAndCategory({
+  category: 'linux',
+  limit: 1,
+})
 
 const notIn = (sources = [], needFilter = []) => {
   const articles = []
@@ -169,25 +139,6 @@ const { data: articlesNewest } = await useAsyncData(
       articleLinux.value,
       ...articlesFrontend.value,
     ])
-  }
-)
-
-const { data: articlesSelect } = await useAsyncData(
-  'IndexArticlesSelect',
-  async () => {
-    const articles = await queryContent('articles')
-      .only(articleQueryAttrs.card)
-      .sort({ updatedAt: -1 })
-      .skip(Math.floor(count / 2))
-      .limit(5 + articlesNewest.value.length + 3)
-      .find()
-
-    return notIn(articles, [
-      articleLife.value,
-      articleLinux.value,
-      ...articlesFrontend.value,
-      ...articlesNewest.value,
-    ]).slice(0, 3)
   }
 )
 

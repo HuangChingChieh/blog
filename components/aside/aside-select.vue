@@ -11,12 +11,28 @@
 </template>
 
 <script setup>
+import { useMainStore } from '~/store'
+
 const props = defineProps({
-  articles: {
-    type: Array,
-    default: () => [],
+  category: {
+    type: String,
+    default: 'all',
   },
 })
+
+const mainStore = useMainStore()
+const { count } = mainStore.articlesMetadata
+
+const { data: articles } = await useAsyncData(
+  `ArticlesSelect_${props.category}`,
+  () =>
+    queryContent('articles')
+      .only(articleQueryAttrs.card)
+      .sort({ updatedAt: -1 })
+      .skip(Math.floor(count / 2))
+      .limit(3)
+      .find()
+)
 </script>
 
 <style lang="scss" module>

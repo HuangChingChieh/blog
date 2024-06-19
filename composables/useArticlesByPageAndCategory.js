@@ -1,5 +1,7 @@
-export default ({ page, category }) =>
-  useAsyncData(`${category}_${page}`, () => {
+export default ({ page = 1, category, limit }) => {
+  const { perPage } = useRuntimeConfig().public
+  const limitNumber = limit || perPage
+  return useAsyncData(`${category}_${page}_${limitNumber}`, () => {
     const { perPage } = useRuntimeConfig().public
 
     // 取得文章
@@ -10,6 +12,7 @@ export default ({ page, category }) =>
     return contentQuery
       .sort({ createdAt: -1 })
       .skip((page - 1) * perPage)
-      .limit(perPage)
+      .limit(limitNumber)
       .find()
   })
+}
