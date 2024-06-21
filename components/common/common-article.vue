@@ -134,6 +134,7 @@ $article-font-size-base: 1.125rem;
     font-weight: 900;
     margin-bottom: 0.25rem;
     font-size: $article-font-size-base * 2;
+    text-align: justify;
   }
 
   .date {

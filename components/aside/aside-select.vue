@@ -18,20 +18,43 @@ const props = defineProps({
     type: String,
     default: 'all',
   },
+  notInArticles: {
+    type: Array,
+    default: () => [],
+  },
 })
 
 const mainStore = useMainStore()
-const { count } = mainStore.articlesMetadata
+const { categories, articlesMetadata } = mainStore
+
+const { count } =
+  props.category === 'all' ? articlesMetadata : categories[props.category]
 
 const { data: articles } = await useAsyncData(
   `ArticlesSelect_${props.category}`,
-  () =>
-    queryContent('articles')
+  () => {
+    let query = queryContent('articles').where({
+      category: props.category === 'all' ? undefined : props.category,
+    })
+
+    const { notInArticles } = props
+    if (Array.isArray(notInArticles) && notInArticles.length > 0) {
+      notInArticles.forEach(({ slug }) => {
+        query = query.where({
+          slug: {
+            $not: slug,
+          },
+        })
+      })
+    }
+
+    return query
       .only(articleQueryAttrs.card)
       .sort({ updatedAt: -1 })
       .skip(Math.floor(count / 2))
       .limit(3)
       .find()
+  }
 )
 </script>
 

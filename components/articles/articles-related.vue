@@ -1,38 +1,52 @@
 <template>
-  <div v-if="hasArticles">
-    <div class="h5 mb-4 text-center">相關文章</div>
-
-    <ArticleCard
-      v-for="(article, index) in relatedArticles"
-      :key="index"
-      :article="article"
-      class="mt-3"
-    />
-  </div>
+  <ArticlesListPickContainer v-if="hasArticles" title="相關文章">
+    <div :class="$style.grid">
+      <div
+        v-for="(article, index) in articles"
+        :key="index"
+        class="p-3 bg-foreground rounded shadow-sm"
+      >
+        <ArticleCardCompact :article="article" :class="$style.card" />
+      </div>
+    </div>
+  </ArticlesListPickContainer>
 </template>
 
-<script>
-import ArticleCard from '~/components/article/article-card.vue'
-import useArticles from '~/composables/useArticles'
-import getReltedArticles from '~/utils/getRelatedArticles'
-
-export default defineNuxtComponent({
-  components: { ArticleCard },
-  props: {
-    article: { type: Object, default: () => ({ tags: [], slug: '' }) },
-  },
-  async setup({ article }) {
-    const { data: articles } = await useArticles()
-
-    const relatedArticles = getReltedArticles({
-      articles: unref(articles),
-      article,
-    })
-
-    const hasArticles =
-      Array.isArray(relatedArticles) && relatedArticles.length > 0
-
-    return { relatedArticles, hasArticles }
+<script setup>
+const props = defineProps({
+  articles: {
+    type: Array,
+    default: () => [],
   },
 })
+
+const hasArticles = computed(() => {
+  const { articles } = props
+  return Array.isArray(articles) && articles.length > 0
+})
 </script>
+
+<style lang="scss" module>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+
+  @media #{$break-md} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media #{$break-lg} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media #{$break-xl} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  height: 100px;
+}
+</style>

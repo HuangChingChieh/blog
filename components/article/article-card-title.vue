@@ -25,7 +25,7 @@ const props = defineProps({
   font-weight: 900;
 }
 
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .title {
     font-size: $card-title-font-size;
     max-height: $card-title-height;

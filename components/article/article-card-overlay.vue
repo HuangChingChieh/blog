@@ -78,7 +78,7 @@ const props = defineProps({
   right: 0;
 }
 
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .titleWrapper {
     max-width: 75%;
   }

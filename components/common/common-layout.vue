@@ -20,9 +20,11 @@
           reverseOrderWhenMobile ? `order-1 order-lg-2` : `order-2 mt-5 mt-lg-0`
         "
       >
-        <InterfaceRow class="position-relative">
+        <InterfaceRow>
           <InterfaceCol cols="12" class="mb-4">
-            <ArticlesListPickContainer title="關於隨機手札與我">
+            <ArticlesListPickContainer
+              :title="hideTitle ? `` : `關於隨機手札與我`"
+            >
               <AsideAboutMe />
             </ArticlesListPickContainer>
           </InterfaceCol>
@@ -35,18 +37,11 @@
             <AsideTags />
           </InterfaceCol>
 
-          <InterfaceCol
-            ref="beforeRightFixed"
-            v-b-visible:-90px="checkRightFixed"
-            cols="12"
-            class="mb-4"
-          >
-            <AsideSelect />
-          </InterfaceCol>
-
           <InterfaceCol cols="12" class="mb-4">
-            <slot name="right-fixed" />
-            {{ isRightFixed }}
+            <AsideSelect
+              :category="selectCategory"
+              :not-in-articles="selectNotInArticles"
+            />
           </InterfaceCol>
         </InterfaceRow>
       </InterfaceCol>
@@ -55,27 +50,22 @@
 </template>
 
 <script setup>
-import vBVisible from '~/utils/bVisible'
-
 const props = defineProps({
   reverseOrderWhenMobile: {
     type: Boolean,
     default: false,
   },
+  hideTitle: {
+    type: Boolean,
+    default: false,
+  },
+  selectCategory: {
+    type: String,
+    default: 'all',
+  },
+  selectNotInArticles: {
+    type: Array,
+    default: () => [],
+  },
 })
-
-const beforeRightFixed = ref(null)
-const isRightFixed = ref(false)
-
-const checkRightFixed = (intersect) => {
-  if (intersect) isRightFixed.value = false
-  else {
-    const theE = beforeRightFixed.value.$el
-    console.log(theE)
-    if (theE && theE instanceof HTMLElement) {
-      const eBottom = theE.offsetTop + theE.offsetHeight
-      isRightFixed.value = window.scrollY > eBottom - 80
-    }
-  }
-}
 </script>

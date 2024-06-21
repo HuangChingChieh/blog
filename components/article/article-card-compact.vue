@@ -49,7 +49,7 @@ const props = defineProps({
   font-size: 1.1rem;
 }
 
-@media (min-width: map-get($grid-breakpoints, 'sm')) {
+@media #{$break-sm} {
   .title {
     font-size: $h5-font-size;
   }

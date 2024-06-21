@@ -1,8 +1,5 @@
 <template>
-  <component
-    :is="tag"
-    :class="[`p-${mobileBreakpoint}-5`, $style.container]"
-  >
+  <component :is="tag" :class="[`p-${mobileBreakpoint}-5`, $style.container]">
     <slot />
   </component>
 </template>
@@ -19,7 +16,7 @@ const props = defineProps({
 </script>
 
 <style lang="scss" module>
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .container {
     // border: 1px solid $secondary;
     box-shadow: $box-shadow-sm;

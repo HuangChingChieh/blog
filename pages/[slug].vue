@@ -1,5 +1,9 @@
 <template>
-  <CommonLayout>
+  <CommonLayout
+    hide-title
+    :select-category="article ? article.category : undefined"
+    :select-not-in-articles="[article, ...relatedArticles]"
+  >
     <div>
       <CommonContainer>
         <CommonArticle :document="article" />
@@ -9,7 +13,7 @@
       <LikerButton class="mt-5 d-flex justify-content-center" />
       <ArticleComment class="mt-5" />
 
-      <ArticlesRelated :article="article" class="mt-5" />
+      <ArticlesRelated :articles="relatedArticles" class="mt-5" />
     </div>
   </CommonLayout>
 </template>
@@ -47,6 +51,10 @@ if (!article?.value) {
 } else {
   mainStore.toc = article.value.body.toc.links
 }
+
+const { data: relatedArticles } = await useRelatedArticles(article.value)
+console.log(`-----relatedArticles-----`)
+console.log(relatedArticles)
 
 const head = computed(() => {
   let head = []

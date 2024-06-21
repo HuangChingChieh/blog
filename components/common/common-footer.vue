@@ -1,8 +1,5 @@
 <template>
-  <footer
-    class="pb-5"
-    :class="$style.footer"
-  >
+  <footer class="pb-5" :class="$style.footer">
     <InterfaceContainer class="text-white">
       <InterfaceRow>
         <FooterBlock
@@ -10,10 +7,7 @@
           :title-to="{ path: '/buy_me_a_tea', hash: '#關於我' }"
         >
           <template #title>
-            <CommonIcon
-              height="16"
-              class="ms-2"
-            />
+            <CommonIcon height="16" class="ms-2" />
           </template>
 
           工作時若不喝上一杯飲料就無法做事的前端小碼農。三大前端框架陣營中屬於
@@ -25,9 +19,7 @@
           :title-to="{ path: '/buy_me_a_tea', hash: '#關於隨機手札' }"
         >
           使用
-          <FooterLink href="https://v2.nuxt.com/">
-            Nuxt 2
-          </FooterLink>
+          <FooterLink href="https://v2.nuxt.com/"> Nuxt 2 </FooterLink>
           建置於
           <FooterLink href="https://pages.github.com/">
             Github Pages
@@ -48,8 +40,8 @@
           若這裡的經驗分享有幫助到你，可以透過<FooterLink
             href="https://ko-fi.com/chaoschaoshuang"
           >
-            Ko-fi
-          </FooterLink>請我喝杯手搖飲哦！
+            Ko-fi </FooterLink
+          >請我喝杯手搖飲哦！
         </FooterBlock>
       </InterfaceRow>
     </InterfaceContainer>
@@ -69,7 +61,7 @@ import CommonIcon from '~/components/common/common-icon.vue'
 .footer {
   background-color: var(--bs-gray-800);
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  @media #{$break-mobile} {
     background-color: var(--bs-gray-900);
   }
 }

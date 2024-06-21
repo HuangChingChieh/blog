@@ -65,7 +65,16 @@
       <hr class="mt-5 mb-0" />
     </InterfaceCol>
 
-    <CommonLayout reverse-order-when-mobile class="mt-5">
+    <CommonLayout
+      reverse-order-when-mobile
+      :select-not-in-articles="[
+        ...articles,
+        ...articleLife,
+        ...articlesFrontend,
+        ...articleLinux,
+      ]"
+      class="mt-5"
+    >
       <ArticlesListPickContainer title="最新文章">
         <ArticlesList
           :articles="articles"
@@ -99,7 +108,7 @@ const mainStore = useMainStore()
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
 const { pageCount } = mainStore.articlesMetadata
 
-const { data: articlesFrontend } = await await useArticlesByPageAndCategory({
+const { data: articlesFrontend } = await useArticlesByPageAndCategory({
   category: 'frontend',
   limit: 3,
 })
@@ -177,15 +186,15 @@ useHead({
   gap: var(--bs-gutter-x);
   height: 388.34px;
 
-  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+  @media #{$break-lg} {
     height: 363.59px;
   }
 
-  @media (min-width: map-get($grid-breakpoints, 'xl')) {
+  @media #{$break-xl} {
     height: 397.34px;
   }
 
-  @media (min-width: map-get($grid-breakpoints, 'xxl')) {
+  @media #{$break-xxl} {
     height: 431.09px;
   }
 }

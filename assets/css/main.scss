@@ -146,7 +146,7 @@ $utilities-border-subtle: (
 body {
   background-color: var(--bs-body-bg);
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  @media #{$break-mobile} {
     background-color: var(--bs-secondary-bg);
   }
 
@@ -211,7 +211,7 @@ hr {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  @media #{$break-mobile} {
     padding-left: 0rem;
     padding-right: 0rem;
   }
@@ -221,7 +221,7 @@ hr {
 .bg-foreground {
   background-color: var(--bs-secondary-bg);
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  @media #{$break-mobile} {
     background-color: var(--bs-body-bg);
   }
 

@@ -1,5 +1,5 @@
 /* Custom Settings Here */
-// $font-family-sans-serif: 'Noto Sans TC', sans-serif;
+$font-family-sans-serif: 'Noto Sans TC', sans-serif;
 
 $white: #fff;
 $gray-100: #f8f9fa;
@@ -47,3 +47,11 @@ $link-color-dark: $body-color-dark;
 $mobile-breakpoint: 'md';
 
 $card-title-font-size: $h4-font-size;
+
+$break-mobile: '(min-width: #{map-get($grid-breakpoints, $mobile-breakpoint)})';
+
+$break-sm: '(min-width: #{map-get($grid-breakpoints, 'sm')})';
+$break-md: '(min-width: #{map-get($grid-breakpoints, 'md')})';
+$break-lg: '(min-width: #{map-get($grid-breakpoints, 'lg')})';
+$break-xl: '(min-width: #{map-get($grid-breakpoints, 'xl')})';
+$break-xxl: '(min-width: #{map-get($grid-breakpoints, 'xxl')})';

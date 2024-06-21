@@ -7,28 +7,18 @@
       :class="`py-${mobileBreakpoint}-3`"
       class="d-flex flex-row align-items-center"
     >
-      <CommonIcon
-        bordered
-        :class="$style.logo"
-      />
+      <CommonIcon bordered :class="$style.logo" />
       <div class="ms-3 flex-grow-1">
-        <NuxtLink
-          class="fw-bold text-body d-block text-decoration-none"
-          to="/"
-        >
+        <NuxtLink class="fw-bold text-body d-block text-decoration-none" to="/">
           隨機手札
         </NuxtLink>
-        <small
-          class="text-muted d-none"
-          :class="`d-${mobileBreakpoint}-block`"
-        >雜七雜八之地</small>
+        <small class="text-muted d-none" :class="`d-${mobileBreakpoint}-block`"
+          >雜七雜八之地</small
+        >
       </div>
 
       <div class="d-flex align-items-center justify-content-end">
-        <HeaderIconCategories
-          icon-class="d-flex p-0"
-          show-text
-        />
+        <HeaderIconCategories icon-class="d-flex p-0" show-text />
         <HeaderIconToc icon-class="d-flex p-0" />
         <HeaderIconTheme icon-class="d-flex p-0" />
         <HeaderIconSearch icon-class="d-flex p-0" />
@@ -49,10 +39,7 @@ import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
 import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .header {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -65,7 +52,7 @@ import { mobileBreakpoint } from '~/assets/css/export.module.scss'
   }
 }
 
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .header {
     padding-top: 0;
     padding-bottom: 0;
