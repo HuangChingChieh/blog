@@ -3,16 +3,22 @@
     <url>
         <loc>https://huangchingchieh.github.io/blog</loc>
         <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/6iMitZ.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/12Txpj.jpg</image:loc>
+        </image:image>
+        <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/uCCnpK.jpg</image:loc>
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Crirxh.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/6iMitZ.jpg</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/12Txpj.jpg</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/cLSor8.jpg</image:loc>
@@ -24,7 +30,16 @@
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/wa2rhz.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -33,16 +48,22 @@
     <url>
         <loc>https://huangchingchieh.github.io/blog/blog</loc>
         <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/6iMitZ.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/12Txpj.jpg</image:loc>
+        </image:image>
+        <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/uCCnpK.jpg</image:loc>
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Crirxh.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/6iMitZ.jpg</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/12Txpj.jpg</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/cLSor8.jpg</image:loc>
@@ -54,7 +75,16 @@
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/wa2rhz.jpg</image:loc>
         </image:image>
         <image:image>
-            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -68,6 +98,12 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -87,6 +123,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -110,6 +155,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/4x6lR7.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/ioKHUr.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/collections</loc>
@@ -128,6 +182,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -154,6 +217,12 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/crypto_after_ftx</loc>
@@ -179,6 +248,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/wa2rhz.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/crypto_liquidity_mining_v2</loc>
@@ -198,6 +276,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/QMpdb8.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/crypto_liquidity_mining_v3</loc>
@@ -216,6 +303,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/QMpdb8.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -239,6 +335,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/fedora_docker_startup</loc>
@@ -258,6 +363,12 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/fedora_lineageos_sargo</loc>
@@ -276,6 +387,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/m6wo1h.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -299,6 +419,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/fedora_startup</loc>
@@ -318,6 +447,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/LsYE8j.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/fedora_unrar</loc>
@@ -336,6 +474,12 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -362,6 +506,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/fedora_zram_resize</loc>
@@ -381,6 +534,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/free_diving_seeing_friend_black_out_first_time</loc>
@@ -390,6 +552,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -403,6 +574,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/b56SXt.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/ioKHUr.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -423,6 +603,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/mark_forster</loc>
@@ -438,6 +627,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -458,6 +656,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/DxakSn.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_bootstrapvue_treeshaking</loc>
@@ -477,6 +684,12 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/KaAGJw.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_content_code_block_copy_paste</loc>
@@ -489,6 +702,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -509,6 +731,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_dynamic_routes_sitemap</loc>
@@ -528,6 +759,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/WCeWkF.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_to_nuxt3_blog_0_intro</loc>
@@ -537,6 +777,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -548,6 +797,15 @@
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_to_nuxt3_blog_2_settings</loc>
@@ -557,6 +815,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -568,6 +835,15 @@
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_to_nuxt3_blog_4_modules_pwa</loc>
@@ -577,6 +853,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -588,6 +873,15 @@
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/nuxt2_to_nuxt3_blog_6_modules_pinia</loc>
@@ -597,6 +891,15 @@
         </image:image>
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -610,6 +913,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/j9gCap.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/iRFPQu.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -653,6 +965,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/we47q4.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -703,6 +1024,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/HXajvv.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/okinawa_fourth_day_2023</loc>
@@ -740,6 +1070,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/we47q4.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/okinawa_hotel_2023</loc>
@@ -770,6 +1109,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/cLSor8.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -808,6 +1156,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/cLSor8.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/okinawa_one_day_tour_bus_2023_south</loc>
@@ -842,6 +1199,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/cLSor8.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/YF2sjK.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/rhxHZ5.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/online_survey_money</loc>
@@ -864,6 +1230,12 @@
         <image:image>
             <image:loc>https://huangchingchieh.github.io/images/donation/kofi_button_blue.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/pixel3a_custom_rom</loc>
@@ -882,6 +1254,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/m6wo1h.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -902,6 +1283,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/ubuntu_swap_resize</loc>
@@ -914,6 +1304,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/DxakSn.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/ioKHUr.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -934,6 +1333,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/KaAGJw.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/vue_stack_development_devcontainer</loc>
@@ -946,6 +1354,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -960,6 +1377,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/IUrogW.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/what_we_know_rainbow_therapy</loc>
@@ -972,6 +1398,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -994,6 +1429,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/LsYE8j.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/yodiaF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ld14Ra.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -1022,6 +1466,18 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/4x6lR7.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/all/2</loc>
@@ -1045,6 +1501,12 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/4x6lR7.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -1079,6 +1541,18 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/d7KQrW.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/4x6lR7.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/all/4</loc>
@@ -1112,6 +1586,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/all/5</loc>
@@ -1139,6 +1622,18 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/4x6lR7.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/EhAxVV.png</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/frontend/1</loc>
@@ -1153,6 +1648,12 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/YRlYZO.jpg</image:loc>
         </image:image>
     </url>
     <url>
@@ -1174,6 +1675,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Oqxy2g.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/Ia2nWi.png</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/XCrOen.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -1208,6 +1718,12 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/QMpdb8.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/life/2</loc>
@@ -1231,6 +1747,15 @@
         </image:image>
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/Id0UIh.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/VdqfnF.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/Ua5JaZ.png</image:loc>
         </image:image>
     </url>
     <url>
@@ -1265,6 +1790,15 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/lduYJH.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/924/ioKHUr.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/923/OleVsx.jpg</image:loc>
+        </image:image>
     </url>
     <url>
         <loc>https://huangchingchieh.github.io/blog/category/linux/2</loc>
@@ -1283,6 +1817,12 @@
         <image:image>
             <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/m6wo1h.jpg</image:loc>
         </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/bqqju1.jpg</image:loc>
+        </image:image>
+        <image:image>
+            <image:loc>https://imagizer.imageshack.com/v2/640x480q70/922/b56SXt.jpg</image:loc>
+        </image:image>
     </url>
 </urlset>
-<!-- XML Sitemap generated by @nuxtjs/sitemap v5.2.0 at 2024-06-12T08:26:57.434Z -->
+<!-- XML Sitemap generated by @nuxtjs/sitemap v5.2.0 at 2024-09-22T13:38:28.319Z -->
