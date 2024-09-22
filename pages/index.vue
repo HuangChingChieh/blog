@@ -1,11 +1,25 @@
 <template>
   <InterfaceRow>
-    <InterfaceCol cols="12" :lg="gridColumns / 2" class="mt-4">
-      <ArticleCardOverlay :article="articlesNewest[0]" />
+    <InterfaceCol
+      cols="12"
+      :lg="gridColumns / 2"
+      class="mt-4 mt-lg-0"
+    >
+      <ArticleCardOverlay
+        :article="articlesNewest[0]"
+        :img-class="$style.topArticleImgClass"
+      />
     </InterfaceCol>
 
-    <InterfaceCol cols="12" :lg="gridColumns / 2" class="mt-4">
-      <ArticleCardOverlay :article="articlesNewest[1]" />
+    <InterfaceCol
+      cols="12"
+      :lg="gridColumns / 2"
+      class="mt-4 mt-lg-0"
+    >
+      <ArticleCardOverlay
+        :article="articlesNewest[1]"
+        :img-class="$style.topArticleImgClass"
+      />
     </InterfaceCol>
 
     <InterfaceCol cols="12">
@@ -16,7 +30,10 @@
           class="order-1"
           :class="`order-${mobileBreakpoint}-1`"
         >
-          <ArticlesListPickContainer :title="categoriesMap.life" class="mt-5">
+          <ArticlesListPickContainer
+            :title="categoriesMap.life"
+            class="mt-5"
+          >
             <ArticleCard
               v-for="article in articleLife"
               :key="article.slug"
@@ -39,7 +56,6 @@
                 v-for="article in articlesFrontend"
                 :key="article.slug"
                 :article="article"
-                class="bg-foreground rounded shadow-sm p-3"
               />
             </div>
           </ArticlesListPickContainer>
@@ -50,7 +66,10 @@
           class="order-2"
           :class="`order-${mobileBreakpoint}-3`"
         >
-          <ArticlesListPickContainer :title="categoriesMap.linux" class="mt-5">
+          <ArticlesListPickContainer
+            :title="categoriesMap.linux"
+            class="mt-5"
+          >
             <ArticleCard
               v-for="article in articleLinux"
               :key="article.slug"
@@ -62,26 +81,25 @@
     </InterfaceCol>
 
     <InterfaceCol cols="12">
-      <hr class="mt-5 mb-0" />
+      <hr class="mt-5 mb-0">
     </InterfaceCol>
 
-    <CommonLayout reverse-order-when-mobile class="mt-5">
+    <CommonLayout
+      reverse-order-when-mobile
+      class="mt-5"
+    >
       <ArticlesListPickContainer title="最新文章">
-        <ArticlesList
-          :articles="articles"
-          :number-of-pages="pageCount"
-          :card-component="ArticleCardOverlay"
-        >
-          <div class="text-center">
-            <ButtonEnter
-              :to="{ path: '/category/all/1' }"
-              size="lg"
-              class="mb-4"
-            >
-              更多文章
-            </ButtonEnter>
-          </div>
-        </ArticlesList>
+        <ArticlesList :articles="articles" />
+
+        <div class="text-center">
+          <ButtonEnter
+            :to="{ path: '/category/all/1' }"
+            size="lg"
+            class="mb-4"
+          >
+            更多文章
+          </ButtonEnter>
+        </div>
       </ArticlesListPickContainer>
     </CommonLayout>
   </InterfaceRow>
@@ -90,14 +108,10 @@
 <script setup>
 import ArticleCard from '~/components/article/article-card.vue'
 import ArticleCardOverlay from '~/components/article/article-card-overlay.vue'
-
-import { useMainStore } from '~/store'
 import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
 
-const mainStore = useMainStore()
 
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
-const { pageCount } = mainStore.articlesMetadata
 
 const { data: articlesFrontend } = await await useArticlesByPageAndCategory({
   category: 'frontend',
@@ -169,7 +183,16 @@ useHead({
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
+@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  .topArticleImgClass {
+    aspect-ratio: 16/9 !important;
+  }
+}
+
 .middle {
   display: grid;
   grid-template-columns: 1fr;

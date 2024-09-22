@@ -1,23 +1,21 @@
 <template>
-  <div v-if="hasArticles">
-    <div class="h5 mb-4 text-center">相關文章</div>
-
-    <ArticleCard
+  <ArticlesListPickContainer title="相關文章">
+    <ArticleCardOverlay
       v-for="(article, index) in relatedArticles"
       :key="index"
       :article="article"
-      class="mt-3"
+      class="mb-3"
     />
-  </div>
+  </ArticlesListPickContainer>
 </template>
 
 <script>
-import ArticleCard from '~/components/article/article-card.vue'
+import ArticleCardOverlay from '~/components/article/article-card-overlay.vue'
 import useArticles from '~/composables/useArticles'
 import getReltedArticles from '~/utils/getRelatedArticles'
 
 export default defineNuxtComponent({
-  components: { ArticleCard },
+  components: { ArticleCardOverlay },
   props: {
     article: { type: Object, default: () => ({ tags: [], slug: '' }) },
   },

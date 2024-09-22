@@ -1,17 +1,36 @@
 <template>
-  <CommonLayout>
-    <div>
-      <CommonContainer>
-        <CommonArticle :document="article" />
-      </CommonContainer>
+  <InterfaceCol
+    cols="12"
+    lg="10"
+    xl="8"
+    class="mx-auto"
+  >
+    <CommonContainer>
+      <CommonArticle :document="article" />
+    </CommonContainer>
 
-      <hr class="d-block" :class="`d-${mobileBreakpoint}-none`" />
-      <LikerButton class="mt-5 d-flex justify-content-center" />
-      <ArticleComment class="mt-5" />
+    <hr
+      class="d-block"
+      :class="`d-${mobileBreakpoint}-none`"
+    >
+    <LikerButton class="mt-5 d-flex justify-content-center" />
+    <ArticleComment class="mt-5" />
 
-      <ArticlesRelated :article="article" class="mt-5" />
-    </div>
-  </CommonLayout>
+    <ArticlesRelated
+      :article="article"
+      class="mt-5"
+    />
+
+    <ArticlesListPickContainer
+      title="精選文章"
+      class="mt-5"
+    >
+      <ArticlesSelect
+        :category="article?.category"
+        :card-component="ArticleCardNormal"
+      />
+    </ArticlesListPickContainer>
+  </InterfaceCol>
 </template>
 
 <script setup>
@@ -22,6 +41,7 @@ import CommonArticle from '~/components/common/common-article.vue'
 import ArticlesRelated from '~/components/articles/articles-related.vue'
 import LikerButton from '~/components/liker-button.vue'
 import ArticleComment from '~/components/article/article-comment.vue'
+import ArticleCardNormal from '~/components/article/article-card-normal.vue'
 
 import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 

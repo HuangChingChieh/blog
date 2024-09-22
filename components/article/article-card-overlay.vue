@@ -5,7 +5,7 @@
     :to="getArticleLink(article)"
   >
     <InterfaceImg
-      :img-class="[$style.img, 'rounded', 'shadow-sm']"
+      :img-class="[$style.img, 'rounded', 'shadow-sm', imgClass]"
       :img="article.img"
     />
 
@@ -21,7 +21,10 @@
           {{ article.title }}
         </ArticleCardTitle>
 
-        <div class="d-none mt-2" :class="`d-${mobileBreakpoint}-block`">
+        <div
+          class="d-none mt-2"
+          :class="`d-${mobileBreakpoint}-block`"
+        >
           <ArticleCardDescription
             :description="article.description"
             class="mb-0"
@@ -59,10 +62,17 @@ const props = defineProps({
     type: Object,
     default: null,
   },
+  imgClass: {
+    type: [Array, String, Object],
+    default: ''
+  }
 })
 </script>
 
-<style lang="scss" module>
+<style
+  lang="scss"
+  module
+>
 .img {
   aspect-ratio: 16/9;
 }
@@ -82,5 +92,10 @@ const props = defineProps({
   .titleWrapper {
     max-width: 75%;
   }
+
+  .img {
+    aspect-ratio: 21/9;
+  }
+
 }
 </style>

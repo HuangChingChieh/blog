@@ -1,12 +1,15 @@
 <template>
   <CommonHeader />
 
-  <InterfaceContainer
-    tag="main"
-    class="py-4"
-  >
-    <slot />
-  </InterfaceContainer>
+  <div class="mt-0 mt-lg-4">
+    <InterfaceContainer
+      tag="main"
+      class="py-4"
+    >
+      <slot />
+    </InterfaceContainer>
+  </div>
+
 
   <CommonFooter class="mt-4" />
 </template>

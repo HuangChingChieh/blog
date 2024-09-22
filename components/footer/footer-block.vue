@@ -1,7 +1,7 @@
 <template>
   <InterfaceCol
     :[mobileBreakpoint]="gridColumns / 3"
-    class="mt-5"
+    class="mt-3 mt-lg-5"
   >
     <FooterTitle>
       <NuxtLink

@@ -6,10 +6,7 @@
       :class="iconClass"
       @click="modalOpen = true"
     >
-      <span
-        v-if="showText && text"
-        class="ps-1"
-      >{{ text }}</span>
+      <span v-if="showText && text">{{ text }}</span>
     </CommonHeaderIcon>
 
     <ModalCategories v-model="modalOpen" />
