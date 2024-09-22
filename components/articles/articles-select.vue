@@ -27,26 +27,40 @@ const props = defineProps({
     type: Object,
     default: ArticleCardCompact,
   },
+  notInArticles: {
+    type: Array,
+    default: () => [],
+  },
 })
 
 const mainStore = useMainStore()
 const { data: articles } = await useAsyncData(
   `ArticlesSelect_${props.category}`,
   () => {
-    const { category } = props
-    const { count } = mainStore.categories[category].count
+    const { categories, articlesMetadata } = mainStore
+    const { count } =
+      props.category === 'all' ? articlesMetadata : categories[props.category]
+    let query = queryContent('articles').only(articleQueryAttrs.card).where({
+      category: props.category === 'all' ? undefined : props.category,
+    })
 
-    let contentQuery = queryContent('articles').only(articleQueryAttrs.card)
+    const { notInArticles } = props
+    if (Array.isArray(notInArticles) && notInArticles.length > 0) {
+      notInArticles.forEach(({ slug }) => {
+        query = query.where({
+          slug: {
+            $not: slug,
+          },
+        })
+      })
+    }
 
-    if (category !== 'all') contentQuery = contentQuery.where({ category })
-
-    return contentQuery
+    return query
       .sort({ updatedAt: -1 })
       .skip(Math.floor(count / 2))
       .limit(3)
       .find()
   }
-
 )
 </script>
 

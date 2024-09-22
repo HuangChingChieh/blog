@@ -19,6 +19,7 @@
     <ArticlesRelated
       :article="article"
       class="mt-5"
+      :articles="relatedArticles"
     />
 
     <ArticlesListPickContainer
@@ -28,6 +29,7 @@
       <ArticlesSelect
         :category="article?.category"
         :card-component="ArticleCardNormal"
+        :not-in-articles="relatedArticles"
       />
     </ArticlesListPickContainer>
   </InterfaceCol>
@@ -68,6 +70,7 @@ if (!article?.value) {
   mainStore.toc = article.value.body.toc.links
 }
 
+const { data: relatedArticles } = await useRelatedArticles(unref(article))
 const head = computed(() => {
   let head = []
 

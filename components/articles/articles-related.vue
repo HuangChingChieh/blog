@@ -1,7 +1,10 @@
 <template>
-  <ArticlesListPickContainer title="相關文章">
+  <ArticlesListPickContainer
+    v-if="hasArticles"
+    title="相關文章"
+  >
     <ArticleCardOverlay
-      v-for="(article, index) in relatedArticles"
+      v-for="(article, index) in articles"
       :key="index"
       :article="article"
       class="mb-3"
@@ -9,28 +12,42 @@
   </ArticlesListPickContainer>
 </template>
 
-<script>
-import ArticleCardOverlay from '~/components/article/article-card-overlay.vue'
-import useArticles from '~/composables/useArticles'
-import getReltedArticles from '~/utils/getRelatedArticles'
+<script setup>
+const props = defineProps({
+  articles: { type: Array, default: () => [] },
+  article: { type: Object, default: () => ({ tags: [], slug: '' }) },
+})
 
-export default defineNuxtComponent({
-  components: { ArticleCardOverlay },
-  props: {
-    article: { type: Object, default: () => ({ tags: [], slug: '' }) },
-  },
-  async setup({ article }) {
-    const { data: articles } = await useArticles()
-
-    const relatedArticles = getReltedArticles({
-      articles: unref(articles),
-      article,
-    })
-
-    const hasArticles =
-      Array.isArray(relatedArticles) && relatedArticles.length > 0
-
-    return { relatedArticles, hasArticles }
-  },
+const hasArticles = computed(() => {
+  const { articles } = props
+  return Array.isArray(articles) && articles.length > 0
 })
 </script>
+
+<style
+  lang="scss"
+  module
+>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+
+  @media #{$break-md} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media #{$break-lg} {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media #{$break-xl} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.card {
+  height: 100px;
+}
+</style>

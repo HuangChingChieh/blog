@@ -102,7 +102,7 @@ const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
   }
 }
 
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .card {
     .content {
       height: $card-title-height + $card-text-height + $headings-margin-bottom;

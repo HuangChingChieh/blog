@@ -18,8 +18,11 @@ const props = defineProps({
 })
 </script>
 
-<style lang="scss" module>
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+<style
+  lang="scss"
+  module
+>
+@media #{$break-mobile} {
   .container {
     // border: 1px solid $secondary;
     box-shadow: $box-shadow-sm;

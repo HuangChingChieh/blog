@@ -5,8 +5,7 @@
         cols="12"
         lg="7"
         xl="8"
-        :class="reverseOrderWhenMobile ? `order-2 order-lg-1 mt-5 mt-lg-0` : `order-1`
-          "
+        :class="reverseOrderWhenMobile ? `order-2 order-lg-1 mt-5 mt-lg-0` : `order-1`"
       >
         <slot />
       </InterfaceCol>
@@ -15,10 +14,9 @@
         cols="12"
         lg="5"
         xl="4"
-        :class="reverseOrderWhenMobile ? `order-1 order-lg-2` : `order-2 mt-5 mt-lg-0`
-          "
+        :class="reverseOrderWhenMobile ? `order-1 order-lg-2` : `order-2 mt-5 mt-lg-0`"
       >
-        <InterfaceRow class="position-relative">
+        <InterfaceRow>
           <InterfaceCol
             cols="12"
             class="mb-4"
@@ -43,7 +41,10 @@
           </InterfaceCol>
 
           <InterfaceCol cols="12">
-            <AsideSelect :category="props.category" />
+            <AsideSelect
+              :category="category"
+              :not-in-articles="selectNotInArticles"
+            />
           </InterfaceCol>
         </InterfaceRow>
       </InterfaceCol>
@@ -60,6 +61,10 @@ const props = defineProps({
   category: {
     type: String,
     default: 'all'
-  }
+  },
+  selectNotInArticles: {
+    type: Array,
+    default: () => [],
+  },
 })
 </script>

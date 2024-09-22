@@ -68,7 +68,7 @@ import CommonIcon from '~/components/common/common-icon.vue'
 .footer {
   background-color: var(--bs-gray-800);
 
-  @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+  @media #{$break-mobile} {
     background-color: var(--bs-gray-900);
   }
 }

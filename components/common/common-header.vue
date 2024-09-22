@@ -65,7 +65,7 @@ import { mobileBreakpoint } from '~/assets/css/export.module.scss'
   }
 }
 
-@media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
+@media #{$break-mobile} {
   .header {
     padding-top: 0;
     padding-bottom: 0;
