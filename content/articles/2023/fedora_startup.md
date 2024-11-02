@@ -19,7 +19,7 @@ category: linux
 
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes gnome-contacts simple-scan ibus-libpinyin ibus-libzhuyin gnome-tour fedora-chromium-config libreoffice* rhythmbox -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes gnome-contacts simple-scan gnome-tour fedora-chromium-config libreoffice* -y
 ```
 
 ```bash
@@ -39,7 +39,7 @@ sudo dnf update -y
 啟用 [RPM Fusion](https://rpmfusion.org/) 軟體庫
 
 ```bash
-sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/free/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+sudo dnf install https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 ```
 
 啟用 [Flathub](https://flathub.org/home) 軟體庫
@@ -53,23 +53,13 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install p7zip gimp gnome-tweaks ibus-chewing VirtualBox android-tools mediawriter gnome-console megasync nautilus-megasync -y
-```
-
-```bash
-# 安裝 Chrome
-sudo dnf install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
-```
-
-```bash
-# 安裝多媒體編碼套件
-sudo dnf install gstreamer*plugin* --exclude=gstreamer*devel*
+sudo dnf install p7zip gimp gnome-tweaks ibus-chewing VirtualBox android-tools mediawriter megasync nautilus-megasync -y
 ```
 
 ### 從 flathub 安裝日常軟體
 
 ```bash
-flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader org.kde.kget
+flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
 ```
 
 ---
