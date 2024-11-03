@@ -9,6 +9,8 @@ category: frontend
 
 這篇文章要紀錄的就是自己使用 VScode 搭配 DevContainer 來容器化開發的過程。
 
+若你平常用的系統跟我一樣是 Fedora 的話，可使用內建的 Podman 來取代 Docker 作為 DevContainer 的底層引擎，不過最後會需要稍微調整一下`devcontainer.json`，這部份可以參考<article-inner-link slug="fedora_vscode_devcontainer_podman"></article-inner-link>。
+
 <!--more-->
 
 ---
@@ -17,9 +19,7 @@ category: frontend
 
 ### 安裝 Docker
 
-第一步當然是安裝容器引擎，雖然平常用的 Fedora 中有內建 Podman 可以用，不過實際搭配使用起來問題不少，自己試了好多次還是沒辦法解決，所以還是使用 Docker。
-
-關於 Docker 的安裝可以參閱[官方文件](https://docs.docker.com/engine/install/)，若同是使用 Fedora 的朋友，可以參考我整理的簡單筆記：<article-inner-link slug="fedora_docker_startup"></article-inner-link>。
+第一步當然是安裝容器引擎囉！關於 Docker 的安裝可以參閱[官方文件](https://docs.docker.com/engine/install/)，若同是使用 Fedora 的朋友，可以參考我整理的簡單筆記：<article-inner-link slug="fedora_docker_startup"></article-inner-link>。
 
 ### 安裝 DevContainer 擴充套件
 
