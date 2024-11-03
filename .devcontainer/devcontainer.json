@@ -25,7 +25,15 @@
                 "dbaeumer.vscode-eslint"
             ]
         }
-    }
+    },
+    "runArgs": [
+        "--userns=keep-id"
+    ],
+    "containerEnv": {
+        "HOME": "/home/node"
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace/blog,type=bind,Z",
+    "workspaceFolder": "/workspace/blog",
     // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
     // "remoteUser": "root"
 }
