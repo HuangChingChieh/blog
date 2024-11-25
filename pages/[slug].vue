@@ -21,17 +21,6 @@
       class="mt-5"
       :articles="relatedArticles"
     />
-
-    <ArticlesListPickContainer
-      title="精選文章"
-      class="mt-5"
-    >
-      <ArticlesSelect
-        :category="article?.category"
-        :card-component="ArticleCardNormal"
-        :not-in-articles="relatedArticles"
-      />
-    </ArticlesListPickContainer>
   </InterfaceCol>
 </template>
 
@@ -43,7 +32,6 @@ import CommonArticle from '~/components/common/common-article.vue'
 import ArticlesRelated from '~/components/articles/articles-related.vue'
 import LikerButton from '~/components/liker-button.vue'
 import ArticleComment from '~/components/article/article-comment.vue'
-import ArticleCardNormal from '~/components/article/article-card-normal.vue'
 
 import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 

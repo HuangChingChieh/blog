@@ -3,7 +3,7 @@
     v-if="hasArticles"
     title="相關文章"
   >
-    <ArticleCardOverlay
+    <ArticleCardNormal
       v-for="(article, index) in articles"
       :key="index"
       :article="article"
@@ -15,7 +15,6 @@
 <script setup>
 const props = defineProps({
   articles: { type: Array, default: () => [] },
-  article: { type: Object, default: () => ({ tags: [], slug: '' }) },
 })
 
 const hasArticles = computed(() => {
