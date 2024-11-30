@@ -1,35 +1,37 @@
 <template>
-  <Teleport to="body">
-    <div
-      ref="modal"
-      class="modal fade"
-      tabindex="-1"
-      aria-hidden="true"
-      :class="modalClass"
-    >
+  <ClientOnly>
+    <Teleport to="body">
       <div
-        class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-        :class="size ? `modal-${size}` : ``"
+        ref="modal"
+        class="modal fade"
+        tabindex="-1"
+        aria-hidden="true"
+        :class="modalClass"
       >
-        <div class="modal-content">
-          <div class="modal-header">
-            <div class="modal-title h5">
-              {{ title }}
+        <div
+          class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+          :class="size ? `modal-${size}` : ``"
+        >
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="modal-title h5">
+                {{ title }}
+              </div>
+              <button
+                type="button"
+                class="btn-close"
+                aria-label="關閉"
+                @click="model = false"
+              />
             </div>
-            <button
-              type="button"
-              class="btn-close"
-              aria-label="關閉"
-              @click="model = false"
-            />
-          </div>
-          <div class="modal-body">
-            <slot />
+            <div class="modal-body">
+              <slot />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </Teleport>
+    </Teleport>
+  </ClientOnly>
 </template>
 
 <script setup>
