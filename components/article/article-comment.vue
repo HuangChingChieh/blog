@@ -1,10 +1,9 @@
 <template>
-  <div ref="comments" v-b-visible="init" class="giscus"></div>
+  <div ref="comments" v-b-visible="init" class="giscus" />
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue'
-import kebabCase from 'lodash/kebabCase'
+import { kebabCase } from 'es-toolkit'
 import vBVisible from '~/utils/bVisible'
 import { useThemeStore } from '~/store/theme'
 

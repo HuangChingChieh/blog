@@ -7,10 +7,7 @@
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div
-        class="position-relative"
-        :class="$style.inputGroup"
-      >
+      <div class="position-relative" :class="$style.inputGroup">
         <InterfaceFormInput
           ref="input"
           v-model="keyword"
@@ -23,33 +20,21 @@
           class="d-flex align-items-center justify-content-center px-3"
           :class="$style.iconWrapper"
         >
-          <InterfaceIcon
-            icon="search"
-            :class="$style.icon"
-          />
+          <InterfaceIcon icon="search" :class="$style.icon" />
         </div>
       </div>
 
-      <div
-        class="mt-3"
-        :class="$style.results"
-      >
-        <div
-          v-if="keyword"
-          class="h-100"
-        >
+      <div class="mt-3" :class="$style.results">
+        <div v-if="keyword" class="h-100">
           <div v-if="hasSearchResult">
             <div
               v-for="(article, index) in articles"
               :key="article.slug"
               class="small"
             >
-              <hr
-                v-if="index > 0"
-                class="my-3"
-              >
+              <hr v-if="index > 0" class="my-3" />
 
-              <ArticleSeachResult
+              <ArticleSearchResult
                 :article="article"
                 :keyword="keyword"
                 :slug="article.slug"
@@ -70,14 +55,13 @@
 </template>
 
 <script setup>
-import debounce from 'lodash/debounce'
+import { debounce } from 'es-toolkit'
 
 import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
 
-import ArticleSeachResult from '~/components/article/article-search-result.vue'
-import { computed, ref } from 'vue'
+import ArticleSearchResult from '~/components/article/article-search-result.vue'
 
 const model = defineModel({
   type: Boolean,
@@ -143,7 +127,7 @@ const {
           id,
           score,
           title: p.title,
-          hash
+          hash,
         })
       })
 
@@ -205,7 +189,7 @@ const shown = () => {
   .input {
     padding-right: calc(1.5rem + 1rem);
 
-    &:focus~.iconWrapper .icon {
+    &:focus ~ .iconWrapper .icon {
       color: $primary;
     }
   }
