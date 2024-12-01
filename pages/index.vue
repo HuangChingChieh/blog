@@ -24,7 +24,7 @@
         >
           <ArticlesListPickContainer
             :title="categoriesMap.frontend"
-            class="mt-5 mt-lg-0 flex-grow-1"
+            class="mt-5 mt-md-0 flex-grow-1"
           >
             <div :class="$style.middle">
               <ArticleCardCompact
@@ -56,7 +56,7 @@
     </InterfaceCol>
 
     <InterfaceCol cols="12">
-      <hr class="mt-5 mb-0">
+      <hr class="mt-5 mb-0" />
     </InterfaceCol>
 
     <CommonLayout
@@ -72,11 +72,7 @@
         <ArticlesList :articles="articlesNewest" />
 
         <div class="text-center">
-          <ButtonEnter
-            :to="{ path: '/category/all/1' }"
-            size="lg"
-            class="mb-4"
-          >
+          <ButtonEnter :to="{ path: '/category/all/1' }" size="lg" class="mb-4">
             更多文章
           </ButtonEnter>
         </div>
@@ -88,7 +84,6 @@
 <script setup>
 import ArticleCard from '~/components/article/article-card.vue'
 import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
-
 
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
 
@@ -153,10 +148,7 @@ useHead({
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 @media (min-width: map-get($grid-breakpoints, $mobile-breakpoint)) {
   .topArticleImgClass {
     aspect-ratio: 16/9 !important;
@@ -168,18 +160,6 @@ useHead({
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, calc((100% - var(--bs-gutter-x) * 2) / 3));
   gap: var(--bs-gutter-x);
-  height: 388.34px;
-
-  @media #{$break-lg} {
-    height: 363.59px;
-  }
-
-  @media #{$break-xl} {
-    height: 397.34px;
-  }
-
-  @media #{$break-xxl} {
-    height: 431.09px;
-  }
+  height: 100%;
 }
 </style>

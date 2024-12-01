@@ -1,9 +1,9 @@
 <template>
-  <NuxtLink
-    v-if="article"
-    class="d-flex text-decoration-none"
-    :class="noContainer ? `` : `bg-foreground rounded shadow-sm p-3`"
-    :to="getArticleLink(article)"
+  <ArticleCardWrapper
+    class="d-flex"
+    :class="container ? `p-3` : ``"
+    :article="article"
+    :container="container"
   >
     <article class="d-flex flex-row w-100">
       <InterfaceImg
@@ -15,44 +15,33 @@
 
       <div class="d-flex flex-column flex-grow-1">
         <div class="flex-grow-1">
-          <ArticleCardTitle
-            :class="$style.title"
-            class="mb-1"
-          >
+          <ArticleCardTitle :class="$style.title" class="mb-1">
             {{ article.title }}
           </ArticleCardTitle>
         </div>
         <div class="d-flex flex-row">
-          <ArticleDate
-            :document="article"
-            class="small me-3"
-          />
+          <ArticleDate :document="article" class="small me-3" />
           <ArticleReadingtime :minutes="article.readingTime.minutes" />
         </div>
       </div>
     </article>
-  </NuxtLink>
+  </ArticleCardWrapper>
 </template>
 
 <script setup>
-import { getArticleLink } from '~/utils/getLink'
-
 const props = defineProps({
   article: {
     type: Object,
     default: null,
   },
-  noContainer: {
+  container: {
     type: Boolean,
-    default: false
-  }
+    default: true,
+  },
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .img {
   aspect-ratio: 1/1;
   height: 100%;

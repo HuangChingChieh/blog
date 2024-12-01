@@ -1,8 +1,7 @@
 <template>
-  <NuxtLink
-    v-if="article"
-    class="d-flex flex-column flex-lg-row text-decoration-none p-3 p-lg-4 rounded shadow-sm bg-foreground"
-    :to="getArticleLink(article)"
+  <ArticleCardWrapper
+    class="d-flex flex-column flex-lg-row p-3 p-lg-4"
+    :article="article"
   >
     <InterfaceImg
       :class="$style.img"
@@ -16,20 +15,14 @@
         {{ article.title }}
       </ArticleCardTitle>
 
-      <ArticleCardDescription
-        :description="article.description"
-        class="mb-0"
-      />
+      <ArticleCardDescription :description="article.description" class="mb-0" />
 
       <div class="d-flex flex-row flex-grow-1 align-items-end mt-2 mt-lg-0">
-        <ArticleDate
-          :document="article"
-          class="flex-grow-1"
-        />
+        <ArticleDate :document="article" class="flex-grow-1" />
         <ArticleReadingtime :minutes="article.readingTime.minutes" />
       </div>
     </div>
-  </NuxtLink>
+  </ArticleCardWrapper>
 </template>
 
 <script setup>
@@ -38,14 +31,10 @@ const props = defineProps({
     type: Object,
     default: null,
   },
-
 })
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 @import '../../assets/css/article-card.module.scss';
 
 .img {
