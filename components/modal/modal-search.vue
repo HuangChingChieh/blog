@@ -13,6 +13,7 @@
           v-model="keyword"
           placeholder="請輸入關鍵字"
           :class="$style.input"
+          :disabled="searching"
           @input="keywordChanged"
         />
 
@@ -69,106 +70,67 @@ const model = defineModel({
 })
 
 const keyword = ref('')
-const {
-  data: paragraphs,
-  pending: searching,
-  refresh,
-} = await useAsyncData(
-  `search:${keyword.value}`,
-  () => searchContent(keyword),
-  {
-    server: false,
-    immediate: false,
-    default: () => [],
-  }
-)
+const searching = ref(false)
+const paragraphs = ref([])
 
-const { data: titleMap } = await useAsyncData('titleMap', async () => {
-  const titleMap = {}
-  await queryContent('articles')
-    .only(['title', 'slug'])
-    .find()
-    .then((articles) => {
-      if (Array.isArray(articles) && articles.length > 0) {
-        articles.forEach(({ slug, title }) => {
-          if (!titleMap[slug]) titleMap[slug] = title
-        })
-      }
+const articles = computed(() => {
+  const ps = unref(paragraphs.value)
+  if (Array.isArray(ps) && ps.length > 0) {
+    const titleMap = {}
+    ps.forEach((p) => {
+      const { id, score } = p
+      const slugHash = id.split('/').pop().split('#')
+      const slug = slugHash[0]
+      const hash = slugHash[1]
+      if (!titleMap[slug])
+        titleMap[slug] = {
+          title: p.titles[0],
+          score: 0,
+          paragraphs: [],
+          slug,
+        }
+
+      titleMap[slug].score += score
+      titleMap[slug].paragraphs.push({
+        content: p.content,
+        id,
+        score,
+        title: p.title,
+        hash,
+      })
     })
-  return titleMap
+
+    const slugs = Object.keys(titleMap)
+
+    return slugs.map((slug) => titleMap[slug]).sort((a, b) => b.score - a.score)
+  } else return []
 })
 
-const {
-  data: articles,
-  pending: searchingTitle,
-  refresh: refreshArticles,
-} = await useAsyncData(
-  `titleMap:${keyword.value}`,
-  () => {
-    const ps = unref(paragraphs.value)
-    if (Array.isArray(ps) && ps.length > 0) {
-      const titleMapC = {}
-      ps.forEach((p) => {
-        const { id, score } = p
-        const slugHash = id.split('/').pop().split('#')
-        const slug = slugHash[0]
-        const hash = slugHash[1]
-        if (!titleMapC[slug])
-          titleMapC[slug] = {
-            title: unref(titleMap)[slug],
-            score: 0,
-            paragraphs: [],
-            slug,
-          }
-
-        titleMapC[slug].score += score
-        titleMapC[slug].paragraphs.push({
-          content: p.content,
-          id,
-          score,
-          title: p.title,
-          hash,
-        })
-      })
-
-      const slugs = Object.keys(titleMapC)
-
-      return slugs
-        .map((slug) => titleMapC[slug])
-        .sort((a, b) => b.score - a.score)
-    } else return []
-  },
-  {
-    server: false,
-    immediate: false,
-    default: () => [],
-  }
-)
-
-const searchComputed = computed(() => unref(searching) || unref(searchingTitle))
-
 const hasSearchResult = computed(
-  () => !unref(searchComputed) && unref(articles).length > 0
+  () => !unref(searching) && unref(articles).length > 0
 )
 const hasNoSearchResult = computed(
-  () => !unref(searchComputed) && unref(articles).length === 0
+  () => !unref(searching) && unref(articles).length === 0
 )
 
 const keywordChanged = () => {
   if (keyword.value) {
-    searching.value = true
-    searchingTitle.value = true
+    paragraphs.value = []
     search()
   }
 }
 
 const reset = () => {
   keyword.value = ''
+  searching.value = false
+  paragraphs.value = []
 }
 
 const search = debounce(async () => {
-  await refresh()
-  await refreshArticles()
+  searching.value = true
+  const result = await searchContent(keyword)
+  paragraphs.value = result
+  searching.value = false
 }, 500)
 
 // Input相關
