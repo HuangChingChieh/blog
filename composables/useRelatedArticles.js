@@ -1,7 +1,10 @@
 // 取得相關文章，相關度以重疊的標籤數計算，重疊標籤越多代表越相關。
 export default async (article = { tags: [], slug: '' }) =>
   useAsyncData(`Related_${article.slug}`, async () => {
-    const { data: articles } = await useArticles()
+    const articles = await queryContent('articles')
+      .only([...articleQueryAttrs.card, 'tags'])
+      .sort({ createdAt: -1 })
+      .find()
 
     const relatedArticles = []
 
@@ -12,7 +15,7 @@ export default async (article = { tags: [], slug: '' }) =>
 
     if (!Array.isArray(theTags) || theTags.length === 0) return relatedArticles
 
-    articles.value.forEach((article) => {
+    articles.forEach((article) => {
       const { tags, slug } = article
 
       if (!Array.isArray(tags) || theSlug === slug) return
