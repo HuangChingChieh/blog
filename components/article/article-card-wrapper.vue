@@ -31,7 +31,8 @@ const props = defineProps({
     transition: $btn-transition, transform 0.15s ease-in-out;
     box-shadow: $box-shadow-sm;
 
-    &:hover {
+    &:hover,
+    &.active {
       box-shadow: $box-shadow;
       transform: scale(1.025);
     }
