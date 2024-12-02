@@ -30,6 +30,8 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          quietDeps: true,
+          api: 'modern',
           additionalData(source: string, fp: string) {
             // All scss files ending with imports.scss
             // will not re-import additionalData
@@ -192,6 +194,18 @@ export default defineNuxtConfig({
     experimental: {
       search: {
         indexed: true,
+        options: {
+          fields: ['title', 'titles'],
+          storeFields: ['title', 'titles'],
+          searchOptions: {
+            prefix: true,
+            fuzzy: 0.2,
+            boost: {
+              title: 4,
+              titles: 4,
+            },
+          },
+        },
       },
     },
   },

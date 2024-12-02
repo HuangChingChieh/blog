@@ -82,6 +82,8 @@ const articles = computed(() => {
       const slugHash = id.split('/').pop().split('#')
       const slug = slugHash[0]
       const hash = slugHash[1]
+
+      console.log(p.titles[0])
       if (!titleMap[slug])
         titleMap[slug] = {
           title: p.titles[0],
@@ -92,10 +94,7 @@ const articles = computed(() => {
 
       titleMap[slug].score += score
       titleMap[slug].paragraphs.push({
-        content: p.content,
-        id,
-        score,
-        title: p.title,
+        ...p,
         hash,
       })
     })
