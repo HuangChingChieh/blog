@@ -2,7 +2,7 @@
   <NuxtLink
     v-if="article"
     :to="getArticleLink(article)"
-    :class="[$style.card, $style.container, container ? `bg-foreground` : ``]"
+    :class="styles"
     class="text-decoration-none rounded"
   >
     <slot />
@@ -23,6 +23,18 @@ const props = defineProps({
     default: true,
   },
 })
+
+const $style = useCssModule()
+
+const styles = computed(() => {
+  const styles = [$style.card]
+  if (props.container) {
+    styles.push($style.container)
+    styles.push('bg-foreground')
+  }
+
+  return styles
+})
 </script>
 
 <style lang="scss" module>
@@ -32,7 +44,7 @@ const props = defineProps({
     box-shadow: $box-shadow-sm;
 
     &:hover,
-    &.active {
+    &:active {
       box-shadow: $box-shadow;
       transform: scale(1.025);
     }
