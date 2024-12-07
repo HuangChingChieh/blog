@@ -1,15 +1,11 @@
 <template>
-  <component :is="tag" :class="[$style.title, `text-line-${line}`]">
+  <h4 :class="[$style.title, `text-line-${line}`]">
     <slot />
-  </component>
+  </h4>
 </template>
 
 <script setup>
 const props = defineProps({
-  tag: {
-    type: String,
-    default: 'h4',
-  },
   line: {
     type: [String, Number],
     default: '2',
@@ -21,14 +17,11 @@ const props = defineProps({
 @import '../../assets/css/article-card.module.scss';
 
 .title {
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   font-weight: 900;
-}
 
-@media #{$break-mobile} {
-  .title {
+  @media #{$break-mobile} {
     font-size: $card-title-font-size;
-    max-height: $card-title-height;
   }
 }
 </style>

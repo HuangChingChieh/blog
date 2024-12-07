@@ -15,7 +15,11 @@
         {{ article.title }}
       </ArticleCardTitle>
 
-      <ArticleCardDescription :description="article.description" class="mb-0" />
+      <ArticleCardDescription
+        :description="article.description"
+        class="mb-0"
+        text-line="3"
+      />
 
       <div
         class="d-flex flex-row flex-grow-1 align-items-end justify-content-end mt-2 mt-lg-0"

@@ -46,8 +46,6 @@ $link-color-dark: $body-color-dark;
 
 $mobile-breakpoint: 'md';
 
-$card-title-font-size: $h4-font-size;
-
 $break-mobile: '(min-width: #{map-get($grid-breakpoints, $mobile-breakpoint)})';
 
 $break-sm: '(min-width: #{map-get($grid-breakpoints, 'sm')})';

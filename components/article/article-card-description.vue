@@ -1,7 +1,7 @@
 <template>
   <p
-    class="text-muted text-line-2"
-    :class="$style.description"
+    class="text-muted"
+    :class="[$style.description, style]"
     :title="description"
   >
     {{ description }}
@@ -14,14 +14,24 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  textLine: {
+    type: [String, Number],
+    default: 2,
+  },
 })
+
+const style = computed(() => `text-line-${props.textLine}`)
 </script>
 
 <style lang="scss" module>
 @import '../../assets/css/article-card.module.scss';
 
+$description-line: v-bind(textLine);
+
 .description {
   font-size: $font-size-base;
-  max-height: $card-text-height;
+  max-height: calc(
+    $card-text-height * ($description-line / $card-content-line)
+  );
 }
 </style>
