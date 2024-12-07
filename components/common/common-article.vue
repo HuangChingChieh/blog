@@ -5,11 +5,7 @@
     </h1>
 
     <div class="d-flex flex-row align-items-center my-2">
-      <ArticleDate
-        :document="document"
-        :class="$style.date"
-        class="me-3"
-      />
+      <ArticleDate :document="document" :class="$style.date" class="me-3" />
       <ArticleReadingtime
         :minutes="document.readingTime.minutes"
         class="me-3"
@@ -39,10 +35,7 @@
       preload
     />
 
-    <ContentRenderer
-      :value="document"
-      class="nuxt-content"
-    />
+    <ContentRenderer :value="document" class="nuxt-content" />
   </article>
 </template>
 
@@ -65,7 +58,6 @@ const props = defineProps({
 $article-font-size-base: 1.125rem;
 
 .nuxt-content {
-
   h2,
   h3,
   p,
@@ -87,7 +79,8 @@ $article-font-size-base: 1.125rem;
     font-size: $article-font-size-base * 1.25;
   }
 
-  p {
+  p,
+  li {
     word-break: break-all;
     text-align: justify;
     font-size: $article-font-size-base;
@@ -108,7 +101,7 @@ $article-font-size-base: 1.125rem;
     text-decoration: underline;
   }
 
-  >*:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
@@ -132,10 +125,7 @@ $article-font-size-base: 1.125rem;
 }
 </style>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 $article-font-size-base: 1.125rem;
 
 .article {
@@ -144,7 +134,7 @@ $article-font-size-base: 1.125rem;
   .title {
     font-weight: 900;
     margin-bottom: 0.25rem;
-    font-size: $article-font-size-base * 2;
+    font-size: $article-font-size-base * 1.75;
     text-align: justify;
   }
 
