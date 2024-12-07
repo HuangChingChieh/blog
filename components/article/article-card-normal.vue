@@ -17,9 +17,14 @@
 
       <ArticleCardDescription :description="article.description" class="mb-0" />
 
-      <div class="d-flex flex-row flex-grow-1 align-items-end mt-2 mt-lg-0">
-        <ArticleDate :document="article" class="flex-grow-1" />
-        <ArticleReadingtime :minutes="article.readingTime.minutes" />
+      <div
+        class="d-flex flex-row flex-grow-1 align-items-end justify-content-end mt-2 mt-lg-0"
+      >
+        <ArticleReadingtime
+          :minutes="article.readingTime.minutes"
+          class="me-4"
+        />
+        <ArticleDate :document="article" />
       </div>
     </div>
   </ArticleCardWrapper>

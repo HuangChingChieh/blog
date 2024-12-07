@@ -22,13 +22,12 @@
         <ArticleCardDescription :description="article.description" />
       </div>
 
-      <div class="d-flex flex-row align-items-center mt-3">
-        <ArticleDate :document="article" class="small me-3" />
+      <div class="d-flex flex-row justify-content-end align-items-center mt-3">
         <ArticleReadingtime
           :minutes="article.readingTime.minutes"
-          class="me-3 d-block d-lg-none d-xl-block"
+          class="me-4"
         />
-        <ArticleCategory :article="article" />
+        <ArticleDate :document="article" />
       </div>
     </div>
   </ArticleCardWrapper>

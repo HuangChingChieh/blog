@@ -19,9 +19,12 @@
             {{ article.title }}
           </ArticleCardTitle>
         </div>
-        <div class="d-flex flex-row">
-          <ArticleDate :document="article" class="small me-3" />
-          <ArticleReadingtime :minutes="article.readingTime.minutes" />
+        <div class="d-flex flex-row justify-content-end">
+          <ArticleReadingtime
+            :minutes="article.readingTime.minutes"
+            class="me-4"
+          />
+          <ArticleDate :document="article" />
         </div>
       </div>
     </article>
