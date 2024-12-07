@@ -11,16 +11,15 @@
     />
   </NuxtLink>
 </template>
-  
+
 <script setup>
-import escapeRegExp from 'lodash/escapeRegExp'
-import { computed } from 'vue'
+import { escapeRegExp } from 'es-toolkit'
 import TextHighlight from '~/components/text/text-highlight.vue'
 
 const props = defineProps({
   to: {
     type: [String, Object],
-    default: ''
+    default: '',
   },
   keyword: {
     type: String,
@@ -28,24 +27,24 @@ const props = defineProps({
   },
   textClass: {
     type: [String, Object, Array],
-    default: ''
+    default: '',
   },
   text: {
     type: String,
-    default: ''
+    default: '',
   },
   textMaxLength: {
     type: [Number, String],
     default: 150,
-    validator: (value) => !isNaN(Number(value))
+    validator: (value) => !isNaN(Number(value)),
   },
   /**
    * 是否根據`textMaxLength`擷取`text`，擷取過程會保證擷取出來的文字至少包含一次的關鍵字。
    */
   breakDown: {
     type: Boolean,
-    default: false
-  }
+    default: false,
+  },
 })
 
 const keywordArr = computed(() => props.keyword.split(' '))
@@ -109,4 +108,3 @@ const textBreakDown = computed(() => {
   return text
 })
 </script>
-  

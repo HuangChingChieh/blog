@@ -4,10 +4,12 @@
     <NuxtPage />
   </NuxtLayout>
 
-  <Teleport to="body">
-    <!-- 解決底部sticky問題 -->
-    <div style="position: fixed"></div>
-  </Teleport>
+  <ClientOnly>
+    <Teleport to="body">
+      <!-- 解決底部sticky問題 -->
+      <div style="position: fixed" />
+    </Teleport>
+  </ClientOnly>
 </template>
 
 <script>

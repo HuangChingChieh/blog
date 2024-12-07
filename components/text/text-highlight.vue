@@ -3,8 +3,7 @@
 </template>
 
 <script setup>
-import escapeRegExp from 'lodash/escapeRegExp'
-import escape from 'lodash/escape'
+import { escape, escapeRegExp } from 'es-toolkit'
 import { computed } from 'vue'
 
 const props = defineProps({

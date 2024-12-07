@@ -4,7 +4,8 @@
     :placeholder="placeholder"
     type="text"
     class="form-control"
-  >
+    :disabled="disabled"
+  />
 </template>
 
 <script setup>
@@ -12,6 +13,10 @@ const props = defineProps({
   placeholder: {
     type: String,
     default: '',
+  },
+  disabled: {
+    type: Boolean,
+    default: false,
   },
 })
 

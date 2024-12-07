@@ -5,7 +5,7 @@
       v-for="article in articles"
       :key="article.slug"
       :article="article"
-      :no-container="noContainer"
+      :container="false"
     />
   </div>
 </template>
@@ -18,10 +18,6 @@ const props = defineProps({
   category: {
     type: String,
     default: 'all',
-  },
-  noContainer: {
-    type: Boolean,
-    default: false
   },
   cardComponent: {
     type: Object,
@@ -40,9 +36,11 @@ const { data: articles } = await useAsyncData(
     const { categories, articlesMetadata } = mainStore
     const { count } =
       props.category === 'all' ? articlesMetadata : categories[props.category]
-    let query = queryContent('articles').only(articleQueryAttrs.card).where({
-      category: props.category === 'all' ? undefined : props.category,
-    })
+    let query = queryContent('articles')
+      .only(articleQueryAttrs.card)
+      .where({
+        category: props.category === 'all' ? undefined : props.category,
+      })
 
     const { notInArticles } = props
     if (Array.isArray(notInArticles) && notInArticles.length > 0) {
@@ -64,10 +62,7 @@ const { data: articles } = await useAsyncData(
 )
 </script>
 
-<style
-  lang="scss"
-  module
->
+<style lang="scss" module>
 .grid {
   display: grid;
   grid-template-rows: repeat(3, 1fr);
