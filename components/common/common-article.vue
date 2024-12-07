@@ -67,7 +67,8 @@ $article-font-size-base: 1.125rem;
   }
 
   h2,
-  h3 {
+  h3,
+  h4 {
     font-weight: 900;
   }
 
@@ -77,6 +78,10 @@ $article-font-size-base: 1.125rem;
 
   h3 {
     font-size: $article-font-size-base * 1.25;
+  }
+
+  h4 {
+    font-size: $article-font-size-base;
   }
 
   p,
