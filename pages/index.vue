@@ -123,8 +123,8 @@ const { data: articlesNewest } = await useAsyncData(
     })
 
     return notIn(data.value, [
-      articleLife.value,
-      articleLinux.value,
+      ...articleLife.value,
+      ...articleLinux.value,
       ...articlesFrontend.value,
     ])
   }
