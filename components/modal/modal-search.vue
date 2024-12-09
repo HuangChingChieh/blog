@@ -133,21 +133,15 @@ const getArticles = async () => {
   const theMatchMap = matchesMap.value[theMatchValue]
   if (theMatchMap.articles.length > 0) return
 
-  const slugs = Object.keys(theMatchMap)
-  const articles = await queryContent('articles')
-    .only(articleQueryAttrs.card)
-    .where({
-      slug: {
-        $in: slugs,
-      },
-    })
-    .find()
-
-  articles.sort((a, b) => {
-    return theMatchValue[a.slug] > theMatchValue[b.slug] ? -1 : 1
+  const slugs = Object.keys(theMatchMap).filter((match) => match !== 'articles')
+  const articles = await Promise.all(slugs.map((slug) => useArticle(slug)))
+  articles.sort(({ data: dataA }, { data: dataB }) => {
+    return theMatchValue[dataA.value.slug] > theMatchValue[dataB.value.slug]
+      ? -1
+      : 1
   })
 
-  theMatchMap.articles = articles
+  theMatchMap.articles = articles.map(({ data }) => data.value)
 }
 
 const changeTheMatch = (name) => {
