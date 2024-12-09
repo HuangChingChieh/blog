@@ -23,15 +23,16 @@ export default defineNuxtConfig({
   site: {
     url: 'https://huangchingchieh.github.io',
   },
+
   sitemap: {
     sources: ['/api/sitemap'],
   },
+
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
           quietDeps: true,
-          api: 'modern',
           additionalData(source: string, fp: string) {
             // All scss files ending with imports.scss
             // will not re-import additionalData
@@ -40,13 +41,23 @@ export default defineNuxtConfig({
 
             return `@import "~/assets/css/custom.module.scss"; ${source}`
           },
+          api: 'modern-compiler',
+          silenceDeprecations: [
+            'legacy-js-api',
+            'import',
+            'global-builtin',
+            'color-functions',
+            'mixed-decls',
+          ],
         },
       },
     },
   },
+
   features: {
     inlineStyles: false,
   },
+
   modules: [
     'nuxt-content-git',
     '@vite-pwa/nuxt',
@@ -56,6 +67,7 @@ export default defineNuxtConfig({
     // // https://go.nuxtjs.dev/stylelint
     // '@nuxtjs/stylelint-module',
   ],
+
   runtimeConfig: {
     public: {
       base,
@@ -67,9 +79,11 @@ export default defineNuxtConfig({
       isDev: process.env.NODE_ENV !== 'production',
     },
   },
+
   dir: {
     public: 'static',
   },
+
   app: {
     baseURL: base,
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -246,4 +260,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  compatibilityDate: '2024-12-09',
 })

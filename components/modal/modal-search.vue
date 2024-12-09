@@ -7,40 +7,50 @@
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div class="position-relative" :class="$style.inputGroup">
-        <InterfaceFormInput
-          ref="input"
-          v-model="keyword"
-          placeholder="請輸入關鍵字"
-          :class="$style.input"
-          :disabled="searching"
-          @input="keywordChanged"
-        />
+      <form @submit.prevent="search">
+        <fieldset class="input-group" :disabled="searching">
+          <InterfaceFormInput
+            ref="input"
+            v-model="keyword"
+            placeholder="請輸入關鍵字"
+            :class="$style.input"
+            @input="keywordChanged"
+          />
+          <InterfaceButton variant="primary" type="submit">
+            <InterfaceIcon icon="search" />
+          </InterfaceButton>
+        </fieldset>
+      </form>
 
-        <div
-          class="d-flex align-items-center justify-content-center px-3"
-          :class="$style.iconWrapper"
-        >
-          <InterfaceIcon icon="search" :class="$style.icon" />
-        </div>
-      </div>
-
-      <div class="mt-3" :class="$style.results">
+      <div class="mt-2" :class="$style.results">
         <div v-if="keyword" class="h-100">
           <div v-if="hasSearchResult">
-            <div
-              v-for="(article, index) in articles"
-              :key="article.slug"
-              class="small"
+            <button
+              v-for="(match, name) in matchesMap"
+              :key="name"
+              type="button"
+              class="btn btn-sm rounded-pill me-1 mt-1"
+              :class="
+                name === theMatch ? `btn-primary` : `btn-outline-secondary`
+              "
+              @click="changeTheMatch(name)"
             >
-              <hr v-if="index > 0" class="my-3" />
+              {{ name }}
+            </button>
 
-              <ArticleSearchResult
-                :article="article"
-                :keyword="keyword"
-                :slug="article.slug"
-                @navigate="model = false"
-              />
+            <div v-if="matchesMap[theMatch]">
+              <div
+                v-for="article in matchesMap[theMatch].articles"
+                :key="article.slug"
+              >
+                <hr class="my-3" />
+                <ArticleCardNormal
+                  :key="article.slug"
+                  :article="article"
+                  :container="false"
+                  @click="model = false"
+                />
+              </div>
             </div>
           </div>
           <div
@@ -56,13 +66,9 @@
 </template>
 
 <script setup>
-import { debounce } from 'es-toolkit'
-
 import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
-
-import ArticleSearchResult from '~/components/article/article-search-result.vue'
 
 const model = defineModel({
   type: Boolean,
@@ -71,66 +77,83 @@ const model = defineModel({
 
 const keyword = ref('')
 const searching = ref(false)
-const paragraphs = ref([])
-
-const articles = computed(() => {
-  const ps = unref(paragraphs.value)
-  if (Array.isArray(ps) && ps.length > 0) {
-    const titleMap = {}
-    ps.forEach((p) => {
-      const { id, score } = p
-      const slugHash = id.split('/').pop().split('#')
-      const slug = slugHash[0]
-      const hash = slugHash[1]
-
-      console.log(p.titles[0])
-      if (!titleMap[slug])
-        titleMap[slug] = {
-          title: p.titles[0],
-          score: 0,
-          paragraphs: [],
-          slug,
-        }
-
-      titleMap[slug].score += score
-      titleMap[slug].paragraphs.push({
-        ...p,
-        hash,
-      })
-    })
-
-    const slugs = Object.keys(titleMap)
-
-    return slugs.map((slug) => titleMap[slug]).sort((a, b) => b.score - a.score)
-  } else return []
-})
+const matchesMap = ref({})
+const theMatch = ref('')
 
 const hasSearchResult = computed(
-  () => !unref(searching) && unref(articles).length > 0
+  () => !unref(searching) && Object.keys(unref(matchesMap)).length > 0
 )
 const hasNoSearchResult = computed(
-  () => !unref(searching) && unref(articles).length === 0
+  () => !unref(searching) && Object.keys(unref(matchesMap)).length === 0
 )
 
 const keywordChanged = () => {
-  if (keyword.value) {
-    paragraphs.value = []
-    search()
-  }
+  matchesMap.value = {}
+  theMatch.value = ''
 }
 
 const reset = () => {
   keyword.value = ''
   searching.value = false
-  paragraphs.value = []
+  matchesMap.value = {}
+  theMatch.value = ''
 }
 
-const search = debounce(async () => {
+const search = async () => {
   searching.value = true
-  const result = await searchContent(keyword)
-  paragraphs.value = result
+  const result = unref(await searchContent(keyword))
+
+  if (Array.isArray(result) && result.length > 0) {
+    const matchesMapValue = {}
+    result.forEach((p) => {
+      const { id, score, match } = p
+      const slugHash = id.split('/').pop().split('#')
+      const slug = slugHash[0]
+
+      Object.keys(match).forEach((match) => {
+        if (!matchesMapValue[match]) matchesMapValue[match] = { articles: [] }
+        if (!matchesMapValue[match][slug]) matchesMapValue[match][slug] = 0
+
+        matchesMapValue[match][slug] += score
+      })
+    })
+
+    matchesMap.value = matchesMapValue
+    theMatch.value = Object.keys(matchesMapValue)[0]
+    await getArticles()
+  }
+
   searching.value = false
-}, 500)
+}
+
+const getArticles = async () => {
+  const theMatchValue = theMatch.value
+  if (!theMatchValue) return
+
+  const theMatchMap = matchesMap.value[theMatchValue]
+  if (theMatchMap.articles.length > 0) return
+
+  const slugs = Object.keys(theMatchMap)
+  const articles = await queryContent('articles')
+    .only(articleQueryAttrs.card)
+    .where({
+      slug: {
+        $in: slugs,
+      },
+    })
+    .find()
+
+  articles.sort((a, b) => {
+    return theMatchValue[a.slug] > theMatchValue[b.slug] ? -1 : 1
+  })
+
+  theMatchMap.articles = articles
+}
+
+const changeTheMatch = (name) => {
+  theMatch.value = name
+  getArticles()
+}
 
 // Input相關
 const input = ref(null)
@@ -144,22 +167,5 @@ const shown = () => {
   height: 400px;
   overflow-y: auto;
   word-break: break-all;
-}
-
-.inputGroup {
-  .input {
-    padding-right: calc(1.5rem + 1rem);
-
-    &:focus ~ .iconWrapper .icon {
-      color: $primary;
-    }
-  }
-
-  .iconWrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-  }
 }
 </style>
