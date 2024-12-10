@@ -87,17 +87,17 @@ import { mobileBreakpoint, gridColumns } from '~/assets/css/export.module.scss'
 
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
 
-const { data: articlesFrontend } = await useArticlesByPageAndCategory({
+const { data: articlesFrontend } = await useArticlesByPageAndCategoryAsync({
   category: 'frontend',
   limit: 3,
 })
 
-const { data: articleLife } = await useArticlesByPageAndCategory({
+const { data: articleLife } = await useArticlesByPageAndCategoryAsync({
   category: 'life',
   limit: 1,
 })
 
-const { data: articleLinux } = await useArticlesByPageAndCategory({
+const { data: articleLinux } = await useArticlesByPageAndCategoryAsync({
   category: 'linux',
   limit: 1,
 })
@@ -117,7 +117,7 @@ const notIn = (sources = [], needFilter = []) => {
 const { data: articlesNewest } = await useAsyncData(
   'IndexArticlesNewest',
   async () => {
-    const { data } = await useArticlesByPageAndCategory({
+    const { data } = await useArticlesByPageAndCategoryAsync({
       page: 1,
       category: 'all',
     })

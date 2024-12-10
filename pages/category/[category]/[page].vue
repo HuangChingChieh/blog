@@ -26,7 +26,7 @@ const { categories } = useMainStore()
 const { categoriesMap } = useRuntimeConfig().public
 const numberOfPages = categories[category]?.pageCount || 1
 
-const { data: articles } = await useArticlesByPageAndCategory({
+const { data: articles } = await useArticlesByPageAndCategoryAsync({
   page,
   category,
 })
