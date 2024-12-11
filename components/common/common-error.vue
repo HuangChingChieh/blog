@@ -26,7 +26,6 @@
 
 <script setup>
 import { randomInt } from 'es-toolkit'
-import { useMainStore } from '~/store/index'
 
 const props = defineProps({
   error: {
@@ -36,7 +35,7 @@ const props = defineProps({
 })
 
 const articles = ref([])
-const { categories } = useMainStore()
+const { categories } = await useArticlesMetadata()
 
 const getRandomArticle = async (category) => {
   console.log(categories)

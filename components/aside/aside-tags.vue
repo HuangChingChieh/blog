@@ -16,10 +16,7 @@
 </template>
 
 <script setup>
-import { useMainStore } from '~/store'
-
-const mainStore = useMainStore()
-const { tagsObj } = mainStore
+const { tagsObj } = await useArticlesMetadata()
 let tags = []
 
 Object.keys(tagsObj).forEach((name) => {

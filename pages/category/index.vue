@@ -1,7 +1,7 @@
 <template>
   <CommonContainer>
     <h1>文章分類</h1>
-    <hr class="my-4">
+    <hr class="my-4" />
     <div
       v-for="(categoryObj, category) in categories"
       :key="category"
@@ -41,12 +41,11 @@ import ButtonEnter from '~/components/button/button-enter.vue'
 import articleQueryAttrs from '~/utils/articleQueryAttrs'
 
 import { getArticleLink, getCategoryLink } from '~/utils/getLink'
-import { useMainStore } from '~/store'
 
-const mainStore = useMainStore()
+const { categories: categoriesMetadata } = await useArticlesMetadata()
 
 const { data: categories } = await useAsyncData('categories', async () => {
-  const categories = JSON.parse(JSON.stringify(mainStore.categories))
+  const categories = JSON.parse(JSON.stringify(categoriesMetadata))
   delete categories.all
 
   await Promise.all(
