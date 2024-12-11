@@ -12,9 +12,7 @@
         <NuxtLink class="fw-bold text-body d-block text-decoration-none" to="/">
           隨機手札
         </NuxtLink>
-        <small class="text-muted" :class="$style.hint">
-          <NuxtLink to="/404.html">雜七雜八之地</NuxtLink>
-        </small>
+        <small class="text-muted" :class="$style.hint">雜七雜八之地</small>
       </div>
 
       <div class="d-flex align-items-center justify-content-end">

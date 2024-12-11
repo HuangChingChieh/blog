@@ -38,11 +38,9 @@ const articles = ref([])
 const { categories } = await useArticlesMetadata()
 
 const getRandomArticle = async (category) => {
-  console.log(categories)
   const numberOfPages = categories[category].pageCount || 1
 
   const page = randomInt(numberOfPages) + 1
-  console.log(page)
   const articles = await useArticlesByPageAndCategory({
     page,
     category,
