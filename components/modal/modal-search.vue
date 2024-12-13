@@ -7,48 +7,50 @@
     @hidden="reset"
   >
     <div class="d-flex flex-column">
-      <div class="position-relative" :class="$style.inputGroup">
-        <InterfaceFormInput
-          ref="input"
-          v-model="keyword"
-          placeholder="請輸入關鍵字"
-          :class="$style.input"
-          :disabled="searching"
-          @input="keywordChanged"
-        />
+      <form @submit.prevent="startSearch">
+        <fieldset class="input-group" :disabled="searching">
+          <InterfaceFormInput
+            ref="input"
+            v-model="keyword"
+            placeholder="請輸入關鍵字"
+            :class="$style.input"
+            @input="keywordChanged"
+          />
+          <InterfaceButton variant="primary" type="submit" :disabled="!keyword">
+            <InterfaceIcon icon="search" />
+          </InterfaceButton>
+        </fieldset>
+      </form>
+
+      <div class="mt-2" :class="$style.results">
+        <div v-if="searched">
+          <button
+            v-for="(match, name) in matchesMap"
+            :key="name"
+            type="button"
+            class="btn btn-sm rounded-pill me-1 mt-1"
+            :class="name === theMatch ? `btn-primary` : `btn-outline-secondary`"
+            @click="changeTheMatch(name)"
+          >
+            {{ name }}
+          </button>
+
+          <div v-for="article in articles" :key="article.slug">
+            <hr class="my-3" />
+            <ArticleCardNormal
+              :key="article.slug"
+              :article="article"
+              :container="false"
+              @click="model = false"
+            />
+          </div>
+        </div>
 
         <div
-          class="d-flex align-items-center justify-content-center px-3"
-          :class="$style.iconWrapper"
+          v-if="hasNoSearchResult"
+          class="text-center h-100 d-flex align-items-center justify-content-center"
         >
-          <InterfaceIcon icon="search" :class="$style.icon" />
-        </div>
-      </div>
-
-      <div class="mt-3" :class="$style.results">
-        <div v-if="keyword" class="h-100">
-          <div v-if="hasSearchResult">
-            <div
-              v-for="(article, index) in articles"
-              :key="article.slug"
-              class="small"
-            >
-              <hr v-if="index > 0" class="my-3" />
-
-              <ArticleSearchResult
-                :article="article"
-                :keyword="keyword"
-                :slug="article.slug"
-                @navigate="model = false"
-              />
-            </div>
-          </div>
-          <div
-            v-else
-            class="text-center h-100 d-flex align-items-center justify-content-center"
-          >
-            {{ hasNoSearchResult ? '哎呀～找不到文章' : '搜尋中' }}
-          </div>
+          {{ '哎呀～找不到文章' }}
         </div>
       </div>
     </div>
@@ -56,13 +58,9 @@
 </template>
 
 <script setup>
-import { debounce } from 'es-toolkit'
-
 import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
 import InterfaceIcon from '~/components/interface/interface-icon.vue'
 import InterfaceModal from '~/components/interface/interface-modal.vue'
-
-import ArticleSearchResult from '~/components/article/article-search-result.vue'
 
 const model = defineModel({
   type: Boolean,
@@ -70,68 +68,103 @@ const model = defineModel({
 })
 
 const keyword = ref('')
-const searching = ref(false)
-const paragraphs = ref([])
+const theMatch = ref('')
+const searched = ref(false)
 
-const articles = computed(() => {
-  const ps = unref(paragraphs.value)
-  if (Array.isArray(ps) && ps.length > 0) {
-    const titleMap = {}
-    ps.forEach((p) => {
-      const { id, score } = p
-      const slugHash = id.split('/').pop().split('#')
-      const slug = slugHash[0]
-      const hash = slugHash[1]
-      if (!titleMap[slug])
-        titleMap[slug] = {
-          title: p.titles[0],
-          score: 0,
-          paragraphs: [],
-          slug,
-        }
-
-      titleMap[slug].score += score
-      titleMap[slug].paragraphs.push({
-        content: p.content,
-        id,
-        score,
-        title: p.title,
-        hash,
-      })
-    })
-
-    const slugs = Object.keys(titleMap)
-
-    return slugs.map((slug) => titleMap[slug]).sort((a, b) => b.score - a.score)
-  } else return []
-})
-
-const hasSearchResult = computed(
-  () => !unref(searching) && unref(articles).length > 0
-)
 const hasNoSearchResult = computed(
-  () => !unref(searching) && unref(articles).length === 0
+  () =>
+    Object.keys(unref(matchesMap)).length === 0 &&
+    unref(articles).length === 0 &&
+    searched.value
 )
 
-const keywordChanged = () => {
-  if (keyword.value) {
-    paragraphs.value = []
-    search()
-  }
-}
+const keywordChanged = () => {}
 
 const reset = () => {
   keyword.value = ''
-  searching.value = false
-  paragraphs.value = []
+  theMatch.value = ''
+  searched.value = false
 }
 
-const search = debounce(async () => {
-  searching.value = true
-  const result = await searchContent(keyword)
-  paragraphs.value = result
-  searching.value = false
-}, 500)
+const {
+  data: matchesMap,
+  status: searchStatus,
+  refresh: search,
+} = await useAsyncData(
+  'search',
+  async () => {
+    const matchesMap = {}
+
+    const result = unref(await searchContent(keyword))
+    if (Array.isArray(result) && result.length > 0) {
+      result.forEach((p) => {
+        const { id, score, match } = p
+        const slugHash = id.split('/').pop().split('#')
+        const slug = slugHash[0]
+
+        Object.keys(match).forEach((match) => {
+          if (!matchesMap[match]) matchesMap[match] = {}
+          if (!matchesMap[match][slug]) matchesMap[match][slug] = 0
+
+          matchesMap[match][slug] += score
+        })
+      })
+    }
+
+    return matchesMap
+  },
+  { lazy: true, server: false, default: () => ({}) }
+)
+
+const searching = computed(() => searchStatus.value === 'pending')
+
+const startSearch = async () => {
+  await search()
+  theMatch.value = Object.keys(matchesMap.value)[0]
+  searched.value = true
+}
+
+const matchArticlesMap = {}
+
+const { data: articles } = await useAsyncData(
+  `search_articles_by_match`,
+  async () => {
+    const theMatchValue = theMatch.value
+    if (!theMatchValue) return []
+
+    if (matchArticlesMap[theMatchValue]?.articles)
+      return matchArticlesMap[theMatchValue]?.articles
+
+    const theMatchMap = matchesMap.value[theMatchValue]
+
+    const slugs = Object.keys(theMatchMap).filter(
+      (match) => match !== 'articles'
+    )
+
+    const articles = await Promise.all(
+      slugs.map((slug) => useArticleCard(slug))
+    )
+    // const articlesValue = articles.map(({ data }) => data.value)
+    articles.sort(({ slug: slugA }, { slug: slugB }) =>
+      theMatchMap[slugA] > theMatchMap[slugB] ? -1 : 1
+    )
+
+    if (!matchArticlesMap[theMatchValue]) matchArticlesMap[theMatchValue] = {}
+    matchArticlesMap[theMatchValue].articles = articles
+
+    return articles
+  },
+  {
+    watch: [theMatch],
+    lazy: true,
+    server: false,
+    default: () => [],
+  }
+)
+
+const changeTheMatch = (name) => {
+  theMatch.value = name
+}
 
 // Input相關
 const input = ref(null)
@@ -145,22 +178,5 @@ const shown = () => {
   height: 400px;
   overflow-y: auto;
   word-break: break-all;
-}
-
-.inputGroup {
-  .input {
-    padding-right: calc(1.5rem + 1rem);
-
-    &:focus ~ .iconWrapper .icon {
-      color: $primary;
-    }
-  }
-
-  .iconWrapper {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-  }
 }
 </style>

@@ -11,7 +11,6 @@
 </template>
 
 <script setup>
-import { useMainStore } from '~/store'
 import ArticleCardCompact from '~/components/article/article-card-compact.vue'
 
 const props = defineProps({
@@ -29,11 +28,10 @@ const props = defineProps({
   },
 })
 
-const mainStore = useMainStore()
+const { categories, articlesMetadata } = await useArticlesMetadata()
 const { data: articles } = await useAsyncData(
   `ArticlesSelect_${props.category}`,
   () => {
-    const { categories, articlesMetadata } = mainStore
     const { count } =
       props.category === 'all' ? articlesMetadata : categories[props.category]
     let query = queryContent('articles')

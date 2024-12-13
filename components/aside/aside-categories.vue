@@ -23,13 +23,10 @@
 </template>
 
 <script setup>
-import { useMainStore } from '~/store'
-
 const { categoriesMap } = useRuntimeConfig().public
 import { getCategoryLink } from '~/utils/getLink'
 
-const mainStore = useMainStore()
-const { categories } = mainStore
+const { categories } = await useArticlesMetadata()
 </script>
 
 <style lang="scss" module>

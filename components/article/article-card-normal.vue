@@ -1,7 +1,9 @@
 <template>
   <ArticleCardWrapper
-    class="d-flex flex-column flex-lg-row p-3 p-lg-4"
+    class="d-flex flex-column flex-lg-row"
+    :class="container ? `p-3 p-lg-4` : ``"
     :article="article"
+    :container="container"
   >
     <InterfaceImg
       :class="$style.img"
@@ -39,6 +41,10 @@ const props = defineProps({
   article: {
     type: Object,
     default: null,
+  },
+  container: {
+    type: Boolean,
+    default: true,
   },
 })
 </script>
