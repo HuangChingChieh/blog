@@ -16,41 +16,41 @@
             :class="$style.input"
             @input="keywordChanged"
           />
-          <InterfaceButton variant="primary" type="submit">
+          <InterfaceButton variant="primary" type="submit" :disabled="!keyword">
             <InterfaceIcon icon="search" />
           </InterfaceButton>
         </fieldset>
       </form>
 
       <div class="mt-2" :class="$style.results">
-        <button
-          v-for="(match, name) in matchesMap"
-          :key="name"
-          type="button"
-          class="btn btn-sm rounded-pill me-1 mt-1"
-          :class="name === theMatch ? `btn-primary` : `btn-outline-secondary`"
-          @click="changeTheMatch(name)"
-        >
-          {{ name }}
-        </button>
+        <div v-if="searched">
+          <button
+            v-for="(match, name) in matchesMap"
+            :key="name"
+            type="button"
+            class="btn btn-sm rounded-pill me-1 mt-1"
+            :class="name === theMatch ? `btn-primary` : `btn-outline-secondary`"
+            @click="changeTheMatch(name)"
+          >
+            {{ name }}
+          </button>
 
-        <div v-for="article in articles" :key="article.slug">
-          <hr class="my-3" />
-          <ArticleCardNormal
-            :key="article.slug"
-            :article="article"
-            :container="false"
-            @click="model = false"
-          />
+          <div v-for="article in articles" :key="article.slug">
+            <hr class="my-3" />
+            <ArticleCardNormal
+              :key="article.slug"
+              :article="article"
+              :container="false"
+              @click="model = false"
+            />
+          </div>
         </div>
 
         <div
-          v-if="searching || hasNoSearchResult"
+          v-if="hasNoSearchResult"
           class="text-center h-100 d-flex align-items-center justify-content-center"
         >
-          {{
-            searching ? '搜尋中' : hasNoSearchResult ? '哎呀～找不到文章' : ''
-          }}
+          {{ '哎呀～找不到文章' }}
         </div>
       </div>
     </div>
@@ -69,18 +69,21 @@ const model = defineModel({
 
 const keyword = ref('')
 const theMatch = ref('')
+const searched = ref(false)
 
 const hasNoSearchResult = computed(
   () =>
-    Object.keys(unref(matchesMap)).length === 0 && unref(articles).length === 0
+    Object.keys(unref(matchesMap)).length === 0 &&
+    unref(articles).length === 0 &&
+    searched.value
 )
 
 const keywordChanged = () => {}
 
 const reset = () => {
   keyword.value = ''
-  matchesMap.value = {}
   theMatch.value = ''
+  searched.value = false
 }
 
 const {
@@ -113,19 +116,17 @@ const {
   { lazy: true, server: false, default: () => ({}) }
 )
 
-const searching = computed(
-  () =>
-    searchStatus.value === 'pending' || getArticlesStatus.value === 'pending'
-)
+const searching = computed(() => searchStatus.value === 'pending')
 
 const startSearch = async () => {
   await search()
   theMatch.value = Object.keys(matchesMap.value)[0]
+  searched.value = true
 }
 
 const matchArticlesMap = {}
 
-const { data: articles, status: getArticlesStatus } = await useAsyncData(
+const { data: articles } = await useAsyncData(
   `search_articles_by_match`,
   async () => {
     const theMatchValue = theMatch.value
