@@ -1,0 +1,1 @@
+{"title":"使用nuxt-content-git取得Nuxt2 Content中正確的檔案時間","description":"建完這個部落格之後，發現好像不太對，怎麼前幾天發的文章，日期卻變成今天。後來發現是因為若從 A 電腦更新文章，在 B 電腦用 git 同步更新檔案之後，檔案的更新日期會變成當下的時間。","img":"924/WCeWkF.jpg","readingTime":{"text":"2 min read","minutes":1.55,"time":93000,"words":310},"createdAt":"2023-01-06T13:35:19.000Z","updatedAt":"2023-10-30T09:24:31.000Z","slug":"nuxt2_content_git"}

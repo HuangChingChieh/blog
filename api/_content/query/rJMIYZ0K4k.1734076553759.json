@@ -1,0 +1,1 @@
+{"title":"調整Fedora中的ZRAM大小","description":"這篇是在 Fedora 環境中編譯 LineageOS時，嘗試複製在 Ubuntu 中可透過增加 SWAP 來補足記憶體不足的作法。後來發現即便把 ZRAM 增大也會編譯失敗，就很乾脆擴充實體 RAM，本篇就當個紀錄這樣。","img":"924/Rj6CAF.jpg","readingTime":{"text":"2 min read","minutes":1.23,"time":73800,"words":246},"createdAt":"2023-04-08T08:01:46.000Z","updatedAt":"2024-01-24T07:26:04.000Z","slug":"fedora_zram_resize"}

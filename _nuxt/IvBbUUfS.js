@@ -1,1 +1,0 @@
-import{o as a,h as s,a as t,_ as o,r as l}from"./Jd92928_.js";const r={class:"article-note small px-3 py-2 rounded align-middle shadow-sm"},d={__name:"article-note",setup(c){return(e,n)=>(a(),s("p",r,[t(o,{icon:"lightbulb",class:"me-1"}),l(e.$slots,"default")]))}};export{d as default};
