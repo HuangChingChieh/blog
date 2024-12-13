@@ -116,7 +116,7 @@ breakfast sargo
 
 執行指令後，會開始取得 LineageOS 原始碼庫中有關 Pixel 3a 的部份，最後應該會收到錯誤訊息：
 
-```plaintext
+```console
 ** Don't have a product spec for: 'lineage_sargo'
 ** Do you have the right repo manifest?
 ```

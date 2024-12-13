@@ -196,6 +196,19 @@ export default defineNuxtConfig({
     highlight: {
       // Theme used in all color schemes.
       theme: 'github-dark',
+      langs: [
+        'bash',
+        'ini',
+        'html',
+        'vue',
+        'scss',
+        'javascript',
+        'xml',
+        'console',
+        'json',
+        'ts',
+        'markdown',
+      ],
     },
     markdown: {
       anchorLinks: false,
