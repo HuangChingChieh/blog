@@ -140,16 +140,18 @@ const { data: articles, status: getArticlesStatus } = await useAsyncData(
       (match) => match !== 'articles'
     )
 
-    const articles = await Promise.all(slugs.map((slug) => useArticle(slug)))
-    const articlesValue = articles.map(({ data }) => data.value)
-    articlesValue.sort(({ slug: slugA }, { slug: slugB }) =>
+    const articles = await Promise.all(
+      slugs.map((slug) => useArticleCard(slug))
+    )
+    // const articlesValue = articles.map(({ data }) => data.value)
+    articles.sort(({ slug: slugA }, { slug: slugB }) =>
       theMatchMap[slugA] > theMatchMap[slugB] ? -1 : 1
     )
 
     if (!matchArticlesMap[theMatchValue]) matchArticlesMap[theMatchValue] = {}
-    matchArticlesMap[theMatchValue].articles = articlesValue
+    matchArticlesMap[theMatchValue].articles = articles
 
-    return articlesValue
+    return articles
   },
   {
     watch: [theMatch],
