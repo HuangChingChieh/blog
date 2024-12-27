@@ -3,6 +3,8 @@
 
 ###
 # .gitignore content is duplicated here due to https://github.com/prettier/prettier/issues/8506
+.gitignore
+.prettierignore
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
@@ -94,3 +96,6 @@ sw.*
 
 # Vim swap files
 *.swp
+
+static/
+.husky

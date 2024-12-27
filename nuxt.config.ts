@@ -63,9 +63,10 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
     '@nuxt/content',
     '@nuxtjs/sitemap',
-    '@pinia/nuxt',
     // // https://go.nuxtjs.dev/stylelint
     // '@nuxtjs/stylelint-module',
+    '@pinia/nuxt',
+    '@nuxt/eslint',
   ],
 
   runtimeConfig: {
