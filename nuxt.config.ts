@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config'
+import Aura from '@primevue/themes/aura'
 
 const perPage = 10
 const base = '/blog/'
@@ -67,6 +68,8 @@ export default defineNuxtConfig({
     // '@nuxtjs/stylelint-module',
     '@pinia/nuxt',
     '@nuxt/eslint',
+    '@primevue/nuxt-module',
+    '@nuxtjs/tailwindcss',
   ],
 
   runtimeConfig: {
@@ -273,6 +276,17 @@ export default defineNuxtConfig({
           purpose: 'maskable',
         },
       ],
+    },
+  },
+
+  primevue: {
+    options: {
+      theme: {
+        preset: Aura,
+      },
+    },
+    components: {
+      prefix: 'P',
     },
   },
 
