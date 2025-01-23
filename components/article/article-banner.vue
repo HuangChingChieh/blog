@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative">
+  <div class="relative">
     <InterfaceImg
       :img="img"
       :img-class="imgClass"

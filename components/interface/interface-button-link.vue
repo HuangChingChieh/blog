@@ -1,17 +1,19 @@
 <template>
-  <NuxtLink
-    :class="btnClass"
-    class="btn"
+  <PButton
+    as="nuxt-link"
     :to="to"
+    :size="size"
+    :variant="variant"
+    :disabled="disabled"
+    :rounded="rounded"
+    :severity="severity"
   >
     <slot />
-  </NuxtLink>
+  </PButton>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   variant: {
     type: String,
     default: '',
@@ -28,20 +30,13 @@ const props = defineProps({
     type: [String, Object],
     default: '',
   },
-})
-
-const btnClass = computed(() => {
-  const btnClass = []
-
-  const { variant, size } = props
-  if (variant) {
-    btnClass.push(`btn-${variant}`)
-  }
-
-  if (size) {
-    btnClass.push(`btn-${size}`)
-  }
-
-  return btnClass
+  rounded: {
+    type: Boolean,
+    default: false,
+  },
+  severity: {
+    type: String,
+    default: '',
+  },
 })
 </script>

@@ -1,16 +1,11 @@
 <template>
-  <component
-    :is="tag"
-    :class="`container-${mobileBreakpoint}`"
-  >
+  <component :is="tag" class="md:container mx-auto px-normal">
     <slot />
   </component>
 </template>
 
 <script setup>
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
-
-const props = defineProps({
+defineProps({
   tag: {
     type: String,
     default: 'div',

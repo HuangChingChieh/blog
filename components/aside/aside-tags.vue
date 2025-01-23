@@ -5,9 +5,11 @@
         v-for="tag in tags"
         :key="tag.name"
         :to="{ path: '/buy_me_a_tea', hash: '#關於我' }"
-        variant="outline-primary"
-        size="sm"
-        class="rounded-pill mb-2 me-2"
+        variant="outlined"
+        severity="primary"
+        size="small"
+        class="mb-2 me-2"
+        rounded
       >
         {{ tag.name }}
       </InterfaceButtonLink>

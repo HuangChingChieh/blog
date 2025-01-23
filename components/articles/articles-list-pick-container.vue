@@ -1,19 +1,19 @@
 <template>
-  <div class="d-flex flex-column">
-    <h5 v-if="title" class="mb-0">
-      <div class="d-inline-block">
+  <div class="flex flex-col">
+    <h5 v-if="title" class="mb-0 text-xl">
+      <div class="inline-block">
         {{ title }}
-        <div class="w-50 border-bottom border-primary border-2 mt-2" />
+        <div class="w-1/2 border-b-2 border-primary-500 mt-2" />
       </div>
     </h5>
-    <div :class="title ? `mt-4` : ``" class="flex-grow-1">
+    <div :class="title ? `mt-4` : ``" class="grow">
       <slot />
     </div>
   </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: '',

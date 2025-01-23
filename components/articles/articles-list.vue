@@ -1,11 +1,10 @@
 <template>
-  <div>
+  <div class="grid grid-cols-1 gap-normal">
     <component
       :is="cardComponent"
       v-for="(article, index) in articles"
       :key="index"
       :article="article"
-      class="mb-4"
       :preload-img="index <= 4"
     />
   </div>
@@ -13,7 +12,7 @@
 
 <script setup>
 import ArticleCardNormal from '~/components/article/article-card-normal.vue'
-const props = defineProps({
+defineProps({
   articles: {
     type: Array,
     default: () => [],

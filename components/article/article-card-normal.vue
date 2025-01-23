@@ -1,34 +1,31 @@
 <template>
   <ArticleCardWrapper
-    class="d-flex flex-column flex-lg-row"
-    :class="container ? `p-3 p-lg-4` : ``"
+    class="flex flex-col lg:flex-row bg-background dark:bg-background-dark"
+    :class="container ? `p-4 lg:p-6` : ``"
     :article="article"
     :container="container"
   >
     <InterfaceImg
       :class="$style.img"
       :img="article.img"
-      class="me-lg-3 rounded"
+      class="lg:me-4 rounded"
       :img-class="[`rounded`, $style.img]"
     />
 
-    <div class="d-flex flex-column flex-grow-1">
-      <ArticleCardTitle class="mt-2 pt-1 pt-lg-0 mt-lg-0 mb-2 mb-lg-3">
+    <div class="flex flex-col grow">
+      <ArticleCardTitle class="mt-2 pt-1 lg:pt-0 lg:mt-0 mb-2 lg:mb-lg-4">
         {{ article.title }}
       </ArticleCardTitle>
 
       <ArticleCardDescription
         :description="article.description"
-        class="mb-0"
-        text-line="3"
+        class="mb-0 line-clamp-3"
       />
 
-      <div
-        class="d-flex flex-row flex-grow-1 align-items-end justify-content-end mt-2 mt-lg-0"
-      >
+      <div class="flex flex-row grow items-end justify-end mt-2 lg:mt-0">
         <ArticleReadingtime
           :minutes="article.readingTime.minutes"
-          class="me-4"
+          class="me-6"
         />
         <ArticleDate :document="article" />
       </div>
@@ -37,7 +34,7 @@
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   article: {
     type: Object,
     default: null,

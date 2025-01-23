@@ -1,16 +1,16 @@
 <template>
-  <div
-    class="shadow-sm rounded bg-foreground p-3 p-lg-4 border-top border-primary border-5"
+  <CommonWrapper
+    class="shadow-sm rounded p-4 lg:p-6 border-t-4 border-primary-500"
   >
     <AsideTitle v-if="title">
       {{ title }}
     </AsideTitle>
     <slot />
-  </div>
+  </CommonWrapper>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     default: '',

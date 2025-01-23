@@ -1,42 +1,20 @@
 <template>
-  <ClientOnly>
-    <Teleport to="body">
-      <div
-        ref="modal"
-        class="modal fade"
-        tabindex="-1"
-        aria-hidden="true"
-        :class="modalClass"
-      >
-        <div
-          class="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-          :class="size ? `modal-${size}` : ``"
-        >
-          <div class="modal-content">
-            <div class="modal-header">
-              <div class="modal-title h5">
-                {{ title }}
-              </div>
-              <button
-                type="button"
-                class="btn-close"
-                aria-label="關閉"
-                @click="model = false"
-              />
-            </div>
-            <div class="modal-body">
-              <slot />
-            </div>
-          </div>
-        </div>
-      </div>
-    </Teleport>
-  </ClientOnly>
+  <PDialog
+    v-model:visible="model"
+    modal
+    :header="title"
+    :style="style"
+    :draggable="false"
+    class="mx-normal"
+    @after-hide="emit('hidden')"
+    @hide="emit('hide')"
+    @show="emit('show')"
+  >
+    <slot />
+  </PDialog>
 </template>
 
 <script setup>
-import { onBeforeUnmount, onMounted, watch } from 'vue'
-
 const props = defineProps({
   title: {
     type: String,
@@ -44,11 +22,7 @@ const props = defineProps({
   },
   size: {
     type: String,
-    default: '',
-  },
-  modalClass: {
-    type: [String, Array],
-    default: '',
+    default: 'md',
   },
 })
 
@@ -57,49 +31,12 @@ const model = defineModel({
   default: false,
 })
 
-const modal = ref(null)
+const emit = defineEmits(['hide', 'hidden', 'show'])
 
-let modalInstance = null
-let Modal = null
-
-watch(model, (value) => {
-  if (modalInstance && Modal && modalInstance instanceof Modal) {
-    value ? modalInstance.show() : modalInstance.hide()
-  }
-})
-
-onBeforeUnmount(() => {
-  if (modalInstance && Modal && modalInstance instanceof Modal) {
-    modalInstance.dispose()
-  }
-})
-
-const emit = defineEmits(['hide', 'hidden', 'show', 'shown'])
-
-onMounted(() => {
-  nextTick(async () => {
-    const modalModuule = await import(`bootstrap/js/dist/modal`)
-    Modal = modalModuule.default
-
-    modalInstance = new Modal(modal.value)
-
-    modal.value.addEventListener('hide.bs.modal', () => {
-      model.value = false
-      emit('hide')
-    })
-
-    modal.value.addEventListener('hidden.bs.modal', () => {
-      emit('hidden')
-    })
-
-    modal.value.addEventListener('show.bs.modal', () => {
-      model.value = true
-      emit('show')
-    })
-
-    modal.value.addEventListener('shown.bs.modal', () => {
-      emit('shown')
-    })
-  })
+// 參考BootStrap
+const sizes = { sm: '300px', md: '500px', lg: '800px', xl: '1140px' }
+const style = computed(() => {
+  const width = sizes[props.size]
+  return { width }
 })
 </script>

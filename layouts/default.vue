@@ -1,22 +1,17 @@
 <template>
-  <div ref="scrollDetect" class="d-none d-lg-block" />
+  <div ref="scrollDetect" class="hidden lg:block" />
   <CommonHeader :shrink="!scrollDetectVisible" />
 
-  <div class="mt-0 mt-lg-4" :class="$style.container">
-    <InterfaceContainer tag="main" class="py-4">
+  <div class="mt-0 lg:mt-6" :class="$style.container">
+    <InterfaceContainer tag="main" class="py-normal">
       <slot />
     </InterfaceContainer>
   </div>
 
-  <CommonFooter class="mt-4" />
+  <CommonFooter class="mt-6" />
 </template>
 
 <script setup>
-import InterfaceContainer from '~/components/interface/interface-container.vue'
-
-import CommonHeader from '~/components/common/common-header.vue'
-import CommonFooter from '~/components/common/common-footer.vue'
-
 import { useElementVisibility } from '@vueuse/core'
 
 const scrollDetect = ref(null)

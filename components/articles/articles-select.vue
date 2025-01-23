@@ -1,5 +1,5 @@
 <template>
-  <div :class="$style.grid">
+  <div class="grid grid-rows-3 grid-cols-1 gap-6">
     <component
       :is="cardComponent"
       v-for="article in articles"
@@ -56,15 +56,6 @@ const { data: articles } = await useAsyncData(
       .skip(Math.floor(count / 2))
       .limit(3)
       .find()
-  }
+  },
 )
 </script>
-
-<style lang="scss" module>
-.grid {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  grid-template-columns: 1fr;
-  gap: 1.5rem;
-}
-</style>

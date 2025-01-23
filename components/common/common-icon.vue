@@ -3,23 +3,18 @@
     :src="src"
     :height="height"
     :width="height"
-    class="common-icon rounded-circle shadow-sm"
-    :class="{ bordered, [$style.bordered]: bordered }"
-  >
+    class="common-icon rounded-full shadow-sm"
+    :class="bordered ? ` border-[3px] border-white` : ``"
+  />
 </template>
 
-<script>
-const sizes = [64, 192, 512]
-export default {}
-</script>
-
 <script setup>
-import { computed } from 'vue'
+const sizes = [64, 192, 512]
 
 const props = defineProps({
   height: {
     type: [String, Number],
-    default: sizes[0],
+    default: 64,
   },
   bordered: {
     type: Boolean,
@@ -35,9 +30,3 @@ const src = computed(() => {
   return `${base}pwa-${theSize}x${theSize}.png`
 })
 </script>
-
-<style lang="scss" module>
-.bordered {
-  border: 3px solid $white;
-}
-</style>

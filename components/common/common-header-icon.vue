@@ -1,12 +1,9 @@
 <template>
   <InterfaceButton
     variant="link"
-    class="d-flex align-items-center text-decoration-none ms-3 ms-lg-4"
+    class="flex items-center no-decoration ms-4 lg:ms-normal"
   >
-    <InterfaceIcon
-      :icon="icon"
-      class="h5 mb-0 d-flex"
-    />
+    <InterfaceIcon :icon="icon" class="text-xl mb-0 flex" />
 
     <span class="ps-1">
       <slot />
@@ -15,10 +12,7 @@
 </template>
 
 <script setup>
-import InterfaceButton from '~/components/interface/interface-button.vue'
-import InterfaceIcon from '~/components/interface/interface-icon.vue'
-
-const props = defineProps({
+defineProps({
   icon: {
     type: String,
     default: '',

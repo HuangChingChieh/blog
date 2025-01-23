@@ -1,28 +1,29 @@
 <template>
-  <header
+  <CommonWrapper
+    tag="header"
     :class="[$style.header, shrink ? $style.shrink : '']"
-    class="border-bottom border-primary border-2 position-fixed shadow-sm bg-foreground w-100"
+    class="border-b-2 border-primary-500 fixed shadow-sm w-full"
   >
     <InterfaceContainer
       :class="$style.container"
-      class="d-flex flex-row align-items-center"
+      class="flex flex-row items-center"
     >
       <CommonIcon bordered :class="$style.logo" />
-      <div class="ms-3 flex-grow-1">
-        <NuxtLink class="fw-bold text-body d-block text-decoration-none" to="/">
+      <div class="ms-4 grow">
+        <NuxtLink class="font-bold block no-underline" to="/">
           隨機手札
         </NuxtLink>
         <small class="text-muted" :class="$style.hint">雜七雜八之地</small>
       </div>
 
-      <div class="d-flex align-items-center justify-content-end">
-        <HeaderIconCategories icon-class="d-flex p-0" show-text />
-        <HeaderIconToc icon-class="d-flex p-0" />
-        <HeaderIconTheme icon-class="d-flex p-0" />
-        <HeaderIconSearch icon-class="d-flex p-0" />
+      <div class="flex items-center justify-end">
+        <HeaderIconCategories icon-class="flex p-0" show-text />
+        <HeaderIconToc icon-class="flex p-0" />
+        <HeaderIconTheme icon-class="flex p-0" />
+        <HeaderIconSearch icon-class="flex p-0" />
       </div>
     </InterfaceContainer>
-  </header>
+  </CommonWrapper>
 </template>
 
 <script setup>
@@ -33,8 +34,6 @@ import HeaderIconToc from '~/components/header/header-icon-toc.vue'
 import HeaderIconSearch from '~/components/header/header-icon-search.vue'
 import HeaderIconCategories from '~/components/header/header-icon-categories.vue'
 import HeaderIconTheme from '~/components/header/header-icon-theme.vue'
-
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
 
 defineProps({
   /**
@@ -72,12 +71,15 @@ $transition-funciton: ease;
 }
 
 .logo {
-  transition: height 0.15s $transition-funciton, width 0.15 $transition-funciton;
+  transition:
+    height 0.15s $transition-funciton,
+    width 0.15 $transition-funciton;
 }
 
 .header,
 .container {
-  transition: padding-top 0.15s $transition-funciton,
+  transition:
+    padding-top 0.15s $transition-funciton,
     padding-bottom 0.15s $transition-funciton;
 }
 

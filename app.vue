@@ -12,25 +12,23 @@
   </ClientOnly>
 </template>
 
-<script>
-import { useThemeStore } from '~/store/theme'
+<script setup>
+import { useThemeStore } from './store/theme'
 
-export default defineNuxtComponent({
-  async setup() {
-    // Theme相關
-    const themeStore = useThemeStore()
-    const dataBsTheme = computed(() =>
-      themeStore.darkComputed ? 'dark' : 'light'
-    )
-    onMounted(() => {
-      themeStore.init()
-    })
+// Theme相關
+const themeStore = useThemeStore()
+const dataBsTheme = computed(() => (themeStore.darkComputed ? 'dark' : 'light'))
+onMounted(() => {
+  themeStore.init()
+})
 
-    useHead({
-      htmlAttrs: {
-        'data-bs-theme': dataBsTheme,
-      },
-    })
+useHead({
+  htmlAttrs: {
+    'data-bs-theme': dataBsTheme,
+  },
+  bodyAttrs: {
+    class:
+      'bg-background lg:bg-foreground dark:bg-background-dark dark:lg:bg-foreground-dark',
   },
 })
 </script>

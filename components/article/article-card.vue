@@ -1,6 +1,6 @@
 <template>
   <ArticleCardWrapper
-    class="d-flex flex-column"
+    class="flex flex-col bg-background dark:bg-background-dark"
     :class="$style.card"
     :article="article"
   >
@@ -13,19 +13,22 @@
       :img-class="$style.img"
     />
 
-    <div class="d-flex flex-column flex-grow-1 px-3 py-3">
+    <div class="flex flex-col grow px-4 py-4">
       <div :class="$style.content">
         <ArticleCardTitle>
           {{ article.title }}
         </ArticleCardTitle>
 
-        <ArticleCardDescription :description="article.description" />
+        <ArticleCardDescription
+          :description="article.description"
+          class="line-clamp-2"
+        />
       </div>
 
-      <div class="d-flex flex-row justify-content-end align-items-center mt-3">
+      <div class="flex flex-row justify-end items-center mt-4">
         <ArticleReadingtime
           :minutes="article.readingTime.minutes"
-          class="me-4"
+          class="me-6"
         />
         <ArticleDate :document="article" />
       </div>
@@ -38,11 +41,10 @@ import ArticleCardTitle from '~/components/article/article-card-title.vue'
 import ArticleBanner from '~/components/article/article-banner.vue'
 import ArticleDate from '~/components/article/article-date.vue'
 import ArticleReadingtime from '~/components/article/article-readingtime.vue'
-import ArticleCategory from '~/components/article/article-category.vue'
 
 import getImgSizes from '~/utils/getImgSizes'
 
-const props = defineProps({
+defineProps({
   article: {
     type: Object,
     default: () => ({}),
@@ -53,7 +55,7 @@ const props = defineProps({
   },
 })
 
-const bannerSizes = getImgSizes(({ containerMaxWidth, isMobile }) => {
+const bannerSizes = getImgSizes(({ containerMaxWidth }) => {
   let imageWidth = containerMaxWidth
 
   const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')

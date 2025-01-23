@@ -1,8 +1,5 @@
 <template>
-  <span
-    v-if="minutes"
-    class="text-muted small d-inline-flex align-items-center"
-  >
+  <span v-if="minutes" class="text-muted inline-flex items-center text-sm">
     <InterfaceIcon class="me-1" icon="clock" />
     <span>{{ minText }}</span>
   </span>

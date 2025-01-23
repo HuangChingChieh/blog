@@ -1,66 +1,45 @@
 <template>
-  <InterfaceCol cols="12">
-    <InterfaceRow>
-      <InterfaceCol
-        cols="12"
-        lg="7"
-        xl="8"
-        :class="reverseOrderWhenMobile ? `order-2 order-lg-1 mt-5 mt-lg-0` : `order-1`"
-      >
-        <slot />
-      </InterfaceCol>
+  <div class="grid grid grid-cols-1 lg:grid-cols-12 lg:gap-normal">
+    <div
+      class="lg:col-span-7 xl:col-span-8"
+      :class="
+        reverseOrderWhenMobile ? `order-2 lg:order-1 mt-12 lg:mt-0` : `order-1`
+      "
+    >
+      <slot />
+    </div>
 
-      <InterfaceCol
-        cols="12"
-        lg="5"
-        xl="4"
-        :class="reverseOrderWhenMobile ? `order-1 order-lg-2` : `order-2 mt-5 mt-lg-0`"
-      >
-        <InterfaceRow>
-          <InterfaceCol
-            cols="12"
-            class="mb-4"
-          >
-            <ArticlesListPickContainer title="關於隨機手札與我">
-              <AsideAboutMe />
-            </ArticlesListPickContainer>
-          </InterfaceCol>
+    <div
+      class="lg:col-span-5 xl:col-span-4 flex flex-col gap-normal"
+      :class="
+        reverseOrderWhenMobile ? `order-1 lg:order-2` : `order-2 mt-12 lg:mt-0`
+      "
+    >
+      <ArticlesListPickContainer title="關於隨機手札與我">
+        <AsideAboutMe />
+      </ArticlesListPickContainer>
 
-          <InterfaceCol
-            cols="12"
-            class="mb-4"
-          >
-            <AsideCategories />
-          </InterfaceCol>
+      <AsideCategories />
 
-          <InterfaceCol
-            cols="12"
-            class="mb-4"
-          >
-            <AsideTags />
-          </InterfaceCol>
+      <AsideTags />
 
-          <InterfaceCol cols="12">
-            <AsideSelect
-              :category="category"
-              :not-in-articles="selectNotInArticles"
-            />
-          </InterfaceCol>
-        </InterfaceRow>
-      </InterfaceCol>
-    </InterfaceRow>
-  </InterfaceCol>
+      <AsideSelect
+        :category="category"
+        :not-in-articles="selectNotInArticles"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   reverseOrderWhenMobile: {
     type: Boolean,
     default: false,
   },
   category: {
     type: String,
-    default: 'all'
+    default: 'all',
   },
   selectNotInArticles: {
     type: Array,

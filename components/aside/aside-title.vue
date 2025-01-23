@@ -1,5 +1,5 @@
 <template>
-  <div class="h5 mb-3 mb-lg-4 text-center">
+  <div class="text-xl mb-4 lg:mb-6 text-center">
     <slot />
   </div>
 </template>

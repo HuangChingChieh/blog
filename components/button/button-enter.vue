@@ -3,22 +3,17 @@
     :size="size"
     variant="primary"
     :to="to"
-    class="d-inline-flex flex-row align-items-center"
     :class="$style.btn"
   >
-    <slot />
-    <InterfaceIcon
-      icon="arrow-right"
-      :class="$style.icon"
-    />
+    <span class="inline-flex flex-row items-center">
+      <slot />
+      <InterfaceIcon icon="arrow-right" :class="$style.icon" />
+    </span>
   </InterfaceButtonLink>
 </template>
 
 <script setup>
-import InterfaceButtonLink from '~/components/interface/interface-button-link.vue'
-import InterfaceIcon from '~/components/interface/interface-icon.vue'
-
-const props = defineProps({
+defineProps({
   to: {
     type: [String, Object],
     default: '',

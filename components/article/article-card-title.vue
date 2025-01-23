@@ -1,11 +1,11 @@
 <template>
-  <h4 :class="[$style.title, `text-line-${line}`]">
+  <h4 :class="[$style.title, `line-clamp-${line}`]">
     <slot />
   </h4>
 </template>
 
 <script setup>
-const props = defineProps({
+defineProps({
   line: {
     type: [String, Number],
     default: '2',

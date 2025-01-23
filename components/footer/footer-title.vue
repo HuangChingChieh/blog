@@ -1,5 +1,5 @@
 <template>
-  <div class="fw-bold mb-2 d-flex align-items-center h6 text-primary">
+  <div class="font-bold mb-2 flex items-center text-primary-500">
     <slot />
   </div>
 </template>

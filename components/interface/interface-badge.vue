@@ -1,5 +1,5 @@
 <template>
-  <span class="badge bg-secondary text-bg-secondary">
+  <Badge severity="primary">
     <slot />
-  </span>
+  </Badge>
 </template>

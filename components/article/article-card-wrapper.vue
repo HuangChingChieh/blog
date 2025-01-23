@@ -1,15 +1,20 @@
 <template>
-  <NuxtLink
+  <component
+    :is="container ? CommonWrapper : NuxtLink"
     v-if="article"
+    :tag="container ? NuxtLink : null"
     :to="getArticleLink(article)"
     :class="styles"
-    class="text-decoration-none rounded"
+    class="no-decoration rounded"
   >
     <slot />
-  </NuxtLink>
+  </component>
 </template>
 
 <script setup>
+const CommonWrapper = resolveComponent('CommonWrapper')
+const NuxtLink = resolveComponent('NuxtLink')
+
 const props = defineProps({
   article: {
     type: Object,
@@ -40,7 +45,9 @@ const styles = computed(() => {
 <style lang="scss" module>
 .card {
   &.container {
-    transition: $btn-transition, transform 0.15s ease-in-out;
+    transition:
+      $btn-transition,
+      transform 0.15s ease-in-out;
     box-shadow: $box-shadow-sm;
 
     &:hover,
