@@ -1,5 +1,5 @@
 <template>
-  <p class="text-muted" :title="description">
+  <p class="text-muted line-clamp-3 h-[4.5rem]" :title="description">
     {{ description }}
   </p>
 </template>
@@ -9,10 +9,6 @@ defineProps({
   description: {
     type: String,
     default: '',
-  },
-  textLine: {
-    type: [String, Number],
-    default: 2,
   },
 })
 </script>

@@ -17,10 +17,7 @@
         {{ article.title }}
       </ArticleCardTitle>
 
-      <ArticleCardDescription
-        :description="article.description"
-        class="mb-0 line-clamp-3"
-      />
+      <ArticleCardDescription :description="article.description" />
 
       <div class="flex flex-row grow items-end justify-end mt-2 lg:mt-0">
         <ArticleReadingtime

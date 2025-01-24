@@ -1,12 +1,10 @@
 <template>
-  <div class="relative">
-    <InterfaceImg
-      :img="img"
-      :img-class="imgClass"
-      :sizes="sizes"
-      :preload="preload"
-    />
-  </div>
+  <InterfaceImg
+    :img="img"
+    :img-class="imgClass"
+    :sizes="sizes"
+    :preload="preload"
+  />
 </template>
 
 <script>

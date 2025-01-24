@@ -1,18 +1,6 @@
 @import 'custom.module';
 @import 'icon';
 
-body {
-  background-color: var(--bs-body-bg);
-
-  @media #{$break-mobile} {
-    background-color: var(--bs-secondary-bg);
-  }
-
-  [data-bs-theme='light'] & {
-    background-color: var(--bs-secondary-bg);
-  }
-}
-
 ol,
 ul,
 dl {
@@ -22,68 +10,3 @@ dl {
 img {
   object-fit: cover;
 }
-
-hr {
-  display: block;
-  border-bottom: 0;
-  border-right: 0;
-  border-left: 0;
-  margin: $paragraph-margin-bottom * 3 auto;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.modal-content {
-  box-shadow: $box-shadow;
-}
-
-.modal-header ~ .modal-body {
-  padding-top: 0;
-}
-
-@mixin line-clamp-base {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-}
-
-.text-line-1 {
-  @include line-clamp-base();
-  -webkit-line-clamp: 1;
-}
-
-.text-line-2 {
-  @include line-clamp-base();
-  -webkit-line-clamp: 2;
-}
-
-.text-line-3 {
-  @include line-clamp-base();
-  -webkit-line-clamp: 3;
-}
-
-.container-#{$mobile-breakpoint} {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-
-  @media #{$break-mobile} {
-    padding-left: 0rem;
-    padding-right: 0rem;
-  }
-}
-
-/* bg */
-// .bg-foreground {
-//   background-color: var(--bs-secondary-bg);
-
-//   @media #{$break-mobile} {
-//     background-color: var(--bs-body-bg);
-//   }
-
-//   [data-bs-theme='light'] & {
-//     background-color: var(--bs-body-bg);
-//   }
-// }

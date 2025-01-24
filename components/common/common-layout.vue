@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid grid-cols-1 lg:grid-cols-12 lg:gap-normal">
+  <div class="grid grid-cols-1 lg:grid-cols-12 lg:gap-normal">
     <div
       class="lg:col-span-7 xl:col-span-8"
       :class="

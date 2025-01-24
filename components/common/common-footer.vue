@@ -1,6 +1,8 @@
 <template>
   <CommonWrapper tag="footer" class="py-4 lg:py-12">
-    <InterfaceContainer class="grid grid-cols-1 md:grid-cols-3 gap-normal">
+    <InterfaceContainer
+      class="grid grid-cols-1 md:grid-cols-3 gap-y-normal gap-x-12"
+    >
       <FooterBlock
         title="關於我"
         :title-to="{ path: '/buy_me_a_tea', hash: '#關於我' }"

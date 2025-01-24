@@ -19,6 +19,12 @@ export default {
       spacing: {
         normal: '24px',
       },
+      transitionProperty: {
+        'article-card': 'box-shadow, transform',
+      },
+      scale: {
+        'article-card': '1.025',
+      },
     },
   },
 }

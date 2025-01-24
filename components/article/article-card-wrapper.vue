@@ -4,8 +4,8 @@
     v-if="article"
     :tag="container ? NuxtLink : null"
     :to="getArticleLink(article)"
-    :class="styles"
-    class="no-decoration rounded"
+    :class="containerStyles"
+    class="no-decoration rounded transition-article-card ease-in-out"
   >
     <slot />
   </component>
@@ -29,32 +29,13 @@ const props = defineProps({
   },
 })
 
-const $style = useCssModule()
-
-const styles = computed(() => {
-  const styles = [$style.card]
-  if (props.container) {
-    styles.push($style.container)
-    styles.push('bg-foreground')
-  }
-
-  return styles
-})
+const containerStyles = computed(() =>
+  props.container
+    ? [
+        'bg-foreground',
+        'shadow-sm hover:shadow active:shadow ',
+        'hover:scale-article-card active:scale-article-card',
+      ]
+    : '',
+)
 </script>
-
-<style lang="scss" module>
-.card {
-  &.container {
-    transition:
-      $btn-transition,
-      transform 0.15s ease-in-out;
-    box-shadow: $box-shadow-sm;
-
-    &:hover,
-    &:active {
-      box-shadow: $box-shadow;
-      transform: scale(1.025);
-    }
-  }
-}
-</style>

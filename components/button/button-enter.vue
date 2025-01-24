@@ -1,13 +1,11 @@
 <template>
-  <InterfaceButtonLink
-    :size="size"
-    variant="primary"
-    :to="to"
-    :class="$style.btn"
-  >
+  <InterfaceButtonLink :size="size" variant="primary" :to="to" class="group">
     <span class="inline-flex flex-row items-center">
       <slot />
-      <InterfaceIcon icon="arrow-right" :class="$style.icon" />
+      <InterfaceIcon
+        icon="arrow-right"
+        class="overflow-hidden w-0 group-hover:w-5 transition-[width]"
+      />
     </span>
   </InterfaceButtonLink>
 </template>
@@ -24,18 +22,3 @@ defineProps({
   },
 })
 </script>
-
-<style lang="scss" module>
-.btn {
-  .icon {
-    width: 0;
-    font-size: inherit;
-    overflow: hidden;
-    transition: $transition-collapse-width;
-  }
-
-  &:hover .icon {
-    width: 1.25rem;
-  }
-}
-</style>

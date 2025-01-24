@@ -53,8 +53,6 @@
 </template>
 
 <script setup>
-import ArticleCard from '~/components/article/article-card.vue'
-
 const { appHost, description, categoriesMap } = useRuntimeConfig().public
 
 const { data: articlesFrontend } = await useArticlesByPageAndCategoryAsync({

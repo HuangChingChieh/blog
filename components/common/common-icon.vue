@@ -3,7 +3,7 @@
     :src="src"
     :height="height"
     :width="height"
-    class="common-icon rounded-full shadow-sm"
+    class="rounded-full shadow-sm"
     :class="bordered ? ` border-[3px] border-white` : ``"
   />
 </template>

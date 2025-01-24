@@ -5,8 +5,7 @@
         <li
           v-for="(cate, key) in categoriesMap"
           :key="key"
-          class="py-2"
-          :class="$style.li"
+          class="py-2 border-t first:border-t-0"
         >
           <NuxtLink
             class="flex flex-row no-decoration"
@@ -28,9 +27,3 @@ const { categoriesMap } = useRuntimeConfig().public
 
 const { categories } = await useArticlesMetadata()
 </script>
-
-<style lang="scss" module>
-.li:not(:first-child) {
-  border-top: 1px solid $light;
-}
-</style>

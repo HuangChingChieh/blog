@@ -1,18 +1,14 @@
 <template>
-  <CommonOuterLink
-    :href="href"
-    class="text-white"
-  >
+  <CommonOuterLink :href="href" class="text-white">
     <slot />
   </CommonOuterLink>
 </template>
 
 <script setup>
-import CommonOuterLink from "~/components/common/common-outer-link.vue";
-const props = defineProps({
+defineProps({
   href: {
     type: String,
-    default: "",
+    default: '',
   },
-});
+})
 </script>
