@@ -1,13 +1,11 @@
 <template>
-  <InterfaceBadge class="d-inline-block fw-normal font-monospace">
+  <InterfaceBadge class="inline-block font-mono">
     #<slot>{{ tagName }}</slot>
   </InterfaceBadge>
 </template>
 
 <script setup>
-import InterfaceBadge from '~/components/interface/interface-badge.vue'
-
-const props = defineProps({
+defineProps({
   tagName: {
     type: String,
     default: '',

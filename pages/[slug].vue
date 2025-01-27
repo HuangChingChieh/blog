@@ -1,41 +1,27 @@
 <template>
-  <InterfaceCol
-    cols="12"
-    lg="10"
-    xl="8"
-    class="mx-auto"
-  >
-    <CommonContainer>
-      <CommonArticle :document="article" />
-    </CommonContainer>
-
-    <hr
-      class="d-block"
-      :class="`d-${mobileBreakpoint}-none`"
+  <div class="grid grid-cols-12">
+    <div
+      class="col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3"
     >
-    <LikerButton class="mt-5 d-flex justify-content-center" />
-    <ArticleComment class="mt-5" />
+      <CommonContainer>
+        <CommonArticle :document="article" />
+      </CommonContainer>
 
-    <ArticlesRelated
-      :article="article"
-      class="mt-5"
-      :articles="relatedArticles"
-    />
-  </InterfaceCol>
+      <hr class="md:hidden my-12" />
+      <LikerButton class="mt-12 flex justify-center" />
+      <ArticleComment class="mt-12" />
+
+      <ArticlesRelated
+        :article="article"
+        class="mt-12"
+        :articles="relatedArticles"
+      />
+    </div>
+  </div>
 </template>
 
 <script setup>
 import { onBeforeRouteLeave } from 'vue-router'
-
-import CommonContainer from '~/components/common/common-container.vue'
-import CommonArticle from '~/components/common/common-article.vue'
-import ArticlesRelated from '~/components/articles/articles-related.vue'
-import LikerButton from '~/components/liker-button.vue'
-import ArticleComment from '~/components/article/article-comment.vue'
-
-import { mobileBreakpoint } from '~/assets/css/export.module.scss'
-
-import { getHeadForArticle } from '~/utils/seo'
 
 import { useMainStore } from '~/store'
 

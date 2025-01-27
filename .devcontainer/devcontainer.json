@@ -22,7 +22,8 @@
                 "esbenp.prettier-vscode",
                 "donjayamanne.githistory",
                 "Vue.volar",
-                "dbaeumer.vscode-eslint"
+                "dbaeumer.vscode-eslint",
+                "bradlc.vscode-tailwindcss"
             ]
         }
     },

@@ -1,11 +1,15 @@
 <template>
-  <div ref="comments" v-b-visible="init" class="giscus" />
+  <div ref="comments" class="giscus" />
 </template>
 
 <script setup>
 import { kebabCase } from 'es-toolkit'
-import vBVisible from '~/utils/bVisible'
 import { useThemeStore } from '~/store/theme'
+
+import { useElementVisibility } from '@vueuse/core'
+
+const comments = ref(null)
+const commentsIsVisible = useElementVisibility(comments)
 
 const themeStore = useThemeStore()
 
@@ -29,7 +33,11 @@ const giscus = {
   theme: theme.value,
 }
 const inited = ref(false)
-const comments = ref(null)
+
+const init = () => {
+  if (commentsIsVisible.value && !inited.value) inited.value = true
+}
+
 const script = computed(() => {
   const script = []
 
@@ -52,18 +60,21 @@ useHead({
   script,
 })
 
-watch(theme, () => {
+watchEffect(() => {
+  if (!inited.value) return
+
   // See https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md#parent-to-giscus-message-events
-  const iframe = comments.value.querySelector('iframe.giscus-frame')
-  if (iframe && iframe instanceof HTMLIFrameElement) {
-    iframe.contentWindow.postMessage(
-      { giscus: { setConfig: { theme: theme.value } } },
-      'https://giscus.app'
-    )
-  }
+  const { value } = comments
+  if (!value || !(value instanceof HTMLDivElement)) return
+
+  const iframe = value.querySelector('iframe.giscus-frame')
+  if (!iframe || !(iframe instanceof HTMLIFrameElement)) return
+
+  iframe.contentWindow.postMessage(
+    { giscus: { setConfig: { theme: theme.value } } },
+    'https://giscus.app',
+  )
 })
 
-const init = (isVisible) => {
-  if (isVisible && !inited.value) inited.value = true
-}
+watchEffect(init)
 </script>

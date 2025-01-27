@@ -28,7 +28,7 @@ useHead({
   },
   bodyAttrs: {
     class:
-      'bg-background lg:bg-foreground dark:bg-background-dark dark:lg:bg-foreground-dark',
+      'bg-background md:bg-foreground dark:bg-background-dark dark:md:bg-foreground-dark',
   },
 })
 </script>

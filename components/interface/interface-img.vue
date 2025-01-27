@@ -5,12 +5,8 @@
       :key="i"
       :media="source.media"
       :srcset="source.src"
-    >
-    <img
-      :class="[$style.img, ...imgClassComputed]"
-      :src="src"
-      loading="lazy"
-    >
+    />
+    <img :class="imgClassComputed" :src="src" loading="lazy" />
   </picture>
 </template>
 
@@ -89,7 +85,9 @@ const imgClassComputed = computed(() => {
 })
 
 const { imageServer } = useRuntimeConfig().public
-const src = computed(() => `${imageServer}640x480q70/${id.value}.${extension.value}`)
+const src = computed(
+  () => `${imageServer}640x480q70/${id.value}.${extension.value}`,
+)
 
 const imgInfo = computed(() => {
   const { img } = props
@@ -105,7 +103,7 @@ const id = computed(() => imgInfo.value.id)
 const extension = computed(() => imgInfo.value.extension)
 
 const srcset = computed(() => {
-  const srcset = [];
+  const srcset = []
 
   const { sizes } = props
   if (Array.isArray(sizes)) {
@@ -115,23 +113,12 @@ const srcset = computed(() => {
         const { width, height } = theSource
         srcset.push({
           media: `(min-width: ${mediaMinWidth})`,
-          src: `${imageServer}${width}x${height}q70/${id.value}.${extension.value}`
+          src: `${imageServer}${width}x${height}q70/${id.value}.${extension.value}`,
         })
       }
-    });
+    })
   }
 
   return srcset
 })
 </script>
-
-<style
-  lang="scss"
-  module
->
-.img {
-  height: 100%;
-  width: 100%;
-  background-color: var(--bs-gray-200);
-}
-</style>

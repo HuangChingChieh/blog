@@ -3,12 +3,7 @@
     <img
       :src="`${$config.public.base}images/donation/kofi_button_blue.png`"
       alt="Support me on Ko-fi"
-      class="img-fluid d-block"
-      width="200"
-    >
+      class="block w-full max-w-[200px]"
+    />
   </CommonOuterLink>
 </template>
-
-<script setup>
-import CommonOuterLink from '~/components/common/common-outer-link.vue';
-</script>

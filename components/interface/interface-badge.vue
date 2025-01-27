@@ -1,5 +1,5 @@
 <template>
-  <Badge severity="primary">
+  <PBadge severity="primary">
     <slot />
-  </Badge>
+  </PBadge>
 </template>

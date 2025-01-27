@@ -1,59 +1,33 @@
 <template>
-  <article :class="$style.article">
-    <h1 :class="$style.title">
-      {{ document.title }}
-    </h1>
+  <article>
+    <h1 class="font-black text-4xl">{{ document.title }}</h1>
 
-    <div class="d-flex flex-row align-items-center my-2">
-      <ArticleDate
-        :document="document"
-        :class="$style.date"
-        class="me-3"
-      />
-      <ArticleReadingtime
-        :minutes="document.readingTime.minutes"
-        class="me-3"
-      />
-      <ArticleCategory :article="document" />
-    </div>
+    <div class="my-normal">
+      <div class="flex flex-row gap-4 items-center">
+        <ArticleDate :document="document" />
+        <ArticleReadingtime :minutes="document.readingTime.minutes" />
+        <ArticleCategory :article="document" />
+      </div>
 
-    <div
-      v-if="document.tags"
-      class="d-flex flex-wrap my-2"
-      :class="$style.tags"
-    >
-      <ArticleTag
-        v-for="tag in document.tags"
-        :key="tag"
-        :tag-name="tag"
-        class="me-1 mb-1"
-      />
+      <div v-if="document.tags" class="flex flex-wrap mt-2 gap-1">
+        <ArticleTag v-for="tag in document.tags" :key="tag" :tag-name="tag" />
+      </div>
     </div>
 
     <ArticleBanner
       v-if="document.img"
       :img="document.img"
-      img-class="rounded"
+      img-class="rounded aspect-video"
       class="rounded"
-      :class="$style.banner"
       preload
     />
 
-    <ContentRenderer
-      :value="document"
-      class="nuxt-content"
-    />
+    <ContentRenderer :value="document" class="nuxt-content" />
   </article>
 </template>
 
 <script setup>
-import ArticleBanner from '../article/article-banner.vue'
-import ArticleTag from '../article/article-tag.vue'
-import ArticleDate from '../article/article-date.vue'
-import ArticleReadingtime from '../article/article-readingtime.vue'
-import ArticleCategory from '../article/article-category.vue'
-
-const props = defineProps({
+defineProps({
   document: {
     type: Object,
     default: () => ({}),
@@ -65,7 +39,6 @@ const props = defineProps({
 $article-font-size-base: 1.125rem;
 
 .nuxt-content {
-
   h2,
   h3,
   p,
@@ -108,7 +81,7 @@ $article-font-size-base: 1.125rem;
     text-decoration: underline;
   }
 
-  >*:last-child {
+  > *:last-child {
     margin-bottom: 0;
   }
 
@@ -128,42 +101,6 @@ $article-font-size-base: 1.125rem;
         content: '——';
       }
     }
-  }
-}
-</style>
-
-<style
-  lang="scss"
-  module
->
-$article-font-size-base: 1.125rem;
-
-.article {
-  font-size: 1rem;
-
-  .title {
-    font-weight: 900;
-    margin-bottom: 0.25rem;
-    font-size: $article-font-size-base * 2;
-    text-align: justify;
-  }
-
-  .date {
-    margin-bottom: 0.25rem;
-  }
-
-  .tags {
-    margin-bottom: $paragraph-margin-bottom;
-  }
-
-  .banner,
-  .article-img {
-    margin: $paragraph-margin-bottom * 1.75 0;
-  }
-
-  .banner {
-    width: 100%;
-    aspect-ratio: 16 / 9;
   }
 }
 </style>
