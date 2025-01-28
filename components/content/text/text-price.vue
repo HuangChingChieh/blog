@@ -3,8 +3,6 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
 const props = defineProps({
   price: {
     type: [String, Number],

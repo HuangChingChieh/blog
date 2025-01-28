@@ -6,9 +6,8 @@
     <ArticleBanner
       v-if="article.img"
       :img="article.img"
-      :sizes="bannerSizes"
-      :preload="preloadImg"
-      img-class="aspect-video w-full rounded-t"
+      :break-points="imgBreakPoints"
+      class="rounded-t"
     />
 
     <div class="px-4 py-4">
@@ -30,13 +29,6 @@
 </template>
 
 <script setup>
-import ArticleCardTitle from '~/components/article/article-card-title.vue'
-import ArticleBanner from '~/components/article/article-banner.vue'
-import ArticleDate from '~/components/article/article-date.vue'
-import ArticleReadingtime from '~/components/article/article-readingtime.vue'
-
-import getImgSizes from '~/utils/getImgSizes'
-
 defineProps({
   article: {
     type: Object,
@@ -46,14 +38,15 @@ defineProps({
     type: Boolean,
     default: false,
   },
-})
-
-const bannerSizes = getImgSizes(({ containerMaxWidth }) => {
-  let imageWidth = containerMaxWidth
-
-  const containerMaxWidthNum = containerMaxWidth.replace(/[^0-9]/g, '')
-  imageWidth = Number(containerMaxWidthNum) * 0.4
-
-  return imageWidth
+  imgBreakPoints: {
+    type: Object,
+    default: () => ({
+      sm: 640,
+      md: 224,
+      lg: 310,
+      xl: 400,
+      '2xl': 480,
+    }),
+  },
 })
 </script>

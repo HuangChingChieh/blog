@@ -14,12 +14,7 @@
 <script setup>
 import { useMainStore } from '~/store/index'
 
-import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
-import ModalToc from '~/components/modal/modal-toc.vue'
-
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   iconClass: {
     type: [String, Array],
     default: '',

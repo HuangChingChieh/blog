@@ -4,6 +4,9 @@
     <NuxtPage />
   </NuxtLayout>
 
+  <ModalCategories v-model="uiStore.modal.categories" />
+  <ModalSearch v-model="uiStore.modal.search" />
+
   <ClientOnly>
     <Teleport to="body">
       <!-- 解決底部sticky問題 -->
@@ -13,7 +16,8 @@
 </template>
 
 <script setup>
-import { useThemeStore } from './store/theme'
+import { useThemeStore } from '~/store/theme'
+import { useUiStore } from '~/store/ui'
 
 // Theme相關
 const themeStore = useThemeStore()
@@ -21,6 +25,8 @@ const dataBsTheme = computed(() => (themeStore.darkComputed ? 'dark' : 'light'))
 onMounted(() => {
   themeStore.init()
 })
+
+const uiStore = useUiStore()
 
 useHead({
   htmlAttrs: {

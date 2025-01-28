@@ -3,6 +3,7 @@
     :href="href"
     :target="target"
     :rel="relComputed"
+    class="underline hover:text-primary-600"
   >
     <slot />
   </a>
@@ -16,19 +17,21 @@ const props = defineProps({
   },
   rel: {
     type: String,
-    default: ''
+    default: '',
   },
   target: {
     type: String,
-    default: '_blank'
-  }
+    default: '_blank',
+  },
 })
 
-const relDefaults = { 'noopener': true, 'noreferrer': true }
+const relDefaults = { noopener: true, noreferrer: true }
 
 const relComputed = computed(() => {
-  const relDefaultsCopied = JSON.parse(JSON.stringify(relDefaults));
-  props.rel.split(" ").forEach((rel) => { relDefaultsCopied[rel] = true })
-  return Object.keys(relDefaultsCopied).join(" ")
+  const relDefaultsCopied = JSON.parse(JSON.stringify(relDefaults))
+  props.rel.split(' ').forEach((rel) => {
+    relDefaultsCopied[rel] = true
+  })
+  return Object.keys(relDefaultsCopied).join(' ')
 })
 </script>

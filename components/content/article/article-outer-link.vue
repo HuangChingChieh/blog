@@ -1,28 +1,22 @@
 <template>
-  <CommonOuterLink
-    :href="href"
-    :rel="rel"
-    :target="target"
-  >
+  <CommonOuterLink :href="href" :rel="rel" :target="target">
     <slot />
   </CommonOuterLink>
 </template>
 
 <script setup>
-import CommonOuterLink from '~/components/common/common-outer-link.vue';
-
-const props = defineProps({
+defineProps({
   href: {
     type: String,
     default: '',
   },
   rel: {
     type: String,
-    default: ''
+    default: '',
   },
   target: {
     type: String,
-    default: '_blank'
-  }
+    default: '_blank',
+  },
 })
 </script>

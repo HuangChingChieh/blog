@@ -1,10 +1,5 @@
 <template>
-  <InterfaceModal
-    v-model="model"
-    title="摘要"
-    modal-class="modal-toc"
-    @hidden="hidden"
-  >
+  <InterfaceModal v-model="model" title="摘要" @hidden="hidden">
     <ModalTocNav
       v-b-scrollspy
       :items="mainStore.toc"
@@ -23,11 +18,8 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
 import { useMainStore } from '~/store/index'
 
-import InterfaceModal from '~/components/interface/interface-modal.vue'
-import ModalTocNav from '~/components/modal/modal-toc-nav.vue'
 import vBScrollspy from '~/utils/bScrollspy'
 
 const model = defineModel({
@@ -35,7 +27,7 @@ const model = defineModel({
   default: false,
 })
 
-const hidden = () => { }
+const hidden = () => {}
 
 const mainStore = useMainStore()
 
@@ -50,13 +42,3 @@ const scrollTo = () => {
   model.value = false
 }
 </script>
-
-<style lang="scss">
-.modal-toc {
-  .nav-link.active {
-    font-weight: 900;
-    color: $primary;
-    border-color: $primary !important;
-  }
-}
-</style>

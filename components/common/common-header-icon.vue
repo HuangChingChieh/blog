@@ -1,13 +1,15 @@
 <template>
-  <InterfaceButton
-    variant="link"
-    class="flex items-center no-decoration ms-4 lg:ms-normal"
-  >
-    <InterfaceIcon :icon="icon" class="text-xl mb-0 flex" />
+  <InterfaceButton variant="link" class="ms-4 lg:ms-normal !p-0">
+    <div class="flex flex-row items-center">
+      <InterfaceIcon
+        :icon="icon"
+        class="text-xl mb-0 flex text-white hover:text-primary-600"
+      />
 
-    <span class="ps-1">
-      <slot />
-    </span>
+      <span v-if="slot" class="ps-1">
+        <slot />
+      </span>
+    </div>
   </InterfaceButton>
 </template>
 
@@ -18,4 +20,6 @@ defineProps({
     default: '',
   },
 })
+
+const { default: slot } = useSlots()
 </script>

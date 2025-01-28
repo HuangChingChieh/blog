@@ -1,6 +1,6 @@
 <template>
   <PButton
-    as="nuxt-link"
+    :as="NuxtLink"
     :to="to"
     :size="size"
     :variant="variant"
@@ -13,6 +13,8 @@
 </template>
 
 <script setup>
+const NuxtLink = resolveComponent('NuxtLink')
+
 defineProps({
   variant: {
     type: String,

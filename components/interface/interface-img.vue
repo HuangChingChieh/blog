@@ -1,119 +1,45 @@
 <template>
-  <picture v-if="img">
-    <source
-      v-for="(source, i) in srcset"
-      :key="i"
-      :media="source.media"
-      :srcset="source.src"
-    />
-    <img :class="imgClassComputed" :src="src" loading="lazy" />
-  </picture>
+  <img :sizes="sizes" :srcset="srcset" :src="src" loading="lazy" />
 </template>
 
 <script setup>
-const sources = [
-  {
-    height: 75,
-    width: 100,
-  },
-  {
-    height: 100,
-    width: 150,
-  },
-  {
-    height: 200,
-    width: 280,
-  },
-  {
-    height: 240,
-    width: 320,
-  },
-  {
-    height: 480,
-    width: 640,
-  },
-  {
-    height: 600,
-    width: 800,
-  },
-  {
-    height: 768,
-    width: 1024,
-  },
-  {
-    height: 1024,
-    width: 1280,
-  },
-  {
-    height: 1200,
-    width: 1600,
-  },
-]
+import { screens } from 'tailwindcss/defaultTheme'
+import getImgSrcset from '~/utils/getImgSrcset'
 
 const props = defineProps({
   img: {
     type: String,
     default: '',
   },
-  imgClass: {
-    type: [Array, String],
-    default: '',
+  breakPoints: {
+    type: Object,
+    default: () => ({}),
   },
-  sizes: {
-    type: Array,
-    default: () => getImgSizes(),
-  },
-  preload: {
-    type: Boolean,
-    default: false,
-  },
-})
-
-const imgClassComputed = computed(() => {
-  const imgClassComputed = []
-
-  const { imgClass } = props
-  if (typeof imgClass === 'string') imgClassComputed.push(imgClass)
-  else if (Array.isArray(imgClass)) imgClassComputed.push(...imgClass)
-
-  return imgClassComputed
 })
 
 const { imageServer } = useRuntimeConfig().public
-const src = computed(
-  () => `${imageServer}640x480q70/${id.value}.${extension.value}`,
+const src = computed(() => `${imageServer}1024x768q70/${props.img}`)
+
+const srcset = computed(() =>
+  sizes.value?.length > 0 ? getImgSrcset(props.img, imageServer) : null,
 )
 
-const imgInfo = computed(() => {
-  const { img } = props
-  const info = {}
+const sizes = computed(() => {
+  const { breakPoints } = props
+  const sizesValid = Object.keys(screens)
+    .filter((breakpoint) => !!breakPoints[breakpoint])
+    .sort((breakpointA, breakpointB) =>
+      Number(screens[breakpointA]) > Number(screens[breakpointB]) ? 1 : -1,
+    )
 
-  if (typeof img === 'string' && img) {
-    info.id = img.split('.')[0]
-    info.extension = img.split('.')[1]
-  }
-  return info
-})
-const id = computed(() => imgInfo.value.id)
-const extension = computed(() => imgInfo.value.extension)
+  const sizes = sizesValid
+    .map((breakpoint, i) =>
+      i === sizesValid.length - 1
+        ? `${breakPoints[breakpoint]}px`
+        : `(min-width: ${screens[breakpoint]}) ${breakPoints[breakpoint]}px`,
+    )
+    .join(',')
 
-const srcset = computed(() => {
-  const srcset = []
-
-  const { sizes } = props
-  if (Array.isArray(sizes)) {
-    sizes.forEach(({ mediaMinWidth, imgWidth }) => {
-      const theSource = sources.find(({ width }) => imgWidth <= width)
-      if (theSource) {
-        const { width, height } = theSource
-        srcset.push({
-          media: `(min-width: ${mediaMinWidth})`,
-          src: `${imageServer}${width}x${height}q70/${id.value}.${extension.value}`,
-        })
-      }
-    })
-  }
-
-  return srcset
+  return typeof sizes === 'string' && sizes.length > 0 ? sizes : null
 })
 </script>

@@ -1,9 +1,7 @@
 <template>
   <InterfaceImg
+    :break-points="breakPoints"
     :img="img"
-    :img-class="[imgClass, 'w-full']"
-    :sizes="sizes"
-    :preload="preload"
     class="w-full aspect-video"
   />
 </template>
@@ -14,17 +12,9 @@ defineProps({
     type: String,
     default: '',
   },
-  imgClass: {
-    type: [Array, String],
-    default: () => [],
-  },
-  sizes: {
-    type: Array,
-    default: () => getImgSizes(),
-  },
-  preload: {
-    type: Boolean,
-    default: false,
+  breakPoints: {
+    type: Object,
+    default: () => ({}),
   },
 })
 </script>

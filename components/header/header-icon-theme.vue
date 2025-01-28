@@ -9,9 +9,7 @@
 <script setup>
 import { useThemeStore } from '~/store/theme'
 
-import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
-
-const props = defineProps({
+defineProps({
   iconClass: {
     type: [String, Array],
     default: '',

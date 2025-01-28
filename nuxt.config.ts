@@ -217,8 +217,11 @@ export default defineNuxtConfig({
     markdown: {
       anchorLinks: false,
       tags: {
-        pre: 'ArticleCode',
+        code: 'ArticleCode',
+        pre: 'ArticlePre',
         a: 'ArticleOuterLink',
+        hr: 'ArticleHr',
+        p: 'ArticleP',
       },
       remarkPlugins: ['remark-reading-time'],
     },

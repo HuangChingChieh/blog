@@ -1,6 +1,6 @@
 <template>
   <ArticleCardWrapper
-    class="flex md:flex-row gap-3 md:gap-4"
+    class="flex flex-col md:flex-row gap-3 md:gap-4"
     :class="container ? `p-4 md:p-6` : ``"
     :article="article"
     :container="container"
@@ -8,8 +8,8 @@
     <!-- 這裡高度的11.75rem是計算ArticleCardTitle / ArticleCardDescription / ArticleReadingtime / ArticleDate加上間距計算而得 -->
     <InterfaceImg
       :img="article.img"
-      class="rounded aspect-video lg:aspect-square xl:aspect-video row-span-3 col-span-1 h-[11.75rem]"
-      img-class="rounded aspect-video lg:aspect-square xl:aspect-video h-[11.75rem]"
+      class="rounded aspect-video lg:aspect-[4/3] xl:aspect-video row-span-3 col-span-1 md:h-[11.75rem]"
+      :break-points="imgBreakPoints"
     />
 
     <div class="flex flex-col gap-3 md:gap-4">
@@ -35,6 +35,10 @@ defineProps({
   container: {
     type: Boolean,
     default: true,
+  },
+  imgBreakPoints: {
+    type: Object,
+    default: () => ({}),
   },
 })
 </script>

@@ -1,25 +1,18 @@
 <template>
-  <div>
-    <CommonHeaderIcon
-      icon="folder"
-      title="文章分類"
-      :class="iconClass"
-      @click="modalOpen = true"
-    >
-      <span v-if="showText && text">{{ text }}</span>
-    </CommonHeaderIcon>
-
-    <ModalCategories v-model="modalOpen" />
-  </div>
+  <CommonHeaderIcon
+    icon="folder"
+    title="文章分類"
+    :class="iconClass"
+    @click="openModalCategories"
+  >
+    <span v-if="showText && text">{{ text }}</span>
+  </CommonHeaderIcon>
 </template>
 
 <script setup>
-import CommonHeaderIcon from '~/components/common/common-header-icon.vue'
-import ModalCategories from '~/components/modal/modal-categories.vue'
+import { useUiStore } from '~/store/ui'
 
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   showText: {
     type: Boolean,
     default: false,
@@ -30,7 +23,7 @@ const props = defineProps({
   },
 })
 
-const modalOpen = ref(false)
+const { openModalCategories } = useUiStore()
 
 const { categoriesMap } = useRuntimeConfig().public
 const route = useRoute()

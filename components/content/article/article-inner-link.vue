@@ -1,16 +1,10 @@
 <template>
-  <NuxtLink
-    v-if="title"
-    :to="to"
-  >
+  <NuxtLink v-if="title" :to="to">
     <slot>《{{ title }}》</slot>
   </NuxtLink>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { getArticleLink } from '~/utils/getLink'
-
 const props = defineProps({
   slug: {
     type: String,

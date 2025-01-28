@@ -1,6 +1,12 @@
 import primeui from 'tailwindcss-primeui'
 import colors from 'tailwindcss/colors'
 
+const aspectRatio = {
+  '9/16': '9 / 16',
+  '4/3': '4 / 3',
+  '3/4': '3 / 4',
+}
+
 export default {
   plugins: [primeui],
   theme: {
@@ -18,6 +24,7 @@ export default {
       },
       spacing: {
         normal: '24px',
+        paragraph: '28px',
       },
       transitionProperty: {
         'article-card': 'box-shadow, transform',
@@ -25,6 +32,8 @@ export default {
       scale: {
         'article-card': '1.025',
       },
+      aspectRatio,
     },
   },
+  safelist: Object.keys(aspectRatio).map((aspect) => `aspect-${aspect}`),
 }

@@ -1,13 +1,16 @@
 <template>
-  <button :class="btnClass" class="btn" :type="type" :disabled="disabled">
+  <PButton
+    :variant="variant"
+    :disabled="disabled"
+    :severity="severity"
+    :size="size"
+  >
     <slot />
-  </button>
+  </PButton>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
-const props = defineProps({
+defineProps({
   variant: {
     type: String,
     default: '',
@@ -20,24 +23,9 @@ const props = defineProps({
     type: String,
     default: '',
   },
-  type: {
+  severity: {
     type: String,
-    default: 'button',
+    default: '',
   },
-})
-
-const btnClass = computed(() => {
-  const btnClass = []
-
-  const { variant, size } = props
-  if (variant) {
-    btnClass.push(`btn-${variant}`)
-  }
-
-  if (size) {
-    btnClass.push(`btn-${size}`)
-  }
-
-  return btnClass
 })
 </script>

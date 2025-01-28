@@ -12,9 +12,6 @@
 </template>
 
 <script setup>
-import ArticlesList from '~/components/articles/articles-list.vue'
-import { getCategoryLink } from '~/utils/getLink'
-
 const route = useRoute()
 const { category, page } = route.params
 

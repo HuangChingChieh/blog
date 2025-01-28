@@ -17,9 +17,8 @@
     <ArticleBanner
       v-if="document.img"
       :img="document.img"
-      img-class="rounded aspect-video"
+      :break-points="bannerBreakPoints"
       class="rounded"
-      preload
     />
 
     <ContentRenderer :value="document" class="nuxt-content" />
@@ -33,17 +32,24 @@ defineProps({
     default: () => ({}),
   },
 })
+
+const bannerBreakPoints = {
+  sm: 640,
+  md: 624,
+  lg: 717,
+  xl: 726,
+  '2xl': 896,
+}
 </script>
 
 <style lang="scss">
 $article-font-size-base: 1.125rem;
+$paragraph-margin-bottom: 1rem;
 
 .nuxt-content {
   h2,
   h3,
-  p,
-  blockquote,
-  img {
+  blockquote {
     margin: $paragraph-margin-bottom * 1.75 0;
   }
 
@@ -58,27 +64,6 @@ $article-font-size-base: 1.125rem;
 
   h3 {
     font-size: $article-font-size-base * 1.25;
-  }
-
-  p {
-    word-break: break-all;
-    text-align: justify;
-    font-size: $article-font-size-base;
-  }
-
-  p code {
-    padding: 0.15rem 0.25rem;
-    border-radius: $btn-border-radius-lg;
-    line-height: 1;
-  }
-
-  hr {
-    border-top: 1px solid var(--bs-body-color);
-    width: 3rem;
-  }
-
-  a[href] {
-    text-decoration: underline;
   }
 
   > *:last-child {

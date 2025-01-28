@@ -1,6 +1,6 @@
 <template>
   <AsideContainer title="文章標籤">
-    <div class="text-center">
+    <div class="flex flex-wrap gap-2 justify-center">
       <InterfaceButtonLink
         v-for="tag in tags"
         :key="tag.name"
@@ -8,7 +8,6 @@
         variant="outlined"
         severity="primary"
         size="small"
-        class="mb-2 me-2"
         rounded
       >
         {{ tag.name }}

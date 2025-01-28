@@ -7,14 +7,11 @@
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
     allowfullscreen
     loading="lazy"
-    class="rounded w-100"
-    :class="$style.youtube"
+    class="rounded w-full aspect-video"
   />
 </template>
 
 <script setup>
-import { computed } from 'vue'
-
 const props = defineProps({
   id: {
     type: String,
@@ -27,9 +24,3 @@ const src = computed(() => {
   return id ? `https://www.youtube-nocookie.com/embed/${id}` : ''
 })
 </script>
-
-<style lang="scss" module>
-.youtube {
-  aspect-ratio: 16 / 9;
-}
-</style>
