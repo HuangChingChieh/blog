@@ -1,24 +1,21 @@
 <template>
   <ArticleCardWrapper
-    class="flex flex-col md:flex-row bg-background dark:bg-background-dark"
+    class="flex md:flex-row gap-3 md:gap-4"
     :class="container ? `p-4 md:p-6` : ``"
     :article="article"
     :container="container"
   >
+    <!-- 這裡高度的11.75rem是計算ArticleCardTitle / ArticleCardDescription / ArticleReadingtime / ArticleDate加上間距計算而得 -->
     <InterfaceImg
       :img="article.img"
-      class="md:me-4 rounded aspect-video block"
-      img-class="rounded"
+      class="rounded aspect-video lg:aspect-square xl:aspect-video row-span-3 col-span-1 h-[11.75rem]"
+      img-class="rounded aspect-video lg:aspect-square xl:aspect-video h-[11.75rem]"
     />
 
-    <div class="flex flex-col grow">
-      <ArticleCardTitle class="mt-2 pt-1 md:pt-0 md:mt-0 mb-2 md:mb-4">
-        {{ article.title }}
-      </ArticleCardTitle>
-
+    <div class="flex flex-col gap-3 md:gap-4">
+      <ArticleCardTitle>{{ article.title }}</ArticleCardTitle>
       <ArticleCardDescription :description="article.description" />
-
-      <div class="flex flex-row grow items-end justify-end mt-2 md:mt-0">
+      <div class="flex flex-row grow items-end justify-end">
         <ArticleReadingtime
           :minutes="article.readingTime.minutes"
           class="me-6"

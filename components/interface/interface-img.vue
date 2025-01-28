@@ -10,7 +10,7 @@
   </picture>
 </template>
 
-<script>
+<script setup>
 const sources = [
   {
     height: 75,
@@ -49,11 +49,6 @@ const sources = [
     width: 1600,
   },
 ]
-</script>
-
-<script setup>
-import { computed } from 'vue'
-import getImgSizes from '~/utils/getImgSizes'
 
 const props = defineProps({
   img: {

@@ -1,5 +1,5 @@
 <template>
-  <p class="text-muted line-clamp-3 h-[4.5rem]" :title="description">
+  <p class="text-muted line-clamp-3 md:h-[4.5rem]" :title="description">
     {{ description }}
   </p>
 </template>

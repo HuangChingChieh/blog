@@ -6,8 +6,6 @@
 </template>
 
 <script setup>
-import InterfaceIcon from '~/components/interface/interface-icon.vue'
-
 const props = defineProps({
   minutes: {
     type: Number,

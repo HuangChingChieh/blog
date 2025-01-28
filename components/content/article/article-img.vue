@@ -6,9 +6,7 @@
 </template>
 
 <script setup>
-import InterfaceImg from '~/components/interface/interface-img.vue'
-
-const props = defineProps({
+defineProps({
   img: {
     type: String,
     default: '',
@@ -20,10 +18,7 @@ const props = defineProps({
 })
 </script>
 
-<style
-  module
-  lang="scss"
->
+<style module lang="scss">
 .img {
   aspect-ratio: v-bind(aspectRatio);
 }
