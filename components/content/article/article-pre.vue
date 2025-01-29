@@ -1,7 +1,7 @@
 <template>
-  <div class="relative my-paragraph">
+  <div class="relative">
     <div
-      class="flex flex-row items-center text-white py-2 px-4 rounded-t bg-primary-800"
+      class="flex flex-row items-center text-white py-2 px-4 rounded-t bg-gray-500"
     >
       <div class="grow truncate pe-4 text-sm font-bold font-mono">
         {{ filename }}
@@ -9,7 +9,7 @@
 
       <InterfaceButton
         :disabled="copied"
-        class="p-0 flex items-center justify-center text-white"
+        class="!p-0 flex items-center justify-center !text-white"
         variant="link"
         @click="copyCode"
       >

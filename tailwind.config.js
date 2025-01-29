@@ -9,6 +9,7 @@ const aspectRatio = {
 
 export default {
   plugins: [primeui],
+  darkMode: ['selector', `[data-bs-theme="dark"]`],
   theme: {
     extend: {
       colors: {

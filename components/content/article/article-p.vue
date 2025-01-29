@@ -1,3 +1,3 @@
 <template>
-  <p class="my-paragraph break-all text-justify"><slot /></p>
+  <p class="break-all text-justify"><slot /></p>
 </template>

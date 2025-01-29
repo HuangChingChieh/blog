@@ -4,7 +4,7 @@
       <template #item="{ item }">
         <NuxtLink
           :to="item.to"
-          active-class="font-black"
+          active-class="border-l-2 border-primary-500"
           class="p-menu-item-link"
           @click="closeModal('categories')"
           >{{ item.label }}</NuxtLink

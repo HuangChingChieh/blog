@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    class="md:p-normal shadow-sm dark:md:bg-background-dark md:bg-background rounded"
+    class="md:p-normal md:shadow-sm dark:md:bg-background-dark md:bg-background md:rounded"
   >
     <div class="md:p-normal">
       <slot />

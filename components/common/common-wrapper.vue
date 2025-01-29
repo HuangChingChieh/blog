@@ -1,7 +1,7 @@
 <template>
   <component
     :is="tag"
-    class="bg-foreground md:bg-background dark:bg-foreground-dark dark:md:bg-background-dark"
+    class="bg-background dark:bg-foreground-dark dark:md:bg-background-dark"
   >
     <slot />
   </component>

@@ -1,5 +1,7 @@
 <template>
-  <CommonWrapper tag="footer" class="py-4 lg:py-12">
+  <footer
+    class="py-4 lg:py-12 bg-foreground-dark md:bg-background-dark text-white"
+  >
     <InterfaceContainer
       class="grid grid-cols-1 md:grid-cols-3 gap-y-normal gap-x-12"
     >
@@ -43,5 +45,5 @@
         >請我喝杯手搖飲哦！
       </FooterBlock>
     </InterfaceContainer>
-  </CommonWrapper>
+  </footer>
 </template>

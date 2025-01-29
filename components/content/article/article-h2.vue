@@ -1,3 +1,3 @@
 <template>
-  <ArticleTocTitle tag="h2"><slot /></ArticleTocTitle>
+  <ArticleTocTitle tag="h2" class="text-3xl"><slot /></ArticleTocTitle>
 </template>

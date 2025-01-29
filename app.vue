@@ -33,8 +33,7 @@ useHead({
     'data-bs-theme': dataBsTheme,
   },
   bodyAttrs: {
-    class:
-      'bg-background md:bg-foreground dark:bg-background-dark dark:md:bg-foreground-dark',
+    class: 'bg-foreground dark:bg-background-dark dark:md:bg-foreground-dark',
   },
 })
 </script>

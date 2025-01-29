@@ -12,7 +12,7 @@
       :break-points="imgBreakPoints"
     />
 
-    <div class="flex flex-col gap-3 md:gap-4">
+    <div class="flex flex-col gap-3 md:gap-4 md:grow">
       <ArticleCardTitle>{{ article.title }}</ArticleCardTitle>
       <ArticleCardDescription :description="article.description" />
       <div class="flex flex-row grow items-end justify-end">

@@ -1,5 +1,5 @@
 <template>
-  <CommonOuterLink :href="href" class="text-white">
+  <CommonOuterLink :href="href">
     <slot />
   </CommonOuterLink>
 </template>

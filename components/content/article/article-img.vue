@@ -1,7 +1,7 @@
 <template>
   <InterfaceImg
     :img="img"
-    class="w-full rounded shadow-sm block my-paragraph"
+    class="w-full rounded shadow-sm block"
     :class="style"
     :break-points="breakPoints"
   />

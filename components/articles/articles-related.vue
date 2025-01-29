@@ -1,11 +1,12 @@
 <template>
   <ArticlesListPickContainer v-if="hasArticles" title="相關文章">
-    <ArticleCardNormal
-      v-for="(doc, index) in articles"
-      :key="index"
-      :article="doc"
-      class="mb-3"
-    />
+    <div class="grid grid-cols-1 gap-normal">
+      <ArticleCardNormal
+        v-for="(doc, index) in articles"
+        :key="index"
+        :article="doc"
+      />
+    </div>
   </ArticlesListPickContainer>
 </template>
 

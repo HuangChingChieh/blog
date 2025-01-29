@@ -1,5 +1,6 @@
 import { defineNuxtConfig } from 'nuxt/config'
 import Aura from '@primevue/themes/aura'
+import { definePreset } from '@primevue/themes'
 
 const perPage = 10
 const base = '/blog/'
@@ -13,6 +14,21 @@ const categoriesMap = {
   frontend: '前端筆記',
   life: '生活雜記',
 }
+
+const primeVueTheme = definePreset(Aura, {
+  components: {
+    paginator: {
+      colorScheme: {
+        light: {
+          background: 'transparent',
+        },
+        dark: {
+          background: 'transparent',
+        },
+      },
+    },
+  },
+})
 
 // 從generate hooks偷routes出來給sitemap使用
 // const routes = []
@@ -227,6 +243,8 @@ export default defineNuxtConfig({
         p: 'ArticleP',
         h2: 'ArticleH2',
         h3: 'ArticleH3',
+        blockquote: 'ArticleBlockquote',
+        em: 'ArticleEm',
       },
       remarkPlugins: ['remark-reading-time'],
     },
@@ -290,7 +308,10 @@ export default defineNuxtConfig({
   primevue: {
     options: {
       theme: {
-        preset: Aura,
+        preset: primeVueTheme,
+        options: {
+          darkModeSelector: `[data-bs-theme="dark"]`,
+        },
       },
     },
     components: {

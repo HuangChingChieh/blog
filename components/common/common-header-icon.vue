@@ -3,7 +3,7 @@
     <div class="flex flex-row items-center">
       <InterfaceIcon
         :icon="icon"
-        class="text-xl mb-0 flex text-white hover:text-primary-600"
+        class="text-xl mb-0 flex text-background-dark dark:text-background hover:text-primary-500"
       />
 
       <span v-if="slot" class="ps-1">
