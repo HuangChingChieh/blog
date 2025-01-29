@@ -1,31 +1,24 @@
 <template>
-  <div v-show="hasToc">
-    <CommonHeaderIcon
-      icon="card-list"
-      title="文章摘要"
-      :class="iconClass"
-      @click="modalOpen = true"
-    />
-
-    <ModalToc v-model="modalOpen" />
-  </div>
+  <CommonHeaderIcon
+    v-if="hasToc"
+    icon="card-list"
+    title="文章摘要"
+    @click="emit('click')"
+  />
 </template>
 
 <script setup>
-import { useMainStore } from '~/store/index'
-
-defineProps({
-  iconClass: {
-    type: [String, Array],
-    default: '',
+const props = defineProps({
+  toc: {
+    type: Array,
+    default: () => [],
   },
 })
 
-const modalOpen = ref(false)
-
-const mainStore = useMainStore()
 const hasToc = computed(() => {
-  const { toc } = mainStore
+  const { toc } = props
   return Array.isArray(toc) && toc.length > 0
 })
+
+const emit = defineEmits(['click'])
 </script>

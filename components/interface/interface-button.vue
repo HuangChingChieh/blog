@@ -4,6 +4,7 @@
     :disabled="disabled"
     :severity="severity"
     :size="size"
+    :rounded="rounded"
   >
     <slot />
   </PButton>
@@ -26,6 +27,10 @@ defineProps({
   severity: {
     type: String,
     default: '',
+  },
+  rounded: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>

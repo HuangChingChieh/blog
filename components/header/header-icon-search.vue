@@ -2,20 +2,12 @@
   <CommonHeaderIcon
     icon="search"
     title="搜尋文章"
-    :class="iconClass"
-    @click="openModalSearch"
+    @click="openModal('search')"
   />
 </template>
 
 <script setup>
 import { useUiStore } from '~/store/ui'
 
-defineProps({
-  iconClass: {
-    type: [String, Array],
-    default: '',
-  },
-})
-
-const { openModalSearch } = useUiStore()
+const { openModal } = useUiStore()
 </script>

@@ -1,28 +1,12 @@
 <template>
   <div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-normal">
-      <ArticlesListPickContainer :title="categoriesMap.life">
-        <ArticleCard
-          v-for="article in articleLife"
-          :key="article.slug"
-          :article="article"
-        />
-      </ArticlesListPickContainer>
-
-      <ArticlesListPickContainer :title="categoriesMap.frontend">
-        <ArticleCard
-          v-for="article in articlesFrontend"
-          :key="article.slug"
-          :article="article"
-        />
-      </ArticlesListPickContainer>
-
-      <ArticlesListPickContainer :title="categoriesMap.linux">
-        <ArticleCard
-          v-for="article in articleLinux"
-          :key="article.slug"
-          :article="article"
-        />
+      <ArticlesListPickContainer
+        v-for="article in topArticles"
+        :key="article.article.slug"
+        :title="categoriesMap[article.categories]"
+      >
+        <ArticleCard :article="article.article" />
       </ArticlesListPickContainer>
     </div>
 
@@ -70,6 +54,12 @@ const { data: articleLinux } = await useArticlesByPageAndCategoryAsync({
   limit: 1,
 })
 
+const topArticles = [
+  { categories: 'life', article: articleLife.value[0] },
+  { categories: 'frontend', article: articlesFrontend.value[0] },
+  { categories: 'linux', article: articleLinux.value[0] },
+]
+
 const notIn = (sources = [], needFilter = []) => {
   const articles = []
 
@@ -90,11 +80,10 @@ const { data: articlesNewest } = await useAsyncData(
       category: 'all',
     })
 
-    return notIn(data.value, [
-      ...articleLife.value,
-      ...articleLinux.value,
-      ...articlesFrontend.value,
-    ])
+    return notIn(
+      data.value,
+      topArticles.map(({ article }) => article),
+    )
   },
 )
 

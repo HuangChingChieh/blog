@@ -11,26 +11,21 @@
       <LikerButton class="mt-12 flex justify-center" />
       <ArticleComment class="mt-12" />
 
-      <ArticlesRelated
-        :article="article"
-        class="mt-12"
-        :articles="relatedArticles"
-      />
+      <ArticlesRelated :article="article" class="mt-12" />
     </div>
+
+    <ClientOnly>
+      <Teleport to="#header-icons">
+        <HeaderIconToc :toc="toc" @click="tocModelOpen = true" />
+      </Teleport>
+    </ClientOnly>
+
+    <ModalToc v-model="tocModelOpen" :toc="toc" />
   </div>
 </template>
 
 <script setup>
-import { onBeforeRouteLeave } from 'vue-router'
-
-import { useMainStore } from '~/store'
-
-const mainStore = useMainStore()
-
-onBeforeRouteLeave((to, from, next) => {
-  mainStore.toc = []
-  next()
-})
+import { useTocStore } from '~/store/toc'
 
 const route = useRoute()
 const { slug } = route.params
@@ -40,11 +35,16 @@ const { data: article } = await useArticle(slug)
 if (!article?.value) {
   const error = useError()
   error({ statusCode: '404' })
-} else {
-  mainStore.toc = article.value.body.toc.links
 }
 
-const { data: relatedArticles } = await useRelatedArticles(unref(article))
+const toc = article.value?.body?.toc?.links || []
+const tocModelOpen = ref(false)
+const { reset: resetTocStore } = useTocStore()
+
+onBeforeRouteLeave(() => {
+  resetTocStore()
+})
+
 const head = computed(() => {
   let head = []
 

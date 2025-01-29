@@ -1,41 +1,30 @@
 <template>
-  <InterfaceModal
-    v-model="model"
-    title="文章分類"
-  >
-    <InterfaceNav
-      active-class="fw-bold"
-      vertical
-      :items="items"
-      :link-generate-func="getLink"
-      @click-item="model = false"
-    >
+  <InterfaceModal v-model="uiStore.modal.categories" title="文章分類">
+    <PMenu :model="items">
       <template #item="{ item }">
-        {{ item.name }}
+        <NuxtLink
+          :to="item.to"
+          active-class="font-black"
+          class="p-menu-item-link"
+          @click="closeModal('categories')"
+          >{{ item.label }}</NuxtLink
+        >
       </template>
-    </InterfaceNav>
+    </PMenu>
   </InterfaceModal>
 </template>
 
 <script setup>
-import { getCategoryLink } from '~/utils/getLink'
+import { useUiStore } from '~/store/ui'
 
-import InterfaceModal from '~/components/interface/interface-modal.vue'
-import InterfaceNav from '~/components/interface/interface-nav.vue'
-import { computed } from 'vue'
-
-const model = defineModel({
-  type: Boolean,
-  default: false,
-})
+const uiStore = useUiStore()
+const { closeModal } = uiStore
 
 const { categoriesMap } = useRuntimeConfig().public
-const items = computed(() =>
-  Object.keys(categoriesMap).map((key) => ({
-    name: categoriesMap[key],
-    value: key,
-  }))
-)
 
-const getLink = ({ value }) => getCategoryLink({ category: value })
+const items = Object.keys(categoriesMap).map((key) => ({
+  label: categoriesMap[key],
+  key,
+  to: getCategoryLink({ category: key }),
+}))
 </script>

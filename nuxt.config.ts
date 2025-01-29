@@ -18,6 +18,9 @@ const categoriesMap = {
 // const routes = []
 
 export default defineNuxtConfig({
+  experimental: {
+    appManifest: false,
+  },
   /* 不確定對應到哪邊的設定值 START */
   // loading: "~/components/common-loading.vue",
   /* 不確定對應到哪邊的設定值 END */
@@ -222,6 +225,8 @@ export default defineNuxtConfig({
         a: 'ArticleOuterLink',
         hr: 'ArticleHr',
         p: 'ArticleP',
+        h2: 'ArticleH2',
+        h3: 'ArticleH3',
       },
       remarkPlugins: ['remark-reading-time'],
     },

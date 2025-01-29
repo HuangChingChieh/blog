@@ -1,18 +1,22 @@
 import { defineStore } from 'pinia'
 
+const modal = {
+  categories: false,
+  search: false,
+}
+
 export const useUiStore = defineStore('ui', {
   state: () => ({
-    modal: {
-      categories: false,
-      search: false,
-    },
+    modal,
   }),
   actions: {
-    openModalCategories() {
-      this.modal.categories = true
+    openModal(key = '') {
+      if (!Object.keys(modal).includes(key)) return
+      this.modal[key] = true
     },
-    openModalSearch() {
-      this.modal.search = true
+    closeModal(key = '') {
+      if (!Object.keys(modal).includes(key)) return
+      this.modal[key] = false
     },
   },
 })

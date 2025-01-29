@@ -1,39 +1,41 @@
 <template>
   <InterfaceModal
-    v-model="model"
+    v-model="uiStore.modal.search"
     title="搜尋文章"
     size="lg"
-    @shown="shown"
     @hidden="reset"
   >
     <div class="d-flex flex-column">
       <form @submit.prevent="startSearch">
-        <fieldset class="input-group" :disabled="searching">
-          <InterfaceFormInput
-            ref="input"
+        <PIconField>
+          <PInputText
             v-model="keyword"
             placeholder="請輸入關鍵字"
-            :class="$style.input"
-            @input="keywordChanged"
+            variant="filled"
+            :disabled="searching"
+            class="w-full"
+            autofocus
           />
-          <InterfaceButton variant="primary" type="submit" :disabled="!keyword">
+          <PInputIcon>
             <InterfaceIcon icon="search" />
-          </InterfaceButton>
-        </fieldset>
+          </PInputIcon>
+        </PIconField>
       </form>
 
-      <div class="mt-2" :class="$style.results">
+      <div class="mt-3 h-[400px] break-all overflow-y-auto">
         <div v-if="searched">
-          <button
-            v-for="(match, name) in matchesMap"
-            :key="name"
-            type="button"
-            class="btn btn-sm rounded-pill me-1 mt-1"
-            :class="name === theMatch ? `btn-primary` : `btn-outline-secondary`"
-            @click="changeTheMatch(name)"
-          >
-            {{ name }}
-          </button>
+          <div class="flex flex-wrap gap-1">
+            <InterfaceButton
+              v-for="(match, name) in matchesMap"
+              :key="name"
+              size="small"
+              :variant="name === theMatch ? undefined : `outlined`"
+              rounded
+              @click="changeTheMatch(name)"
+            >
+              {{ name }}
+            </InterfaceButton>
+          </div>
 
           <div v-for="article in articles" :key="article.slug">
             <hr class="my-3" />
@@ -41,14 +43,14 @@
               :key="article.slug"
               :article="article"
               :container="false"
-              @click="model = false"
+              @click="closeModal('search')"
             />
           </div>
         </div>
 
         <div
           v-if="hasNoSearchResult"
-          class="text-center h-100 d-flex align-items-center justify-content-center"
+          class="text-center h-full flex items-center justify-center"
         >
           {{ '哎呀～找不到文章' }}
         </div>
@@ -58,14 +60,10 @@
 </template>
 
 <script setup>
-import InterfaceFormInput from '~/components/interface/interface-form-input.vue'
-import InterfaceIcon from '~/components/interface/interface-icon.vue'
-import InterfaceModal from '~/components/interface/interface-modal.vue'
+import { useUiStore } from '~/store/ui'
 
-const model = defineModel({
-  type: Boolean,
-  default: false,
-})
+const uiStore = useUiStore()
+const { closeModal } = uiStore
 
 const keyword = ref('')
 const theMatch = ref('')
@@ -75,10 +73,8 @@ const hasNoSearchResult = computed(
   () =>
     Object.keys(unref(matchesMap)).length === 0 &&
     unref(articles).length === 0 &&
-    searched.value
+    searched.value,
 )
-
-const keywordChanged = () => {}
 
 const reset = () => {
   keyword.value = ''
@@ -113,7 +109,7 @@ const {
 
     return matchesMap
   },
-  { lazy: true, server: false, default: () => ({}) }
+  { lazy: true, server: false, default: () => ({}) },
 )
 
 const searching = computed(() => searchStatus.value === 'pending')
@@ -138,15 +134,15 @@ const { data: articles } = await useAsyncData(
     const theMatchMap = matchesMap.value[theMatchValue]
 
     const slugs = Object.keys(theMatchMap).filter(
-      (match) => match !== 'articles'
+      (match) => match !== 'articles',
     )
 
     const articles = await Promise.all(
-      slugs.map((slug) => useArticleCard(slug))
+      slugs.map((slug) => useArticleCard(slug)),
     )
     // const articlesValue = articles.map(({ data }) => data.value)
     articles.sort(({ slug: slugA }, { slug: slugB }) =>
-      theMatchMap[slugA] > theMatchMap[slugB] ? -1 : 1
+      theMatchMap[slugA] > theMatchMap[slugB] ? -1 : 1,
     )
 
     if (!matchArticlesMap[theMatchValue]) matchArticlesMap[theMatchValue] = {}
@@ -159,24 +155,10 @@ const { data: articles } = await useAsyncData(
     lazy: true,
     server: false,
     default: () => [],
-  }
+  },
 )
 
 const changeTheMatch = (name) => {
   theMatch.value = name
 }
-
-// Input相關
-const input = ref(null)
-const shown = () => {
-  input.value.$el.focus()
-}
 </script>
-
-<style lang="scss" module>
-.results {
-  height: 400px;
-  overflow-y: auto;
-  word-break: break-all;
-}
-</style>

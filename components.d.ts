@@ -10,6 +10,11 @@ declare module 'vue' {
     PBadge: typeof import('primevue/badge')['default']
     PButton: typeof import('primevue/button')['default']
     PDialog: typeof import('primevue/dialog')['default']
+    PIconField: typeof import('primevue/iconfield')['default']
+    PInputIcon: typeof import('primevue/inputicon')['default']
+    PInputText: typeof import('primevue/inputtext')['default']
+    PMenu: typeof import('primevue/menu')['default']
+    PTree: typeof import('primevue/tree')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

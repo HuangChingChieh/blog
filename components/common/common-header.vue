@@ -10,9 +10,8 @@
         <small class="text-muted hidden lg:block">雜七雜八之地</small>
       </div>
 
-      <div class="flex items-center justify-end">
+      <div id="header-icons" class="flex items-center justify-end">
         <HeaderIconCategories show-text />
-        <HeaderIconToc />
         <HeaderIconTheme />
         <HeaderIconSearch />
       </div>

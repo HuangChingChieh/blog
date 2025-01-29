@@ -3,8 +3,10 @@
 </template>
 
 <script setup>
-import { screens } from 'tailwindcss/defaultTheme'
+import defaultTheme from 'tailwindcss/defaultTheme'
 import getImgSrcset from '~/utils/getImgSrcset'
+
+const { screens } = defaultTheme
 
 const props = defineProps({
   img: {

@@ -1,5 +1,3 @@
-import { screens } from 'tailwindcss/defaultTheme'
-
 // 來自於ImageShack的可用尺寸
 const sources = [
   {

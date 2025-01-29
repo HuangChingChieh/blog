@@ -1,9 +1,9 @@
 <template>
   <ArticlesListPickContainer v-if="hasArticles" title="相關文章">
     <ArticleCardNormal
-      v-for="(article, index) in articles"
+      v-for="(doc, index) in articles"
       :key="index"
-      :article="article"
+      :article="doc"
       class="mb-3"
     />
   </ArticlesListPickContainer>
@@ -11,11 +11,13 @@
 
 <script setup>
 const props = defineProps({
-  articles: { type: Array, default: () => [] },
+  article: { type: Object, default: null },
 })
 
+const { data: articles } = await useRelatedArticles(unref(props.article))
+
 const hasArticles = computed(() => {
-  const { articles } = props
-  return Array.isArray(articles) && articles.length > 0
+  const { value } = articles
+  return Array.isArray(value) && value.length > 0
 })
 </script>

@@ -2,8 +2,7 @@
   <CommonHeaderIcon
     icon="folder"
     title="文章分類"
-    :class="iconClass"
-    @click="openModalCategories"
+    @click="openModal('categories')"
   >
     <span v-if="showText && text">{{ text }}</span>
   </CommonHeaderIcon>
@@ -17,13 +16,9 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  iconClass: {
-    type: [String, Array],
-    default: '',
-  },
 })
 
-const { openModalCategories } = useUiStore()
+const { openModal } = useUiStore()
 
 const { categoriesMap } = useRuntimeConfig().public
 const route = useRoute()
