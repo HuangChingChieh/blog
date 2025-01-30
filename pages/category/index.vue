@@ -1,28 +1,27 @@
 <template>
   <CommonContainer>
     <h1>文章分類</h1>
-    <hr class="my-4" />
+    <hr class="my-6" />
     <div
       v-for="(categoryObj, category) in categories"
       :key="category"
-      class="mt-4"
+      class="mt-6"
     >
       <div class="rounded overflow-hidden">
-        <h3 class="py-2 d-flex align-items-center mb-0">
+        <h3 class="py-2 flex items-center mb-0">
           {{ $config.public.categoriesMap[category] }}
         </h3>
-        <nav class="py-3">
+        <nav class="py-4">
           <NuxtLink
             v-for="article in categoryObj.articles"
             :key="article.slug"
             :to="getArticleLink(article)"
-            class="d-block ps-3 py-2 border-start"
-            :class="$style.link"
+            class="block ps-4 py-2 border-l-4 hover:border-primary"
           >
             {{ article.title }}
           </NuxtLink>
 
-          <div class="mt-2 d-flex align-items-center flex-row">
+          <div class="mt-2 flex items-center flex-row">
             <small class="me-2">共{{ categoryObj.count }}篇文章</small>
             <ButtonEnter :to="getCategoryLink({ category })">
               文章列表
@@ -35,13 +34,6 @@
 </template>
 
 <script setup>
-import CommonContainer from '~/components/common/common-container.vue'
-import ButtonEnter from '~/components/button/button-enter.vue'
-
-import articleQueryAttrs from '~/utils/articleQueryAttrs'
-
-import { getArticleLink, getCategoryLink } from '~/utils/getLink'
-
 const { categories: categoriesMetadata } = await useArticlesMetadata()
 
 const { data: categories } = await useAsyncData('categories', async () => {
@@ -61,8 +53,8 @@ const { data: categories } = await useAsyncData('categories', async () => {
           categoryObj.articles = articles
 
           return articles
-        })
-    )
+        }),
+    ),
   )
 
   return categories
@@ -72,13 +64,3 @@ useHead({
   title: `文章分類`,
 })
 </script>
-
-<style lang="scss" module>
-.link {
-  border-width: 3px !important;
-
-  &:hover {
-    border-color: $primary !important;
-  }
-}
-</style>
