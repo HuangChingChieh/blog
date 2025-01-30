@@ -3,7 +3,7 @@
     :href="href"
     :target="target"
     :rel="relComputed"
-    class="underline hover:text-primary-500"
+    class="underline hover:text-primary"
   >
     <slot />
   </a>

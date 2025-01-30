@@ -1,3 +1,5 @@
+/** @type {import('tailwindcss').Config} */
+
 import primeui from 'tailwindcss-primeui'
 import colors from 'tailwindcss/colors'
 
@@ -13,7 +15,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: colors.teal,
+        primary: {
+          DEFAULT: colors.teal[500],
+          ...colors.teal,
+        },
         foreground: {
           DEFAULT: '#e9ecef',
           dark: '#343a40',

@@ -32,7 +32,6 @@ const props = defineProps({
 const containerStyles = computed(() =>
   props.container
     ? [
-        'bg-foreground',
         'shadow-sm hover:shadow active:shadow ',
         'hover:scale-article-card active:scale-article-card',
       ]

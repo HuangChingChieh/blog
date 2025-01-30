@@ -1,5 +1,5 @@
 <template>
-  <InterfaceBadge class="inline-block font-mono">
+  <InterfaceBadge class="font-mono">
     #<slot>{{ tagName }}</slot>
   </InterfaceBadge>
 </template>

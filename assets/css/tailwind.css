@@ -1,0 +1,111 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/*** PrimeVue Start ***/
+@import './primevue/common';
+
+/* Form */
+/* @import './primevue/autocomplete'; */
+/* @import './primevue/cascadeselect'; */
+/* @import './primevue/checkbox'; */
+/* @import './primevue/colorpicker'; */
+/* @import './primevue/datepicker'; */
+@import './primevue/iconfield';
+/* @import './primevue/iftalabel'; */
+@import './primevue/inputgroup';
+/* @import './primevue/inputnumber'; */
+/* @import './primevue/inputotp'; */
+@import './primevue/inputtext';
+/* @import './primevue/floatlabel'; */
+/* @import './primevue/knob'; */
+/* @import './primevue/listbox'; */
+/* @import './primevue/multiselect'; */
+/* @import './primevue/password'; */
+/* @import './primevue/radiobutton'; */
+/* @import './primevue/rating'; */
+/* @import './primevue/select'; */
+/* @import './primevue/selectbutton'; */
+/* @import './primevue/slider'; */
+/* @import './primevue/textarea'; */
+/* @import './primevue/togglebutton'; */
+/* @import './primevue/toggleswitch'; */
+/* @import './primevue/treeselect'; */
+
+/* Button */
+@import './primevue/button';
+/* @import './primevue/buttongroup'; */
+/* @import './primevue/speeddial'; */
+/* @import './primevue/splitbutton'; */
+
+/* Data */
+/* @import './primevue/datatable'; */
+/* @import './primevue/dataview'; */
+@import './primevue/paginator';
+/* @import './primevue/picklist'; */
+/* @import './primevue/orderlist'; */
+/* @import './primevue/organizationchart'; */
+/* @import './primevue/timeline'; */
+@import './primevue/tree';
+/* @import './primevue/treetable'; */
+
+/* Overlay */
+/* @import './primevue/confirmdialog'; */
+/* @import './primevue/confirmpopup'; */
+@import './primevue/dialog';
+/* @import './primevue/drawer'; */
+/* @import './primevue/popover'; */
+/* @import './primevue/tooltip'; */
+
+/* Menu */
+/* @import './primevue/breadcrumb'; */
+/* @import './primevue/contextmenu'; */
+/* @import './primevue/dock'; */
+@import './primevue/menu';
+/* @import './primevue/menubar'; */
+/* @import './primevue/megamenu'; */
+/* @import './primevue/panelmenu'; */
+/* @import './primevue/tieredmenu'; */
+
+/* Panel */
+/* @import './primevue/accordion'; */
+/* @import './primevue/card'; */
+/* @import './primevue/divider'; */
+/* @import './primevue/fieldset'; */
+/* @import './primevue/panel'; */
+/* @import './primevue/scrollpanel'; */
+/* @import './primevue/splitter'; */
+/* @import './primevue/stepper'; */
+/* @import './primevue/tabs'; */
+/* @import './primevue/toolbar'; */
+
+/* File */
+/* @import './primevue/fileupload'; */
+
+/* Message */
+/* @import './primevue/message'; */
+/* @import './primevue/toast'; */
+
+/* Media */
+/* @import './primevue/carousel'; */
+/* @import './primevue/galleria'; */
+/* @import './primevue/image'; */
+/* @import './primevue/imagecompare'; */
+
+/* Misc */
+/* @import './primevue/avatar'; */
+@import './primevue/badge';
+/* @import './primevue/blockui'; */
+/* @import './primevue/chip'; */
+/* @import './primevue/inplace'; */
+/* @import './primevue/metergroup'; */
+/* @import './primevue/overlaybadge'; */
+/* @import './primevue/progressbar'; */
+/* @import './primevue/progressspinner'; */
+/* @import './primevue/ripple'; */
+/* @import './primevue/scrolltop'; */
+/* @import './primevue/skeleton'; */
+/* @import './primevue/tag'; */
+/* @import './primevue/terminal'; */
+
+/*** PrimeVue End ***/
+
+@import 'tailwindcss/utilities';

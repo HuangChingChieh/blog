@@ -1,7 +1,7 @@
 <template>
   <div>
     <FooterTitle>
-      <NuxtLink :to="titleTo" class="text-primary-500">
+      <NuxtLink :to="titleTo" class="text-primary">
         {{ title }}
       </NuxtLink>
 

@@ -72,7 +72,7 @@ const isTocItemActive = (node) => {
 const itemStyle = (node) => {
   const active = isTocItemActive(node)
   return {
-    'text-primary-500': active,
+    'text-primary': active,
     'hover:font-black': !active,
     'cursor-pointer': !active,
   }

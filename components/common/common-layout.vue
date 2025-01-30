@@ -26,6 +26,7 @@
       <AsideSelect
         :category="category"
         :not-in-articles="selectNotInArticles"
+        class="lg:sticky lg:top-24"
       />
     </div>
   </div>

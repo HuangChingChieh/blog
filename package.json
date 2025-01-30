@@ -29,6 +29,8 @@
     "lint-staged": "^15.2.11",
     "nuxt": "^3.14.1592",
     "nuxt-content-git": "^4.0.1",
+    "postcss": "^8.5.1",
+    "postcss-import": "^16.1.0",
     "prettier": "3.4.2",
     "sass": "^1.70.0",
     "vue": "^3.4.27",

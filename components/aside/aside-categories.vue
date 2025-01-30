@@ -8,10 +8,10 @@
           class="py-2 border-t first:border-t-0"
         >
           <NuxtLink
-            class="flex flex-row no-decoration hover:text-primary-500"
+            class="flex flex-row no-decoration hover:text-primary"
             :to="getCategoryLink({ category: key })"
           >
-            <span class="text-primary-500 me-1">#</span>
+            <span class="text-primary me-1">#</span>
             <span class="grow">{{ cate }}</span>
             <span>({{ categories[key].count }})</span>
           </NuxtLink>

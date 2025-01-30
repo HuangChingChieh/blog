@@ -1,7 +1,7 @@
 <template>
   <CommonWrapper
     tag="header"
-    class="border-b-2 border-primary-500 sticky top-0 left-0 shadow-sm w-full py-3 z-50"
+    class="border-b-2 border-primary sticky top-0 left-0 shadow-sm w-full py-3 z-50"
   >
     <InterfaceContainer class="flex flex-row items-center">
       <CommonIcon bordered class="w-8 h-8 md:w-10 md:h-10" />

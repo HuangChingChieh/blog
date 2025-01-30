@@ -1,7 +1,5 @@
 <template>
-  <CommonWrapper
-    class="shadow-sm rounded p-4 lg:p-6 border-t-4 border-primary-500"
-  >
+  <CommonWrapper class="shadow-sm rounded p-4 lg:p-6 border-t-4 border-primary">
     <AsideTitle v-if="title">
       {{ title }}
     </AsideTitle>

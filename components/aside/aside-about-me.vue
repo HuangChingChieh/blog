@@ -2,7 +2,7 @@
   <AsideContainer title="嗨，我是阿傑！">
     <div class="mx-auto w-1/3 max-w-[150px]">
       <InterfaceImg
-        class="p-1 rounded-full border-2 border-primary-500 mb-6 bg-white"
+        class="p-1 rounded-full border-2 border-primary mb-6 bg-white"
         img="922/bqqju1.jpg"
       />
     </div>
