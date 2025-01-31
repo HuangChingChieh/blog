@@ -39,11 +39,16 @@ useHead({
 </script>
 
 <style lang="scss">
+.page-leave-from,
+.page-enter-to {
+  opacity: 1;
+}
+
 .page-enter-active,
 .page-leave-active,
 .layout-enter-active,
 .layout-leave-active {
-  transition: $transition-fade;
+  transition: opacity 0.15s;
 }
 .page-enter-from,
 .page-leave-to,

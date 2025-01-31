@@ -5,6 +5,7 @@
         v-for="(doc, index) in articles"
         :key="index"
         :article="doc"
+        :img-break-points="imgBreakPoints"
       />
     </div>
   </ArticlesListPickContainer>
@@ -21,4 +22,12 @@ const hasArticles = computed(() => {
   const { value } = articles
   return Array.isArray(value) && value.length > 0
 })
+
+const imgBreakPoints = {
+  sm: 640,
+  md: 335,
+  lg: 251,
+  xl: 335,
+  // '2xl': 335,
+}
 </script>

@@ -2,8 +2,9 @@
   <AsideContainer title="嗨，我是阿傑！">
     <div class="mx-auto w-1/3 max-w-[150px]">
       <InterfaceImg
-        class="p-1 rounded-full border-2 border-primary mb-6 bg-white"
+        class="p-1 rounded-full border-2 border-primary mb-6 bg-white w-full aspect-square"
         img="922/bqqju1.jpg"
+        :break-points="imgBreakPoints"
       />
     </div>
 
@@ -19,4 +20,8 @@
 
 <script setup>
 const to = { path: '/buy_me_a_tea', hash: '#關於我' }
+
+const imgBreakPoints = {
+  sm: 150,
+}
 </script>

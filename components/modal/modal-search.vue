@@ -43,6 +43,7 @@
               :key="article.slug"
               :article="article"
               :container="false"
+              :img-break-points="imgBreakPoints"
               @click="closeModal('search')"
             />
           </div>
@@ -160,5 +161,11 @@ const { data: articles } = await useAsyncData(
 
 const changeTheMatch = (name) => {
   theMatch.value = name
+}
+
+const imgBreakPoints = {
+  sm: 451,
+  lg: 205,
+  '2xl': 330,
 }
 </script>

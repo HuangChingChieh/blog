@@ -35,15 +35,6 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          quietDeps: true,
-          additionalData(source: string, fp: string) {
-            // All scss files ending with imports.scss
-            // will not re-import additionalData
-            if (fp.endsWith('scss')) return source
-            // Use additionalData from legacy nuxt scss options
-
-            return `@import "~/assets/css/custom.module.scss"; ${source}`
-          },
           api: 'modern-compiler',
           silenceDeprecations: [
             'legacy-js-api',

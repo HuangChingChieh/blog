@@ -6,7 +6,7 @@
       :key="index"
       :article="article"
       :preload-img="index <= 4"
-      :break-points="imgBreakPoints"
+      :img-break-points="imgBreakPoints"
     />
   </div>
 </template>

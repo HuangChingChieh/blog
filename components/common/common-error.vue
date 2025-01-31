@@ -4,24 +4,28 @@
       class="col-span-12 lg:col-span-10 lg:col-start-2 xl:col-span-8 xl:col-start-3"
     >
       <div class="text-center">
-        <div class="h1 fw-bolder text-muted">404</div>
-        <div class="my-4">
+        <div class="text-9xl font-black text-muted">404</div>
+        <div v-if="$config.public.isDev">
+          {{ error }}
+        </div>
+        <div class="my-normal py-normal">
           <div>哎呀～你尋找的網頁不存在哦！</div>
           <div>看看我們隨機幫你選出的文章們吧！</div>
-          <div>或是<NuxtLink to="/"> 點這裡 </NuxtLink>回到首頁！</div>
+          <div>
+            或是<TextClickable :tag="NuxtLink" to="/" class="underline"
+              >點這裡</TextClickable
+            >回到首頁！
+          </div>
         </div>
       </div>
 
-      <div v-if="$config.public.isDev">
-        {{ error }}
+      <div class="flex flex-col gap-normal">
+        <ArticleCardNormal
+          v-for="article in articles"
+          :key="article.slug"
+          :article="article"
+        />
       </div>
-
-      <ArticleCardNormal
-        v-for="article in articles"
-        :key="article.slug"
-        :article="article"
-        class="mb-3"
-      />
     </div>
   </div>
 </template>
@@ -68,4 +72,6 @@ const getRandomArticles = async () => {
 onMounted(async () => {
   await getRandomArticles()
 })
+
+const NuxtLink = resolveComponent('NuxtLink')
 </script>
