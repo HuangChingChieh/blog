@@ -1,13 +1,12 @@
 <template>
-  <PTree
-    v-model:expanded-keys="expandedKeys"
-    :value="treeNodes"
-    class="!p-0 !bg-transparent"
-  >
+  <PTree v-model:expanded-keys="expandedKeys" :value="treeNodes">
     <template #default="{ node }">
-      <span :class="itemStyle(node)" @click="scrollTo(node)">{{
-        node.label
-      }}</span>
+      <TextClickable
+        class="[word-break:break-word]"
+        :class="itemStyle(node)"
+        @click="scrollTo(node)"
+        >{{ node.label }}</TextClickable
+      >
     </template>
   </PTree>
 </template>
@@ -69,9 +68,7 @@ const isTocItemActive = (node) => {
 const itemStyle = (node) => {
   const active = isTocItemActive(node)
   return {
-    'text-primary': active,
-    'hover:font-black': !active,
-    'cursor-pointer': !active,
+    'font-black': active,
   }
 }
 

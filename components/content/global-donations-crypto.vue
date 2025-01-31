@@ -1,8 +1,8 @@
 <template>
   <div>
     <p>
-      <a href="#" @click.prevent="modalOpen = true"
-        >點這裡顯示加密貨幣地址QRCode</a
+      <TextClickable tag="a" class="underline" @click.prevent="modalOpen = true"
+        >點這裡顯示加密貨幣地址QRCode</TextClickable
       >，或是直接複製：0x9440eb4BDe15e64985f3fC5875914A6Fd20863b5 。
     </p>
 

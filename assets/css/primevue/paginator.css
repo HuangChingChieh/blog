@@ -1,5 +1,5 @@
 .p-paginator {
-  @apply flex items-center justify-center flex-wrap py-2 px-4 rounded-md gap-1
+  @apply flex items-center justify-center flex-wrap rounded-md gap-1
          text-surface-700 dark:text-surface-0;
 }
 

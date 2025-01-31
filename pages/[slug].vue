@@ -21,9 +21,12 @@
     </div>
 
     <div
-      class="lg:hidden fixed bottom-8 right-8 bg-primary rounded-full z-10 shadow-sm"
+      class="lg:hidden fixed bottom-6 right-6 md:bottom-8 md:right-8 bg-primary rounded-full z-10 shadow-sm"
     >
-      <InterfaceButton class="p-3 rounded-full" @click="tocModelOpen = true">
+      <InterfaceButton
+        class="p-2 md:p-3 rounded-full"
+        @click="tocModelOpen = true"
+      >
         <InterfaceIcon icon="card-list" class="text-3xl mb-0 flex" />
       </InterfaceButton>
     </div>

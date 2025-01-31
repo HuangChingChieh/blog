@@ -1,12 +1,13 @@
 <template>
-  <a
+  <TextClickable
+    tag="a"
     :href="href"
     :target="target"
     :rel="relComputed"
-    class="underline hover:text-primary"
+    class="underline"
   >
     <slot />
-  </a>
+  </TextClickable>
 </template>
 
 <script setup>

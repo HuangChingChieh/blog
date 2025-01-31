@@ -1,10 +1,11 @@
 <template>
-  <NuxtLink v-if="title" :to="to">
+  <TextClickable v-if="title" :tag="NuxtLink" :to="to">
     <slot>《{{ title }}》</slot>
-  </NuxtLink>
+  </TextClickable>
 </template>
 
 <script setup>
+const NuxtLink = resolveComponent('NuxtLink')
 const props = defineProps({
   slug: {
     type: String,

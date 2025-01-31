@@ -237,6 +237,8 @@ export default defineNuxtConfig({
         h3: 'ArticleH3',
         blockquote: 'ArticleBlockquote',
         em: 'ArticleEm',
+        ul: 'ArticleUl',
+        ol: 'ArticleOl',
       },
       remarkPlugins: ['remark-reading-time'],
     },

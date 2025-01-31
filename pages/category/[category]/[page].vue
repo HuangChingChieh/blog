@@ -6,9 +6,12 @@
       <PPaginator
         :first="first"
         :rows="perPage"
-        :total-records="totalRecords"
+        :total-records="count"
+        :page-link-size="3"
+        class="mt-normal"
         @page="onPage"
       />
+      <div class="mt-2 text-center">共 {{ pageCount }} 頁</div>
     </ArticlesListPickContainer>
   </CommonLayout>
 </template>
@@ -18,7 +21,7 @@ const { category, page } = useRoute().params
 
 const { categories } = await useArticlesMetadata()
 const { categoriesMap, perPage } = useRuntimeConfig().public
-const totalRecords = categories[category]?.count || 0
+const { count, pageCount } = categories[category]
 
 const { data: articles } = await useArticlesByPageAndCategoryAsync({
   page,

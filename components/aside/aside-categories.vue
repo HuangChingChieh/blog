@@ -7,14 +7,15 @@
           :key="key"
           class="py-2 border-t first:border-t-0"
         >
-          <NuxtLink
-            class="flex flex-row no-decoration hover:text-primary"
+          <TextClickable
+            :tag="NuxtLink"
+            class="flex flex-row no-decoration"
             :to="getCategoryLink({ category: key })"
           >
             <span class="text-primary me-1">#</span>
             <span class="grow">{{ cate }}</span>
             <span>({{ categories[key].count }})</span>
-          </NuxtLink>
+          </TextClickable>
         </li>
       </ul>
     </nav>
@@ -24,4 +25,6 @@
 <script setup>
 const { categoriesMap } = useRuntimeConfig().public
 const { categories } = await useArticlesMetadata()
+
+const NuxtLink = resolveComponent('NuxtLink')
 </script>

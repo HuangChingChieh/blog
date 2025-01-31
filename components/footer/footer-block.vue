@@ -1,7 +1,7 @@
 <template>
   <div>
     <FooterTitle>
-      <NuxtLink :to="titleTo" class="text-primary">
+      <NuxtLink :to="titleTo" class="text-primary hover:underline">
         {{ title }}
       </NuxtLink>
 
