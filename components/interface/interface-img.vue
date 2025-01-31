@@ -1,5 +1,11 @@
 <template>
-  <img :sizes="sizes" :srcset="srcset" :src="src" loading="lazy" />
+  <img
+    :sizes="sizes"
+    :srcset="srcset"
+    :src="src"
+    loading="lazy"
+    decoding="async"
+  />
 </template>
 
 <script setup>
