@@ -19,6 +19,7 @@ const categoriesMap = {
 export default defineNuxtConfig({
   experimental: {
     appManifest: false,
+    sharedPrerenderData: true,
   },
   /* 不確定對應到哪邊的設定值 START */
   // loading: "~/components/common-loading.vue",

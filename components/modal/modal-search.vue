@@ -88,7 +88,7 @@ const {
   status: searchStatus,
   refresh: search,
 } = await useAsyncData(
-  'search',
+  `search_${keyword.value}`,
   async () => {
     const matchesMap = {}
 
@@ -124,7 +124,7 @@ const startSearch = async () => {
 const matchArticlesMap = {}
 
 const { data: articles } = await useAsyncData(
-  `search_articles_by_match`,
+  `search_articles_by_match:${theMatch.value}`,
   async () => {
     const theMatchValue = theMatch.value
     if (!theMatchValue) return []

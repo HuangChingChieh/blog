@@ -68,7 +68,8 @@ const isTocItemActive = (node) => {
 const itemStyle = (node) => {
   const active = isTocItemActive(node)
   return {
-    'font-black': active,
+    italic: active,
+    'text-primary': active,
   }
 }
 
