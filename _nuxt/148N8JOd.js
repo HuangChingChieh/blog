@@ -1,0 +1,1 @@
+import{h as s,o as t,j as o,r as c}from"./BCRneodi.js";const r={},l={class:"list-decimal pl-6"};function a(e,n){return t(),o("ol",l,[c(e.$slots,"default")])}const d=s(r,[["render",a]]);export{d as default};

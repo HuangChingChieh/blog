@@ -1,0 +1,1 @@
+import{h as s,o as t,j as c,r as o}from"./BCRneodi.js";const r={},l={class:"list-disc pl-6"};function a(e,n){return t(),c("ul",l,[o(e.$slots,"default")])}const d=s(r,[["render",a]]);export{d as default};

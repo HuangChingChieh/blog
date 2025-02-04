@@ -1,0 +1,1 @@
+import{h as r,o as e,j as t,r as c}from"./BCRneodi.js";const l={},s={class:"pl-normal border-l-4 border-primary grid grid-cols-1 gap-4 group article-blockquote"};function a(o,n){return e(),t("blockquote",s,[c(o.$slots,"default")])}const i=r(l,[["render",a]]);export{i as default};

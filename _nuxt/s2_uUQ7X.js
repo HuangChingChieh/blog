@@ -1,1 +1,0 @@
-import{h as o,o as r,j as s,b as a,r as c}from"./DrDuR_zy.js";const l={},n={class:"group-[.article-blockquote]:text-sm group-[.article-blockquote]:text-muted"};function i(t,e){return r(),s("em",n,[e[0]||(e[0]=a("span",{class:"group-[.article-blockquote]:inline hidden"},"——",-1)),c(t.$slots,"default")])}const d=o(l,[["render",i]]);export{d as default};

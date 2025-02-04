@@ -1,1 +1,0 @@
-import{h as e,o,j as a,b as s}from"./DrDuR_zy.js";const t={},n={class:"py-paragraph"};function c(d,r){return o(),a("div",n,r[0]||(r[0]=[s("hr",{class:"border-t w-12 border-foreground-dark dark:border-foreground mx-auto"},null,-1)]))}const f=e(t,[["render",c]]);export{f as default};
