@@ -39,7 +39,7 @@ const sources = [
 ]
 
 /**
- * 撈取BootStrap斷點以及自行設定的container寬度斷點，以產生對應的image的sizes，getImageWidth會傳入有參數的物件。須根據參數回傳自行產生對應斷點下的圖片寬度（例如：`100w`），否則會以斷點下的container寬度作為圖片寬度。
+ * 根據ImageShack提供的可用尺寸列表產生一組srcset
  */
 export default (img = '', imageServer = '') =>
   img && imageServer

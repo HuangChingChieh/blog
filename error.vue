@@ -5,9 +5,7 @@
 </template>
 
 <script setup>
-import CommonError from '~/components/common/common-error.vue'
-
-const props = defineProps({
+defineProps({
   error: {
     type: Object,
     default: null,

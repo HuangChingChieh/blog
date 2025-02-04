@@ -1,6 +1,3 @@
-import { getCategories, setPageCount } from '~/utils/getCategories'
-import getTags from '~/utils/getTags'
-
 const tagsObj = {}
 const categories = {}
 const articlesMetadata = {

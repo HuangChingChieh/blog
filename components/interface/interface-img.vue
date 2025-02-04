@@ -10,7 +10,6 @@
 
 <script setup>
 import defaultTheme from 'tailwindcss/defaultTheme'
-import getImgSrcset from '~/utils/getImgSrcset'
 
 const { screens } = defaultTheme
 
@@ -26,14 +25,16 @@ const props = defineProps({
 })
 
 const { imageServer } = useRuntimeConfig().public
-const src = computed(() => `${imageServer}1024x768q70/${props.img}`)
+const src = computed(() => `${imageServer}320x240q70/${props.img}`)
 
 const srcset = computed(() =>
   sizes.value?.length > 0 ? getImgSrcset(props.img, imageServer) : null,
 )
 
 const sizes = computed(() => {
-  const { breakPoints } = props
+  const breakPoints = JSON.parse(JSON.stringify(props.breakPoints))
+  const { sm } = breakPoints
+  breakPoints.sm = !sm || sm > 320 ? 320 : sm
   const sizesValid = Object.keys(screens)
     .filter((breakpoint) => !!breakPoints[breakpoint])
     .sort((breakpointA, breakpointB) =>

@@ -11,7 +11,8 @@
     "deploy": "gh-pages -d .output/public -t",
     "generate-pwa-assets": "pwa-assets-generator --preset minimal-2023 static/icon.png",
     "prepare": "husky",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "analyze": "nuxt analyze"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.6.1",

@@ -17,9 +17,6 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import InterfaceIcon from '../interface/interface-icon.vue'
-
 const props = defineProps({
   document: {
     type: Object,
