@@ -1,0 +1,1 @@
+import{o as a,c as n,aN as c}from"./Cpe9uTAX.js";const i={__name:"article-banner",props:{img:{type:String,default:""},breakPoints:{type:Object,default:()=>({})}},setup(e){return(o,r)=>{const t=c;return a(),n(t,{"break-points":e.breakPoints,img:e.img,class:"w-full aspect-video"},null,8,["break-points","img"])}}};export{i as _};

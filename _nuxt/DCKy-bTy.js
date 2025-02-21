@@ -1,1 +1,0 @@
-import{h as t,o,j as n,r}from"./BCRneodi.js";const s={},c={class:"font-mono text-sm bg-gray-500 text-white mx-1 px-1 inline-block text-nowrap rounded align-bottom"};function a(e,l){return o(),n("code",c,[r(e.$slots,"default")])}const i=t(s,[["render",a]]);export{i as default};

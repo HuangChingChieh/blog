@@ -1,1 +1,0 @@
-import{_ as o}from"./CFqyetFG.js";import{h as c,o as r,c as s,w as a,r as n}from"./BCRneodi.js";import"./BjpbL7cg.js";const _={};function l(t,f){const e=o;return r(),s(e,{tag:"h2",class:"text-3xl"},{default:a(()=>[n(t.$slots,"default")]),_:3})}const d=c(_,[["render",l]]);export{d as default};
