@@ -1,0 +1,1 @@
+[{"title":"設定PM2來管理Nuxt SSR網站","description":"最近想整理一下自己在工作中用到的工具集，回頭看發現比較不熟的是 pm2 的初始設定，畢竟設定好之後也只會用到pm2 status、pm2 logs、pm2 monit……這些維護用的指令而已，就決定先從 pm2 開始紀錄了。","img":"924/Crirxh.jpg","readingTime":{"text":"4 min read","minutes":3.83,"time":229800,"words":766},"createdAt":"2024-06-02T02:55:15.000Z","updatedAt":"2024-06-02T02:55:15.000Z","slug":"vue_stack_deployment_pm2"}]

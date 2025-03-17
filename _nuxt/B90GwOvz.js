@@ -1,1 +1,0 @@
-import{o as e,c as r,w as s,b as t,r as d,U as n}from"./Cpe9uTAX.js";const c={class:"md:p-normal"},p={__name:"common-container",props:{tag:{type:String,default:"div"}},setup(a){return(o,m)=>(e(),r(n(a.tag),{class:"md:p-normal md:shadow-sm dark:md:bg-background-dark md:bg-background md:rounded"},{default:s(()=>[t("div",c,[d(o.$slots,"default")])]),_:3}))}};export{p as _};

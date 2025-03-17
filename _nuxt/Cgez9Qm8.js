@@ -1,0 +1,1 @@
+import{h as t,o as s,l as r,r as o}from"./9uk_k_NE.js";const a={},c={class:"break-all text-justify"};function l(e,n){return s(),r("p",c,[o(e.$slots,"default")])}const f=t(a,[["render",l]]);export{f as default};

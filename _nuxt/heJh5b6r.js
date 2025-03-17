@@ -1,0 +1,1 @@
+import{h as r,o as e,l as t,r as c}from"./9uk_k_NE.js";const l={},s={class:"pl-normal border-l-4 border-primary grid grid-cols-1 gap-4 group article-blockquote"};function a(o,n){return e(),t("blockquote",s,[c(o.$slots,"default")])}const i=r(l,[["render",a]]);export{i as default};

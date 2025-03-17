@@ -1,0 +1,1 @@
+import{_ as o}from"./BEBpYrpr.js";import{h as c,o as r,c as s,w as a,r as n}from"./9uk_k_NE.js";import"./xxxAv_xD.js";const _={};function l(t,f){const e=o;return r(),s(e,{tag:"h3",class:"text-2xl"},{default:a(()=>[n(t.$slots,"default")]),_:3})}const d=c(_,[["render",l]]);export{d as default};

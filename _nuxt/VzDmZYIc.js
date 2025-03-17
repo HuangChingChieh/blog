@@ -1,0 +1,1 @@
+import{ab as n,z as r,aj as u}from"./9uk_k_NE.js";const c=({page:s=1,category:e,limit:a})=>{const{perPage:i}=n().public,t=a||i;return r(`${e}_${s}_${t}`,()=>u({page:s,category:e,limit:t}))};export{c as u};

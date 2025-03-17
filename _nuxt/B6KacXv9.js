@@ -1,0 +1,1 @@
+import{h as t,o,l as n,r}from"./9uk_k_NE.js";const s={},c={class:"font-mono text-sm bg-gray-500 text-white mx-1 px-1 inline rounded align-bottom"};function a(e,l){return o(),n("code",c,[r(e.$slots,"default")])}const i=t(s,[["render",a]]);export{i as default};

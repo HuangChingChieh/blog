@@ -1,0 +1,1 @@
+import{h as s,o as t,l as c,r as o}from"./9uk_k_NE.js";const r={},l={class:"list-disc pl-6"};function a(e,n){return t(),c("ul",l,[o(e.$slots,"default")])}const d=s(r,[["render",a]]);export{d as default};
