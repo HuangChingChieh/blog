@@ -1,6 +1,6 @@
 <template>
   <CommonContainer>
-    <h1>文章分類</h1>
+    <h1 class="text-3xl font-bold">文章分類</h1>
     <hr class="my-6" />
     <div
       v-for="(categoryObj, category) in categories"

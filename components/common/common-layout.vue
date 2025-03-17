@@ -21,8 +21,7 @@
 
       <AsideCategories />
 
-      <!-- TODO 功能還沒做先隱藏 -->
-      <!-- <AsideTags /> -->
+      <AsideTags />
 
       <AsideSelect
         :category="category"

@@ -1,10 +1,10 @@
 <template>
   <AsideContainer title="文章標籤">
-    <div class="flex flex-wrap gap-2 justify-center">
+    <div class="flex flex-wrap gap-2 justify-center mb-normal">
       <InterfaceButtonLink
         v-for="tag in tags"
         :key="tag.name"
-        :to="{ path: '/buy_me_a_tea', hash: '#關於我' }"
+        :to="tag.to"
         variant="outlined"
         severity="primary"
         size="small"
@@ -12,6 +12,10 @@
       >
         {{ tag.name }}
       </InterfaceButtonLink>
+    </div>
+
+    <div class="text-center">
+      <ButtonEnter to="/tags/">所有標籤</ButtonEnter>
     </div>
   </AsideContainer>
 </template>
@@ -26,6 +30,7 @@ Object.keys(tagsObj).forEach((name) => {
     tags.push({
       name,
       count,
+      to: getTagLink({ tag: name }),
     })
   }
 })
