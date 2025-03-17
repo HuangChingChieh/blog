@@ -20,6 +20,11 @@ export default defineNuxtConfig({
   experimental: {
     appManifest: false,
     sharedPrerenderData: true,
+    defaults: {
+      nuxtLink: {
+        prefetch: false,
+      },
+    },
   },
   /* 不確定對應到哪邊的設定值 START */
   // loading: "~/components/common-loading.vue",
