@@ -11,7 +11,7 @@ category: linux
 
 內容可能會隨著 Fedora 版本更新，有用到的套件都會盡量附上官網，有興趣的朋友可選擇參考，**並請自行承擔指令安裝責任**。
 
-撰寫文章時使用版本：**Fedora 40**。
+撰寫文章時使用版本：**Fedora 42**。
 
 ---
 
@@ -19,7 +19,7 @@ category: linux
 
 ```bash
 # 移除用不到的套件
-sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-boxes gnome-contacts simple-scan gnome-tour fedora-chromium-config libreoffice* -y
+sudo dnf remove gnome-software gnome-connections gnome-maps gnome-calendar totem gnome-contacts simple-scan gnome-tour fedora-chromium-config libreoffice* rhythmbox firefox -y
 ```
 
 ```bash
@@ -53,13 +53,19 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 ## 安裝日常使用軟體
 
 ```bash
-sudo dnf install p7zip gimp gnome-tweaks ibus-chewing VirtualBox android-tools mediawriter megasync nautilus-megasync -y
+sudo dnf install p7zip gnome-tweaks android-tools gnome-extensions-app -y
+```
+
+### 安裝 [MegaSync](https://mega.io/)
+
+```bash
+sudo dnf install https://mega.nz/linux/repo/Fedora_42/x86_64/megasync-Fedora_42.x86_64.rpm
 ```
 
 ### 從 flathub 安裝日常軟體
 
 ```bash
-flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader
+flatpak install flathub org.mozilla.Thunderbird org.libreoffice.LibreOffice com.spotify.Client com.valvesoftware.Steam org.videolan.VLC com.github.unrud.VideoDownloader org.gimp.GIMP org.mozilla.firefox
 ```
 
 ---
@@ -80,12 +86,12 @@ sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
 
 ```bash
 # 新增VS Code套件庫
-sudo sh -c 'echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" > /etc/yum.repos.d/vscode.repo'
+echo -e "[code]\nname=Visual Studio Code\nbaseurl=https://packages.microsoft.com/yumrepos/vscode\nenabled=1\nautorefresh=1\ntype=rpm-md\ngpgcheck=1\ngpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/vscode.repo > /dev/null
 ```
 
 ```bash
 # 安裝
-sudo dnf check-update && sudo dnf install code
+sudo dnf install code
 ```
 
 ### Github CLI 設定
@@ -105,12 +111,12 @@ sudo dnf install *backgrounds*gnome* *gnome*backgrounds*
 
 ```bash
 # 安裝 GTK 主題／圖示主題／字型
-sudo dnf install breeze-cursor-theme papirus-icon-theme cjkuni-ukai-fonts cjkuni-uming-fonts wqy-microhei-fonts google-noto-sans-cjk-tc-fonts google-noto-sans-mono-cjk-tc-fonts google-noto-serif-cjk-tc-fonts adobe-source-han-sans-tw-fonts adobe-source-han-serif-tw-fonts
+sudo dnf install papirus-icon-theme* *cjk*fonts* *tw-fonts wqy*
 ```
 
 ```bash
 # 從內建的軟體庫安裝 Gnome 擴充套件
-sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-blur-my-shell gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-places-menu -y
+sudo dnf install gnome-shell-extension-apps-menu gnome-shell-extension-appindicator gnome-shell-extension-blur-my-shell gnome-shell-extension-dash-to-dock gnome-shell-extension-drive-menu gnome-shell-extension-freon gnome-shell-extension-drive-menu gnome-shell-extension-places-menu -y
 ```
 
 ---
